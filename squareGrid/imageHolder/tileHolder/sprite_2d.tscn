@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://byy7vlph6snog"]
+
+[ext_resource type="Texture2D" uid="uid://b0exvca3bkv2i" path="res://imageHolder/tileHolder/imp_field.png" id="1_hpwvo"]
+
+[node name="Sprite2D" type="Sprite2D"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_hpwvo")
