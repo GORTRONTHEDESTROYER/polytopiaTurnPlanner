@@ -1,9 +1,39 @@
-[gd_scene load_steps=2 format=3 uid="uid://b03ts3can1day"]
+[gd_scene load_steps=7 format=3 uid="uid://b03ts3can1day"]
 
-[ext_resource type="Texture2D" uid="uid://dm6u3l30cqf02" path="res://icon.svg" id="1_ecplt"]
+[ext_resource type="Texture2D" uid="uid://cbbxu1jrbpuhe" path="res://imageHolder/tileHolder/baseTile.png" id="1_o3k2s"]
+[ext_resource type="Texture2D" uid="uid://cpwoa48g0ulh5" path="res://imageHolder/tileHolder/tileOutline.png" id="2_nlhxk"]
+[ext_resource type="Script" path="res://TileMap.gd" id="3_7bqld"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o4a2j"]
+texture = ExtResource("1_o3k2s")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t708m"]
+texture = ExtResource("2_nlhxk")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_p2dm1"]
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource("TileSetAtlasSource_o4a2j")
+sources/1 = SubResource("TileSetAtlasSource_t708m")
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(536, 303)
-texture = ExtResource("1_ecplt")
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_p2dm1")
+cell_quadrant_size = 128
+format = 2
+layer_0/name = "base"
+layer_1/name = "selection"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = 0
+layer_1/tile_data = PackedInt32Array()
+script = ExtResource("3_7bqld")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 323)
