@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpyahrq2tn5j5"]
+
+[ext_resource type="Script" path="res://options_script.gd" id="1_32niw"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 8.0
+offset_right = 6.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_32niw")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="MarginContainer"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.5
+offset_top = -33.0
+offset_right = 45.5
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CanvasLayer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Options" type="Button" parent="MarginContainer/CanvasLayer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Resolution
+"
+
+[node name="goBack" type="Button" parent="MarginContainer/CanvasLayer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="MarginContainer/CanvasLayer/HBoxContainer/VBoxContainer/Options" to="." method="_on_options_pressed" flags=18]
+[connection signal="pressed" from="MarginContainer/CanvasLayer/HBoxContainer/VBoxContainer/goBack" to="." method="_on_go_back_pressed"]
