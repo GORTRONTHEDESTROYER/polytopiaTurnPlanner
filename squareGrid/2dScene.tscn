@@ -2,10 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://dxbhx4ys67t1g" path="res://imageHolder/tileHolder/selection.png" id="1_73q31"]
 [ext_resource type="Texture2D" uid="uid://b0exvca3bkv2i" path="res://imageHolder/tileHolder/imp_field.png" id="1_f7coy"]
-[ext_resource type="Script" path="res://TileMap.gd" id="3_7bqld"]
 [ext_resource type="Texture2D" uid="uid://ckyluns5tgok3" path="res://imageHolder/tileHolder/Imperius_forest_tile.png" id="3_nohcc"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="4_e1nrc"]
 [ext_resource type="Texture2D" uid="uid://d0qmxqyoqc0nc" path="res://imageHolder/tileHolder/imp_mountain.png" id="4_t4ahh"]
+[ext_resource type="Script" path="res://TileGrid.gd" id="5_saoaj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1pnwq"]
 texture = ExtResource("1_f7coy")
@@ -24,7 +24,7 @@ texture_region_size = Vector2i(42, 38)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7dmpc"]
 texture = ExtResource("4_t4ahh")
-texture_region_size = Vector2i(42, 52)
+texture_region_size = Vector2i(42, 54)
 0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_p2dm1"]
@@ -117,10 +117,10 @@ layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array()
-script = ExtResource("3_7bqld")
-metadata/_edit_group_ = true
+script = ExtResource("5_saoaj")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-570, -110)
 anchor_mode = 0
 ignore_rotation = false
 script = ExtResource("4_e1nrc")
