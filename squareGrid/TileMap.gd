@@ -1,6 +1,5 @@
 extends TileMap
-
-
+const Camera2d = preload("res://Camera2D.gd")
 # Called when the node enters the scene tree for the first time.
 var gridSize = 30
 var Dic = {}
@@ -20,8 +19,9 @@ var turegate = false
 func _on_play_pressed():
 	turegate = true  # Replace with 
 	
-func mousepressed():
-	var tile = local_to_map(get_viewport().get_mouse_position())
+func mousepressed(tile):
+	
+
 	if (turegate == true ):	
 		if Input.is_action_pressed("LEFT_MOUSE_BUTTON"):
 			if Dic.has(str(tile)):
@@ -35,8 +35,9 @@ func mousepressed():
 	
 	
 func _process(delta):
-
-	var tile = local_to_map(get_viewport().get_mouse_position())
+	var positionC2 = get_viewport().get_camera_2d().position
+	var mouseposition = get_viewport().get_mouse_position() 
+	var tile = local_to_map(mouseposition + positionC2)
 	
 	for x in gridSize:
 		for y in gridSize:
@@ -45,10 +46,10 @@ func _process(delta):
 	if Dic.has(str(tile)):
 		set_cell(1, tile, 1, Vector2i(0,0),0)
 		#print(Dic[str(tile)])
-		print(Dic[str(tile)]["Position"])
+		#print(Dic[str(tile)]["Position"])
 		
 
-	mousepressed()
+	mousepressed(tile)
 		
 		
 			
