@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://b03ts3can1day"]
+[gd_scene load_steps=20 format=3 uid="uid://b03ts3can1day"]
 
 [ext_resource type="Texture2D" uid="uid://dxbhx4ys67t1g" path="res://imageHolder/tileHolder/selection.png" id="1_73q31"]
 [ext_resource type="Texture2D" uid="uid://b0exvca3bkv2i" path="res://imageHolder/tileHolder/imp_field.png" id="1_f7coy"]
 [ext_resource type="Script" path="res://TileMap.gd" id="3_7bqld"]
 [ext_resource type="Texture2D" uid="uid://ckyluns5tgok3" path="res://imageHolder/tileHolder/Imperius_forest_tile.png" id="3_nohcc"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="4_e1nrc"]
+[ext_resource type="Texture2D" uid="uid://d0qmxqyoqc0nc" path="res://imageHolder/tileHolder/imp_mountain.png" id="4_t4ahh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1pnwq"]
 texture = ExtResource("1_f7coy")
@@ -21,13 +22,20 @@ texture = ExtResource("3_nohcc")
 texture_region_size = Vector2i(42, 38)
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7dmpc"]
+texture = ExtResource("4_t4ahh")
+texture_region_size = Vector2i(42, 52)
+0:0/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_p2dm1"]
 tile_shape = 1
+tile_layout = 5
 tile_size = Vector2i(42, 25)
 uv_clipping = true
 sources/0 = SubResource("TileSetAtlasSource_1pnwq")
 sources/1 = SubResource("TileSetAtlasSource_rykb3")
 sources/2 = SubResource("TileSetAtlasSource_jnh32")
+sources/3 = SubResource("TileSetAtlasSource_7dmpc")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dwdvq"]
 bg_color = Color(0.309804, 0.556863, 0.898039, 1)
@@ -62,10 +70,44 @@ expand_margin_bottom = 3.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5yqe8"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jl1b3"]
+bg_color = Color(0.309804, 0.556863, 0.898039, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aymtx"]
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vx317"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+expand_margin_left = 15.0
+expand_margin_top = 3.0
+expand_margin_right = 15.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uxe36"]
+
 [node name="Node2D" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_p2dm1")
+cell_quadrant_size = 1
 format = 2
 layer_0/name = "base"
 layer_1/name = "selection"
@@ -78,10 +120,17 @@ layer_1/tile_data = PackedInt32Array()
 script = ExtResource("3_7bqld")
 metadata/_edit_group_ = true
 
-[node name="Play" type="Button" parent="TileMap"]
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+ignore_rotation = false
+script = ExtResource("4_e1nrc")
+
+[node name="Forest_Button" type="Button" parent="."]
 custom_minimum_size = Vector2(100, 0)
-offset_right = 100.0
-offset_bottom = 23.0
+offset_left = -132.0
+offset_top = -91.0
+offset_right = -32.0
+offset_bottom = -68.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -89,11 +138,40 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_dwdvq")
 theme_override_styles/hover = SubResource("StyleBoxFlat_mgiss")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_vg18n")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_5yqe8")
-text = "New Session"
+text = "Forests
+"
 
-[node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
-ignore_rotation = false
-script = ExtResource("4_e1nrc")
+[node name="Mountain_Button" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 0)
+offset_left = -132.0
+offset_top = -64.0
+offset_right = -32.0
+offset_bottom = -41.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_jl1b3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_aymtx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vx317")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uxe36")
+text = "Mountain"
 
-[connection signal="pressed" from="TileMap/Play" to="TileMap" method="_on_play_pressed"]
+[node name="Field_Button" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 0)
+offset_left = -132.0
+offset_top = -37.0
+offset_right = -32.0
+offset_bottom = -14.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_jl1b3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_aymtx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vx317")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uxe36")
+text = "Field
+"
+
+[connection signal="pressed" from="Forest_Button" to="TileMap" method="_on_forest_button_pressed"]
+[connection signal="pressed" from="Mountain_Button" to="TileMap" method="_on_mountain_button_pressed"]
+[connection signal="pressed" from="Field_Button" to="TileMap" method="_on_field_button_pressed"]
