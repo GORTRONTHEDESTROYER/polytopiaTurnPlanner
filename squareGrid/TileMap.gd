@@ -15,7 +15,13 @@ func _ready():
 			}
 			set_cell(0,Vector2(x,y), 0, Vector2i(0,0),0)
 	print(Dic)
+var turegate = false	
 
+
+func _on_play_pressed():
+	turegate = true  # Replace with 
+
+	
 func _process(delta):
 	var tile = local_to_map(get_viewport().get_mouse_position())
 	
@@ -26,6 +32,11 @@ func _process(delta):
 	if Dic.has(str(tile)):
 		set_cell(1, tile, 1, Vector2i(0,0),0)
 		print(Dic[str(tile)])
-
+		
+	if (turegate == true):	
 	
+		if Dic.has(str(tile)):
+			set_cell(0, tile, 2, Vector2i(0,0),0)
+			print(Dic[str(tile)])
+		
 	
