@@ -1,19 +1,21 @@
-[gd_scene load_steps=20 format=3 uid="uid://b03ts3can1day"]
+[gd_scene load_steps=24 format=3 uid="uid://b03ts3can1day"]
 
 [ext_resource type="Texture2D" uid="uid://dxbhx4ys67t1g" path="res://imageHolder/tileHolder/selection.png" id="1_73q31"]
 [ext_resource type="Texture2D" uid="uid://b0exvca3bkv2i" path="res://imageHolder/tileHolder/imp_field.png" id="1_f7coy"]
 [ext_resource type="Texture2D" uid="uid://ckyluns5tgok3" path="res://imageHolder/tileHolder/Imperius_forest_tile.png" id="3_nohcc"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="4_e1nrc"]
 [ext_resource type="Texture2D" uid="uid://d0qmxqyoqc0nc" path="res://imageHolder/tileHolder/imp_mountain.png" id="4_t4ahh"]
+[ext_resource type="Texture2D" uid="uid://wotwdflmqnxp" path="res://imageHolder/teirOneResources/imp_fruit.png" id="5_58t27"]
 [ext_resource type="Script" path="res://TileGrid.gd" id="5_saoaj"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1pnwq"]
-texture = ExtResource("1_f7coy")
-texture_region_size = Vector2i(42, 38)
-0:0/0 = 0
+[ext_resource type="Texture2D" uid="uid://cqehu4vd8e57q" path="res://imageHolder/teirOneResources/imp_animal.png" id="6_mva7g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rykb3"]
 texture = ExtResource("1_73q31")
+texture_region_size = Vector2i(42, 38)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1pnwq"]
+texture = ExtResource("1_f7coy")
 texture_region_size = Vector2i(42, 38)
 0:0/0 = 0
 
@@ -27,15 +29,27 @@ texture = ExtResource("4_t4ahh")
 texture_region_size = Vector2i(42, 54)
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wglj6"]
+texture = ExtResource("5_58t27")
+texture_region_size = Vector2i(42, 38)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_he18q"]
+texture = ExtResource("6_mva7g")
+texture_region_size = Vector2i(42, 38)
+0:0/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_p2dm1"]
 tile_shape = 1
 tile_layout = 5
 tile_size = Vector2i(42, 25)
 uv_clipping = true
-sources/0 = SubResource("TileSetAtlasSource_1pnwq")
-sources/1 = SubResource("TileSetAtlasSource_rykb3")
 sources/2 = SubResource("TileSetAtlasSource_jnh32")
 sources/3 = SubResource("TileSetAtlasSource_7dmpc")
+sources/4 = SubResource("TileSetAtlasSource_wglj6")
+sources/0 = SubResource("TileSetAtlasSource_rykb3")
+sources/1 = SubResource("TileSetAtlasSource_1pnwq")
+sources/5 = SubResource("TileSetAtlasSource_he18q")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dwdvq"]
 bg_color = Color(0.309804, 0.556863, 0.898039, 1)
@@ -110,13 +124,20 @@ tile_set = SubResource("TileSet_p2dm1")
 cell_quadrant_size = 1
 format = 2
 layer_0/name = "base"
-layer_1/name = "selection"
+layer_1/name = "resources"
 layer_1/enabled = true
 layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array()
+layer_2/name = "selection"
+layer_2/enabled = true
+layer_2/modulate = Color(1, 1, 1, 1)
+layer_2/y_sort_enabled = false
+layer_2/y_sort_origin = 0
+layer_2/z_index = 0
+layer_2/tile_data = PackedInt32Array()
 script = ExtResource("5_saoaj")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -172,6 +193,39 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_uxe36")
 text = "Field
 "
 
+[node name="Teir_One" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 0)
+offset_left = -132.0
+offset_top = -11.0
+offset_right = -32.0
+offset_bottom = 12.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_jl1b3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_aymtx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vx317")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uxe36")
+text = "Resources"
+
+[node name="clear_tile" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 0)
+offset_left = -133.0
+offset_top = -116.0
+offset_right = -33.0
+offset_bottom = -93.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_jl1b3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_aymtx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vx317")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uxe36")
+text = "Clear
+"
+
 [connection signal="pressed" from="Forest_Button" to="TileMap" method="_on_forest_button_pressed"]
 [connection signal="pressed" from="Mountain_Button" to="TileMap" method="_on_mountain_button_pressed"]
 [connection signal="pressed" from="Field_Button" to="TileMap" method="_on_field_button_pressed"]
+[connection signal="pressed" from="Teir_One" to="TileMap" method="_on_teir_one_pressed"]
+[connection signal="pressed" from="clear_tile" to="TileMap" method="_on_clear_tile_pressed"]
