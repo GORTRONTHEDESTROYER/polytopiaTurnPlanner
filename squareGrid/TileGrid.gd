@@ -61,9 +61,6 @@ func _on_teir_one_pressed():
 func res_1_clear():
 	resource_level_bt = 0
 
-
-
-	
 func mousepressed(tile):
 	if Input.is_action_pressed("LEFT_MOUSE_BUTTON")&&Dic.has(str(tile)):
 		match tile_type_bt: 
@@ -85,6 +82,7 @@ func mousepressed(tile):
 			"mountain_bt":
 				set_cell(0, tile, 3, Vector2i(0,0),0)
 				Dic[str(tile)] = Tile.new(tileType.MOUNTAIN, IMP, tile)
+				erase_cell(1, tile)
 				
 		match resource_level_bt:
 			1:
