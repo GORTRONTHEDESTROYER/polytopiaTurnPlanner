@@ -1,119 +1,88 @@
 extends TileMap
 
-enum tileType {FIELD, FOREST, MOUNTAIN}
-enum {IMP}
-
 const Camera2d = preload("res://Camera2D.gd")
 
+enum Layer {TILE, RESOURCE, SELECTION}
+
 var gridSize = 22
-var Dic = {}
-var Tile = load("res://Tile.gd")
+var tiles: Array[Array] = []
+
+func get_tile(pos: Vector2i) -> Tile:
+	if pos.x < 0 or pos.y < 0 or pos.x >= gridSize or pos.y >= gridSize:
+		return null
+	return tiles[pos.x][pos.y]
 
 func _ready():
-	var myTile = Tile.new(tileType.FIELD, IMP, Vector2i(0,0))
-	print(myTile)
-	for x in gridSize:
-		for y in gridSize:
-			
-			Dic[str(Vector2(x,y))] = Tile.new(tileType.FIELD, IMP, Vector2i(x,y))
-			set_cell(0,Dic[str(Vector2(x,y))].pos, 1, Vector2i(0,0),0)
+	for x in range(gridSize):
+		tiles.append([])
+		for y in range(gridSize):
+			tiles[x].append(
+				Tile.new(Constants.TileType.FIELD, Constants.Tribe.IMP, Vector2i(x, y))
+			)
+			set_cell(Layer.TILE, Vector2i(x, y), Constants.Asset.FIELD, Vector2i.ZERO, 0)
+
+var prev_tile_pos: Vector2i = Vector2i(0, 0)
 
 func _process(_delta):
 	var positionC2 = get_viewport().get_camera_2d().position
-	var mouseposition = get_viewport().get_mouse_position() + Vector2(0,10)
-	var tile = local_to_map(mouseposition + positionC2)
-	for x in gridSize:
-		for y in gridSize:
-			erase_cell(2, Vector2(x,y))
+	var mousePosition = get_viewport().get_mouse_position() + Vector2(0,10)
+	var tile_pos: Vector2i = local_to_map(mousePosition + positionC2)
 	
-	if Dic.has(str(tile)):
-		set_cell(2, tile, 0, Vector2i(0,0),0)
-		
-	mousepressed(tile)
-	
-var tile_type_bt = ""
+	erase_cell(2, prev_tile_pos)
+	var tile = get_tile(tile_pos)
+	if tile != null:
+		set_cell(2, tile_pos, 0, Vector2i(0,0),0)
+		prev_tile_pos = tile_pos
+		if Input.is_action_pressed("LEFT_MOUSE_BUTTON"):
+			mousepressed(tile)
+			updateLook(tile)
+
+var tile_type_bt = Constants.TileType.NONE
 	
 func _on_mountain_button_pressed():
-	tile_type_bt = "mountain_bt" 
+	tile_type_bt = Constants.TileType.MOUNTAIN
 
 func _on_field_button_pressed():
-	tile_type_bt = "field_bt"
+	tile_type_bt = Constants.TileType.FIELD
 	
 func _on_forest_button_pressed():
-	tile_type_bt = "forest_bt" 
+	tile_type_bt = Constants.TileType.FOREST
 	
 func _on_clear_tile_pressed():
-	tile_type_bt = ""  # Replace with function body.
-	
-func tile_clear():
-	tile_type_bt = ""
+	tile_type_bt = Constants.TileType.NONE
 
-	
+
 var resource_level_bt = 0
-var res_1_check = false
-func _on_teir_one_pressed():
-	res_1_check = !res_1_check
-	if (res_1_check):
+func _on_teir_one_toggled(toggled_on: bool):
+	if toggled_on:
 		resource_level_bt = 1 
 	else:
 		resource_level_bt = 0
-	
+
 func res_1_clear():
 	resource_level_bt = 0
 
-func mousepressed(tile):
-	if Input.is_action_pressed("LEFT_MOUSE_BUTTON")&&Dic.has(str(tile)):
-		match tile_type_bt: 
-			"field_bt":
-				if(Dic[str(tile)].res == 1):
-					Dic[str(tile)].tileType(0)
-					resource_convert(Dic[str(tile)].type,tile)
-				else:	
-					set_cell(0, tile, 1, Vector2i(0,0),0)
-					Dic[str(tile)] = Tile.new(tileType.FIELD, IMP, tile)
-			"forest_bt":
-				if(Dic[str(tile)].res == 1):
-					Dic[str(tile)].tileType(1)
-					resource_convert(Dic[str(tile)].type,tile)
-				else:
-					set_cell(0, tile, 2, Vector2i(0,0),0)
-					Dic[str(tile)] = Tile.new(tileType.FOREST, IMP, tile)
+func mousepressed(tile: Tile):
+	if tile_type_bt != Constants.TileType.NONE:
+		tile.resourceLevel = resource_level_bt
+		tile.type = tile_type_bt
 
-			"mountain_bt":
-				set_cell(0, tile, 3, Vector2i(0,0),0)
-				Dic[str(tile)] = Tile.new(tileType.MOUNTAIN, IMP, tile)
-				erase_cell(1, tile)
-				
-		match resource_level_bt:
-			1:
-				Dic[str(tile)].tileResource(1)
-				if(Dic[str(tile)].type == 0):
-					set_cell(1, tile, 4, Vector2i(0,0),0)
-				elif(Dic[str(tile)].type == 1):
-					set_cell(1, tile, 5, Vector2i(0,0),0)
-				elif (Dic[str(tile)].res != 2):
-					Dic[str(tile)].tileResource(0)
-					erase_cell(1, tile)
-			2:
-				pass
-			_:
-				pass
-				
-func resource_convert(type,tile):
-	#print(typeP)
-	#print(Dic[str(tile)].res)
-	if (Dic[str(tile)].res == 1):
-		match type:
-			0:
-				set_cell(1, tile, 4, Vector2i(0,0),0) 
-				set_cell(0, tile, 1, Vector2i(0,0),0) 
-			1:
-				set_cell(1, tile, 5, Vector2i(0,0),0) 
-				set_cell(0, tile, 2, Vector2i(0,0),0) 
-			_:
-				pass
-	
-
-
-
-
+func updateLook(tile: Tile):
+	match [tile.type, tile.resourceLevel]:
+		[Constants.TileType.FIELD, 0]:
+			set_cell(Layer.TILE, tile.position, Constants.Asset.FIELD, Vector2i.ZERO, 0)
+			erase_cell(Layer.RESOURCE, tile.position)
+		[Constants.TileType.FIELD, 1]:
+			set_cell(Layer.TILE, tile.position, Constants.Asset.FIELD, Vector2i.ZERO, 0)
+			set_cell(Layer.RESOURCE, tile.position, Constants.Asset.FRUIT, Vector2i.ZERO, 0)
+		[Constants.TileType.FOREST, 0]:
+			set_cell(Layer.TILE, tile.position, Constants.Asset.FOREST, Vector2i.ZERO, 0)
+			erase_cell(Layer.RESOURCE, tile.position)
+		[Constants.TileType.FOREST, 1]:
+			set_cell(Layer.TILE, tile.position, Constants.Asset.FOREST, Vector2i.ZERO, 0)
+			set_cell(Layer.RESOURCE, tile.position, Constants.Asset.ANIMAL, Vector2i.ZERO, 0)
+		[Constants.TileType.MOUNTAIN, _]:
+			set_cell(Layer.TILE, tile.position, Constants.Asset.MOUNTAIN, Vector2i.ZERO, 0)
+			erase_cell(Layer.RESOURCE, tile.position)
+		_:
+			pass

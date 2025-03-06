@@ -1,17 +1,28 @@
 class_name Tile
-var type = null
-var tribe = null
-var pos = null
-var res = 0
-func _init(typeP,tribeP,posP):
+extends Resource
+
+var type: Constants.TileType
+var tribe: Constants.Tribe
+var position: Vector2i
+var x: int:
+	get:
+		return position.x
+	set(value):
+		position.x = value
+var y: int:
+	get:
+		return position.y
+	set(value):
+		position.y = value
+var resourceLevel: int
+
+func _init(
+	typeP: Constants.TileType, 
+	tribeP: Constants.Tribe,
+	posP: Vector2i,
+	resP: int = 0
+):
 	type = typeP
 	tribe = tribeP
-	pos = posP
-
-	###print(tribe)
-func tileType(typeP):
-	type = typeP
-func tileResource(resP):
-
-	res = resP
-	#print(res)
+	position = posP
+	resourceLevel = resP
