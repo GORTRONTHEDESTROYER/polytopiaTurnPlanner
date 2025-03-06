@@ -5,7 +5,6 @@ const Camera2d = preload("res://Camera2D.gd")
 enum Layer {TILE, RESOURCE, SELECTION}
 
 var gridSize = 22
-var Dic = {}
 var tiles: Array[Array] = []
 
 func get_tile(pos: Vector2i) -> Tile:
@@ -17,9 +16,10 @@ func _ready():
 	for x in range(gridSize):
 		tiles.append([])
 		for y in range(gridSize):
-			tiles[x].append(Tile.new(Constants.TileType.FIELD, Constants.Tribe.IMP, Vector2i(x,y)))
-			Dic[str(Vector2i(x,y))] = Tile.new(Constants.TileType.FIELD, Constants.Tribe.IMP, Vector2i(x,y))
-			set_cell(0, Vector2i(x,y), 1, Vector2i(0,0), 0)
+			tiles[x].append(
+				Tile.new(Constants.TileType.FIELD, Constants.Tribe.IMP, Vector2i(x, y))
+			)
+			set_cell(Layer.TILE, Vector2i(x, y), Constants.Asset.FIELD, Vector2i.ZERO, 0)
 
 var prev_tile_pos: Vector2i = Vector2i(0, 0)
 
@@ -37,7 +37,7 @@ func _process(_delta):
 			mousepressed(tile)
 			updateLook(tile)
 
-var tile_type_bt = ""
+var tile_type_bt = Constants.TileType.NONE
 	
 func _on_mountain_button_pressed():
 	tile_type_bt = Constants.TileType.MOUNTAIN
@@ -49,10 +49,7 @@ func _on_forest_button_pressed():
 	tile_type_bt = Constants.TileType.FOREST
 	
 func _on_clear_tile_pressed():
-	tile_type_bt = ""  # Replace with function body.
-	
-func tile_clear():
-	tile_type_bt = ""
+	tile_type_bt = Constants.TileType.NONE
 
 
 var resource_level_bt = 0
@@ -66,8 +63,9 @@ func res_1_clear():
 	resource_level_bt = 0
 
 func mousepressed(tile: Tile):
-	tile.resourceLevel = resource_level_bt
-	tile.type = tile_type_bt
+	if tile_type_bt != Constants.TileType.NONE:
+		tile.resourceLevel = resource_level_bt
+		tile.type = tile_type_bt
 
 func updateLook(tile: Tile):
 	match [tile.type, tile.resourceLevel]:
@@ -83,20 +81,8 @@ func updateLook(tile: Tile):
 		[Constants.TileType.FOREST, 1]:
 			set_cell(Layer.TILE, tile.position, Constants.Asset.FOREST, Vector2i.ZERO, 0)
 			set_cell(Layer.RESOURCE, tile.position, Constants.Asset.ANIMAL, Vector2i.ZERO, 0)
-		_:
+		[Constants.TileType.MOUNTAIN, _]:
 			set_cell(Layer.TILE, tile.position, Constants.Asset.MOUNTAIN, Vector2i.ZERO, 0)
 			erase_cell(Layer.RESOURCE, tile.position)
-
-func resource_convert(tile: Tile):
-	#print(typeP)
-	#print(tile.resource_level)
-	if tile.resourceLevel == 0:
-		match tile.type:
-			Constants.TileType.FIELD:
-				set_cell(Layer.RESOURCE, tile.position, Constants.Asset.FRUIT, Vector2i(0,0), 0) 
-				set_cell(0, tile.position, Constants.Asset.FIELD, Vector2i(0,0), 0) 
-			#Constants.TileType.FOREST:
-				#set_cell(1, tile.position, Constants.Asset.ANIMAL, Vector2i(0,0), 0) 
-				#set_cell(0, tile.position, Constants.Asset.FOREST, Vector2i(0,0), 0) 
-			_:
-				pass
+		_:
+			pass
