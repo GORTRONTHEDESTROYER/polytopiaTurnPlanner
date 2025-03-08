@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://bo36jdr3spwme"
+path="res://.godot/imported/woe.png-876ebfba4499f2f29f1be9177d8ce318.image"
+
+[deps]
+
+source_file="res://imageHolder/mainMenuBackgrounds/woe.png"
+dest_files=["res://.godot/imported/woe.png-876ebfba4499f2f29f1be9177d8ce318.image"]
+
+[params]
+

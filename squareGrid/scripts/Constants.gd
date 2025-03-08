@@ -1,0 +1,9 @@
+class_name Constants
+
+
+
+enum TileType {NONE, FIELD, FOREST, MOUNTAIN, CLOUD, UNIT}
+enum Tribe {IMP}
+enum Asset {SELECTION, FIELD, FOREST, MOUNTAIN, FRUIT, ANIMAL, CROP, METAL, CLOUD, WARRIOR}
+enum UnitType {WARRIOR}
+enum Player {ONE, TWO, THREE, FOUR, FIVE, SIX}
