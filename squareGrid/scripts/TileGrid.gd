@@ -7,6 +7,8 @@ enum Layer {TILE, RESOURCE, SELECTION, UNIT, CLOUD}
 var gridSize = 11
 var tiles: Array[Array] = []
 
+var state = State.new()
+
 func get_tile(pos: Vector2i) -> Tile:
 	if pos.x < 0 or pos.y < 0 or pos.x >= gridSize or pos.y >= gridSize:
 		return null
@@ -22,15 +24,16 @@ func _ready():
 			set_cell(Layer.TILE, Vector2i(x, y), Constants.Asset.FIELD, Vector2i.ZERO, 0)
 
 	tiles[0][0].unit = Unit.new(Constants.UnitType.WARRIOR, Constants.Player.ONE)
+	tiles[0][1].unit = Unit.new(Constants.UnitType.WARRIOR, Constants.Player.ONE)
 	print(tiles[0][0].unit.type)
-	updateUnitLook(tiles[0][0])
+	updateAllUnitLook()
+	#updateUnitLook(tiles[0][0])
 var prev_tile_pos: Vector2i = Vector2i(0, 0)
 
 func _process(_delta):
 	var positionC2 = get_viewport().get_camera_2d().position
 	var mousePosition = get_viewport().get_mouse_position() + Vector2(0,10)
 	var tile_pos: Vector2i = local_to_map(mousePosition + positionC2)
-	
 
 	erase_cell(2, prev_tile_pos)
 	var tile = get_tile(tile_pos)
@@ -111,30 +114,43 @@ func tileCheck_Active():
 			if tiles[x][y].unit != null:
 				return [tiles[x][y].unit.active, tiles[x][y]] 
 	return [false]
-			
-func turnMode(tile: Tile):
-		
-	if Input.is_action_just_pressed("LEFT_MOUSE_BUTTON"):
-		
-		var tileFinder = tileCheck_Active()
-		
-		if tileFinder[0] == true && tile != null:
-			tileFinder[1].unit = null
-			tile.unit = Unit.new(Constants.UnitType.WARRIOR, Constants.Player.ONE)
-			tile.unit.active = not tile.unit.active
-			set_cell(Layer.UNIT, tile.position, Constants.Asset.WARRIOR, Vector2i.ZERO, 0)
-			print(tile.unit.active)
-			updateAllUnitLook()
-		
-		
-		if tile != null && tile.unit != null:
 
-			tile.unit.active = not tile.unit.active
+func turnMode(tile: Tile):
+	if Input.is_action_just_pressed("LEFT_MOUSE_BUTTON"):
+		if tile != null && tile.unit != null:
 			
+			if state.active_tile != null:
+				state.active_tile.unit.active = false 
+				
+				
+			tile.unit.active = not tile.unit.active
+
+			
+			if tile.unit.active:
+				state.active_tile = tile
+			else: 
+				state.active_tile = null
 			updateUnitLook(tile)
 			
+		elif state.active_tile != null && tile != null:
 			
-#######################################################################
+			tile.unit = state.active_tile.unit 
+			state.active_tile.unit = null
+			state.active_tile = null
+
+			#tile.unit = Unit.new(Constants.UnitType.WARRIOR, Constants.Player.ONE)
+			tile.unit.active = not tile.unit.active
+			#set_cell(Layer.UNIT, tile.position, Constants.Asset.WARRIOR, Vector2i.ZERO, 0)
+			#print(tile.unit.active)
+			updateAllUnitLook()
+		
+	
+
+
+
+
+
+####################################################################### Buttons
 func _on_mountain_button_toggled(toggled_on: bool):
 	if toggled_on:
 		tile_type_bt = Constants.TileType.MOUNTAIN
@@ -181,4 +197,3 @@ func _on_toggle_play_toggled(toggled_on: bool):
 	else:
 		mode = 0 
 			
-		
