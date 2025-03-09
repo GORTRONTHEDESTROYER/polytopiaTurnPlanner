@@ -108,12 +108,6 @@ func updateUnitLook(tileW: Tile):
 		erase_cell(Layer.UNIT, tileW.position)
 			
 			
-func tileCheck_Active():
-	for x in range(gridSize):
-		for y in range(gridSize):
-			if tiles[x][y].unit != null:
-				return [tiles[x][y].unit.active, tiles[x][y]] 
-	return [false]
 
 func turnMode(tile: Tile):
 	if Input.is_action_just_pressed("LEFT_MOUSE_BUTTON"):
@@ -122,9 +116,7 @@ func turnMode(tile: Tile):
 			if state.active_tile != null:
 				state.active_tile.unit.active = false 
 				
-				
 			tile.unit.active = not tile.unit.active
-
 			
 			if tile.unit.active:
 				state.active_tile = tile
@@ -138,10 +130,7 @@ func turnMode(tile: Tile):
 			state.active_tile.unit = null
 			state.active_tile = null
 
-			#tile.unit = Unit.new(Constants.UnitType.WARRIOR, Constants.Player.ONE)
 			tile.unit.active = not tile.unit.active
-			#set_cell(Layer.UNIT, tile.position, Constants.Asset.WARRIOR, Vector2i.ZERO, 0)
-			#print(tile.unit.active)
 			updateAllUnitLook()
 		
 	
@@ -197,3 +186,5 @@ func _on_toggle_play_toggled(toggled_on: bool):
 	else:
 		mode = 0 
 			
+
+

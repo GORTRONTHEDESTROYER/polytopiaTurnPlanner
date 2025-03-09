@@ -419,6 +419,20 @@ toggle_mode = true
 text = "Play
 "
 
+[node name="WarriorSpawn" type="Button" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_jl1b3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_aymtx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vx317")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uxe36")
+toggle_mode = true
+text = "unit
+"
+
 [node name="Camera2D" type="Camera2D" parent="CanvasLayer"]
 position = Vector2(-570, -110)
 anchor_mode = 0
@@ -433,3 +447,4 @@ script = SubResource("GDScript_o7v4p")
 [connection signal="toggled" from="CanvasLayer/VBoxContainer/Field_Button" to="TileMap" method="_on_field_button_toggled"]
 [connection signal="toggled" from="CanvasLayer/VBoxContainer/Cloudglidder" to="TileMap" method="_on_cloudglidder_toggled"]
 [connection signal="toggled" from="CanvasLayer/VBoxContainer/TogglePlay" to="TileMap" method="_on_toggle_play_toggled"]
+[connection signal="toggled" from="CanvasLayer/VBoxContainer/WarriorSpawn" to="TileMap" method="_on_warrior_spawn_toggled"]
