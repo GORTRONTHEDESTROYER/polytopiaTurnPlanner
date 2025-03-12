@@ -1,9 +1,9 @@
 [gd_scene load_steps=38 format=3 uid="uid://v2jasy851nff"]
 
 [ext_resource type="Texture2D" uid="uid://dxbhx4ys67t1g" path="res://imageHolder/tileHolder/selection.png" id="1_esfrv"]
-[ext_resource type="Texture2D" uid="uid://uklu0a1epdxk" path="res://imageHolder/tileHolder/Grass2.0.png" id="2_8khsn"]
 [ext_resource type="Texture2D" uid="uid://b0exvca3bkv2i" path="res://imageHolder/tileHolder/imp_field.png" id="2_qjcu4"]
 [ext_resource type="Texture2D" uid="uid://ckyluns5tgok3" path="res://imageHolder/tileHolder/Imperius_forest_tile.png" id="3_uuf7c"]
+[ext_resource type="Texture2D" uid="uid://coio8lm6ctkta" path="res://imageHolder/unitHolder/moveTarget42x38.png" id="4_pjfmc"]
 [ext_resource type="Texture2D" uid="uid://d0qmxqyoqc0nc" path="res://imageHolder/tileHolder/imp_mountain.png" id="4_xooae"]
 [ext_resource type="Texture2D" uid="uid://wotwdflmqnxp" path="res://imageHolder/teirOneResources/imp_fruit.png" id="5_fjkr2"]
 [ext_resource type="Texture2D" uid="uid://cqehu4vd8e57q" path="res://imageHolder/teirOneResources/imp_animal.png" id="6_uxy4i"]
@@ -31,8 +31,8 @@ texture = ExtResource("9_1b7nj")
 texture_region_size = Vector2i(42, 38)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nd81i"]
-texture = ExtResource("2_8khsn")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6yb6y"]
+texture = ExtResource("4_pjfmc")
 texture_region_size = Vector2i(42, 38)
 0:0/0 = 0
 
@@ -91,8 +91,8 @@ sources/0 = SubResource("TileSetAtlasSource_rykb3")
 sources/9 = SubResource("TileSetAtlasSource_qj356")
 sources/8 = SubResource("TileSetAtlasSource_iajyw")
 sources/10 = SubResource("TileSetAtlasSource_rfun5")
-sources/13 = SubResource("TileSetAtlasSource_nd81i")
 sources/1 = SubResource("TileSetAtlasSource_1pnwq")
+sources/11 = SubResource("TileSetAtlasSource_6yb6y")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jl1b3"]
 bg_color = Color(0.309804, 0.556863, 0.898039, 1)
@@ -287,7 +287,7 @@ layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array()
-layer_2/name = "selection_layer"
+layer_2/name = "unit_move_layer"
 layer_2/enabled = true
 layer_2/modulate = Color(1, 1, 1, 1)
 layer_2/y_sort_enabled = false
@@ -301,7 +301,7 @@ layer_3/y_sort_enabled = false
 layer_3/y_sort_origin = 0
 layer_3/z_index = 0
 layer_3/tile_data = PackedInt32Array()
-layer_4/name = "cloud_layer"
+layer_4/name = "selection_layer"
 layer_4/enabled = true
 layer_4/modulate = Color(1, 1, 1, 1)
 layer_4/y_sort_enabled = false

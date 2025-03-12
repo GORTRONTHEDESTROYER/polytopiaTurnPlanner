@@ -7,7 +7,7 @@ func _ready():
 	var rand = randi_range(0, 2) 
 	#var array_3 = []
 	#rand = 2
-	print(rand)
+	#print(rand)
 	match rand:
 		0:
 			res = load("res://imageHolder/mainMenuBackgrounds/woe.png")

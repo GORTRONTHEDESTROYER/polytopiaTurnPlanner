@@ -6,11 +6,19 @@ var tribe: Constants.Tribe
 var player: Constants.Player
 var ready = true
 var active = false
+var movement = 0 
 
 func _init(
-	typeP: Constants.UnitType,
+	#typeP: Constants.UnitType,
 	playerP: Constants.Player
 ):
-	type = typeP
+	#type = typeP
 	player = playerP
 	
+func typeWarrior(typeP: Constants.UnitType):
+	type = typeP
+	movement = 1
+	#print(movement)
+func typeRider(typeP: Constants.UnitType):
+	type = typeP
+	movement = 2

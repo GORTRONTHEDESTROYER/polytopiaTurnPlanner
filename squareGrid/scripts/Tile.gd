@@ -6,6 +6,7 @@ var tribe: Constants.Tribe
 var position: Vector2i
 
 var unit: Unit = null
+var moveableTile = false
 
 var x: int:
 	get:
