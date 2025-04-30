@@ -65,24 +65,31 @@ func updateLook(tile: Tile):
 	
 	match [tile.type, tile.resourceLevel]:
 		[Constants.TileType.FIELD, 0]:
+			tile.zoneControl = 0
 			set_cell(Layer.TILE, tile.position, Constants.Asset.FIELD, Vector2i.ZERO, 0)
 			erase_cell(Layer.RESOURCE, tile.position)
 		[Constants.TileType.FIELD, 1]:
+			tile.zoneControl = 0
 			set_cell(Layer.TILE, tile.position, Constants.Asset.FIELD, Vector2i.ZERO, 0)
 			set_cell(Layer.RESOURCE, tile.position, Constants.Asset.FRUIT, Vector2i.ZERO, 0)
 		[Constants.TileType.FIELD, 2]:
+			tile.zoneControl = 0
 			set_cell(Layer.TILE, tile.position, Constants.Asset.FIELD, Vector2i.ZERO, 0)
 			set_cell(Layer.RESOURCE, tile.position, Constants.Asset.CROP, Vector2i.ZERO, 0)
 		[Constants.TileType.FOREST, 1]:
+			tile.zoneControl = 1
 			set_cell(Layer.TILE, tile.position, Constants.Asset.FOREST, Vector2i.ZERO, 0)
 			set_cell(Layer.RESOURCE, tile.position, Constants.Asset.ANIMAL, Vector2i.ZERO, 0)
 		[Constants.TileType.FOREST, _]:
+			tile.zoneControl = 1
 			set_cell(Layer.TILE, tile.position, Constants.Asset.FOREST, Vector2i.ZERO, 0)
 			erase_cell(Layer.RESOURCE, tile.position)
 		[Constants.TileType.MOUNTAIN, 2]:
+			tile.zoneControl = 1
 			set_cell(Layer.TILE, tile.position, Constants.Asset.MOUNTAIN, Vector2i.ZERO, 0)
 			set_cell(Layer.RESOURCE, tile.position, Constants.Asset.METAL, Vector2i.ZERO, 0)
 		[Constants.TileType.MOUNTAIN, _]:
+			tile.zoneControl = 1
 			set_cell(Layer.TILE, tile.position, Constants.Asset.MOUNTAIN, Vector2i.ZERO, 0)
 			erase_cell(Layer.RESOURCE, tile.position)
 		[Constants.TileType.CLOUD, _]:
@@ -154,30 +161,115 @@ func turnMode(tile: Tile):
 			state.active_tile.unit.active = false 
 			state.active_tile = null
 			clear_layer(Layer.UNIT_MOVE)
+			
+			
 		
 func drawPosibleUnitMoves(tile):
 	var movement = float(tile.unit.movement)
 	var movement_hold = int(movement)	
-	movement = ((movement + .25) - (movement/4)) #I HATE SQUARES
-	for x in range((movement) * 3): 
-		for y in range((movement) * 3):
-			
-			var vectorHold: Vector2i = tile.position
-			
-			vectorHold = vectorHold + Vector2i(x,y) - Vector2i(movement_hold,movement_hold)
-			#print(vectorHold)
-			if vectorHold.x > -1 && vectorHold.y > -1:
-				if vectorHold.x < gridSize && vectorHold.y < gridSize:
-					set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.MOVETARGET, Vector2i.ZERO, 0)
-
-
-#func drawPosibleUnitMovesCleanup():
-	#pass
+	movement = ((movement + .25) - (movement/4)) #I HATE SQUARE # RATIO IS WRONG KILLING MYSELF
 	
+	#debuging
+	tiles[0][0].zoneControl = 2
+	tiles[0][3].zoneControl = 2
+	tiles[0][2].zoneControl = 2
+	tiles[4][4].zoneControl = 2
+	print(movement)
+	for x in range(3):
+		for y in range(3):
+			var vectorHold: Vector2i = tile.position
+			vectorHold = vectorHold + Vector2i(x,y) - Vector2i(1,1)
+			set_cell(Layer.UNIT_MOVE, tile.position, Constants.Asset.MOVETARGET, Vector2i.ZERO, 0)
+			
+			
+			for i in range(3):
+				for j in range(3):
+					#var vectorHold2: Vector2i = vectorHold
+					var vectorHold2 = vectorHold + Vector2i(i,j) - Vector2i(1,1) 
+					if ((vectorHold2.x > -1 && vectorHold2.y > -1) &&  (vectorHold.x > -1 && vectorHold.y > -1) &&
+					(vectorHold.x < gridSize && vectorHold.y < gridSize) && (vectorHold2.x < gridSize && vectorHold2.y < gridSize)):
+						if (tiles[vectorHold2.x][vectorHold2.y].zoneControl == 2 &&
+						tiles[vectorHold.x][vectorHold.y].zoneControl != 2 && tiles[vectorHold.x][vectorHold.y].zoneControl != 1):
+							#tiles[vectorHold.x][vectorHold.y].zoneControl = 1
+							
+							set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.ZOC1MOVETARGET, Vector2i.ZERO, 0)
+							set_cell(Layer.UNIT_MOVE, vectorHold2, Constants.Asset.ZOC2MOVETARGET, Vector2i.ZERO, 0) ###commentout later
+							print(tiles[vectorHold.x][vectorHold.y].zoneControl)
+						elif(tiles[vectorHold.x][vectorHold.y].zoneControl == 1):
+							set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.ZOC1MOVETARGET, Vector2i.ZERO, 0)
+						elif(tiles[vectorHold.x][vectorHold.y].zoneControl != 2 && !get_cell_tile_data(Layer.UNIT_MOVE, tiles[vectorHold.x][vectorHold.y].position)):
+							
+							set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.MOVETARGET, Vector2i.ZERO, 0)
+			if vectorHold.x > -1 && vectorHold.y > -1 && vectorHold.x < gridSize && vectorHold.y < gridSize:
+				print(get_cell_source_id(Layer.UNIT_MOVE,vectorHold))
+				if (movement > 1 && get_cell_source_id(Layer.UNIT_MOVE,vectorHold)==11): #tile set 11 will be MoveTargert 0
+					nextTiles(movement,vectorHold)
+func nextTiles(movement,vectorHoldPassed):
+	movement = movement - ((1 + .25) - (1/4))	
+	for x in range(3):
+		for y in range(3):
+			var vectorHold: Vector2i = vectorHoldPassed
+			vectorHold = vectorHold + Vector2i(x,y) - Vector2i(1,1)
 
+			for i in range(3):
+					for j in range(3):
+						var vectorHold2: Vector2i = vectorHold
+						vectorHold2 = vectorHold2 + Vector2i(i,j) - Vector2i(1,1) 
+						if ((vectorHold2.x > -1 && vectorHold2.y > -1) &&  (vectorHold.x > -1 && vectorHold.y > -1) &&
+						(vectorHold.x < gridSize && vectorHold.y < gridSize) && (vectorHold2.x < gridSize && vectorHold2.y < gridSize)):
+							#if()
+							if (tiles[vectorHold2.x][vectorHold2.y].zoneControl == 2 &&
+							tiles[vectorHold.x][vectorHold.y].zoneControl != 2 && tiles[vectorHold.x][vectorHold.y].zoneControl != 1):
+								#tiles[vectorHold.x][vectorHold.y].zoneControl = 1
+								
+								set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.ZOC1MOVETARGET, Vector2i.ZERO, 0)
+								set_cell(Layer.UNIT_MOVE, vectorHold2, Constants.Asset.ZOC2MOVETARGET, Vector2i.ZERO, 0) ###commentout later
+								print(tiles[vectorHold.x][vectorHold.y].zoneControl)
+							elif(tiles[vectorHold.x][vectorHold.y].zoneControl == 1):
+								set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.ZOC1MOVETARGET, Vector2i.ZERO, 0)
+							elif(tiles[vectorHold.x][vectorHold.y].zoneControl != 2 && !get_cell_tile_data(Layer.UNIT_MOVE, tiles[vectorHold.x][vectorHold.y].position)):
+								
+								set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.MOVETARGET, Vector2i.ZERO, 0)
+								
+			if vectorHold.x > -1 && vectorHold.y > -1 && vectorHold.x < gridSize && vectorHold.y < gridSize:
+				#print(get_cell_source_id(Layer.UNIT_MOVE,vectorHold))
+				if (movement > 1 && get_cell_source_id(Layer.UNIT_MOVE,vectorHold)==11): #tile set 11 will be MoveTargert 0
+					
+					nextTiles(movement,vectorHold)
+				
+							
+							
+							
+							
+							
+							
+						#elif():
+							
+							#pass
+							
+						
+					
+			
+	#print(vectorHold)
+	#for x in range((movement) * 3): 
+	#	for y in range((movement) * 3):
+	#		pass
+	
+	#for x in range((movement) * 3): 
+	#	for y in range((movement) * 3):
+			
+	#		var vectorHold: Vector2i = tile.position
 
+	#		vectorHold = vectorHold + Vector2i(x,y) - Vector2i(movement_hold,movement_hold)
 
+			#print(vectorHold)
+	#		if vectorHold.x > -1 && vectorHold.y > -1:
+	#			if (vectorHold.x < gridSize && vectorHold.y < gridSize) && !get_cell_tile_data(Layer.UNIT_MOVE, tiles[vectorHold.x][vectorHold.y].position):
+					
+	#				set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.MOVETARGET, Vector2i.ZERO, 0)
+					
 
+#THIS SHITS SO FUCKED ^^^^^^^^^^^^^^^
 
 ####################################################################### Buttons
 func _on_mountain_button_toggled(toggled_on: bool):

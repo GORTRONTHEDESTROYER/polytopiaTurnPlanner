@@ -7,6 +7,7 @@ var position: Vector2i
 
 var unit: Unit = null
 var moveableTile = false
+var zoneControl = 0 # 0 equals free, 1 equals adjacent tile, # 2 equals zone of control tile
 
 var x: int:
 	get:

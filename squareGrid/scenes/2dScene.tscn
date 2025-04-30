@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://v2jasy851nff"]
+[gd_scene load_steps=42 format=3 uid="uid://v2jasy851nff"]
 
 [ext_resource type="Texture2D" uid="uid://dxbhx4ys67t1g" path="res://imageHolder/tileHolder/selection.png" id="1_esfrv"]
 [ext_resource type="Texture2D" uid="uid://b0exvca3bkv2i" path="res://imageHolder/tileHolder/imp_field.png" id="2_qjcu4"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://coio8lm6ctkta" path="res://imageHolder/unitHolder/moveTarget42x38.png" id="4_pjfmc"]
 [ext_resource type="Texture2D" uid="uid://d0qmxqyoqc0nc" path="res://imageHolder/tileHolder/imp_mountain.png" id="4_xooae"]
 [ext_resource type="Texture2D" uid="uid://wotwdflmqnxp" path="res://imageHolder/teirOneResources/imp_fruit.png" id="5_fjkr2"]
+[ext_resource type="Texture2D" uid="uid://bntqahjbx8h05" path="res://imageHolder/unitHolder/moveTargetZOC1.png" id="5_piiuu"]
+[ext_resource type="Texture2D" uid="uid://0nu6pm4gi88e" path="res://imageHolder/unitHolder/attackTargetZOC2.png" id="6_8qrdf"]
 [ext_resource type="Texture2D" uid="uid://cqehu4vd8e57q" path="res://imageHolder/teirOneResources/imp_animal.png" id="6_uxy4i"]
 [ext_resource type="Texture2D" uid="uid://dssm6h3lcughr" path="res://imageHolder/teirTwoResources/field_crop.png" id="7_87sgk"]
 [ext_resource type="Texture2D" uid="uid://18nx34avqsri" path="res://imageHolder/teirTwoResources/mountain_ore.png" id="8_n8vd5"]
@@ -32,7 +34,21 @@ texture_region_size = Vector2i(42, 38)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6yb6y"]
+resource_name = "freeTile"
 texture = ExtResource("4_pjfmc")
+texture_region_size = Vector2i(42, 38)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r1tj7"]
+resource_name = "zocTile"
+texture = ExtResource("5_piiuu")
+texture_region_size = Vector2i(42, 38)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t1c8l"]
+resource_name = "zocTileSorce"
+texture = ExtResource("6_8qrdf")
 texture_region_size = Vector2i(42, 38)
 0:0/0 = 0
 
@@ -81,6 +97,8 @@ tile_shape = 1
 tile_layout = 5
 tile_size = Vector2i(42, 25)
 uv_clipping = true
+custom_data_layer_0/name = "moveAble"
+custom_data_layer_0/type = 1
 sources/2 = SubResource("TileSetAtlasSource_jnh32")
 sources/3 = SubResource("TileSetAtlasSource_7dmpc")
 sources/4 = SubResource("TileSetAtlasSource_wglj6")
@@ -93,6 +111,8 @@ sources/8 = SubResource("TileSetAtlasSource_iajyw")
 sources/10 = SubResource("TileSetAtlasSource_rfun5")
 sources/1 = SubResource("TileSetAtlasSource_1pnwq")
 sources/11 = SubResource("TileSetAtlasSource_6yb6y")
+sources/12 = SubResource("TileSetAtlasSource_r1tj7")
+sources/13 = SubResource("TileSetAtlasSource_t1c8l")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jl1b3"]
 bg_color = Color(0.309804, 0.556863, 0.898039, 1)
