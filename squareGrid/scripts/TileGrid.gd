@@ -4,7 +4,7 @@ const Camera2d = preload("res://scripts/Camera2D.gd")
 
 enum Layer {TILE, RESOURCE, UNIT_MOVE, UNIT, SELECTION}
 
-var gridSize = 11
+var gridSize = 22
 var tiles: Array[Array] = []
 
 var state = State.new()
@@ -167,13 +167,24 @@ func turnMode(tile: Tile):
 func drawPosibleUnitMoves(tile):
 	var movement = float(tile.unit.movement)
 	var movement_hold = int(movement)	
-	movement = ((movement + .25) - (movement/4)) #I HATE SQUARE # RATIO IS WRONG KILLING MYSELF
+	#movement = ((movement + .25) - (movement/4)) #I HATE SQUARE # RATIO IS WRONG KILLING MYSELF
+	#set_cell(Layer.UNIT_MOVE, tile.position, Constants.Asset.MOVETARGET, Vector2i.ZERO, 0)
+	tiles[0][3].zoneControl = 2
+	tiles[8][8].zoneControl = 2
+	tiles[4][4].zoneControl = 2
+	nextTiles2(movement,tile.position)
+	movement = movement * 2
+	for x in range(((movement) * 3)): 
+		for y in range(((movement) * 3)):
+			var tileMoveDistClear = tile.position + Vector2i(x,y) - Vector2i(movement,movement)
+			if(inBounds(tileMoveDistClear)):
+				tiles[tileMoveDistClear.x][tileMoveDistClear.y].movementDist = -1
+	
+	
 	
 	#debuging
-	tiles[0][0].zoneControl = 2
-	tiles[0][3].zoneControl = 2
-	tiles[0][2].zoneControl = 2
-	tiles[4][4].zoneControl = 2
+
+	"""
 	print(movement)
 	for x in range(3):
 		for y in range(3):
@@ -197,46 +208,116 @@ func drawPosibleUnitMoves(tile):
 							print(tiles[vectorHold.x][vectorHold.y].zoneControl)
 						elif(tiles[vectorHold.x][vectorHold.y].zoneControl == 1):
 							set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.ZOC1MOVETARGET, Vector2i.ZERO, 0)
-						elif(tiles[vectorHold.x][vectorHold.y].zoneControl != 2 && !get_cell_tile_data(Layer.UNIT_MOVE, tiles[vectorHold.x][vectorHold.y].position)):
-							
+						
+						elif(get_cell_source_id(Layer.UNIT_MOVE,vectorHold)!=14):
 							set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.MOVETARGET, Vector2i.ZERO, 0)
+							#print("tester")
+						
 			if vectorHold.x > -1 && vectorHold.y > -1 && vectorHold.x < gridSize && vectorHold.y < gridSize:
-				print(get_cell_source_id(Layer.UNIT_MOVE,vectorHold))
-				if (movement > 1 && get_cell_source_id(Layer.UNIT_MOVE,vectorHold)==11): #tile set 11 will be MoveTargert 0
-					nextTiles(movement,vectorHold)
+				#print(get_cell_source_id(Layer.UNIT_MOVE,vectorHold))
+				if (movement > 1 && get_cell_source_id(Layer.UNIT_MOVE,vectorHold)==11):					 #tile set 11 will be MoveTargert 0
+					set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.MOVETARGETCHECKED, Vector2i.ZERO, 0)
+					print("starter")
+					print(vectorHold)
+					#movement = movement - 1
+					nextTiles2(movement,vectorHold)
+				"""
+func nextTiles2(movement, vectorHoldPassed):
+	#var roadHold = roadPassed
+
+	movement = movement - 1
+	set_cell(Layer.UNIT_MOVE, vectorHoldPassed, Constants.Asset.MOVETARGET, Vector2i.ZERO, 0)
+
+	
+	for x in range(3):
+		for y in range(3):
+			var vectorHold: Vector2i = vectorHoldPassed + Vector2i(x,y) - Vector2i(1,1)
+			if(inBounds(vectorHold)):
+				if(tiles[vectorHold.x][vectorHold.y].zoneControl == 1):
+					set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.ZOC1MOVETARGET, Vector2i.ZERO, 0)
+				elif(tiles[vectorHold.x][vectorHold.y].zoneControl == 2):
+					var tod = 1
+				else:
+					for i in range(3):
+						for j in range(3): 
+							var vectorHold2 = vectorHold + Vector2i(i,j) - Vector2i(1,1) 
+							if(inBounds(vectorHold2)):
+								if(tiles[vectorHold2.x][vectorHold2.y].zoneControl == 2):
+									if(movement >= 0):
+										set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.ZOC1MOVETARGET, Vector2i.ZERO, 0)
+										set_cell(Layer.UNIT_MOVE, vectorHold2, Constants.Asset.ZOC2MOVETARGET, Vector2i.ZERO, 0)
+					if(get_cell_source_id(Layer.UNIT_MOVE,vectorHold)!=12 && get_cell_source_id(Layer.UNIT_MOVE,vectorHold)!=13):
+						if(movement>tiles[vectorHold.x][vectorHold.y].movementDist):
+							#if(tiles[vectorHold.x][vectorHold.y].road == roadHold):
+								#match[roadFlip]:
+							
+								#if(roadFlip == true):
+								#	roadFlip = false
+								#	movement = movement + 1
+								#elif(roadFlip == false):
+									#roadFlip = true
+								
+							tiles[vectorHold.x][vectorHold.y].movementDist = movement
+							nextTiles2(movement, vectorHold)
+				
+				
+				
+			
+func inBounds(vectorPassed):
+	if (vectorPassed.x > -1 && vectorPassed.y > -1):
+		if(vectorPassed.x < gridSize && vectorPassed.y < gridSize):
+			return true
+	return false
+
+
+"""
 func nextTiles(movement,vectorHoldPassed):
-	movement = movement - ((1 + .25) - (1/4))	
+	
+	movement = movement - 1	
 	for x in range(3):
 		for y in range(3):
 			var vectorHold: Vector2i = vectorHoldPassed
 			vectorHold = vectorHold + Vector2i(x,y) - Vector2i(1,1)
-
+			
 			for i in range(3):
 					for j in range(3):
 						var vectorHold2: Vector2i = vectorHold
 						vectorHold2 = vectorHold2 + Vector2i(i,j) - Vector2i(1,1) 
+						
 						if ((vectorHold2.x > -1 && vectorHold2.y > -1) &&  (vectorHold.x > -1 && vectorHold.y > -1) &&
 						(vectorHold.x < gridSize && vectorHold.y < gridSize) && (vectorHold2.x < gridSize && vectorHold2.y < gridSize)):
-							#if()
+							
 							if (tiles[vectorHold2.x][vectorHold2.y].zoneControl == 2 &&
-							tiles[vectorHold.x][vectorHold.y].zoneControl != 2 && tiles[vectorHold.x][vectorHold.y].zoneControl != 1):
+							tiles[vectorHold.x][vectorHold.y].zoneControl != 2 && tiles[vectorHold.x][vectorHold.y].zoneControl != 1 ):
 								#tiles[vectorHold.x][vectorHold.y].zoneControl = 1
-								
+								print("ping0")
 								set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.ZOC1MOVETARGET, Vector2i.ZERO, 0)
 								set_cell(Layer.UNIT_MOVE, vectorHold2, Constants.Asset.ZOC2MOVETARGET, Vector2i.ZERO, 0) ###commentout later
-								print(tiles[vectorHold.x][vectorHold.y].zoneControl)
-							elif(tiles[vectorHold.x][vectorHold.y].zoneControl == 1):
-								set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.ZOC1MOVETARGET, Vector2i.ZERO, 0)
-							elif(tiles[vectorHold.x][vectorHold.y].zoneControl != 2 && !get_cell_tile_data(Layer.UNIT_MOVE, tiles[vectorHold.x][vectorHold.y].position)):
+								#print(tiles[vectorHold.x][vectorHold.y].zoneControl)
 								
-								set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.MOVETARGET, Vector2i.ZERO, 0)
-								
+			if (vectorHold.x > -1 && vectorHold.y > -1) && (vectorHold.x < gridSize && vectorHold.y < gridSize)		:			
+				if(tiles[vectorHold.x][vectorHold.y].zoneControl == 1):
+					set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.ZOC1MOVETARGET, Vector2i.ZERO, 0)
+					print("ping1")
+				elif(tiles[vectorHold.x][vectorHold.y].zoneControl != 2 && get_cell_source_id(Layer.UNIT_MOVE,vectorHold)!=14):
+					
+					set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.MOVETARGET, Vector2i.ZERO, 0)
+					print("ping2")
+				elif(get_cell_source_id(Layer.UNIT_MOVE,vectorHold)==14):
+					print("free")
+				else:
+					print("ping3")
+					set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.MOVETARGET, Vector2i.ZERO, 0)
+				#set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.MOVETARGET, Vector2i.ZERO, 0)
+			print(vectorHold)
 			if vectorHold.x > -1 && vectorHold.y > -1 && vectorHold.x < gridSize && vectorHold.y < gridSize:
 				#print(get_cell_source_id(Layer.UNIT_MOVE,vectorHold))
 				if (movement > 1 && get_cell_source_id(Layer.UNIT_MOVE,vectorHold)==11): #tile set 11 will be MoveTargert 0
+					set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.MOVETARGETCHECKED, Vector2i.ZERO, 0)
 					
+					var movementpass = movement - 1
 					nextTiles(movement,vectorHold)
-				
+ """					
 							
 							
 							

@@ -38,7 +38,7 @@ resource_name = "freeTile"
 texture = ExtResource("4_pjfmc")
 texture_region_size = Vector2i(42, 38)
 0:0/0 = 0
-0:0/0/custom_data_0 = true
+0:0/0/custom_data_0 = 1
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r1tj7"]
 resource_name = "zocTile"
@@ -51,6 +51,7 @@ resource_name = "zocTileSorce"
 texture = ExtResource("6_8qrdf")
 texture_region_size = Vector2i(42, 38)
 0:0/0 = 0
+0:0/0/custom_data_0 = -1
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jnh32"]
 texture = ExtResource("3_uuf7c")
@@ -97,8 +98,8 @@ tile_shape = 1
 tile_layout = 5
 tile_size = Vector2i(42, 25)
 uv_clipping = true
-custom_data_layer_0/name = "moveAble"
-custom_data_layer_0/type = 1
+custom_data_layer_0/name = "distance"
+custom_data_layer_0/type = 2
 sources/2 = SubResource("TileSetAtlasSource_jnh32")
 sources/3 = SubResource("TileSetAtlasSource_7dmpc")
 sources/4 = SubResource("TileSetAtlasSource_wglj6")
