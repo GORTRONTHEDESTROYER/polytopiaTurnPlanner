@@ -17,7 +17,7 @@ func _init(
 	
 func typeWarrior(typeP: Constants.UnitType):
 	type = typeP
-	movement = 6
+	movement = 4
 	#print(movement)
 func typeRider(typeP: Constants.UnitType):
 	type = typeP

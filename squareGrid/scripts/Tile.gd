@@ -6,7 +6,8 @@ var tribe: Constants.Tribe
 var position: Vector2i
 
 var movementDist = -1
-#var road: = true
+var road: = false
+var spacer = -1
 var unit: Unit = null
 var moveableTile = false
 var zoneControl = 0 # 0 equals free, 1 equals adjacent tile, # 2 equals zone of control tile

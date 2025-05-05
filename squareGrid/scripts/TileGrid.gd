@@ -4,7 +4,7 @@ const Camera2d = preload("res://scripts/Camera2D.gd")
 
 enum Layer {TILE, RESOURCE, UNIT_MOVE, UNIT, SELECTION}
 
-var gridSize = 22
+var gridSize = 11
 var tiles: Array[Array] = []
 
 var state = State.new()
@@ -40,6 +40,8 @@ func _process(_delta):
 	
 	if tile != null:
 		set_cell(4, tile_pos, 0, Vector2i(0,0),0)
+		#print(tiles[tile_pos.x][tile_pos.y].movementDist)
+		print(tiles[tile_pos.x][tile_pos.y].road)
 		prev_tile_pos = tile_pos
 
 		if Input.is_action_pressed("LEFT_MOUSE_BUTTON")&&(mode == 0):
@@ -163,105 +165,183 @@ func turnMode(tile: Tile):
 			clear_layer(Layer.UNIT_MOVE)
 			
 			
-		
+var looper = 0		
 func drawPosibleUnitMoves(tile):
 	var movement = float(tile.unit.movement)
 	var movement_hold = int(movement)	
-	#movement = ((movement + .25) - (movement/4)) #I HATE SQUARE # RATIO IS WRONG KILLING MYSELF
+	#movement = ((movement + .25) - (movement/4)) #I HATE SQUARE # RATIO IS WRONG
 	#set_cell(Layer.UNIT_MOVE, tile.position, Constants.Asset.MOVETARGET, Vector2i.ZERO, 0)
-	tiles[0][3].zoneControl = 2
-	tiles[8][8].zoneControl = 2
-	tiles[4][4].zoneControl = 2
-	nextTiles2(movement,tile.position)
+	#tiles[0][0].zoneControl = 2
+	#tiles[1][1].zoneControl = 2
+	#tiles[2][2].zoneControl = 2
+	#tiles[3][3].zoneControl = 2
+	
+	#tiles[0][0].road = true
+	#tiles[1][1].road = true
+	#tiles[2][2].road = true
+	#tiles[3][3].road = true
+	#tiles[4][4].road = true
+	
+	tiles[0][4].road = true
+	tiles[0][5].road = true
+	
+	tiles[4][0].road = true
+	tiles[5][0].road = true
+	
+	#nextTiles2(movement,tile.position)
+	#print("movement")
+	#print(movement)
+	roadTiles2((movement*2),tile.position)
+	
+	#roadTiles(movement*3,tile.position)
+	tile.spacer = 0
+	#for x in range((movement*2*2) +1):
+		#for y in range((movement*2*2) +1):
+			#pass
+			#print(tiles[x][y].position)
+			#print(tiles[x][y].spacer)
+			#print(tiles[x][y].movementDist)
+	
+	for x in range(11): 
+		for y in range(11):
+			var tileMoveDistClear = Vector2i(x,y)
+			if(inBounds(tileMoveDistClear)):
+				tiles[tileMoveDistClear.x][tileMoveDistClear.y].movementDist = -1
+				
+				print(tiles[tileMoveDistClear.x][tileMoveDistClear.y].movementDist)
+				#tiles[tileMoveDistClear.x][tileMoveDistClear.y].spacer = 0
+	
+	nextTiles2(movement*2, tile.position)
+	print(looper)
+	"""
+	for x in range((movement*2*2) +1):
+		for y in range((movement*2*2) +1):
+			print(tiles[x][y].position)
+			#print(tiles[x][y].spacer)
+			print(tiles[x][y].movementDist)
+	"""
+	
+
+	
 	movement = movement * 2
 	for x in range(((movement) * 3)): 
 		for y in range(((movement) * 3)):
 			var tileMoveDistClear = tile.position + Vector2i(x,y) - Vector2i(movement,movement)
 			if(inBounds(tileMoveDistClear)):
-				tiles[tileMoveDistClear.x][tileMoveDistClear.y].movementDist = -1
-	
-	
-	
-	#debuging
+				pass
+				#tiles[tileMoveDistClear.x][tileMoveDistClear.y].movementDist = -1
+				#tiles[tileMoveDistClear.x][tileMoveDistClear.y].spacer = -1
+			
 
-	"""
-	print(movement)
-	for x in range(3):
-		for y in range(3):
-			var vectorHold: Vector2i = tile.position
-			vectorHold = vectorHold + Vector2i(x,y) - Vector2i(1,1)
-			set_cell(Layer.UNIT_MOVE, tile.position, Constants.Asset.MOVETARGET, Vector2i.ZERO, 0)
-			
-			
-			for i in range(3):
-				for j in range(3):
-					#var vectorHold2: Vector2i = vectorHold
-					var vectorHold2 = vectorHold + Vector2i(i,j) - Vector2i(1,1) 
-					if ((vectorHold2.x > -1 && vectorHold2.y > -1) &&  (vectorHold.x > -1 && vectorHold.y > -1) &&
-					(vectorHold.x < gridSize && vectorHold.y < gridSize) && (vectorHold2.x < gridSize && vectorHold2.y < gridSize)):
-						if (tiles[vectorHold2.x][vectorHold2.y].zoneControl == 2 &&
-						tiles[vectorHold.x][vectorHold.y].zoneControl != 2 && tiles[vectorHold.x][vectorHold.y].zoneControl != 1):
-							#tiles[vectorHold.x][vectorHold.y].zoneControl = 1
-							
-							set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.ZOC1MOVETARGET, Vector2i.ZERO, 0)
-							set_cell(Layer.UNIT_MOVE, vectorHold2, Constants.Asset.ZOC2MOVETARGET, Vector2i.ZERO, 0) ###commentout later
-							print(tiles[vectorHold.x][vectorHold.y].zoneControl)
-						elif(tiles[vectorHold.x][vectorHold.y].zoneControl == 1):
-							set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.ZOC1MOVETARGET, Vector2i.ZERO, 0)
-						
-						elif(get_cell_source_id(Layer.UNIT_MOVE,vectorHold)!=14):
-							set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.MOVETARGET, Vector2i.ZERO, 0)
-							#print("tester")
-						
-			if vectorHold.x > -1 && vectorHold.y > -1 && vectorHold.x < gridSize && vectorHold.y < gridSize:
-				#print(get_cell_source_id(Layer.UNIT_MOVE,vectorHold))
-				if (movement > 1 && get_cell_source_id(Layer.UNIT_MOVE,vectorHold)==11):					 #tile set 11 will be MoveTargert 0
-					set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.MOVETARGETCHECKED, Vector2i.ZERO, 0)
-					print("starter")
-					print(vectorHold)
-					#movement = movement - 1
-					nextTiles2(movement,vectorHold)
-				"""
 func nextTiles2(movement, vectorHoldPassed):
 	#var roadHold = roadPassed
-
-	movement = movement - 1
+	#if(tiles[vectorHoldPassed.x][vectorHoldPassed.y].)
+	movement = movement - 1 + tiles[vectorHoldPassed.x][vectorHoldPassed.y].spacer
 	set_cell(Layer.UNIT_MOVE, vectorHoldPassed, Constants.Asset.MOVETARGET, Vector2i.ZERO, 0)
 
-	
-	for x in range(3):
-		for y in range(3):
-			var vectorHold: Vector2i = vectorHoldPassed + Vector2i(x,y) - Vector2i(1,1)
-			if(inBounds(vectorHold)):
-				if(tiles[vectorHold.x][vectorHold.y].zoneControl == 1):
-					set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.ZOC1MOVETARGET, Vector2i.ZERO, 0)
-				elif(tiles[vectorHold.x][vectorHold.y].zoneControl == 2):
-					var tod = 1
-				else:
-					for i in range(3):
-						for j in range(3): 
-							var vectorHold2 = vectorHold + Vector2i(i,j) - Vector2i(1,1) 
-							if(inBounds(vectorHold2)):
-								if(tiles[vectorHold2.x][vectorHold2.y].zoneControl == 2):
-									if(movement >= 0):
+	if(movement >= 0):
+		for x in range(3):
+			for y in range(3):
+				
+				var vectorHold: Vector2i = vectorHoldPassed + Vector2i(x,y) - Vector2i(1,1)
+				if(inBounds(vectorHold)):
+					if(tiles[vectorHold.x][vectorHold.y].zoneControl == 1):
+						set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.ZOC1MOVETARGET, Vector2i.ZERO, 0)
+					elif(tiles[vectorHold.x][vectorHold.y].zoneControl == 2):
+						var tod = 1
+					else:
+						for i in range(3):
+							for j in range(3): 
+								var vectorHold2 = vectorHold + Vector2i(i,j) - Vector2i(1,1) 
+								if(inBounds(vectorHold2)):
+									if(tiles[vectorHold2.x][vectorHold2.y].zoneControl == 2):
 										set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.ZOC1MOVETARGET, Vector2i.ZERO, 0)
 										set_cell(Layer.UNIT_MOVE, vectorHold2, Constants.Asset.ZOC2MOVETARGET, Vector2i.ZERO, 0)
-					if(get_cell_source_id(Layer.UNIT_MOVE,vectorHold)!=12 && get_cell_source_id(Layer.UNIT_MOVE,vectorHold)!=13):
-						if(movement>tiles[vectorHold.x][vectorHold.y].movementDist):
-							#if(tiles[vectorHold.x][vectorHold.y].road == roadHold):
-								#match[roadFlip]:
+										
+						if(tiles[vectorHold.x][vectorHold.y].road && tiles[vectorHoldPassed.x][vectorHoldPassed.y].road):
+							if(tiles[vectorHold.x][vectorHold.y].spacer == -1 && tiles[vectorHoldPassed.x][vectorHoldPassed.y].spacer == -1):
+								nextTiles2(movement+1, vectorHold)
+						elif(get_cell_source_id(Layer.UNIT_MOVE,vectorHold)!=12 && get_cell_source_id(Layer.UNIT_MOVE,vectorHold)!=13):
+							if(movement>tiles[vectorHold.x][vectorHold.y].movementDist):
+								looper = looper + 1
+								tiles[vectorHold.x][vectorHold.y].movementDist = movement
+								nextTiles2(movement, vectorHold)
+
+						#	elif(tiles[vectorHoldPassed.x][vectorHoldPassed.y].spacer == 0):
+								#print(tiles[vectorHoldPassed.x][vectorHoldPassed.y].spacer)
+								#tiles[vectorHold.x][vectorHold.y].movementDist = movement
+							#nextTiles2(movement, vectorHold)
+				
+func roadTiles2(movement, vectorHoldPassed):
+	
+	for x in range(((movement*2) +1)): 
+		for y in range(((movement*2) +1)):
+			var vectorHold = vectorHoldPassed + Vector2i(x,y) - Vector2i(movement,movement)
+			
+			if(inBounds(vectorHold)): #####################################################
+				var xDiff = vectorHold.x - vectorHoldPassed.x
+				var yDiff = vectorHold.y - vectorHoldPassed.y
+				var diff = 0
+				
+				if xDiff < 0:
+					xDiff = xDiff * -1
+				if yDiff < 0:
+					yDiff = yDiff * -1
+				#print(xDiff)
+				#print(yDiff)
+				if yDiff == xDiff:
+					diff = yDiff
+				elif yDiff > xDiff:
+					diff = yDiff
+				else:
+					diff = xDiff
+				#print(diff)
+				tiles[vectorHold.x][vectorHold.y].movementDist = movement - diff
+				tiles[vectorHold.x][vectorHold.y].spacer = -1
+				#print(tiles[vectorHold.x][vectorHold.y].movementDist)
+				#var tileMoveDistClear = vectorHoldPassed + Vector2i(x,y) - Vector2i(movement,movement)
+	for x in range(((movement*2) +1)): 
+		for y in range(((movement*2) +1)):
+			var vectorHold = vectorHoldPassed + Vector2i(x,y) - Vector2i(movement,movement)
+			if(inBounds(vectorHold)):
+				for i in range (3):
+					for j in range(3):
+						var vectorHold2 = vectorHold + Vector2i(i,j) - Vector2i(1,1)
+						if(inBounds(vectorHold2)):
+							if(tiles[vectorHold.x][vectorHold.y].road && tiles[vectorHold2.x][vectorHold2.y].road):
+								if(tiles[vectorHold.x][vectorHold.y].movementDist > tiles[vectorHold2.x][vectorHold2.y].movementDist):
+									if(tiles[vectorHold.x][vectorHold.y].road && tiles[vectorHold2.x][vectorHold2.y].road):
+										tiles[vectorHold2.x][vectorHold2.y].spacer = 0
+										
+func roadTiles(movement, vectorHoldPassed):
+	movement = movement - 1
+	if movement > 0:
+		for x in range(3):
+			for y in range(3):
+				var vectorHold: Vector2i = vectorHoldPassed + Vector2i(x,y) - Vector2i(1,1)
+				if(inBounds(vectorHold)):
+					if(tiles[vectorHold.x][vectorHold.y].road && tiles[vectorHoldPassed.x][vectorHoldPassed.y].road):
+						if(tiles[vectorHold.x][vectorHold.y].zoneControl == 1):
+							tiles[vectorHold.x][vectorHold.y].zoneControl = 0
+							set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.MOVETARGET, Vector2i.ZERO, 0)
+							tiles[vectorHoldPassed.x][vectorHoldPassed.y].movementDist = movement
+						if(tiles[vectorHold.x][vectorHold.y].movementDist < movement):
+							tiles[vectorHoldPassed.x][vectorHoldPassed.y].movementDist = movement
+							tiles[vectorHoldPassed.x][vectorHoldPassed.y].spacer = 0
+						#tiles[vectorHold.x][vectorHold.y].movementDist = tiles[vectorHold.x][vectorHold.y].movementDist + 1
+						if(tiles[vectorHoldPassed.x][vectorHoldPassed.y].movementDist > 98):
+							tiles[vectorHoldPassed.x][vectorHoldPassed.y].spacer = -1
+							tiles[vectorHoldPassed.x][vectorHoldPassed.y].movementDist = movement
 							
-								#if(roadFlip == true):
-								#	roadFlip = false
-								#	movement = movement + 1
-								#elif(roadFlip == false):
-									#roadFlip = true
-								
-							tiles[vectorHold.x][vectorHold.y].movementDist = movement
-							nextTiles2(movement, vectorHold)
-				
-				
-				
+						roadTiles(movement, vectorHold)
+						
+					else:
+						if (tiles[vectorHold.x][vectorHold.y].movementDist < movement):
+							#tiles[vectorHold.x][vectorHold.y].movementDist = 99
+							tiles[vectorHoldPassed.x][vectorHoldPassed.y].spacer = -1
+							roadTiles(movement, vectorHold)
+	
+	
 			
 func inBounds(vectorPassed):
 	if (vectorPassed.x > -1 && vectorPassed.y > -1):
@@ -269,86 +349,6 @@ func inBounds(vectorPassed):
 			return true
 	return false
 
-
-"""
-func nextTiles(movement,vectorHoldPassed):
-	
-	movement = movement - 1	
-	for x in range(3):
-		for y in range(3):
-			var vectorHold: Vector2i = vectorHoldPassed
-			vectorHold = vectorHold + Vector2i(x,y) - Vector2i(1,1)
-			
-			for i in range(3):
-					for j in range(3):
-						var vectorHold2: Vector2i = vectorHold
-						vectorHold2 = vectorHold2 + Vector2i(i,j) - Vector2i(1,1) 
-						
-						if ((vectorHold2.x > -1 && vectorHold2.y > -1) &&  (vectorHold.x > -1 && vectorHold.y > -1) &&
-						(vectorHold.x < gridSize && vectorHold.y < gridSize) && (vectorHold2.x < gridSize && vectorHold2.y < gridSize)):
-							
-							if (tiles[vectorHold2.x][vectorHold2.y].zoneControl == 2 &&
-							tiles[vectorHold.x][vectorHold.y].zoneControl != 2 && tiles[vectorHold.x][vectorHold.y].zoneControl != 1 ):
-								#tiles[vectorHold.x][vectorHold.y].zoneControl = 1
-								print("ping0")
-								set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.ZOC1MOVETARGET, Vector2i.ZERO, 0)
-								set_cell(Layer.UNIT_MOVE, vectorHold2, Constants.Asset.ZOC2MOVETARGET, Vector2i.ZERO, 0) ###commentout later
-								#print(tiles[vectorHold.x][vectorHold.y].zoneControl)
-								
-			if (vectorHold.x > -1 && vectorHold.y > -1) && (vectorHold.x < gridSize && vectorHold.y < gridSize)		:			
-				if(tiles[vectorHold.x][vectorHold.y].zoneControl == 1):
-					set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.ZOC1MOVETARGET, Vector2i.ZERO, 0)
-					print("ping1")
-				elif(tiles[vectorHold.x][vectorHold.y].zoneControl != 2 && get_cell_source_id(Layer.UNIT_MOVE,vectorHold)!=14):
-					
-					set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.MOVETARGET, Vector2i.ZERO, 0)
-					print("ping2")
-				elif(get_cell_source_id(Layer.UNIT_MOVE,vectorHold)==14):
-					print("free")
-				else:
-					print("ping3")
-					set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.MOVETARGET, Vector2i.ZERO, 0)
-				#set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.MOVETARGET, Vector2i.ZERO, 0)
-			print(vectorHold)
-			if vectorHold.x > -1 && vectorHold.y > -1 && vectorHold.x < gridSize && vectorHold.y < gridSize:
-				#print(get_cell_source_id(Layer.UNIT_MOVE,vectorHold))
-				if (movement > 1 && get_cell_source_id(Layer.UNIT_MOVE,vectorHold)==11): #tile set 11 will be MoveTargert 0
-					set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.MOVETARGETCHECKED, Vector2i.ZERO, 0)
-					
-					var movementpass = movement - 1
-					nextTiles(movement,vectorHold)
- """					
-							
-							
-							
-							
-							
-							
-						#elif():
-							
-							#pass
-							
-						
-					
-			
-	#print(vectorHold)
-	#for x in range((movement) * 3): 
-	#	for y in range((movement) * 3):
-	#		pass
-	
-	#for x in range((movement) * 3): 
-	#	for y in range((movement) * 3):
-			
-	#		var vectorHold: Vector2i = tile.position
-
-	#		vectorHold = vectorHold + Vector2i(x,y) - Vector2i(movement_hold,movement_hold)
-
-			#print(vectorHold)
-	#		if vectorHold.x > -1 && vectorHold.y > -1:
-	#			if (vectorHold.x < gridSize && vectorHold.y < gridSize) && !get_cell_tile_data(Layer.UNIT_MOVE, tiles[vectorHold.x][vectorHold.y].position):
-					
-	#				set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.MOVETARGET, Vector2i.ZERO, 0)
-					
 
 #THIS SHITS SO FUCKED ^^^^^^^^^^^^^^^
 
