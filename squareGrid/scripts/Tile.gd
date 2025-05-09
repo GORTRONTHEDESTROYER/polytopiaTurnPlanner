@@ -3,9 +3,12 @@ extends Resource
 
 var type: Constants.TileType
 var tribe: Constants.Tribe
+var building: Constants.BuildingType
 var position: Vector2i
+var typeHeld: Constants.TileType
 
 var movementDist = -1
+var movementDistSource = -1
 var road: = false
 var spacer = -1
 var unit: Unit = null
