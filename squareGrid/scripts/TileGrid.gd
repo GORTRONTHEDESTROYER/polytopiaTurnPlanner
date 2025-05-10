@@ -21,8 +21,7 @@ func _ready():
 			tiles[x].append(
 				Tile.new(Constants.TileType.FIELD, Constants.Tribe.IMP, Vector2i(x, y))
 			)
-			#tiles[x][y].type = Constants.TileType.FIELD
-
+			
 			set_cell(Layer.TILE, Vector2i(x, y), Constants.Asset.FIELD, Vector2i.ZERO, 0)
 
 	#tiles[0][0].unit = Unit.new(Constants.UnitType.WARRIOR, Constants.Player.ONE)
@@ -42,10 +41,10 @@ func _process(_delta):
 	
 	if tile != null:
 		set_cell(6, tile_pos, 0, Vector2i(0,0),0)
-		print("distSource")
-		print(tiles[tile_pos.x][tile_pos.y].movementDistSource)
-		print("spacer")
-		print(tiles[tile_pos.x][tile_pos.y].spacer)
+		#print("distSource")
+	#	print(tiles[tile_pos.x][tile_pos.y].movementDistSource)
+		#print("spacer")
+	#	print(tiles[tile_pos.x][tile_pos.y].spacer)
 		#print(tiles[tile_pos.x][tile_pos.y].road)
 		prev_tile_pos = tile_pos
 
@@ -205,62 +204,18 @@ func turnMode(tile: Tile):
 var looper = 0		
 func drawPosibleUnitMoves(tile):
 	var movement = tile.unit.movement
-	#var movement_hold = int(movement)	
-	#movement = ((movement + .25) - (movement/4)) #I HATE SQUARE # RATIO IS WRONG
-	#set_cell(Layer.UNIT_MOVE, tile.position, Constants.Asset.MOVETARGET, Vector2i.ZERO, 0)
 	#tiles[0][0].zoneControl = 2
 	#tiles[1][1].zoneControl = 2
 	#tiles[2][2].zoneControl = 2
-	#tiles[3][3].zoneControl = 2
+	tiles[3][3].zoneControl = 2
 	
-	#tiles[0][0].road = true
-	#tiles[1][1].road = true
-	#tiles[2][2].road = true
-	#tiles[3][3].road = true
-	#tiles[4][4].road = true
-	#tiles[4][1].road = true
-	#tiles[0][4].road = true
-	#tiles[0][5].road = true
-	
-	#tiles[4][0].road = true
-	#tiles[5][0].road = true
-	#tiles[3][1].road = true
-	#tiles[4][2].road = true
-	
-	#nextTiles2(movement,tile.position)
-	#print("movement")
-	#print(movement)
 	roadTiles2((movement*2),tile.position)
 	
 	#roadTiles(movement*3,tile.position)
 	tile.spacer = 0
-	#for x in range((movement*2*2) +1):
-		#for y in range((movement*2*2) +1):
-			#pass
-			#print(tiles[x][y].position)
-			#print(tiles[x][y].spacer)
-			#print(tiles[x][y].movementDist)
-	
-	#for x in range(11): 
-		#for y in range(11):
-			#var tileMoveDistClear = Vector2i(x,y)
-		#	if(inBounds(tileMoveDistClear)):
-			#	tiles[tileMoveDistClear.x][tileMoveDistClear.y].movementDist = -1
-				
-				#print(tiles[tileMoveDistClear.x][tileMoveDistClear.y].movementDist)
-				#tiles[tileMoveDistClear.x][tileMoveDistClear.y].spacer = 0
 	
 	nextTiles2(movement*2, tile.position)
 	print(looper)
-	"""
-	for x in range((movement*2*2) +1):
-		for y in range((movement*2*2) +1):
-			print(tiles[x][y].position)
-			#print(tiles[x][y].spacer)
-			print(tiles[x][y].movementDist)
-	"""
-	
-
 	
 	movement = movement * 2
 	for x in range(((movement) * 3)): 
@@ -286,7 +241,21 @@ func nextTiles2(movement, vectorHoldPassed, stupid = true):   #good luck reading
 				var vectorHold: Vector2i = vectorHoldPassed + Vector2i(x,y) - Vector2i(1,1)
 				if(inBounds(vectorHold)):
 					if(tiles[vectorHold.x][vectorHold.y].zoneControl == 1):
-						set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.ZOC1MOVETARGET, Vector2i.ZERO, 0)
+						if(tiles[vectorHold.x][vectorHold.y].road && tiles[vectorHoldPassed.x][vectorHoldPassed.y].road):
+							if(tiles[vectorHold.x][vectorHold.y].spacer == -1 && tiles[vectorHoldPassed.x][vectorHoldPassed.y].spacer == -1):
+								nextTiles2(movement+1, vectorHold)
+							elif(tiles[vectorHold.x][vectorHold.y].movementDistSource == tiles[vectorHoldPassed.x][vectorHoldPassed.y].movementDistSource):
+								if(stupid == true):
+									nextTiles2(movement+1, vectorHold, false)
+							else:
+								nextTiles2(movement, vectorHold)
+							#if(tiles[vectorHold.x][vectorHold.y].road && tiles[vectorHoldPassed.x][vectorHoldPassed.y].road):
+							#	nextTiles2(movement, vectorHold)
+						else:	
+							if(get_cell_source_id(Layer.UNIT_MOVE,vectorHold)!=11):
+								if(movement > 5):
+									nextTiles2(movement-4, vectorHold)
+								set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.ZOC1MOVETARGET, Vector2i.ZERO, 0)
 					elif(tiles[vectorHold.x][vectorHold.y].zoneControl == 2):
 						pass
 					else:
@@ -407,7 +376,6 @@ func _on_toggle_play_toggled(toggled_on: bool):
 		mode = 0 
 			
 
-
 var unit_type_bt = Constants.UnitType.NONE
 
 func _on_warrior_spawn_toggled(toggled_on: bool):
@@ -417,8 +385,6 @@ func _on_warrior_spawn_toggled(toggled_on: bool):
 		unit_type_bt = Constants.UnitType.NONE
 	#print(unit)
 	
-
-
 
 func _on_road_button_toggled(toggled_on: bool):
 	if toggled_on:
