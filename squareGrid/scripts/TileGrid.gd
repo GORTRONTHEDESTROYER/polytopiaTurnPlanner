@@ -207,7 +207,7 @@ func drawPosibleUnitMoves(tile):
 	#tiles[0][0].zoneControl = 2
 	#tiles[1][1].zoneControl = 2
 	#tiles[2][2].zoneControl = 2
-	tiles[3][3].zoneControl = 2
+	tiles[1][6].zoneControl = 2
 	
 	roadTiles2((movement*2),tile.position)
 	
@@ -280,8 +280,7 @@ func nextTiles2(movement, vectorHoldPassed, stupid = true):   #good luck reading
 									elif(tiles[vectorHold.x][vectorHold.y].movementDistSource == tiles[vectorHoldPassed.x][vectorHoldPassed.y].movementDistSource):
 										if(stupid == true):
 											nextTiles2(movement+1, vectorHold, false)
-											
-												
+
 func roadTiles2(movement, vectorHoldPassed):
 	
 	for x in range(((movement*2) +1)): 
