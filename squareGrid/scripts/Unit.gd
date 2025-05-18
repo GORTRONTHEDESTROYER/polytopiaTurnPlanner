@@ -4,9 +4,10 @@ var type: Constants.UnitType
 
 var tribe: Constants.Tribe
 var player: Constants.Player
-var ready = true
-var active = false
-var movement = 0 
+var color: Vector2i = Vector2i(0,0)
+var ready: bool = true
+var active: bool = false
+var movement: int = 0 
 
 func _init(
 	#typeP: Constants.UnitType,

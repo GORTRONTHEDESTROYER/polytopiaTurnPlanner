@@ -1,19 +1,21 @@
 class_name Tile
 extends Resource
-
+#generation
 var type: Constants.TileType
 var tribe: Constants.Tribe
 var building: Constants.BuildingType
 var position: Vector2i
 var typeHeld: Constants.TileType
 
-var movementDist = -1
-var movementDistSource = -1
-var road: = false
-var spacer = -1
+#movement
+var movementDist: int = -1
+var movementDistSource: int = -1
+var road: bool = false
+var spacer: int = -1
 var unit: Unit = null
-var moveableTile = false
-var zoneControl = 0 # 0 equals free, 1 equals adjacent tile, # 2 equals zone of control tile
+var moveableTile: bool = false
+var zoneControl: int = 0 # 0 equals free, 1 equals adjacent tile, # 2 equals zone of control tile
+
 
 var x: int:
 	get:

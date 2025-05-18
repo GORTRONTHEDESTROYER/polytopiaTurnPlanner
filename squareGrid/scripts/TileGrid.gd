@@ -27,7 +27,7 @@ func _ready():
 	#tiles[0][0].unit = Unit.new(Constants.UnitType.WARRIOR, Constants.Player.ONE)
 	#tiles[0][1].unit = Unit.new(Constants.UnitType.WARRIOR, Constants.Player.ONE)
 	#print(tiles[0][0].unit.type)
-	updateAllUnitLook()
+	#updateAllUnitLook()
 	#updateUnitLook(tiles[0][0])
 var prev_tile_pos: Vector2i = Vector2i(0, 0)
 
@@ -202,7 +202,7 @@ func turnMode(tile: Tile):
 			
 			
 var looper = 0		
-func drawPosibleUnitMoves(tile):
+func drawPosibleUnitMoves(tile: Tile):
 	var movement = tile.unit.movement
 	#tiles[0][0].zoneControl = 2
 	#tiles[1][1].zoneControl = 2
@@ -226,9 +226,10 @@ func drawPosibleUnitMoves(tile):
 				tiles[tileMoveDistClear.x][tileMoveDistClear.y].movementDist = -1
 				#tiles[tileMoveDistClear.x][tileMoveDistClear.y].movementDistSource = -1
 				tiles[tileMoveDistClear.x][tileMoveDistClear.y].spacer = -1
+				
 			
 
-func nextTiles2(movement, vectorHoldPassed, stupid = true):   #good luck reading this lmao
+func nextTiles2(movement: int, vectorHoldPassed: Vector2i, stupid: bool = true):   #good luck reading this lmao
 	#var roadHold = roadPassed
 	#if(tiles[vectorHoldPassed.x][vectorHoldPassed.y].)
 	movement = movement - 1 + tiles[vectorHoldPassed.x][vectorHoldPassed.y].spacer
@@ -254,7 +255,17 @@ func nextTiles2(movement, vectorHoldPassed, stupid = true):   #good luck reading
 						else:	
 							if(get_cell_source_id(Layer.UNIT_MOVE,vectorHold)!=11):
 								if(movement > 5):
-									nextTiles2(movement-4, vectorHold)
+									var zonepass = true
+									for i in range(3):
+										for j in range(3): 
+											var vectorHold2 = vectorHold + Vector2i(i,j) - Vector2i(1,1) 
+											if(inBounds(vectorHold2)):
+												if(tiles[vectorHold2.x][vectorHold2.y].zoneControl == 2):
+													set_cell(Layer.UNIT_MOVE, vectorHold2, Constants.Asset.ZOC2MOVETARGET, Vector2i.ZERO, 0)
+													zonepass = false
+									if(zonepass):
+										nextTiles2(movement-4, vectorHold)
+								#	nextTiles2(movement-4, vectorHold)
 								set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.ZOC1MOVETARGET, Vector2i.ZERO, 0)
 					elif(tiles[vectorHold.x][vectorHold.y].zoneControl == 2):
 						pass
@@ -267,7 +278,6 @@ func nextTiles2(movement, vectorHoldPassed, stupid = true):   #good luck reading
 										set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.ZOC1MOVETARGET, Vector2i.ZERO, 0)
 										set_cell(Layer.UNIT_MOVE, vectorHold2, Constants.Asset.ZOC2MOVETARGET, Vector2i.ZERO, 0)
 										
-						
 						if(get_cell_source_id(Layer.UNIT_MOVE,vectorHold)!=12 && get_cell_source_id(Layer.UNIT_MOVE,vectorHold)!=13):
 							if(movement>tiles[vectorHold.x][vectorHold.y].movementDist):
 								#looper = looper + 1
@@ -280,8 +290,9 @@ func nextTiles2(movement, vectorHoldPassed, stupid = true):   #good luck reading
 									elif(tiles[vectorHold.x][vectorHold.y].movementDistSource == tiles[vectorHoldPassed.x][vectorHoldPassed.y].movementDistSource):
 										if(stupid == true):
 											nextTiles2(movement+1, vectorHold, false)
+						
 
-func roadTiles2(movement, vectorHoldPassed):
+func roadTiles2(movement: int, vectorHoldPassed: Vector2i):
 	
 	for x in range(((movement*2) +1)): 
 		for y in range(((movement*2) +1)):
