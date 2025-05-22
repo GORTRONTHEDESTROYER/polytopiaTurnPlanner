@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3 uid="uid://badstlordt6nu"]
+
+[ext_resource type="Script" path="res://scenes/ScrollContainer.gd" id="1_gwkv4"]
+
+[node name="ScrollContainer" type="ScrollContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -57.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_gwkv4")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 1152
+theme_override_constants/margin_right = 1152
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="Button" type="Button" parent="CenterContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Tiny"
+
+[node name="Button2" type="Button" parent="CenterContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Small"
+
+[node name="Button3" type="Button" parent="CenterContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Normal"
+
+[node name="Button4" type="Button" parent="CenterContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Large"
+
+[node name="Button5" type="Button" parent="CenterContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Huge"
+
+[node name="Button6" type="Button" parent="CenterContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Massive"
+
+[node name="Button7" type="Button" parent="CenterContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Custom2"

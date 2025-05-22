@@ -1,0 +1,79 @@
+[gd_scene load_steps=4 format=3 uid="uid://kxj1x0ctjwa4"]
+
+[ext_resource type="Theme" uid="uid://drbu1bf378agw" path="res://remove_hscrolebar.tres" id="1_eol0e"]
+[ext_resource type="Script" path="res://scenes/ScrollContainer.gd" id="1_pbdol"]
+[ext_resource type="ButtonGroup" uid="uid://d0jlnmtqjvakk" path="res://button_groups_debug/mapSizeSliderButtonGroup.tres" id="3_ditup"]
+
+[node name="ScrollContainer" type="ScrollContainer"]
+custom_minimum_size = Vector2(1152, 55)
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -324.0
+offset_bottom = -274.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_eol0e")
+scroll_deadzone = 10
+script = ExtResource("1_pbdol")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 652
+theme_override_constants/margin_right = 652
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="Button" type="Button" parent="CenterContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_pressed = true
+button_group = ExtResource("3_ditup")
+text = "Tiny"
+
+[node name="Button2" type="Button" parent="CenterContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_ditup")
+text = "Small"
+
+[node name="Button3" type="Button" parent="CenterContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_ditup")
+text = "Normal"
+
+[node name="Button4" type="Button" parent="CenterContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_ditup")
+text = "Large"
+
+[node name="Button5" type="Button" parent="CenterContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_ditup")
+text = "Huge"
+
+[node name="Button6" type="Button" parent="CenterContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_ditup")
+text = "Massive"
+
+[node name="Button7" type="Button" parent="CenterContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_ditup")
+text = "Custom2"

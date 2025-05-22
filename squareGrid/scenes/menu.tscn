@@ -67,8 +67,8 @@
 [ext_resource type="Texture2D" uid="uid://bj4431xlbkhhm" path="res://imageHolder/mainMenuBackgrounds/dancingQueen/frame_62_delay-0.1s.png" id="64_l5soo"]
 [ext_resource type="Texture2D" uid="uid://fykj3g1ln45y" path="res://imageHolder/mainMenuBackgrounds/dancingQueen/frame_63_delay-0.1s.png" id="65_47ax2"]
 [ext_resource type="Texture2D" uid="uid://bjk1kgk70ibwd" path="res://imageHolder/mainMenuBackgrounds/dancingQueen/frame_64_delay-0.1s.png" id="66_ge6jx"]
-[ext_resource type="Script" path="res://scenes/AnimatedSprite2D_run.gd" id="67_lwjnc"]
 [ext_resource type="Texture2D" uid="uid://bvoslkqjahvum" path="res://imageHolder/mainMenuBackgrounds/PolytopiaTurnPlannerText.png" id="68_5isrw"]
+[ext_resource type="Script" path="res://AnimatedSprite2D_run.gd" id="68_vlds8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6enve"]
 bg_color = Color(0.309804, 0.556863, 0.898039, 1)
@@ -406,7 +406,7 @@ visible = false
 position = Vector2(562, 57)
 sprite_frames = SubResource("SpriteFrames_rdonw")
 frame_progress = 0.511688
-script = ExtResource("67_lwjnc")
+script = ExtResource("68_vlds8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(567, 176)

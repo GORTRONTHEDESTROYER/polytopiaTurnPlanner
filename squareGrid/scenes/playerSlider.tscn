@@ -1,0 +1,133 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1qkg88ddc6qb"]
+
+[ext_resource type="Script" path="res://scenes/ScrollContainer.gd" id="1_sr1wo"]
+[ext_resource type="Theme" uid="uid://drbu1bf378agw" path="res://remove_hscrolebar.tres" id="1_xls23"]
+[ext_resource type="ButtonGroup" uid="uid://b0cipw44aekac" path="res://button_groups_debug/playerSliderButtonGroup.tres" id="3_sbkgq"]
+
+[node name="ScrollContainer" type="ScrollContainer"]
+custom_minimum_size = Vector2(1152, 55)
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -324.0
+offset_bottom = -274.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_xls23")
+scroll_deadzone = 10
+script = ExtResource("1_sr1wo")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 652
+theme_override_constants/margin_right = 652
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="Button" type="Button" parent="CenterContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_pressed = true
+button_group = ExtResource("3_sbkgq")
+text = "  1  "
+
+[node name="Button2" type="Button" parent="CenterContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_sbkgq")
+text = "  2  "
+
+[node name="Button3" type="Button" parent="CenterContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_sbkgq")
+text = "  3  "
+
+[node name="Button4" type="Button" parent="CenterContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_sbkgq")
+text = "  4  "
+
+[node name="Button5" type="Button" parent="CenterContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_sbkgq")
+text = "  5  "
+
+[node name="Button6" type="Button" parent="CenterContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_sbkgq")
+text = "  6  "
+
+[node name="Button7" type="Button" parent="CenterContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_sbkgq")
+text = "  7  "
+
+[node name="Button8" type="Button" parent="CenterContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_sbkgq")
+text = "  8  "
+
+[node name="Button9" type="Button" parent="CenterContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_sbkgq")
+text = "  9  "
+
+[node name="Button10" type="Button" parent="CenterContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_sbkgq")
+text = "  10  "
+
+[node name="Button11" type="Button" parent="CenterContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_sbkgq")
+text = "  11  "
+
+[node name="Button12" type="Button" parent="CenterContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_sbkgq")
+text = "  12  "
+
+[node name="Button13" type="Button" parent="CenterContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_sbkgq")
+text = "  13  "
+
+[node name="Button14" type="Button" parent="CenterContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_sbkgq")
+text = "  14  "
+
+[node name="Button15" type="Button" parent="CenterContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_sbkgq")
+text = "  15  "
+
+[node name="Button16" type="Button" parent="CenterContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_sbkgq")
+text = "  16  "
