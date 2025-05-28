@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b1qkg88ddc6qb"]
 
-[ext_resource type="Script" path="res://scenes/ScrollContainer.gd" id="1_sr1wo"]
+[ext_resource type="Script" uid="uid://8vuxedrqwtk1" path="res://scenes/ScrollContainer.gd" id="1_sr1wo"]
 [ext_resource type="Theme" uid="uid://drbu1bf378agw" path="res://remove_hscrolebar.tres" id="1_xls23"]
 [ext_resource type="ButtonGroup" uid="uid://b0cipw44aekac" path="res://button_groups_debug/playerSliderButtonGroup.tres" id="3_sbkgq"]
 

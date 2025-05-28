@@ -1,7 +1,7 @@
 [gd_scene load_steps=75 format=3 uid="uid://doliklnkkvhqr"]
 
-[ext_resource type="Script" path="res://scripts/Menu.gd" id="1_i67mn"]
-[ext_resource type="Script" path="res://scripts/Sprite2D_Ready.gd" id="2_d6kvq"]
+[ext_resource type="Script" uid="uid://bnllint0vemsc" path="res://scripts/Menu.gd" id="1_i67mn"]
+[ext_resource type="Script" uid="uid://t53wheqbg37p" path="res://scripts/Sprite2D_Ready.gd" id="2_d6kvq"]
 [ext_resource type="Texture2D" uid="uid://csqt5sglfo8t4" path="res://imageHolder/mainMenuBackgrounds/dancingQueen/frame_00_delay-0.1s.png" id="2_f8qwr"]
 [ext_resource type="Texture2D" uid="uid://cksjfwfkq0de6" path="res://imageHolder/mainMenuBackgrounds/dancingQueen/frame_01_delay-0.1s.png" id="3_5jwsm"]
 [ext_resource type="Texture2D" uid="uid://bf70426gtahtp" path="res://imageHolder/mainMenuBackgrounds/dancingQueen/frame_02_delay-0.1s.png" id="4_t15c5"]
@@ -68,15 +68,9 @@
 [ext_resource type="Texture2D" uid="uid://fykj3g1ln45y" path="res://imageHolder/mainMenuBackgrounds/dancingQueen/frame_63_delay-0.1s.png" id="65_47ax2"]
 [ext_resource type="Texture2D" uid="uid://bjk1kgk70ibwd" path="res://imageHolder/mainMenuBackgrounds/dancingQueen/frame_64_delay-0.1s.png" id="66_ge6jx"]
 [ext_resource type="Texture2D" uid="uid://bvoslkqjahvum" path="res://imageHolder/mainMenuBackgrounds/PolytopiaTurnPlannerText.png" id="68_5isrw"]
-[ext_resource type="Script" path="res://AnimatedSprite2D_run.gd" id="68_vlds8"]
+[ext_resource type="Script" uid="uid://b71a6ul271d7i" path="res://AnimatedSprite2D_run.gd" id="68_vlds8"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6enve"]
-bg_color = Color(0.309804, 0.556863, 0.898039, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-corner_detail = 5
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6v5g6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mvfs7"]
 bg_color = Color(1, 1, 1, 1)
@@ -102,7 +96,13 @@ expand_margin_top = 3.0
 expand_margin_right = 7.0
 expand_margin_bottom = 3.0
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6v5g6"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6enve"]
+bg_color = Color(0.309804, 0.556863, 0.898039, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 5
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rdonw"]
 resource_local_to_scene = true
@@ -348,37 +348,37 @@ theme_override_constants/separation = 5
 [node name="Play" type="Button" parent="MarginContainer/CanvasLayer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_6enve")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6v5g6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_mvfs7")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_o1g0c")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_6v5g6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6enve")
 text = "New Session"
 
 [node name="Options" type="Button" parent="MarginContainer/CanvasLayer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_6enve")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6v5g6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_mvfs7")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_o1g0c")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_6v5g6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6enve")
 text = "Options"
 
 [node name="Quit" type="Button" parent="MarginContainer/CanvasLayer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_6enve")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6v5g6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_mvfs7")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_o1g0c")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_6v5g6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6enve")
 text = "Quit"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -402,7 +402,6 @@ scale = Vector2(2.23806, 2.23649)
 script = ExtResource("2_d6kvq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-visible = false
 position = Vector2(562, 57)
 sprite_frames = SubResource("SpriteFrames_rdonw")
 frame_progress = 0.511688

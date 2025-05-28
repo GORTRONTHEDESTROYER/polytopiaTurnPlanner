@@ -4,7 +4,7 @@ const Camera2d = preload("res://scripts/Camera2D.gd")
 
 enum Layer {TILE, RESOURCE, ROAD, BUILDING, UNIT_MOVE, UNIT, SELECTION}
 
-var gridSize = 11
+var gridSize = 16
 var tiles: Array[Array] = []
 
 var state = State.new()
@@ -112,6 +112,20 @@ func updateLook(tile: Tile):
 			set_cell(Layer.TILE, tile.position, Constants.Asset.MOUNTAIN, Vector2i.ZERO, 0)
 			erase_cell(Layer.RESOURCE, tile.position)
 			erase_cell(Layer.ROAD, tile.position)
+		[Constants.TileType.SHORES, _]:
+			tile.typeHeld = tile.type
+			tile.road = false
+			tile.zoneControl = 1
+			set_cell(Layer.TILE, tile.position, Constants.Asset.SHORES, Vector2i.ZERO, 0)
+			erase_cell(Layer.RESOURCE, tile.position)
+			erase_cell(Layer.ROAD, tile.position)
+		[Constants.TileType.OCEAN, _]:
+			tile.typeHeld = tile.type
+			tile.road = false
+			tile.zoneControl = 1
+			set_cell(Layer.TILE, tile.position, Constants.Asset.OCEAN, Vector2i.ZERO, 0)
+			erase_cell(Layer.RESOURCE, tile.position)
+			erase_cell(Layer.ROAD, tile.position)
 		[Constants.TileType.CLOUD, _]:
 			tile.typeHeld = tile.type
 			tile.zoneControl = 0
@@ -130,6 +144,12 @@ func updateLook(tile: Tile):
 		[Constants.BuildingType.ROAD, _]:
 			tile.road = true
 			set_cell(Layer.ROAD, tile.position, Constants.Asset.ROAD, Vector2i.ZERO, 0)
+		[Constants.BuildingType.RUIN, _]:
+			tile.road = true
+			set_cell(Layer.ROAD, tile.position, Constants.Asset.RUIN, Vector2i.ZERO, 0)
+		[Constants.BuildingType.VILLAGE, _]:
+				tile.road = true
+				set_cell(Layer.ROAD, tile.position, Constants.Asset.VILLAGE, Vector2i.ZERO, 0)
 	
 	
 			#erase_cell(Layer., tile.position)
@@ -402,3 +422,26 @@ func _on_road_button_toggled(toggled_on: bool):
 	else:
 		building_type_bt = Constants.BuildingType.NONE
 	#print(building_type_bt)
+
+func _on_shores_button_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		tile_type_bt = Constants.TileType.SHORES
+	else:
+		tile_type_bt = Constants.TileType.NONE	
+			
+func _on_ocean_button_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		tile_type_bt = Constants.TileType.OCEAN
+	else:
+		tile_type_bt = Constants.TileType.NONE	
+func _on_ruin_button_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		building_type_bt = Constants.BuildingType.RUIN
+	else:
+		building_type_bt = Constants.BuildingType.NONE
+
+func _on_village_button_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		building_type_bt = Constants.BuildingType.VILLAGE
+	else:
+		building_type_bt = Constants.BuildingType.NONE
