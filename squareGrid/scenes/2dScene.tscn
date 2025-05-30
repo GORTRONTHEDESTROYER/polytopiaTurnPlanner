@@ -26,7 +26,6 @@
 [ext_resource type="Texture2D" uid="uid://p62slu8eq1tf" path="res://imageHolder/buildings/VillageTiny.png" id="14_pr331"]
 [ext_resource type="Texture2D" uid="uid://b3yvhv0h4s0br" path="res://imageHolder/dropDownTextures/dropdownHeadFram.png" id="18_18us0"]
 [ext_resource type="Texture2D" uid="uid://cs7olqkuf8pof" path="res://imageHolder/dropDownTextures/dropDownBottom.png" id="19_2b4b6"]
-[ext_resource type="Script" uid="uid://c6fg358b2owxk" path="res://scenes/tribeSelectHeader.gd" id="19_rosv0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rykb3"]
 texture = ExtResource("1_esfrv")
@@ -391,6 +390,27 @@ expand_margin_bottom = 1.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_su42j"]
 
+[sub_resource type="GDScript" id="GDScript_tuk40"]
+script/source = "extends NinePatchRect
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func _on_player_select_button_pressed():
+	if $tribeSelectExpand.visible == false:
+		$tribeSelectExpand.visible = true
+	else:
+		$tribeSelectExpand.visible = false
+"
+
 [node name="Node2D" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -640,7 +660,7 @@ patch_margin_left = 38
 patch_margin_top = 38
 patch_margin_right = 38
 patch_margin_bottom = 38
-script = ExtResource("19_rosv0")
+script = SubResource("GDScript_tuk40")
 
 [node name="tribeSelectExpand" type="NinePatchRect" parent="CanvasLayer/PlayerSelectButton/tribeSelectHeader"]
 visible = false

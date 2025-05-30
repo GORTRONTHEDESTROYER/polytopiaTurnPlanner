@@ -17,6 +17,10 @@ config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/image="res://imageHolder/tileHolder/Imperius_forest_tile.png"
 config/icon="res://imageHolder/tileHolder/Imperius_forest_tile.png"
 
+[autoload]
+
+Global="*res://scripts/global.gd"
+
 [display]
 
 window/stretch/mode="viewport"

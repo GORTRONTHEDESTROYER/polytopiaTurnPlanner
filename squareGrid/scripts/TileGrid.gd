@@ -2,19 +2,26 @@ extends TileMap
 
 const Camera2d = preload("res://scripts/Camera2D.gd")
 
+var players : int = Global.players
+
 enum Layer {TILE, RESOURCE, ROAD, BUILDING, UNIT_MOVE, UNIT, SELECTION}
 
-var gridSize = 16
+var gridSize: int = Global.gridSize
 var tiles: Array[Array] = []
-
 var state = State.new()
+
 
 func get_tile(pos: Vector2i) -> Tile:
 	if pos.x < 0 or pos.y < 0 or pos.x >= gridSize or pos.y >= gridSize:
 		return null
 	return tiles[pos.x][pos.y]
+	
+#func get_Map_Setup_Data(mapSizeSliderScene, TileGridScene):
+	
 
 func _ready():
+	print(Global.players)
+
 	for x in range(gridSize):
 		tiles.append([])
 		for y in range(gridSize):

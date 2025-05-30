@@ -1,0 +1,670 @@
+[gd_scene load_steps=64 format=3 uid="uid://v2jasy851nff"]
+
+[ext_resource type="Texture2D" uid="uid://dxbhx4ys67t1g" path="res://imageHolder/tileHolder/selection.png" id="1_esfrv"]
+[ext_resource type="Texture2D" uid="uid://b0exvca3bkv2i" path="res://imageHolder/tileHolder/imp_field.png" id="2_qjcu4"]
+[ext_resource type="Texture2D" uid="uid://ckyluns5tgok3" path="res://imageHolder/tileHolder/Imperius_forest_tile.png" id="3_uuf7c"]
+[ext_resource type="Texture2D" uid="uid://coio8lm6ctkta" path="res://imageHolder/unitHolder/moveTarget42x38.png" id="4_pjfmc"]
+[ext_resource type="Texture2D" uid="uid://d0qmxqyoqc0nc" path="res://imageHolder/tileHolder/imp_mountain.png" id="4_xooae"]
+[ext_resource type="Texture2D" uid="uid://wotwdflmqnxp" path="res://imageHolder/teirOneResources/imp_fruit.png" id="5_fjkr2"]
+[ext_resource type="Texture2D" uid="uid://bntqahjbx8h05" path="res://imageHolder/unitHolder/moveTargetZOC1.png" id="5_piiuu"]
+[ext_resource type="Texture2D" uid="uid://0nu6pm4gi88e" path="res://imageHolder/unitHolder/attackTargetZOC2.png" id="6_8qrdf"]
+[ext_resource type="Texture2D" uid="uid://cqehu4vd8e57q" path="res://imageHolder/teirOneResources/imp_animal.png" id="6_uxy4i"]
+[ext_resource type="Texture2D" uid="uid://dssm6h3lcughr" path="res://imageHolder/teirTwoResources/field_crop.png" id="7_87sgk"]
+[ext_resource type="Texture2D" uid="uid://b31cx2kcxdvcm" path="res://imageHolder/buildings/RoadShrunk.png" id="7_b3b23"]
+[ext_resource type="Texture2D" uid="uid://18nx34avqsri" path="res://imageHolder/teirTwoResources/mountain_ore.png" id="8_n8vd5"]
+[ext_resource type="Texture2D" uid="uid://c8r7kp44sxnbs" path="res://imageHolder/unitHolder/Warriors Bodys Done.png" id="8_x73tv"]
+[ext_resource type="Texture2D" uid="uid://bj4nilas17hvo" path="res://imageHolder/unitHolder/imp_warrior.png" id="9_1b7nj"]
+[ext_resource type="Script" uid="uid://hvkcvw62x7bs" path="res://scripts/TileGrid.gd" id="9_010ei"]
+[ext_resource type="Texture2D" uid="uid://3fqgaex45veo" path="res://imageHolder/unitHolder/warriors heads done.png" id="9_wfqim"]
+[ext_resource type="Texture2D" uid="uid://c74vvdkejlcov" path="res://imageHolder/tileHolder/Clouds.png" id="10_1m6pd"]
+[ext_resource type="Texture2D" uid="uid://c1x7kivrj0p5q" path="res://imageHolder/unitHolder/imp_warrior_ready.png" id="10_781q2"]
+[ext_resource type="ButtonGroup" uid="uid://dve2dulv0eikw" path="res://button_groups_debug/TileTypeButtonGroup.tres" id="10_tj1lt"]
+[ext_resource type="Texture2D" uid="uid://d1ne4t7tkttk6" path="res://imageHolder/tileHolder/shores.png" id="10_wifvg"]
+[ext_resource type="ButtonGroup" uid="uid://cxdd1kvv2n0jc" path="res://button_groups_debug/Resources_Tier.tres" id="11_p5bpv"]
+[ext_resource type="Texture2D" uid="uid://xk17qt84psqw" path="res://imageHolder/tileHolder/ocean tiny.png" id="11_tuk40"]
+[ext_resource type="Texture2D" uid="uid://dcsdn1c67c6mq" path="res://imageHolder/buildings/RuinTiny2.png" id="13_tuk40"]
+[ext_resource type="Texture2D" uid="uid://p62slu8eq1tf" path="res://imageHolder/buildings/VillageTiny.png" id="14_pr331"]
+[ext_resource type="Texture2D" uid="uid://b3yvhv0h4s0br" path="res://imageHolder/dropDownTextures/dropdownHeadFram.png" id="18_18us0"]
+[ext_resource type="Texture2D" uid="uid://cs7olqkuf8pof" path="res://imageHolder/dropDownTextures/dropDownBottom.png" id="19_2b4b6"]
+[ext_resource type="Script" uid="uid://c6fg358b2owxk" path="res://scenes/tribeSelectHeader.gd" id="19_rosv0"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rykb3"]
+texture = ExtResource("1_esfrv")
+texture_region_size = Vector2i(42, 38)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1pnwq"]
+texture = ExtResource("2_qjcu4")
+texture_region_size = Vector2i(42, 38)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rfun5"]
+texture = ExtResource("9_1b7nj")
+texture_region_size = Vector2i(42, 38)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6yb6y"]
+resource_name = "freeTile"
+texture = ExtResource("4_pjfmc")
+texture_region_size = Vector2i(42, 38)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r1tj7"]
+resource_name = "zocTile"
+texture = ExtResource("5_piiuu")
+texture_region_size = Vector2i(42, 38)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t1c8l"]
+resource_name = "zocTileSorce"
+texture = ExtResource("6_8qrdf")
+texture_region_size = Vector2i(42, 38)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8574m"]
+texture = ExtResource("7_b3b23")
+margins = Vector2i(0, 8)
+texture_region_size = Vector2i(42, 34)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iq0yx"]
+texture = ExtResource("8_x73tv")
+separation = Vector2i(2, 2)
+texture_region_size = Vector2i(42, 40)
+0:0/0 = 0
+1:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+2:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l6hrj"]
+texture = ExtResource("9_wfqim")
+separation = Vector2i(2, 2)
+texture_region_size = Vector2i(42, 40)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pr331"]
+texture = ExtResource("10_wifvg")
+texture_region_size = Vector2i(42, 38)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yd5n3"]
+texture = ExtResource("11_tuk40")
+texture_region_size = Vector2i(42, 38)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_30l83"]
+texture = ExtResource("13_tuk40")
+texture_region_size = Vector2i(42, 54)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jnh32"]
+texture = ExtResource("3_uuf7c")
+texture_region_size = Vector2i(42, 38)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hony2"]
+texture = ExtResource("14_pr331")
+texture_region_size = Vector2i(42, 38)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7dmpc"]
+texture = ExtResource("4_xooae")
+texture_region_size = Vector2i(42, 54)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wglj6"]
+texture = ExtResource("5_fjkr2")
+texture_region_size = Vector2i(42, 38)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_he18q"]
+texture = ExtResource("6_uxy4i")
+texture_region_size = Vector2i(42, 38)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3gctu"]
+texture = ExtResource("7_87sgk")
+texture_region_size = Vector2i(42, 38)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y6y0e"]
+texture = ExtResource("8_n8vd5")
+texture_region_size = Vector2i(42, 38)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iajyw"]
+texture = ExtResource("10_1m6pd")
+texture_region_size = Vector2i(42, 38)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qj356"]
+texture = ExtResource("10_781q2")
+texture_region_size = Vector2i(42, 38)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_p2dm1"]
+tile_shape = 1
+tile_layout = 5
+tile_size = Vector2i(42, 25)
+uv_clipping = true
+sources/2 = SubResource("TileSetAtlasSource_jnh32")
+sources/3 = SubResource("TileSetAtlasSource_7dmpc")
+sources/4 = SubResource("TileSetAtlasSource_wglj6")
+sources/5 = SubResource("TileSetAtlasSource_he18q")
+sources/6 = SubResource("TileSetAtlasSource_3gctu")
+sources/7 = SubResource("TileSetAtlasSource_y6y0e")
+sources/0 = SubResource("TileSetAtlasSource_rykb3")
+sources/9 = SubResource("TileSetAtlasSource_qj356")
+sources/8 = SubResource("TileSetAtlasSource_iajyw")
+sources/10 = SubResource("TileSetAtlasSource_rfun5")
+sources/1 = SubResource("TileSetAtlasSource_1pnwq")
+sources/11 = SubResource("TileSetAtlasSource_6yb6y")
+sources/12 = SubResource("TileSetAtlasSource_r1tj7")
+sources/13 = SubResource("TileSetAtlasSource_t1c8l")
+sources/14 = SubResource("TileSetAtlasSource_8574m")
+sources/15 = SubResource("TileSetAtlasSource_iq0yx")
+sources/16 = SubResource("TileSetAtlasSource_l6hrj")
+sources/17 = SubResource("TileSetAtlasSource_pr331")
+sources/18 = SubResource("TileSetAtlasSource_yd5n3")
+sources/19 = SubResource("TileSetAtlasSource_30l83")
+sources/20 = SubResource("TileSetAtlasSource_hony2")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uxe36"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aymtx"]
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jl1b3"]
+bg_color = Color(0.309804, 0.556863, 0.898039, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5yqe8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mgiss"]
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vg18n"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+expand_margin_left = 15.0
+expand_margin_top = 3.0
+expand_margin_right = 15.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dwdvq"]
+bg_color = Color(0.309804, 0.556863, 0.898039, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vx317"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+expand_margin_left = 15.0
+expand_margin_top = 3.0
+expand_margin_right = 15.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="GDScript" id="GDScript_o7v4p"]
+script/source = "extends Camera2D
+
+# Camera control settings:
+# key - by keyboard
+# drag - by clicking mouse button, right mouse button by default;
+# edge - by moving mouse to the window edge
+# wheel - zoom in/out by mouse wheel
+var key = true
+var drag = true
+var edge = false
+var wheel = true
+
+var zoom_out_limit = 100
+
+# Camera speed in px/s.
+var camera_speed = 450 
+
+# Initial zoom value taken from Editor.
+var camera_zoom = get_zoom()
+
+# Value meaning how near to the window edge (in px) the mouse must be,
+# to move a view.
+var camera_margin = 50
+
+# It changes a camera zoom value in units... (?, but it works... it probably
+# multiplies camera size by 1+camera_zoom_speed)
+const camera_zoom_speed = Vector2(0.5, 0.5)
+
+# Vector of camera's movement / second.
+var camera_movement = Vector2()
+
+# Previous mouse position used to count delta of the mouse movement.
+var _prev_mouse_pos = null
+
+# INPUTS
+
+# Right mouse button was or is pressed.
+var __rmbk = false
+# Move camera by keys: left, top, right, bottom.
+var __keys = [false, false, false, false]
+
+
+func _physics_process(delta):
+	# Move camera by keys defined in InputMap (ui_left/top/right/bottom).
+	if key:
+		if __keys[0]:
+			camera_movement.x -= camera_speed * delta
+		if __keys[1]:
+			camera_movement.y -= camera_speed * delta
+		if __keys[2]:
+			camera_movement.x += camera_speed * delta
+		if __keys[3]:
+			camera_movement.y += camera_speed * delta
+	
+	# Move camera by mouse, when it's on the margin (defined by camera_margin).
+	if edge:
+		var rec = get_viewport().get_visible_rect()
+		var v = get_local_mouse_position() + rec.size/2
+		if rec.size.x - v.x <= camera_margin:
+			camera_movement.x += camera_speed * delta
+		if v.x <= camera_margin:
+			camera_movement.x -= camera_speed * delta
+		if rec.size.y - v.y <= camera_margin:
+			camera_movement.y += camera_speed * delta
+		if v.y <= camera_margin:
+			camera_movement.y -= camera_speed * delta
+	
+	# When RMB is pressed, move camera by difference of mouse position
+	if drag and __rmbk:
+		camera_movement = _prev_mouse_pos - get_local_mouse_position()
+	
+	# Update position of the camera.
+	position += camera_movement * get_zoom()
+	
+	# Set camera movement to zero, update old mouse position.
+	camera_movement = Vector2(0,0)
+	_prev_mouse_pos = get_local_mouse_position()
+
+func _unhandled_input( event ):
+		# Check if mouse wheel was used. Not handled by ImputMap!
+		#if wheel:
+			# Checking if future zoom won't be under 0.
+			# In that cause engine will flip screen.
+			#if event.button_index == BUTTON_WHEEL_UP and\\
+			#camera_zoom.x - camera_zoom_speed.x > 0 and\\
+			#camera_zoom.y - camera_zoom_speed.y > 0:
+				#camera_zoom -= camera_zoom_speed
+				#set_zoom(camera_zoom)
+				# Checking if future zoom won't be above zoom_out_limit.
+			#if event.button_index == BUTTON_WHEEL_DOWN and\\
+			#camera_zoom.x + camera_zoom_speed.x < zoom_out_limit and\\
+			#camera_zoom.y + camera_zoom_speed.y < zoom_out_limit:
+			#	camera_zoom += camera_zoom_speed
+			#	set_zoom(camera_zoom)
+	# Control by keyboard handled by InpuMap.
+	if event.is_action_pressed(\"A\"):
+		__keys[0] = true
+	if event.is_action_pressed(\"W\"):
+		__keys[1] = true
+	if event.is_action_pressed(\"D\"):
+		__keys[2] = true
+	if event.is_action_pressed(\"S\"):
+		__keys[3] = true
+	if event.is_action_released(\"A\"):
+		__keys[0] = false
+	if event.is_action_released(\"W\"):
+		__keys[1] = false
+	if event.is_action_released(\"D\"):
+		__keys[2] = false
+	if event.is_action_released(\"S\"):
+		__keys[3] = false
+"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kyvky"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yf0go"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nuoyw"]
+bg_color = Color(1, 1, 1, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v2dff"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_su42j"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_p2dm1")
+format = 2
+layer_0/name = "base_layer"
+layer_1/name = "resource_layer"
+layer_2/name = "building_road"
+layer_3/name = "buildings_layer"
+layer_4/name = "unit_move_layer"
+layer_5/name = "unit_layer"
+layer_6/name = "selection_layer"
+script = ExtResource("9_010ei")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.01
+anchor_right = 0.01
+anchor_bottom = 0.01
+offset_right = 100.0
+offset_bottom = 131.0
+alignment = 1
+
+[node name="Tier_One" type="Button" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.839216, 0.901961, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uxe36")
+theme_override_styles/hover = SubResource("StyleBoxFlat_aymtx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jl1b3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jl1b3")
+toggle_mode = true
+button_group = ExtResource("11_p5bpv")
+text = "Tier 1"
+
+[node name="Tier_Two" type="Button" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.839216, 0.901961, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uxe36")
+theme_override_styles/hover = SubResource("StyleBoxFlat_aymtx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jl1b3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jl1b3")
+toggle_mode = true
+button_group = ExtResource("11_p5bpv")
+text = "Tier 2"
+
+[node name="Forest_Button" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5yqe8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mgiss")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vg18n")
+theme_override_styles/normal = SubResource("StyleBoxFlat_dwdvq")
+toggle_mode = true
+button_group = ExtResource("10_tj1lt")
+text = "Forests
+"
+
+[node name="Mountain_Button" type="Button" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uxe36")
+theme_override_styles/hover = SubResource("StyleBoxFlat_aymtx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vx317")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jl1b3")
+toggle_mode = true
+button_group = ExtResource("10_tj1lt")
+text = "Mountain"
+
+[node name="Field_Button" type="Button" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uxe36")
+theme_override_styles/hover = SubResource("StyleBoxFlat_aymtx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vx317")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jl1b3")
+toggle_mode = true
+button_group = ExtResource("10_tj1lt")
+text = "Field
+"
+
+[node name="Cloudglidder" type="Button" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uxe36")
+theme_override_styles/hover = SubResource("StyleBoxFlat_aymtx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vx317")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jl1b3")
+toggle_mode = true
+button_group = ExtResource("10_tj1lt")
+text = "Cloudglidder
+"
+
+[node name="TogglePlay" type="Button" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.839216, 0.901961, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uxe36")
+theme_override_styles/hover = SubResource("StyleBoxFlat_aymtx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jl1b3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jl1b3")
+toggle_mode = true
+text = "Play
+"
+
+[node name="WarriorSpawn" type="Button" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uxe36")
+theme_override_styles/hover = SubResource("StyleBoxFlat_aymtx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vx317")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jl1b3")
+toggle_mode = true
+keep_pressed_outside = true
+button_group = ExtResource("10_tj1lt")
+text = "unit
+"
+
+[node name="Road_Button" type="Button" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uxe36")
+theme_override_styles/hover = SubResource("StyleBoxFlat_aymtx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vx317")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jl1b3")
+toggle_mode = true
+button_group = ExtResource("10_tj1lt")
+text = "road
+"
+
+[node name="Shores_Button" type="Button" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uxe36")
+theme_override_styles/hover = SubResource("StyleBoxFlat_aymtx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vx317")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jl1b3")
+toggle_mode = true
+button_group = ExtResource("10_tj1lt")
+text = "Shore
+"
+
+[node name="Ocean_Button" type="Button" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uxe36")
+theme_override_styles/hover = SubResource("StyleBoxFlat_aymtx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vx317")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jl1b3")
+toggle_mode = true
+button_group = ExtResource("10_tj1lt")
+text = "Ocean
+"
+
+[node name="Ruin_Button" type="Button" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uxe36")
+theme_override_styles/hover = SubResource("StyleBoxFlat_aymtx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vx317")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jl1b3")
+toggle_mode = true
+button_group = ExtResource("10_tj1lt")
+text = "Ruin"
+
+[node name="Village_Button" type="Button" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uxe36")
+theme_override_styles/hover = SubResource("StyleBoxFlat_aymtx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vx317")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jl1b3")
+toggle_mode = true
+button_group = ExtResource("10_tj1lt")
+text = "Village
+"
+
+[node name="Camera2D" type="Camera2D" parent="CanvasLayer"]
+position = Vector2(-570, -110)
+anchor_mode = 0
+ignore_rotation = false
+process_callback = 0
+script = SubResource("GDScript_o7v4p")
+
+[node name="PlayerSelectButton" type="Button" parent="CanvasLayer"]
+visibility_layer = 16
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -82.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 82.0
+grow_horizontal = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kyvky")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_yf0go")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nuoyw")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_v2dff")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_su42j")
+action_mode = 0
+
+[node name="tribeSelectHeader" type="NinePatchRect" parent="CanvasLayer/PlayerSelectButton"]
+top_level = true
+layout_mode = 0
+offset_left = 1070.0
+offset_top = 6.0
+offset_right = 1146.0
+offset_bottom = 82.0
+texture = ExtResource("18_18us0")
+patch_margin_left = 38
+patch_margin_top = 38
+patch_margin_right = 38
+patch_margin_bottom = 38
+script = ExtResource("19_rosv0")
+
+[node name="tribeSelectExpand" type="NinePatchRect" parent="CanvasLayer/PlayerSelectButton/tribeSelectHeader"]
+visible = false
+layout_mode = 0
+offset_top = 70.0
+offset_right = 76.0
+offset_bottom = 534.0
+texture = ExtResource("19_2b4b6")
+patch_margin_left = 38
+patch_margin_top = 38
+patch_margin_right = 38
+patch_margin_bottom = 38
+
+[connection signal="toggled" from="CanvasLayer/VBoxContainer/Tier_One" to="TileMap" method="_on_tier_one_toggled"]
+[connection signal="toggled" from="CanvasLayer/VBoxContainer/Tier_Two" to="TileMap" method="_on_tier_two_toggled"]
+[connection signal="toggled" from="CanvasLayer/VBoxContainer/Forest_Button" to="TileMap" method="_on_forest_button_toggled"]
+[connection signal="toggled" from="CanvasLayer/VBoxContainer/Mountain_Button" to="TileMap" method="_on_mountain_button_toggled"]
+[connection signal="toggled" from="CanvasLayer/VBoxContainer/Field_Button" to="TileMap" method="_on_field_button_toggled"]
+[connection signal="toggled" from="CanvasLayer/VBoxContainer/Cloudglidder" to="TileMap" method="_on_cloudglidder_toggled"]
+[connection signal="toggled" from="CanvasLayer/VBoxContainer/TogglePlay" to="TileMap" method="_on_toggle_play_toggled"]
+[connection signal="toggled" from="CanvasLayer/VBoxContainer/WarriorSpawn" to="TileMap" method="_on_warrior_spawn_toggled"]
+[connection signal="toggled" from="CanvasLayer/VBoxContainer/Road_Button" to="TileMap" method="_on_road_button_toggled"]
+[connection signal="toggled" from="CanvasLayer/VBoxContainer/Shores_Button" to="TileMap" method="_on_shores_button_toggled"]
+[connection signal="toggled" from="CanvasLayer/VBoxContainer/Ocean_Button" to="TileMap" method="_on_ocean_button_toggled"]
+[connection signal="toggled" from="CanvasLayer/VBoxContainer/Ruin_Button" to="TileMap" method="_on_ruin_button_toggled"]
+[connection signal="toggled" from="CanvasLayer/VBoxContainer/Village_Button" to="TileMap" method="_on_village_button_toggled"]
+[connection signal="pressed" from="CanvasLayer/PlayerSelectButton" to="CanvasLayer/PlayerSelectButton/tribeSelectHeader" method="_on_player_select_button_pressed"]
