@@ -16,6 +16,114 @@ func get_tile(pos: Vector2i) -> Tile:
 		return null
 	return tiles[pos.x][pos.y]
 	
+## Returns the full list of tiles within the specified [distance], with a default distance of 1 (directly adjacent tiles)
+## .
+## [pos]: The starting tile's position
+## [incSelf]: Determines if this should also include the starting tile
+func get_surrounding_tiles(pos: Vector2i, distance: int = 1, incSelf: bool = false) -> Array:
+	return get_surrounding_tiles_xy(pos.x, pos.y, distance, incSelf)
+
+## Returns the full list of tiles within the specified [distance], with a default distance of 1 (directly adjacent tiles)
+## .
+## [x], [y]: The starting tile's coordinates
+## [incSelf]: Determines if this should also include the starting tile
+func get_surrounding_tiles_xy(x: int, y: int, distance: int = 1, incSelf: bool = false) -> Array:
+	var result: Array[Tile] = []
+	if incSelf: result.append(tiles[x][y])
+	for i in range(1, distance + 1):
+		var xNeg = x - i
+		var xPos = x + i
+		var yNeg = y - i
+		var yPos = y + i
+		var checkNegX = xNeg >= 0
+		var checkPosX = xPos < gridSize
+		var checkNegY = yNeg >= 0
+		var checkPosY = yPos < gridSize
+		if !checkNegX && !checkPosX: break
+		if !checkNegY && !checkPosY: break
+		if checkNegX && checkNegY:
+			result.append(tiles[xNeg][yNeg])
+		if checkPosX && checkNegY:
+			result.append(tiles[xPos][yNeg])
+		if checkNegX && checkPosY:
+			result.append(tiles[xNeg][yPos])
+		if checkPosX && checkPosY:
+			result.append(tiles[xPos][yPos])
+		var startX: int
+		if checkNegX: startX = 0
+		else: startX = 0 - xNeg
+		var endX: int
+		if checkPosX: endX = gridSize
+		else: endX = 2 * gridSize - xPos
+		var startY: int
+		if checkNegY: startY = 0
+		else: startY = 0 - yNeg
+		var endY: int
+		if checkPosY: endY = gridSize
+		else: endY = 2 * gridSize - yPos
+		for j in range(1, 2 * i):
+			if(startX <= j && j <= endX):
+				if checkNegY: result.append(tiles[xNeg + j][yNeg])
+				if checkPosY: result.append(tiles[xNeg + j][yPos])
+			if(startY <= j && j <= endY):
+				if checkNegX: result.append(tiles[xNeg][yNeg + j])
+				if checkPosX: result.append(tiles[xPos][yNeg + j])
+	var dict: Dictionary = {}
+	for i in result: dict[i] = true
+	return dict.keys()
+
+## Returns the full list of tiles one the outer edge the specified [distance], with a default distance of 1 (directly adjacent tiles)
+## .
+## [pos]: The starting tile's position
+func get_outer_tiles(pos: Vector2i, distance: int = 1) -> Array:
+	return get_outer_tiles_xy(pos.x, pos.y, distance)
+
+## Returns the full list of tiles one the outer edge the specified [distance], with a default distance of 1 (directly adjacent tiles)
+## .
+## [x], [y]: The starting tile's coordinates
+func get_outer_tiles_xy(x: int, y: int, distance: int = 1) -> Array:
+	var result: Array[Tile] = []
+	var xNeg: int = x - distance
+	var xPos: int = x + distance
+	var yNeg: int = y - distance
+	var yPos: int = y + distance
+	var checkNegX: bool = xNeg >= 0
+	var checkPosX: bool = xPos < gridSize
+	var checkNegY: bool = yNeg >= 0
+	var checkPosY: bool = yPos < gridSize
+	if !checkNegX && !checkPosX: return result
+	if !checkNegY && !checkPosY: return result
+	if checkNegX && checkNegY:
+		result.append(tiles[xNeg][yNeg])
+	if checkPosX && checkNegY:
+		result.append(tiles[xPos][yNeg])
+	if checkNegX && checkPosY:
+		result.append(tiles[xNeg][yPos])
+	if checkPosX && checkPosY:
+		result.append(tiles[xPos][yPos])
+	var startX: int
+	if checkNegX: startX = 0
+	else: startX = 0 - xNeg
+	var endX: int
+	if checkPosX: endX = gridSize
+	else: endX = 2 * gridSize - xPos
+	var startY: int
+	if checkNegY: startY = 0
+	else: startY = 0 - yNeg
+	var endY: int
+	if checkPosY: endY = gridSize
+	else: endY = 2 * gridSize - yPos
+	for j in range(1, 2 * distance + 1):
+		if(startX <= j && j <= endX):
+			if checkNegY: result.append(tiles[xNeg + j][yNeg])
+			if checkPosY: result.append(tiles[xNeg + j][yPos])
+		if(startY <= j && j <= endY):
+			if checkNegX: result.append(tiles[xNeg][yNeg + j])
+			if checkPosX: result.append(tiles[xPos][yNeg + j])
+	var dict: Dictionary = {}
+	for i in result: dict[i] = true
+	return dict.keys()
+
 #func get_Map_Setup_Data(mapSizeSliderScene, TileGridScene):
 	
 
@@ -205,7 +313,7 @@ func turnMode(tile: Tile):
 			
 			if tile.unit.active:
 				state.active_tile = tile
-				drawPosibleUnitMoves(tile)
+				drawMoves2(tile)
 			else: 
 				state.active_tile = null
 				clear_layer(Layer.UNIT_MOVE)
@@ -227,6 +335,64 @@ func turnMode(tile: Tile):
 			state.active_tile = null
 			clear_layer(Layer.UNIT_MOVE)
 			
+
+func getPossibleMoves(movement: int, unit: Unit, position: Vector2i) -> Dictionary:
+	var tilesToCheck: Array = []
+	var movementUsed: Dictionary = {}
+	for i in get_surrounding_tiles(position):
+		var tile: Tile = i
+		var tileMovement: float = getMovementCost(unit, get_tile(position), tile)
+		if tileMovement == -1: continue
+		movementUsed[tile] = tileMovement
+		tilesToCheck.push_back(tile)
+	while !tilesToCheck.is_empty():
+		var currentTile: Tile = tilesToCheck.pop_front()
+		if currentTile == get_tile(position): continue
+		var currentMovement: float = movementUsed[currentTile]
+		if currentMovement >= movement: continue
+		var neighbors: Array = get_surrounding_tiles(currentTile.position)
+		for i in neighbors:
+			var tile: Tile = i
+			var tileMovement: float = getMovementCost(unit, currentTile, tile)
+			if tileMovement == -1: continue
+			var totalMovement: float = currentMovement + tileMovement
+			if movementUsed.get(tile) == null || totalMovement < movementUsed[tile]:
+				movementUsed[tile] = totalMovement
+				tilesToCheck.push_back(tile)
+	return movementUsed
+	
+	
+func terrainCosts(position: Vector2i) -> int:
+	var terrain: int = get_cell_source_id(Layer.TILE, position)
+	match terrain:
+		Constants.Asset.MOUNTAIN: return 4
+		Constants.Asset.FOREST: return 4
+	return 1
+
+
+func getMovementCost(unit: Unit, startPosition: Tile, endPosition: Tile) -> float:
+	if endPosition.unit != null: return -1
+	var tileType: int = get_cell_source_id(Layer.TILE, endPosition.position)
+	var isWater: bool = tileType == Constants.Asset.SHORES || tileType == Constants.Asset.OCEAN
+	if isWater: return -1
+	var zocTiles: Array = get_surrounding_tiles(endPosition.position)
+	for i in zocTiles:
+		var iTile: Tile = i
+		if iTile.unit != null && iTile.unit.player != unit.player:
+			return 100
+	if startPosition.road && endPosition.road: return .5
+	else: return terrainCosts(endPosition.position)
+	
+func drawMoves2(tile: Tile):
+	var unit: Unit = tile.unit
+	var possible: Dictionary = getPossibleMoves(unit.movement, unit, tile.position)
+	for i in possible.keys():
+		var iTile: Tile = i
+		var cost: float = possible[i]
+		if cost > 100:
+			set_cell(Layer.UNIT_MOVE, iTile.position, Constants.Asset.ZOC1MOVETARGET, Vector2i.ZERO, 0)
+		else:
+			set_cell(Layer.UNIT_MOVE, iTile.position, Constants.Asset.MOVETARGET, Vector2i.ZERO, 0)	
 			
 var looper = 0		
 func drawPosibleUnitMoves(tile: Tile):
