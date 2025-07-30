@@ -1,0 +1,27 @@
+class_name PlayerHead
+var player: int
+var tribe: Vector2i
+var color: Vector2i
+var location: int
+
+func _init(
+	playerP,
+	tribeP,
+	colorP,
+	locationP
+):
+	player = playerP	
+	tribe = tribeP
+	color = colorP
+	location = locationP
+	
+func printer():
+	print(player)
+	
+func finder():
+	if location == 0:
+		return true
+	else:
+		false
+func finderInt():
+	return location

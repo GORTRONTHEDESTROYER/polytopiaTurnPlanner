@@ -2,7 +2,7 @@ class_name Tile
 extends Resource
 #generation
 var type: Constants.TileType
-var tribe: Constants.Tribe
+var tribe: Vector2i
 var building: Constants.BuildingType
 var position: Vector2i
 var typeHeld: Constants.TileType
@@ -31,7 +31,7 @@ var resourceLevel: int
 
 func _init(
 	typeP: Constants.TileType, 
-	tribeP: Constants.Tribe,
+	tribeP: Vector2i,
 	posP: Vector2i,
 	resP: int = 0
 ):

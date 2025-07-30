@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://v2jasy851nff"]
+[gd_scene load_steps=67 format=3 uid="uid://v2jasy851nff"]
 
 [ext_resource type="Texture2D" uid="uid://dxbhx4ys67t1g" path="res://imageHolder/tileHolder/selection.png" id="1_esfrv"]
 [ext_resource type="Texture2D" uid="uid://b0exvca3bkv2i" path="res://imageHolder/tileHolder/imp_field.png" id="2_qjcu4"]
@@ -28,8 +28,6 @@
 [ext_resource type="Texture2D" uid="uid://cs7olqkuf8pof" path="res://imageHolder/dropDownTextures/dropDownBottom.png" id="19_2b4b6"]
 [ext_resource type="Script" uid="uid://b16u7jsxboboq" path="res://scenes/dropDownPH.gd" id="26_yd5n3"]
 [ext_resource type="Script" uid="uid://bfuip03r8gdsv" path="res://scripts/SelectHead.gd" id="27_yd5n3"]
-[ext_resource type="Texture2D" uid="uid://cmyxvk25dqfx7" path="res://imageHolder/unitHolder/Tribecolors.png" id="28_30l83"]
-[ext_resource type="Texture2D" uid="uid://bqq48fn1avxwy" path="res://imageHolder/unitHolder/ColorSelected.png" id="29_hony2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rykb3"]
 texture = ExtResource("1_esfrv")
@@ -379,27 +377,20 @@ func _unhandled_input( event ):
 		__keys[3] = false
 "
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_65ywv"]
-texture = ExtResource("28_30l83")
-margins = Vector2i(0, 1)
-separation = Vector2i(2, 2)
-texture_region_size = Vector2i(42, 40)
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-6:0/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-6:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kyvky"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yf0go"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nuoyw"]
+bg_color = Color(1, 1, 1, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v2dff"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_su42j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l46qg"]
 texture = ExtResource("9_wfqim")
@@ -421,34 +412,9 @@ texture_region_size = Vector2i(42, 40)
 0:2/0 = 0
 1:2/0 = 0
 2:2/0 = 0
-4:2/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_680vu"]
-texture = ExtResource("29_hony2")
-margins = Vector2i(0, 6)
-separation = Vector2i(2, 0)
-texture_region_size = Vector2i(42, 41)
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-6:0/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-6:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_65ywv"]
-sources/2 = SubResource("TileSetAtlasSource_680vu")
-sources/1 = SubResource("TileSetAtlasSource_l46qg")
-sources/0 = SubResource("TileSetAtlasSource_65ywv")
+sources/0 = SubResource("TileSetAtlasSource_l46qg")
 
 [node name="Node2D" type="Node2D"]
 
@@ -457,9 +423,7 @@ tile_set = SubResource("TileSet_p2dm1")
 format = 2
 layer_0/name = "base_layer"
 layer_1/name = "resource_layer"
-layer_1/tile_data = PackedInt32Array(65549, 196623, 1)
 layer_2/name = "building_road"
-layer_2/tile_data = PackedInt32Array(65549, 262160, 1)
 layer_3/name = "buildings_layer"
 layer_4/name = "unit_move_layer"
 layer_5/name = "unit_layer"
@@ -672,8 +636,26 @@ ignore_rotation = false
 process_callback = 0
 script = SubResource("GDScript_o7v4p")
 
-[node name="tribeSelectHeader" type="NinePatchRect" parent="CanvasLayer"]
+[node name="PlayerSelectButton" type="Button" parent="CanvasLayer"]
+visibility_layer = 16
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -82.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 82.0
+grow_horizontal = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kyvky")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_yf0go")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nuoyw")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_v2dff")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_su42j")
+action_mode = 0
+
+[node name="tribeSelectHeader" type="NinePatchRect" parent="CanvasLayer/PlayerSelectButton"]
 top_level = true
+layout_mode = 0
 offset_left = 1070.0
 offset_top = 6.0
 offset_right = 1146.0
@@ -685,7 +667,7 @@ patch_margin_right = 38
 patch_margin_bottom = 38
 script = ExtResource("26_yd5n3")
 
-[node name="tribeSelectExpand" type="NinePatchRect" parent="CanvasLayer/tribeSelectHeader"]
+[node name="tribeSelectExpand" type="NinePatchRect" parent="CanvasLayer/PlayerSelectButton/tribeSelectHeader"]
 visible = false
 layout_mode = 0
 offset_top = 70.0
@@ -697,16 +679,13 @@ patch_margin_top = 38
 patch_margin_right = 38
 patch_margin_bottom = 38
 
-[node name="TileMapSelect" type="TileMap" parent="CanvasLayer/tribeSelectHeader"]
+[node name="TileMap" type="TileMap" parent="CanvasLayer/PlayerSelectButton/tribeSelectHeader"]
 position = Vector2(0, -15)
 scale = Vector2(5, 5)
 tile_set = SubResource("TileSet_65ywv")
 format = 2
 layer_0/name = "Color"
-layer_1/name = "Diplo"
-layer_1/tile_data = PackedInt32Array(65536, 262145, 2)
-layer_2/name = "Head"
-layer_3/name = "Selected"
+layer_1/name = "Head"
 script = ExtResource("27_yd5n3")
 
 [connection signal="toggled" from="CanvasLayer/VBoxContainer/Tier_One" to="TileMap" method="_on_tier_one_toggled"]
@@ -722,3 +701,4 @@ script = ExtResource("27_yd5n3")
 [connection signal="toggled" from="CanvasLayer/VBoxContainer/Ocean_Button" to="TileMap" method="_on_ocean_button_toggled"]
 [connection signal="toggled" from="CanvasLayer/VBoxContainer/Ruin_Button" to="TileMap" method="_on_ruin_button_toggled"]
 [connection signal="toggled" from="CanvasLayer/VBoxContainer/Village_Button" to="TileMap" method="_on_village_button_toggled"]
+[connection signal="pressed" from="CanvasLayer/PlayerSelectButton" to="CanvasLayer/PlayerSelectButton/tribeSelectHeader" method="_on_player_select_button_pressed"]

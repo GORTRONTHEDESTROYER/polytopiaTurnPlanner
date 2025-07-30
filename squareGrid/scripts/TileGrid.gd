@@ -20,13 +20,11 @@ func get_tile(pos: Vector2i) -> Tile:
 	
 
 func _ready():
-	print(Global.players)
-
 	for x in range(gridSize):
 		tiles.append([])
 		for y in range(gridSize):
 			tiles[x].append(
-				Tile.new(Constants.TileType.FIELD, Constants.Tribe.IMP, Vector2i(x, y))
+				Tile.new(Constants.TileType.FIELD, Constants.Tribe["IMP"], Vector2i(x, y))
 			)
 			
 			set_cell(Layer.TILE, Vector2i(x, y), Constants.Asset.FIELD, Vector2i.ZERO, 0)
@@ -157,8 +155,7 @@ func updateLook(tile: Tile):
 		[Constants.BuildingType.VILLAGE, _]:
 				tile.road = true
 				set_cell(Layer.ROAD, tile.position, Constants.Asset.VILLAGE, Vector2i.ZERO, 0)
-	
-	
+			
 			#erase_cell(Layer., tile.position)
 			#set_cell(Layer.BUILDING, tile.position, Constants.Asset.ROAD, Vector2i.ZERO, 0)
 			

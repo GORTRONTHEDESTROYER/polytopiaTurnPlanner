@@ -2,7 +2,7 @@ class_name Unit
 
 var type: Constants.UnitType
 
-var tribe: Constants.Tribe
+var tribe: Vector2i
 var player: Constants.Player
 var color: Vector2i = Vector2i(0,0)
 var ready: bool = true

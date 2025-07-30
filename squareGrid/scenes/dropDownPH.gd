@@ -1,0 +1,175 @@
+extends NinePatchRect
+var players : int = Global.players
+@onready var TileMapHS = $TileMapSelect
+var head: Array = []
+#var PH = PlayerHead.new()
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	#TileMapHS.start()
+	
+	#PlayerHead.start()
+	print("i")
+
+	for i in players:
+		print(i)
+		head.append(PlayerHead.new(i,Constants.Tribe.XIN,Constants.Tribe.XIN, i))
+		#TileMapHS.updateTribe(head[i])
+		#head[i].printer()
+	TileMapHS.update(head[0])
+		
+	head[3].tribe = Vector2i(1,0)
+	
+	head[3].color = Constants.Tribe.CYM
+	head[4].color = Constants.Tribe.VEN
+	head[2].color = Constants.Tribe.IMP
+	head[1].color = Constants.Tribe.HOO
+	#for i in players:
+		#TileMapHS.update(head[i])
+		
+	#TileMapHS.updateTribe(head[3])
+	#generateAltHeads()
+	#generateAltColors()
+
+	
+	
+	#TileMapHS.start()
+	#pass # Replace with function body.
+
+#var prev_tile_pos: Vector2i = Vector2i(0, 0)
+var hid = true
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	#var positionC3 = get_viewport().position
+	#var mousePosition2 = get_viewport().get_mouse_position()
+	#var tile_pos: Vector2i = local_to_map(mousePosition + positionC2)
+	var tile_pos2: Vector2i = Vector2i((TileMapHS.local_to_map(get_global_mouse_position()).x + 3) / 5,(TileMapHS.local_to_map(get_global_mouse_position()).y / 5) )
+	tile_pos2 = tile_pos2 - Vector2i(14, 0)
+	#print(tile_pos2)
+	TileMapHS.clear_layer(3)
+	get_tile(tile_pos2)
+	#prev_tile_pos = tile_pos2
+	
+	if Input.is_action_just_released("LEFT_MOUSE_BUTTON"):
+		#var headHolder = 0
+		#var headHolder2 = 0
+		
+		var breaker = false
+		if (tile_pos2.x > -7 && tile_pos2.y < 7 && tile_pos2.x < 0 && tile_pos2.y > 0):
+			if TileMapHS.get_cell_tile_data(2,Vector2i(tile_pos2.x,1+tile_pos2.y)) != null:
+				for i in players:
+					if head[i].location == 0:
+						head[i].tribe = TileMapHS.get_cell_atlas_coords(2,Vector2i(tile_pos2.x,1+tile_pos2.y))
+						TileMapHS.update(head[i])
+						break
+			elif TileMapHS.get_cell_tile_data(0,Vector2i(tile_pos2.x,1+tile_pos2.y)) != null:
+				for i in players:
+					if head[i].location == 0:
+						head[i].color = TileMapHS.get_cell_atlas_coords(0,Vector2i(tile_pos2.x,1+tile_pos2.y))
+						TileMapHS.update(head[i])
+						break
+
+		elif tile_pos2.x < 0 or tile_pos2.y < 0 or tile_pos2.x >= 1 or tile_pos2.y >= players:
+			pass
+		elif (tile_pos2.y == 0):
+			if hid == false:
+				TileMapHS.hideUnselected(players)
+			else: 
+				for i in players:
+					TileMapHS.update(head[i])
+					generateAltHeads()
+					generateAltColors()	
+			hid = !hid
+		elif !hid:
+			for i in players:
+				if breaker == true:
+					break
+				if head[i].location == tile_pos2.y:
+					for j in players:
+						if head[j].location == 0:
+							head[j].location = tile_pos2.y
+							print(head[j].location)
+							head[i].location = 0
+							breaker = true
+							TileMapHS.update(head[i])
+							TileMapHS.update(head[j])
+							break
+							
+						
+		#for i in players:
+		#	TileMapHS.update(head[i])
+							
+					
+			
+				
+			#TileMapHS.set_cell(2, Vector2i(0,0), 2, head[pos.y].color,0)
+
+func get_tile(pos: Vector2i) -> void:
+	if pos.x < 0 or pos.y < 0 or pos.x >= 1 or pos.y >= players:
+		pass
+	else:
+		for i in players:
+			if head[i].location == pos.y:
+				if head[i].location == 0:
+					TileMapHS.set_cell(3, Vector2i(pos.x,pos.y + 1), 2, head[i].color,0)
+				elif(!hid):
+					TileMapHS.set_cell(3, Vector2i(pos.x,pos.y + 1), 2, head[i].color,0)
+				return
+	if !hid && (pos.x > -7 && pos.y < 7 && pos.x < 0 && pos.y > 0):
+		TileMapHS.set_cell(3, Vector2i(pos.x,pos.y + 1), 2, Constants.Tribe.VEN,0)
+
+	#return void
+
+func generateAltHeads():
+	
+	TileMapHS.set_cell(2, Vector2i(-6,2), 1, Constants.Tribe.XIN,0)
+	TileMapHS.set_cell(2, Vector2i(-5,2), 1, Constants.Tribe.IMP,0)
+	TileMapHS.set_cell(2, Vector2i(-4,2), 1, Constants.Tribe.BAR,0)
+	TileMapHS.set_cell(2, Vector2i(-3,2), 1, Constants.Tribe.OUM,0)
+	TileMapHS.set_cell(2, Vector2i(-2,2), 1, Constants.Tribe.KIC,0)
+	TileMapHS.set_cell(2, Vector2i(-1,2), 1, Constants.Tribe.HOO,0)
+	
+	TileMapHS.set_cell(2, Vector2i(-6,3), 1, Constants.Tribe.LUX,0)
+	TileMapHS.set_cell(2, Vector2i(-5,3), 1, Constants.Tribe.VEN,0)
+	TileMapHS.set_cell(2, Vector2i(-4,3), 1, Constants.Tribe.ZEB,0)
+	TileMapHS.set_cell(2, Vector2i(-3,3), 1, Constants.Tribe.AIM,0)
+	TileMapHS.set_cell(2, Vector2i(-2,3), 1, Constants.Tribe.QUE,0)
+	TileMapHS.set_cell(2, Vector2i(-1,3), 1, Constants.Tribe.YAD,0)
+	
+	TileMapHS.set_cell(2, Vector2i(-6,4), 1, Constants.Tribe.AQU,0)
+	TileMapHS.set_cell(2, Vector2i(-5,4), 1, Constants.Tribe.ELY,0)
+	TileMapHS.set_cell(2, Vector2i(-4,4), 1, Constants.Tribe.POL,0)
+	TileMapHS.set_cell(2, Vector2i(-3,4), 1, Constants.Tribe.CYM,0)
+	
+
+
+			
+func generateAltColors():
+	TileMapHS.set_cell(0, Vector2i(-6,5), 0, Constants.Tribe.XIN,0)
+	TileMapHS.set_cell(0, Vector2i(-5,5), 0, Constants.Tribe.IMP,0)
+	TileMapHS.set_cell(0, Vector2i(-4,5), 0, Constants.Tribe.BAR,0)
+	TileMapHS.set_cell(0, Vector2i(-3,5), 0, Constants.Tribe.OUM,0)
+	TileMapHS.set_cell(0, Vector2i(-2,5), 0, Constants.Tribe.KIC,0)
+	TileMapHS.set_cell(0, Vector2i(-1,5), 0, Constants.Tribe.HOO,0)
+	
+	TileMapHS.set_cell(0, Vector2i(-6,6), 0, Constants.Tribe.LUX,0)
+	TileMapHS.set_cell(0, Vector2i(-5,6), 0, Constants.Tribe.VEN,0)
+	TileMapHS.set_cell(0, Vector2i(-4,6), 0, Constants.Tribe.ZEB,0)
+	TileMapHS.set_cell(0, Vector2i(-3,6), 0, Constants.Tribe.AIM,0)
+	TileMapHS.set_cell(0, Vector2i(-2,6), 0, Constants.Tribe.QUE,0)
+	TileMapHS.set_cell(0, Vector2i(-1,6), 0, Constants.Tribe.YAD,0)
+	
+	TileMapHS.set_cell(0, Vector2i(-6,7), 0, Constants.Tribe.AQU,0)
+	TileMapHS.set_cell(0, Vector2i(-5,7), 0, Constants.Tribe.ELY,0)
+	TileMapHS.set_cell(0, Vector2i(-4,7), 0, Constants.Tribe.POL,0)
+	TileMapHS.set_cell(0, Vector2i(-3,7), 0, Constants.Tribe.CYM,0)
+	#	print("player")
+	#	print(head[i].player)
+	#	print(head[i].location)
+		
+
+	
+	#if $tribeSelectExpand.visible == false:
+	#	$tribeSelectExpand.visible = true
+
+	#else:
+	#	$tribeSelectExpand.visible = false

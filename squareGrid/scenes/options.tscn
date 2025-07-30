@@ -48,5 +48,5 @@ text = "Resolution
 layout_mode = 2
 text = "Back"
 
-[connection signal="pressed" from="MarginContainer/CanvasLayer/HBoxContainer/VBoxContainer/Options" to="." method="_on_options_pressed" flags=18]
+[connection signal="pressed" from="MarginContainer/CanvasLayer/HBoxContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="MarginContainer/CanvasLayer/HBoxContainer/VBoxContainer/goBack" to="." method="_on_go_back_pressed"]
