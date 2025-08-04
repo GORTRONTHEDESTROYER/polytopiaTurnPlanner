@@ -8,6 +8,7 @@ func _ready():
 	#var array_3 = []
 	#rand = 2
 	#print(rand)
+	
 	match rand:
 		0:
 			res = load("res://imageHolder/mainMenuBackgrounds/woe.png")

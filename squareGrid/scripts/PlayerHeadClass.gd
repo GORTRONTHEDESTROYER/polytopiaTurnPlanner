@@ -3,6 +3,7 @@ var player: int
 var tribe: Vector2i
 var color: Vector2i
 var location: int
+var diplo: Array
 
 func _init(
 	playerP,
@@ -10,6 +11,7 @@ func _init(
 	colorP,
 	locationP
 ):
+	
 	player = playerP	
 	tribe = tribeP
 	color = colorP

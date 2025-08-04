@@ -1,6 +1,7 @@
 class_name Tile
 extends Resource
 #generation
+var player: int
 var type: Constants.TileType
 var tribe: Vector2i
 var building: Constants.BuildingType

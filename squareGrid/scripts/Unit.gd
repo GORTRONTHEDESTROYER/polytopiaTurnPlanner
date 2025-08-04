@@ -2,16 +2,16 @@ class_name Unit
 
 var type: Constants.UnitType
 
-var tribe: Vector2i
-var player: Constants.Player
-var color: Vector2i = Vector2i(0,0)
+#var tribe: Vector2i
+var player
+#var color: Vector2i = Vector2i(0,0)
 var ready: bool = true
 var active: bool = false
 var movement: int = 0 
 
 func _init(
 	#typeP: Constants.UnitType,
-	playerP: Constants.Player
+	playerP: int
 ):
 	#type = typeP
 	player = playerP

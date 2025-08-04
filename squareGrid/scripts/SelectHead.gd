@@ -1,5 +1,7 @@
 extends TileMap
 
+@export var unitBoard: TileMap
+
 
 #func updateTribe(head):
 	#set_cell(1,Vector2i(0,1 + head.location),0,head.tribe,0)
@@ -11,12 +13,15 @@ func update(head):
 	
 
 	#head
-	set_cell(2,Vector2i(0,1 + head.location),1,head.tribe,0)
+	set_cell(1,Vector2i(0,1 + head.location),1,head.tribe,0)
 	#color
 	set_cell(0,Vector2i(0,1 + head.location),0,head.color,0)
-
-
 	
+	unitBoard.updateAllUnitLook()
+	unitBoard.updateAllTileLook()
+	
+	
+
 
 		
 func hideUnselected(ip)->void:
@@ -25,6 +30,8 @@ func hideUnselected(ip)->void:
 			pass
 		else:
 			erase_cell(0,Vector2i(0,1+i))
+			erase_cell(1,Vector2i(0,1+i))
+
 			erase_cell(2,Vector2i(0,1+i))
 			
 			for j in 6:

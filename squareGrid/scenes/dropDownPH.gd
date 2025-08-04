@@ -2,6 +2,7 @@ extends NinePatchRect
 var players : int = Global.players
 @onready var TileMapHS = $TileMapSelect
 var head: Array = []
+
 #var PH = PlayerHead.new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,6 +24,8 @@ func _ready():
 	head[4].color = Constants.Tribe.VEN
 	head[2].color = Constants.Tribe.IMP
 	head[1].color = Constants.Tribe.HOO
+	
+	print(head[1].location)
 	#for i in players:
 		#TileMapHS.update(head[i])
 		
@@ -37,6 +40,7 @@ func _ready():
 
 #var prev_tile_pos: Vector2i = Vector2i(0, 0)
 var hid = true
+var diplo = false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#var positionC3 = get_viewport().position
@@ -50,12 +54,17 @@ func _process(delta):
 	#prev_tile_pos = tile_pos2
 	
 	if Input.is_action_just_released("LEFT_MOUSE_BUTTON"):
-		#var headHolder = 0
-		#var headHolder2 = 0
+		#tribe and color switcher
 		
 		var breaker = false
 		if (tile_pos2.x > -7 && tile_pos2.y < 7 && tile_pos2.x < 0 && tile_pos2.y > 0):
-			if TileMapHS.get_cell_tile_data(2,Vector2i(tile_pos2.x,1+tile_pos2.y)) != null:
+			if(tile_pos2.x == -2 && tile_pos2.y == 3):
+				diplo = !diplo
+				if diplo:
+					TileMapHS.set_cell(0, Vector2i(-2,4), 0, Constants.Tribe.KIC,0)
+				else:
+					TileMapHS.erase_cell(0,Vector2i(-2,4))
+			elif TileMapHS.get_cell_tile_data(2,Vector2i(tile_pos2.x,1+tile_pos2.y)) != null:
 				for i in players:
 					if head[i].location == 0:
 						head[i].tribe = TileMapHS.get_cell_atlas_coords(2,Vector2i(tile_pos2.x,1+tile_pos2.y))
@@ -67,17 +76,20 @@ func _process(delta):
 						head[i].color = TileMapHS.get_cell_atlas_coords(0,Vector2i(tile_pos2.x,1+tile_pos2.y))
 						TileMapHS.update(head[i])
 						break
-
+		#hider / shower switch
 		elif tile_pos2.x < 0 or tile_pos2.y < 0 or tile_pos2.x >= 1 or tile_pos2.y >= players:
 			pass
 		elif (tile_pos2.y == 0):
 			if hid == false:
 				TileMapHS.hideUnselected(players)
+				diplo = false
 			else: 
 				for i in players:
+					if head[i].location == 0:
+						showDiplo(head[i])
 					TileMapHS.update(head[i])
 					generateAltHeads()
-					generateAltColors()	
+					generateAltColors()
 			hid = !hid
 		elif !hid:
 			for i in players:
@@ -86,13 +98,26 @@ func _process(delta):
 				if head[i].location == tile_pos2.y:
 					for j in players:
 						if head[j].location == 0:
-							head[j].location = tile_pos2.y
-							print(head[j].location)
-							head[i].location = 0
-							breaker = true
-							TileMapHS.update(head[i])
-							TileMapHS.update(head[j])
-							break
+							
+							if diplo:
+								if head[j].diplo.has(int(head[i].player)):
+									head[j].diplo.erase(int(head[i].player))
+									head[i].diplo.erase(int(head[j].player))
+									showDiplo(head[j])
+								else:
+									head[j].diplo.append(int(head[i].player)) 
+									head[i].diplo.append(int(head[j].player)) 
+									showDiplo(head[j])
+									
+							else:
+								head[j].location = tile_pos2.y
+								#print(head[j].location)
+								head[i].location = 0
+								breaker = true
+								TileMapHS.update(head[i])
+								TileMapHS.update(head[j])
+								showDiplo(head[i])
+								break
 							
 						
 		#for i in players:
@@ -119,6 +144,22 @@ func get_tile(pos: Vector2i) -> void:
 
 	#return void
 
+func showDiplo(headP):
+	for i in players:
+		TileMapHS.erase_cell(2,Vector2i(0,1+i))
+
+#	print("diplo")
+#	print( headP.diplo)
+	for i in headP.diplo.size():
+	#	print("i2")
+	#	print(i)
+	#	print(headP.diplo[i - 1])
+	#	print(head[1].location)
+		#print(head[2].location)
+		#print( head[(head.diplo[i-1])-1].location)
+		TileMapHS.set_cell(2,Vector2i(0,1 + head[headP.diplo[i-1]].location),1,Vector2i(4,2),0)
+
+
 func generateAltHeads():
 	
 	TileMapHS.set_cell(2, Vector2i(-6,2), 1, Constants.Tribe.XIN,0)
@@ -139,6 +180,9 @@ func generateAltHeads():
 	TileMapHS.set_cell(2, Vector2i(-5,4), 1, Constants.Tribe.ELY,0)
 	TileMapHS.set_cell(2, Vector2i(-4,4), 1, Constants.Tribe.POL,0)
 	TileMapHS.set_cell(2, Vector2i(-3,4), 1, Constants.Tribe.CYM,0)
+	
+	TileMapHS.set_cell(2, Vector2i(-2,4), 1, Vector2i(4,2),0)
+
 	
 
 
@@ -165,6 +209,12 @@ func generateAltColors():
 	#	print("player")
 	#	print(head[i].player)
 	#	print(head[i].location)
+	
+func selected():
+	for i in players:
+		if head[i].location == 0:
+			return head[i]
+	return head[0]
 		
 
 	
