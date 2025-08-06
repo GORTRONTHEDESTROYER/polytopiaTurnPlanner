@@ -255,7 +255,7 @@ func drawPosibleUnitMoves(tile: Tile):
 	#roadTiles(movement*3,tile.position)
 	tile.spacer = 0
 	
-	nextTiles2(movement*2, tile.position)
+	movementRevamp(movement*2, tile.position)
 	print(looper)
 	
 	movement = movement * 2
@@ -267,7 +267,87 @@ func drawPosibleUnitMoves(tile: Tile):
 				tiles[tileMoveDistClear.x][tileMoveDistClear.y].movementDist = -1
 				tiles[tileMoveDistClear.x][tileMoveDistClear.y].spacer = -1
 				
-			
+func movementRevamp(movement: int, vectorHoldPassed: Vector2i, stupid: bool = true):
+	
+	var sneak = false
+	var creep = false
+	movement = movement - 1 + tiles[vectorHoldPassed.x][vectorHoldPassed.y].spacer
+	#sets the tile to movable
+	set_cell(Layer.UNIT_MOVE, vectorHoldPassed, Constants.Asset.MOVETARGET, Vector2i.ZERO, 0)
+	if(movement >= 0):
+		#gets access to adjacent tiles
+		for x in range(3):
+			for y in range(3):
+				#holds position of adjacent tile
+				var vectorHold: Vector2i = vectorHoldPassed + Vector2i(x,y) - Vector2i(1,1)
+				if(!inBounds(vectorHold)):
+					continue  
+				if(tiles[vectorHold.x][vectorHold.y].zoneControl == 2):
+					continue  
+				if(tiles[vectorHold.x][vectorHold.y].zoneControl == 1) && creep == false:
+					roughTerrain(vectorHold,vectorHoldPassed,movement,stupid)
+					continue  
+				if(sneak == false):
+					zoneOfControl(vectorHold,vectorHoldPassed,movement,stupid)
+				
+				if(get_cell_source_id(Layer.UNIT_MOVE,vectorHold)!=12 && get_cell_source_id(Layer.UNIT_MOVE,vectorHold)!=13):
+					if(tiles[vectorHold.x][vectorHold.y].road && tiles[vectorHoldPassed.x][vectorHoldPassed.y].road):
+						roadRec(vectorHold,vectorHoldPassed,movement,stupid)
+						continue
+					if(movement>tiles[vectorHold.x][vectorHold.y].movementDist):
+						#looper = looper + 1
+						tiles[vectorHold.x][vectorHold.y].movementDist = movement
+						nextTiles2(movement, vectorHold)
+				
+				
+				
+				
+				
+func zoneOfControl(vectorHold,vectorHoldPassed,movement,stupid):
+	for i in range(3):
+		for j in range(3): 
+			var vectorHold2 = vectorHold + Vector2i(i,j) - Vector2i(1,1) 
+			if(inBounds(vectorHold2)):
+				if(tiles[vectorHold2.x][vectorHold2.y].zoneControl == 2):
+					set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.ZOC1MOVETARGET, Vector2i.ZERO, 0)
+					set_cell(Layer.UNIT_MOVE, vectorHold2, Constants.Asset.ZOC2MOVETARGET, Vector2i.ZERO, 0)
+
+				
+					
+func roughTerrain(vectorHold,vectorHoldPassed,movement,stupid):
+	if(tiles[vectorHold.x][vectorHold.y].road && tiles[vectorHoldPassed.x][vectorHoldPassed.y].road):
+		if(tiles[vectorHold.x][vectorHold.y].spacer == -1 && tiles[vectorHoldPassed.x][vectorHoldPassed.y].spacer == -1):
+			nextTiles2(movement+1, vectorHold)
+		elif(tiles[vectorHold.x][vectorHold.y].movementDistSource == tiles[vectorHoldPassed.x][vectorHoldPassed.y].movementDistSource):
+			if(stupid == true):
+				nextTiles2(movement+1, vectorHold, false)
+		else:
+			nextTiles2(movement, vectorHold)
+	else:	
+		if(get_cell_source_id(Layer.UNIT_MOVE,vectorHold)!=11):
+			if(movement > 5):
+				var zonepass = true
+				for i in range(3):
+					for j in range(3): 
+						var vectorHold2 = vectorHold + Vector2i(i,j) - Vector2i(1,1) 
+						if(inBounds(vectorHold2)):
+							if(tiles[vectorHold2.x][vectorHold2.y].zoneControl == 2):
+								set_cell(Layer.UNIT_MOVE, vectorHold2, Constants.Asset.ZOC2MOVETARGET, Vector2i.ZERO, 0)
+								zonepass = false
+				if(zonepass):
+					nextTiles2(movement-4, vectorHold)
+			#	nextTiles2(movement-4, vectorHold)
+			set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.ZOC1MOVETARGET, Vector2i.ZERO, 0)
+
+func roadRec(vectorHold,vectorHoldPassed,movement,stupid):
+	if(tiles[vectorHold.x][vectorHold.y].spacer == -1 && tiles[vectorHoldPassed.x][vectorHoldPassed.y].spacer == -1):
+		nextTiles2(movement+1, vectorHold)
+	elif(tiles[vectorHold.x][vectorHold.y].movementDistSource == tiles[vectorHoldPassed.x][vectorHoldPassed.y].movementDistSource):
+		if(stupid == true):
+			nextTiles2(movement+1, vectorHold, false)
+
+				
+	
 
 func nextTiles2(movement: int, vectorHoldPassed: Vector2i, stupid: bool = true):   #good luck reading this lmao
 	#var roadHold = roadPassed

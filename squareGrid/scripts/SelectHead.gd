@@ -38,3 +38,4 @@ func hideUnselected(ip)->void:
 				for k in 6:
 					erase_cell(2,Vector2i(-6+k,2+j))
 					erase_cell(0,Vector2i(-6+k,2+j))
+			

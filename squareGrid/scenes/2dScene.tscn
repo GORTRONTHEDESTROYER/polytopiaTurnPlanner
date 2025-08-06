@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://v2jasy851nff"]
+[gd_scene load_steps=80 format=3 uid="uid://v2jasy851nff"]
 
 [ext_resource type="Texture2D" uid="uid://dxbhx4ys67t1g" path="res://imageHolder/tileHolder/selection.png" id="1_esfrv"]
 [ext_resource type="Texture2D" uid="uid://b0exvca3bkv2i" path="res://imageHolder/tileHolder/imp_field.png" id="2_qjcu4"]
@@ -31,6 +31,8 @@
 [ext_resource type="Texture2D" uid="uid://b3yvhv0h4s0br" path="res://imageHolder/dropDownTextures/dropdownHeadFram.png" id="18_18us0"]
 [ext_resource type="Texture2D" uid="uid://cs7olqkuf8pof" path="res://imageHolder/dropDownTextures/dropDownBottom.png" id="19_2b4b6"]
 [ext_resource type="Texture2D" uid="uid://bypvk08lfa30w" path="res://imageHolder/tileHolder/allFruit.png" id="19_gcori"]
+[ext_resource type="Texture2D" uid="uid://b5aqwff0qvncq" path="res://imageHolder/unitHolder/allRiders2.png" id="20_akots"]
+[ext_resource type="Texture2D" uid="uid://dy21xkg33arb2" path="res://imageHolder/unitHolder/swordsmanBody.png" id="20_tq0yr"]
 [ext_resource type="Script" uid="uid://b16u7jsxboboq" path="res://scenes/dropDownPH.gd" id="26_yd5n3"]
 [ext_resource type="Script" uid="uid://bfuip03r8gdsv" path="res://scripts/SelectHead.gd" id="27_yd5n3"]
 [ext_resource type="Texture2D" uid="uid://cmyxvk25dqfx7" path="res://imageHolder/unitHolder/Tribecolors.png" id="28_30l83"]
@@ -254,6 +256,48 @@ texture_region_size = Vector2i(42, 58)
 2:2/0 = 0
 6:2/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0u2xt"]
+texture = ExtResource("20_tq0yr")
+separation = Vector2i(2, 2)
+texture_region_size = Vector2i(42, 40)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ped4l"]
+texture = ExtResource("20_akots")
+separation = Vector2i(2, 2)
+texture_region_size = Vector2i(42, 47)
+2:2/0 = 0
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7dmpc"]
 texture = ExtResource("4_xooae")
 texture_region_size = Vector2i(42, 54)
@@ -320,6 +364,8 @@ sources/22 = SubResource("TileSetAtlasSource_gcori")
 sources/23 = SubResource("TileSetAtlasSource_akots")
 sources/24 = SubResource("TileSetAtlasSource_tq0yr")
 sources/25 = SubResource("TileSetAtlasSource_qjia3")
+sources/27 = SubResource("TileSetAtlasSource_ped4l")
+sources/26 = SubResource("TileSetAtlasSource_0u2xt")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uxe36"]
 
@@ -582,8 +628,10 @@ layer_1/name = "resource_layer"
 layer_2/name = "building_road"
 layer_3/name = "buildings_layer"
 layer_4/name = "unit_move_layer"
-layer_5/name = "unit_layer"
-layer_6/name = "unit_head"
+layer_5/name = "unit_head"
+layer_5/tile_data = PackedInt32Array(458765, 262160, 1, 458764, 262160, 1, 393228, 262160, 1, 327692, 262160, 1, 327691, 262160, 1, 262155, 262160, 1, 262154, 262160, 1, 196616, 262160, 1, 262152, 262160, 1, 262153, 262160, 1, 327689, 262160, 1, 393225, 262160, 1, 393226, 262160, 1, 327690, 262160, 1, 196618, 262160, 1, 196617, 262160, 1, 131081, 262160, 1, 131080, 262160, 1, 393227, 262160, 1, 458763, 262160, 1, 524300, 262160, 1, 524301, 262160, 1, 524302, 262160, 1, 589838, 262160, 1, 458766, 262160, 1, 393229, 262160, 1, 327687, 262160, 1, 393223, 262160, 1, 458759, 262160, 1, 458760, 262160, 1, 524296, 262160, 1, 524297, 262160, 1, 524298, 262160, 1, 524299, 262160, 1, 589835, 262160, 1, 458762, 262160, 1, 327688, 262160, 1, 262151, 262160, 1, 262150, 262160, 1, 327685, 262160, 1, 393221, 262160, 1, 458757, 262160, 1, 458758, 262160, 1, 524294, 262160, 1, 524295, 262160, 1)
+layer_6/name = "unit_layer"
+layer_6/tile_data = PackedInt32Array(327689, 131098, 1, 327688, 131098, 1, 393224, 131098, 1, 458760, 131098, 1, 458761, 131098, 1, 524297, 131098, 1, 524298, 131098, 1, 524299, 131098, 1, 589835, 131098, 1, 589836, 131098, 1, 589837, 131098, 1, 589838, 131098, 1, 524302, 131098, 1, 458766, 131098, 1, 458765, 131098, 1, 393229, 131098, 1, 327693, 131098, 1, 327692, 131098, 1, 262156, 131098, 1, 262155, 131098, 1, 262154, 131098, 1, 196618, 131098, 1, 196617, 131098, 1, 196616, 131098, 1, 262152, 131098, 1, 262151, 131098, 1, 327687, 131098, 1, 393223, 131098, 1, 458759, 131098, 1, 524295, 131098, 1, 589831, 131098, 1, 589832, 131098, 1, 589833, 131098, 1, 458763, 131098, 1, 393227, 131098, 1, 327691, 131098, 1, 458764, 131098, 1, 393228, 131098, 1, 327690, 131098, 1, 262153, 131098, 1, 393226, 131098, 1)
 layer_7/name = "clouds"
 layer_8/name = "selection_layer"
 script = ExtResource("9_010ei")

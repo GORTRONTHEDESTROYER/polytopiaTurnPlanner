@@ -18,14 +18,14 @@ func _ready():
 		#head[i].printer()
 	TileMapHS.update(head[0])
 		
-	head[3].tribe = Vector2i(1,0)
+	#head[3].tribe = Vector2i(1,0)
 	
-	head[3].color = Constants.Tribe.CYM
-	head[4].color = Constants.Tribe.VEN
-	head[2].color = Constants.Tribe.IMP
-	head[1].color = Constants.Tribe.HOO
+	#head[3].color = Constants.Tribe.CYM
+	#head[4].color = Constants.Tribe.VEN
+	#head[2].color = Constants.Tribe.IMP
+	#head[1].color = Constants.Tribe.HOO
 	
-	print(head[1].location)
+	#print(head[1].location)
 	#for i in players:
 		#TileMapHS.update(head[i])
 		
