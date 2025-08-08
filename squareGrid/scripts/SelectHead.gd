@@ -1,6 +1,7 @@
 extends TileMap
 
 @export var unitBoard: TileMap
+@export var tileSelectPing: Node2D
 
 
 #func updateTribe(head):
@@ -20,6 +21,10 @@ func update(head):
 	unitBoard.updateAllUnitLook()
 	unitBoard.updateAllTileLook()
 	
+	
+	#for i in Global.players:
+		
+	tileSelectPing.ping(head)
 	
 
 

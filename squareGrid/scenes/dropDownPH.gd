@@ -69,6 +69,7 @@ func _process(delta):
 					if head[i].location == 0:
 						head[i].tribe = TileMapHS.get_cell_atlas_coords(2,Vector2i(tile_pos2.x,1+tile_pos2.y))
 						TileMapHS.update(head[i])
+						
 						break
 			elif TileMapHS.get_cell_tile_data(0,Vector2i(tile_pos2.x,1+tile_pos2.y)) != null:
 				for i in players:
@@ -116,6 +117,7 @@ func _process(delta):
 								breaker = true
 								TileMapHS.update(head[i])
 								TileMapHS.update(head[j])
+								TileMapHS.tileSelectPing.ping(head[i])
 								showDiplo(head[i])
 								break
 							

@@ -46,6 +46,8 @@ func _process(_delta):
 	erase_cell(8, prev_tile_pos)
 	var tile = get_tile(tile_pos)
 	
+	#print(tile_type_bt)
+	#tile_type_bt = 1
 	if tile != null:
 		set_cell(8, tile_pos, 0, Vector2i(0,0),0)
 		#print("distSource")
@@ -90,6 +92,7 @@ func updateLook(tile: Tile):
 		[Constants.TileType.FIELD, 1]:
 			tile.typeHeld = tile.type
 			tile.zoneControl = 0
+			erase_cell(Layer.RESOURCE, tile.position)
 			set_cell(Layer.TILE, tile.position, 25, playerSelected.head[tile.player].tribe, 0)
 
 		[Constants.TileType.FIELD, 2]:
@@ -121,18 +124,32 @@ func updateLook(tile: Tile):
 			set_cell(Layer.TILE, tile.position, 24, playerSelected.head[tile.player].tribe, 0)
 			erase_cell(Layer.RESOURCE, tile.position)
 			erase_cell(Layer.ROAD, tile.position)
+		[Constants.TileType.SHORES, 1]:
+			tile.typeHeld = tile.type
+			tile.road = false
+			tile.zoneControl = 3
+			set_cell(Layer.TILE, tile.position, 28, Vector2i(1,0), 0)
+			erase_cell(Layer.RESOURCE, tile.position)
+			erase_cell(Layer.ROAD, tile.position)
 		[Constants.TileType.SHORES, _]:
 			tile.typeHeld = tile.type
 			tile.road = false
-			tile.zoneControl = 1
-			set_cell(Layer.TILE, tile.position, Constants.Asset.SHORES, Vector2i.ZERO, 0)
+			tile.zoneControl = 3
+			set_cell(Layer.TILE, tile.position, 28, Vector2i(3,0), 0)
+			erase_cell(Layer.RESOURCE, tile.position)
+			erase_cell(Layer.ROAD, tile.position)
+		[Constants.TileType.OCEAN, 1]:
+			tile.typeHeld = tile.type
+			tile.road = false
+			tile.zoneControl = 3
+			set_cell(Layer.TILE, tile.position, 28, Vector2i(0,0), 0)
 			erase_cell(Layer.RESOURCE, tile.position)
 			erase_cell(Layer.ROAD, tile.position)
 		[Constants.TileType.OCEAN, _]:
 			tile.typeHeld = tile.type
 			tile.road = false
-			tile.zoneControl = 1
-			set_cell(Layer.TILE, tile.position, Constants.Asset.OCEAN, Vector2i.ZERO, 0)
+			tile.zoneControl = 3
+			set_cell(Layer.TILE, tile.position, 28, Vector2i(2,0), 0)
 			erase_cell(Layer.RESOURCE, tile.position)
 			erase_cell(Layer.ROAD, tile.position)
 		[Constants.TileType.CLOUD, _]:
@@ -249,8 +266,12 @@ var looper = 0
 func drawPosibleUnitMoves(tile: Tile):
 	var movement = tile.unit.movement
 	tiles[1][6].zoneControl = 2
+	var flying = false
+	var creep = false
 	
-	roadTiles2((movement*2),tile.position)
+	
+	if(!flying && !creep):
+		roadTiles2((movement*2),tile.position)
 	
 	#roadTiles(movement*3,tile.position)
 	tile.spacer = 0
@@ -267,11 +288,16 @@ func drawPosibleUnitMoves(tile: Tile):
 				tiles[tileMoveDistClear.x][tileMoveDistClear.y].movementDist = -1
 				tiles[tileMoveDistClear.x][tileMoveDistClear.y].spacer = -1
 				
-func movementRevamp(movement: int, vectorHoldPassed: Vector2i, stupid: bool = true):
-	
+func movementRevamp(movement: int, vectorHoldPassed: Vector2i, stupid: bool = true):	
 	var sneak = false
 	var creep = false
+	var amphibious  = false
+	var water = false
+	var flying = true
+	
 	movement = movement - 1 + tiles[vectorHoldPassed.x][vectorHoldPassed.y].spacer
+
+		
 	#sets the tile to movable
 	set_cell(Layer.UNIT_MOVE, vectorHoldPassed, Constants.Asset.MOVETARGET, Vector2i.ZERO, 0)
 	if(movement >= 0):
@@ -280,27 +306,38 @@ func movementRevamp(movement: int, vectorHoldPassed: Vector2i, stupid: bool = tr
 			for y in range(3):
 				#holds position of adjacent tile
 				var vectorHold: Vector2i = vectorHoldPassed + Vector2i(x,y) - Vector2i(1,1)
+				
+				
 				if(!inBounds(vectorHold)):
 					continue  
 				if(tiles[vectorHold.x][vectorHold.y].zoneControl == 2):
 					continue  
-				if(tiles[vectorHold.x][vectorHold.y].zoneControl == 1) && creep == false:
+				#water movement
+				if((tiles[vectorHold.x][vectorHold.y].zoneControl == 3) && (!amphibious && !water && !flying)):
+					continue
+				if(tiles[vectorHold.x][vectorHold.y].zoneControl != 3) && water:
+					set_cell(Layer.UNIT_MOVE, vectorHold, 28, Vector2i.ZERO, 0)
+					continue
+				if(tiles[vectorHold.x][vectorHold.y].zoneControl < 3) && amphibious:
+					set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.MOVETARGET, Vector2i.ZERO, 0)
+					continue
+					
+				
+				if(tiles[vectorHold.x][vectorHold.y].zoneControl == 1) && (!creep && !flying):
 					roughTerrain(vectorHold,vectorHoldPassed,movement,stupid)
 					continue  
 				if(sneak == false):
 					zoneOfControl(vectorHold,vectorHoldPassed,movement,stupid)
-				
+					
 				if(get_cell_source_id(Layer.UNIT_MOVE,vectorHold)!=12 && get_cell_source_id(Layer.UNIT_MOVE,vectorHold)!=13):
-					if(tiles[vectorHold.x][vectorHold.y].road && tiles[vectorHoldPassed.x][vectorHoldPassed.y].road):
-						roadRec(vectorHold,vectorHoldPassed,movement,stupid)
-						continue
 					if(movement>tiles[vectorHold.x][vectorHold.y].movementDist):
-						#looper = looper + 1
 						tiles[vectorHold.x][vectorHold.y].movementDist = movement
-						nextTiles2(movement, vectorHold)
-				
-				
-				
+						movementRevamp(movement, vectorHold)
+					if(tiles[vectorHold.x][vectorHold.y].road && tiles[vectorHoldPassed.x][vectorHoldPassed.y].road && (!flying && !creep)):
+						print(flying)
+						roadRec(vectorHold,vectorHoldPassed,movement,stupid)
+					
+					
 				
 				
 func zoneOfControl(vectorHold,vectorHoldPassed,movement,stupid):
@@ -317,12 +354,12 @@ func zoneOfControl(vectorHold,vectorHoldPassed,movement,stupid):
 func roughTerrain(vectorHold,vectorHoldPassed,movement,stupid):
 	if(tiles[vectorHold.x][vectorHold.y].road && tiles[vectorHoldPassed.x][vectorHoldPassed.y].road):
 		if(tiles[vectorHold.x][vectorHold.y].spacer == -1 && tiles[vectorHoldPassed.x][vectorHoldPassed.y].spacer == -1):
-			nextTiles2(movement+1, vectorHold)
+			movementRevamp(movement+1, vectorHold)
 		elif(tiles[vectorHold.x][vectorHold.y].movementDistSource == tiles[vectorHoldPassed.x][vectorHoldPassed.y].movementDistSource):
 			if(stupid == true):
-				nextTiles2(movement+1, vectorHold, false)
+				movementRevamp(movement+1, vectorHold, false)
 		else:
-			nextTiles2(movement, vectorHold)
+			movementRevamp(movement, vectorHold)
 	else:	
 		if(get_cell_source_id(Layer.UNIT_MOVE,vectorHold)!=11):
 			if(movement > 5):
@@ -334,17 +371,18 @@ func roughTerrain(vectorHold,vectorHoldPassed,movement,stupid):
 							if(tiles[vectorHold2.x][vectorHold2.y].zoneControl == 2):
 								set_cell(Layer.UNIT_MOVE, vectorHold2, Constants.Asset.ZOC2MOVETARGET, Vector2i.ZERO, 0)
 								zonepass = false
+				#terminal tiles
 				if(zonepass):
-					nextTiles2(movement-4, vectorHold)
+					movementRevamp(movement-4, vectorHold)
 			#	nextTiles2(movement-4, vectorHold)
 			set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.ZOC1MOVETARGET, Vector2i.ZERO, 0)
 
 func roadRec(vectorHold,vectorHoldPassed,movement,stupid):
 	if(tiles[vectorHold.x][vectorHold.y].spacer == -1 && tiles[vectorHoldPassed.x][vectorHoldPassed.y].spacer == -1):
-		nextTiles2(movement+1, vectorHold)
+		movementRevamp(movement+1, vectorHold)
 	elif(tiles[vectorHold.x][vectorHold.y].movementDistSource == tiles[vectorHoldPassed.x][vectorHoldPassed.y].movementDistSource):
 		if(stupid == true):
-			nextTiles2(movement+1, vectorHold, false)
+			movementRevamp(movement+1, vectorHold, false)
 
 				
 	
