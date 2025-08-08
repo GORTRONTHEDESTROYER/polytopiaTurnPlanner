@@ -42,7 +42,7 @@ func _ready():
 var hid = true
 var diplo = false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	#var positionC3 = get_viewport().position
 	#var mousePosition2 = get_viewport().get_mouse_position()
 	#var tile_pos: Vector2i = local_to_map(mousePosition + positionC2)

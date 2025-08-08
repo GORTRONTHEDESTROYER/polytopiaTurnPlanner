@@ -1,4 +1,4 @@
-extends TileMap
+extends Node2D
 
 const Camera2d = preload("res://scripts/Camera2D.gd")
 
@@ -11,6 +11,21 @@ var tiles: Array[Array] = []
 var state = State.new()
 
 @export var playerSelected: NinePatchRect
+
+@export var baseLayer: TileMapLayer
+@export var resourceLayer: TileMapLayer
+@export var buildingRoad: TileMapLayer
+@export var buildingLayer: TileMapLayer
+@export var unitMoveLayer: TileMapLayer
+@export var unitHead: TileMapLayer
+@export var unitLayer: TileMapLayer
+@export var cloudsLayer: TileMapLayer
+@export var selectionLayer: TileMapLayer
+
+
+
+
+
 
 func get_tile(pos: Vector2i) -> Tile:
 	if pos.x < 0 or pos.y < 0 or pos.x >= gridSize or pos.y >= gridSize:
@@ -25,10 +40,10 @@ func _ready():
 		tiles.append([])
 		for y in range(gridSize):
 			tiles[x].append(
-				Tile.new(Constants.TileType.FIELD, Constants.Tribe["IMP"], Vector2i(x, y))
+				Tile.new(Constants.TileType.FIELD, Vector2i(0,0), Vector2i(x, y), 0)
 			)
 			
-			set_cell(Layer.TILE, Vector2i(x, y), Constants.Asset.FIELD, Vector2i.ZERO, 0)
+			baseLayer.set_cell(Vector2i(x, y), 0, Vector2i.ZERO, 0)
 
 	#tiles[0][0].unit = Unit.new(Constants.UnitType.WARRIOR, Constants.Player.ONE)
 	#tiles[0][1].unit = Unit.new(Constants.UnitType.WARRIOR, Constants.Player.ONE)
@@ -40,16 +55,16 @@ var prev_tile_pos: Vector2i = Vector2i(0, 0)
 func _process(_delta):
 	var positionC2 = get_viewport().get_camera_2d().position
 	var mousePosition = get_viewport().get_mouse_position() + Vector2(0,10)
-	var tile_pos: Vector2i = local_to_map(mousePosition + positionC2)
+	var tile_pos: Vector2i = baseLayer.local_to_map(mousePosition + positionC2)
 
 	#print(playerSelected.selected().player)
-	erase_cell(8, prev_tile_pos)
+	selectionLayer.erase_cell(prev_tile_pos)
 	var tile = get_tile(tile_pos)
 	
 	#print(tile_type_bt)
 	#tile_type_bt = 1
 	if tile != null:
-		set_cell(8, tile_pos, 0, Vector2i(0,0),0)
+		selectionLayer.set_cell(tile_pos, 0, Vector2i(0,0),0)
 		#print("distSource")
 	#	print(tiles[tile_pos.x][tile_pos.y].movementDistSource)
 		#print("spacer")
@@ -87,109 +102,109 @@ func updateLook(tile: Tile):
 		[Constants.TileType.FIELD, 0]:
 			tile.typeHeld = tile.type
 			tile.zoneControl = 0
-			set_cell(Layer.TILE, tile.position, 21, playerSelected.head[tile.player].tribe, 0)
-			erase_cell(Layer.RESOURCE, tile.position)
+			baseLayer.set_cell(tile.position, 0, playerSelected.head[tile.player].tribe, 0)
+			resourceLayer.erase_cell(tile.position)
 		[Constants.TileType.FIELD, 1]:
 			tile.typeHeld = tile.type
 			tile.zoneControl = 0
-			erase_cell(Layer.RESOURCE, tile.position)
-			set_cell(Layer.TILE, tile.position, 25, playerSelected.head[tile.player].tribe, 0)
+			resourceLayer.erase_cell(tile.position)
+			baseLayer.set_cell(tile.position, 1, playerSelected.head[tile.player].tribe, 0)
 
 		[Constants.TileType.FIELD, 2]:
 			tile.typeHeld = tile.type
 			tile.zoneControl = 0
-			set_cell(Layer.TILE, tile.position, 21, playerSelected.head[tile.player].tribe, 0)
-			set_cell(Layer.RESOURCE, tile.position, Constants.Asset.CROP, Vector2i.ZERO, 0)
+			baseLayer.set_cell(tile.position, 0, playerSelected.head[tile.player].tribe, 0)
+			resourceLayer.set_cell( tile.position, 0, Vector2i.ZERO, 0)
 		[Constants.TileType.FIELD, 3]:
 			tile.typeHeld = tile.type
 			tile.zoneControl = 0
-			set_cell(Layer.TILE, tile.position, 21, playerSelected.head[tile.player].tribe, 0)
-			set_cell(Layer.RESOURCE, tile.position, 30, Vector2i(4,0), 0)
+			baseLayer.set_cell(tile.position, 0, playerSelected.head[tile.player].tribe, 0)
+			resourceLayer.set_cell( tile.position, 2, Vector2i(4,0), 0)
 		[Constants.TileType.FOREST, 1]:
 			tile.typeHeld = tile.type
 			tile.zoneControl = 1
-			erase_cell(Layer.RESOURCE, tile.position)
+			resourceLayer.erase_cell(tile.position)
 
-			set_cell(Layer.TILE, tile.position, 23, playerSelected.head[tile.player].tribe, 0)
-			#set_cell(Layer.RESOURCE, tile.position, Constants.Asset.ANIMAL, Vector2i.ZERO, 0)
+			baseLayer.set_cell(tile.position, 3, playerSelected.head[tile.player].tribe, 0)
+			#resourceLayer.set_cell( tile.position, Constants.Asset.ANIMAL, Vector2i.ZERO, 0)
 		[Constants.TileType.FOREST, 3]:
 			tile.typeHeld = tile.type
 			tile.zoneControl = 1
-			set_cell(Layer.TILE, tile.position, 22, playerSelected.head[tile.player].tribe, 0)
-			set_cell(Layer.RESOURCE, tile.position, 30, Vector2i(4,0), 0)
+			baseLayer.set_cell(tile.position, 2, playerSelected.head[tile.player].tribe, 0)
+			resourceLayer.set_cell( tile.position, 2, Vector2i(4,0), 0)
 		[Constants.TileType.FOREST, _]:
 			tile.typeHeld = tile.type
 			tile.zoneControl = 1
-			set_cell(Layer.TILE, tile.position, 22, playerSelected.head[tile.player].tribe, 0)
-			erase_cell(Layer.RESOURCE, tile.position)
+			baseLayer.set_cell(tile.position, 2, playerSelected.head[tile.player].tribe, 0)
+			resourceLayer.erase_cell( tile.position)
 		[Constants.TileType.MOUNTAIN, 2]:
 			tile.typeHeld = tile.type
 			tile.road = false
 			tile.zoneControl = 1
-			set_cell(Layer.TILE, tile.position, 24, playerSelected.head[tile.player].tribe, 0)
-			set_cell(Layer.RESOURCE, tile.position, Constants.Asset.METAL, Vector2i.ZERO, 0)
-			erase_cell(Layer.ROAD, tile.position)
+			baseLayer.set_cell( tile.position, 4, playerSelected.head[tile.player].tribe, 0)
+			resourceLayer.set_cell(tile.position, 1, Vector2i.ZERO, 0)
+			buildingRoad.erase_cell( tile.position)
 		[Constants.TileType.MOUNTAIN, 3]:
 			tile.typeHeld = tile.type
 			tile.road = false
 			tile.zoneControl = 1
-			set_cell(Layer.TILE, tile.position, 24, playerSelected.head[tile.player].tribe, 0)
-			set_cell(Layer.RESOURCE, tile.position, 30, Vector2i(4,0), 0)
+			baseLayer.set_cell(tile.position, 4, playerSelected.head[tile.player].tribe, 0)
+			resourceLayer.set_cell( tile.position, 2, Vector2i(4,0), 0)
 		[Constants.TileType.MOUNTAIN, _]:
 			tile.typeHeld = tile.type
 			tile.road = false
 			tile.zoneControl = 1
-			set_cell(Layer.TILE, tile.position, 24, playerSelected.head[tile.player].tribe, 0)
-			erase_cell(Layer.RESOURCE, tile.position)
-			erase_cell(Layer.ROAD, tile.position)
+			baseLayer.set_cell(tile.position, 4, playerSelected.head[tile.player].tribe, 0)
+			resourceLayer.erase_cell(tile.position)
+			buildingRoad.erase_cell( tile.position)
 		[Constants.TileType.SHORES, 1]:
 			tile.typeHeld = tile.type
 			tile.road = false
 			tile.zoneControl = 3
-			set_cell(Layer.TILE, tile.position, 28, Vector2i(1,0), 0)
-			erase_cell(Layer.RESOURCE, tile.position)
-			erase_cell(Layer.ROAD, tile.position)
+			baseLayer.set_cell(tile.position, 5, Vector2i(1,0), 0)
+			resourceLayer.erase_cell(tile.position)
+			buildingRoad.erase_cell( tile.position)
 		[Constants.TileType.SHORES, 3]:
 			tile.typeHeld = tile.type
 			tile.road = false
 			tile.zoneControl = 3
-			set_cell(Layer.TILE, tile.position, 28, Vector2i(3,0), 0)
-			set_cell(Layer.RESOURCE, tile.position, 30, Vector2i(0,0), 0)
+			baseLayer.set_cell(tile.position, 5, Vector2i(3,0), 0)
+			resourceLayer.set_cell(tile.position, 2, Vector2i(0,0), 0)
 		[Constants.TileType.SHORES, _]:
 			tile.typeHeld = tile.type
 			tile.road = false
 			tile.zoneControl = 3
-			set_cell(Layer.TILE, tile.position, 28, Vector2i(3,0), 0)
-			erase_cell(Layer.RESOURCE, tile.position)
-			erase_cell(Layer.ROAD, tile.position)
+			baseLayer.set_cell(tile.position, 5, Vector2i(3,0), 0)
+			resourceLayer.erase_cell(tile.position)
+			buildingRoad.erase_cell( tile.position)
 		[Constants.TileType.OCEAN, 1]:
 			tile.typeHeld = tile.type
 			tile.road = false
 			tile.zoneControl = 3
-			set_cell(Layer.TILE, tile.position, 28, Vector2i(0,0), 0)
-			erase_cell(Layer.RESOURCE, tile.position)
-			erase_cell(Layer.ROAD, tile.position)
+			baseLayer.set_cell( tile.position, 5, Vector2i(0,0), 0)
+			resourceLayer.erase_cell(tile.position)
+			buildingRoad.erase_cell( tile.position)
 		[Constants.TileType.OCEAN, 3]:
 			tile.typeHeld = tile.type
 			tile.road = false
 
 			tile.zoneControl = 3
-			set_cell(Layer.TILE, tile.position, 28, Vector2i(2,0), 0)
-			set_cell(Layer.RESOURCE, tile.position, 30, Vector2i(0,0), 0)
+			baseLayer.set_cell( tile.position, 5, Vector2i(2,0), 0)
+			resourceLayer.set_cell( tile.position, 2, Vector2i(0,0), 0)
 		[Constants.TileType.OCEAN, _]:
 			tile.typeHeld = tile.type
 			tile.road = false
 			tile.zoneControl = 3
-			set_cell(Layer.TILE, tile.position, 28, Vector2i(2,0), 0)
-			erase_cell(Layer.RESOURCE, tile.position)
-			erase_cell(Layer.ROAD, tile.position)
+			baseLayer.set_cell( tile.position, 5, Vector2i(2,0), 0)
+			resourceLayer.erase_cell(tile.position)
+			buildingRoad.erase_cell( tile.position)
 		[Constants.TileType.CLOUD, _]:
 			tile.typeHeld = tile.type
 			tile.zoneControl = 0
 			tile.road = false
-			set_cell(Layer.TILE, tile.position, Constants.Asset.CLOUD, Vector2i.ZERO, 0)
-			erase_cell(Layer.RESOURCE, tile.position)
-			erase_cell(Layer.ROAD, tile.position)
+			baseLayer.set_cell( tile.position, 6, Vector2i.ZERO, 0)
+			resourceLayer.erase_cell(tile.position)
+			buildingRoad.erase_cell( tile.position)
 		_:
 			pass
 	#print(tile.type)
@@ -197,16 +212,19 @@ func updateLook(tile: Tile):
 	match [tile.building, tile.typeHeld]: 
 		[Constants.BuildingType.ROAD, Constants.TileType.MOUNTAIN]:
 			tile.road = false
-			erase_cell(Layer.ROAD, tile.position)
+			buildingRoad.erase_cell( tile.position)
 		[Constants.BuildingType.ROAD, _]:
 			tile.road = true
-			set_cell(Layer.ROAD, tile.position, Constants.Asset.ROAD, Vector2i.ZERO, 0)
+			buildingRoad.set_cell( tile.position, Constants.Asset.ROAD, Vector2i.ZERO, 0)
 		[Constants.BuildingType.RUIN, _]:
-			tile.road = true
-			set_cell(Layer.ROAD, tile.position, Constants.Asset.RUIN, Vector2i.ZERO, 0)
+			print("tester")
+
+			tile.road = false
+			buildingLayer.set_cell( tile.position, 0, Vector2i.ZERO, 0)
 		[Constants.BuildingType.VILLAGE, _]:
-				tile.road = true
-				set_cell(Layer.ROAD, tile.position, Constants.Asset.VILLAGE, Vector2i.ZERO, 0)
+			print("tester")
+			tile.road = true
+			buildingLayer.set_cell( tile.position, 1, Vector2i.ZERO, 0)
 			
 			#erase_cell(Layer., tile.position)
 			#set_cell(Layer.BUILDING, tile.position, Constants.Asset.ROAD, Vector2i.ZERO, 0)
@@ -245,14 +263,14 @@ func updateUnitLook(tileW: Tile):
 		match tileW.unit.type:
 			Constants.UnitType.WARRIOR:
 				
-				set_cell(Layer.UNITBODY, tileW.position, Constants.Asset.UNITBODY, playerSelected.head[tileW.unit.player].color, 0)
-				set_cell(Layer.UNITHEAD, tileW.position, Constants.Asset.UNITHEAD, playerSelected.head[tileW.unit.player].tribe, 0)
+				unitHead.set_cell( tileW.position, Constants.Asset.UNITBODY, playerSelected.head[tileW.unit.player].color, 0)
+				unitLayer.set_cell( tileW.position, Constants.Asset.UNITHEAD, playerSelected.head[tileW.unit.player].tribe, 0)
 
 			_: 
 				pass
 	else:
-		erase_cell(Layer.UNITBODY, tileW.position)
-		erase_cell(Layer.UNITHEAD, tileW.position)
+		unitLayer.erase_cell(tileW.position)
+		unitHead.erase_cell(tileW.position)
 
 		
 			
@@ -264,7 +282,7 @@ func turnMode(tile: Tile):
 			
 			if state.active_tile != null:
 				state.active_tile.unit.active = false 
-				clear_layer(Layer.UNIT_MOVE)
+				unitMoveLayer.clear_layer()
 				
 			tile.unit.active = not tile.unit.active
 			
@@ -273,24 +291,24 @@ func turnMode(tile: Tile):
 				drawPosibleUnitMoves(tile)
 			else: 
 				state.active_tile = null
-				clear_layer(Layer.UNIT_MOVE)
+				unitMoveLayer.clear_layer()
 			updateUnitLook(tile)
 		
 		
 			
-		elif state.active_tile != null && tile != null && get_cell_tile_data(Layer.UNIT_MOVE, tile.position):
+		elif state.active_tile != null && tile != null && unitMoveLayer.get_cell_tile_data(tile.position):
 			tile.unit = state.active_tile.unit 
 			state.active_tile.unit = null
 			updateUnitLook(state.active_tile)
 			state.active_tile = null
 			tile.unit.active = not tile.unit.active
 			updateUnit(tile)
-			clear_layer(Layer.UNIT_MOVE)
+			unitMoveLayer.clear_layer()
 			
 		elif tile != null && (state.active_tile != null):
 			state.active_tile.unit.active = false 
 			state.active_tile = null
-			clear_layer(Layer.UNIT_MOVE)
+			unitMoveLayer.clear_layer()
 			
 			
 var looper = 0		
@@ -330,7 +348,7 @@ func movementRevamp(movement: int, vectorHoldPassed: Vector2i, stupid: bool = tr
 
 		
 	#sets the tile to movable
-	set_cell(Layer.UNIT_MOVE, vectorHoldPassed, Constants.Asset.MOVETARGET, Vector2i.ZERO, 0)
+	unitMoveLayer.set_cell(vectorHoldPassed, Constants.Asset.MOVETARGET, Vector2i.ZERO, 0)
 	if(movement >= 0):
 		#gets access to adjacent tiles
 		for x in range(3):
@@ -347,10 +365,10 @@ func movementRevamp(movement: int, vectorHoldPassed: Vector2i, stupid: bool = tr
 				if((tiles[vectorHold.x][vectorHold.y].zoneControl == 3) && (!amphibious && !water && !flying)):
 					continue
 				if(tiles[vectorHold.x][vectorHold.y].zoneControl != 3) && water:
-					set_cell(Layer.UNIT_MOVE, vectorHold, 28, Vector2i.ZERO, 0)
+					unitMoveLayer.set_cell( vectorHold, 28, Vector2i.ZERO, 0)
 					continue
 				if(tiles[vectorHold.x][vectorHold.y].zoneControl < 3) && amphibious:
-					set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.MOVETARGET, Vector2i.ZERO, 0)
+					unitMoveLayer.set_cell( vectorHold, Constants.Asset.MOVETARGET, Vector2i.ZERO, 0)
 					continue
 					
 				
@@ -358,9 +376,9 @@ func movementRevamp(movement: int, vectorHoldPassed: Vector2i, stupid: bool = tr
 					roughTerrain(vectorHold,vectorHoldPassed,movement,stupid)
 					continue  
 				if(sneak == false):
-					zoneOfControl(vectorHold,vectorHoldPassed,movement,stupid)
+					zoneOfControl(vectorHold)
 					
-				if(get_cell_source_id(Layer.UNIT_MOVE,vectorHold)!=12 && get_cell_source_id(Layer.UNIT_MOVE,vectorHold)!=13):
+				if(unitMoveLayer.get_cell_source_id(vectorHold)!=12 && unitMoveLayer.get_cell_source_id(vectorHold)!=13):
 					if(movement>tiles[vectorHold.x][vectorHold.y].movementDist):
 						tiles[vectorHold.x][vectorHold.y].movementDist = movement
 						movementRevamp(movement, vectorHold)
@@ -371,14 +389,14 @@ func movementRevamp(movement: int, vectorHoldPassed: Vector2i, stupid: bool = tr
 					
 				
 				
-func zoneOfControl(vectorHold,vectorHoldPassed,movement,stupid):
+func zoneOfControl(vectorHold):
 	for i in range(3):
 		for j in range(3): 
 			var vectorHold2 = vectorHold + Vector2i(i,j) - Vector2i(1,1) 
 			if(inBounds(vectorHold2)):
 				if(tiles[vectorHold2.x][vectorHold2.y].zoneControl == 2):
-					set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.ZOC1MOVETARGET, Vector2i.ZERO, 0)
-					set_cell(Layer.UNIT_MOVE, vectorHold2, Constants.Asset.ZOC2MOVETARGET, Vector2i.ZERO, 0)
+					unitMoveLayer.set_cell( vectorHold, Constants.Asset.ZOC1MOVETARGET, Vector2i.ZERO, 0)
+					unitMoveLayer.set_cell( vectorHold2, Constants.Asset.ZOC2MOVETARGET, Vector2i.ZERO, 0)
 
 				
 					
@@ -392,7 +410,7 @@ func roughTerrain(vectorHold,vectorHoldPassed,movement,stupid):
 		else:
 			movementRevamp(movement, vectorHold)
 	else:	
-		if(get_cell_source_id(Layer.UNIT_MOVE,vectorHold)!=11):
+		if(unitMoveLayer.get_cell_source_id(vectorHold)!=11):
 			if(movement > 5):
 				var zonepass = true
 				for i in range(3):
@@ -400,13 +418,13 @@ func roughTerrain(vectorHold,vectorHoldPassed,movement,stupid):
 						var vectorHold2 = vectorHold + Vector2i(i,j) - Vector2i(1,1) 
 						if(inBounds(vectorHold2)):
 							if(tiles[vectorHold2.x][vectorHold2.y].zoneControl == 2):
-								set_cell(Layer.UNIT_MOVE, vectorHold2, Constants.Asset.ZOC2MOVETARGET, Vector2i.ZERO, 0)
+								unitMoveLayer.set_cell( vectorHold2, Constants.Asset.ZOC2MOVETARGET, Vector2i.ZERO, 0)
 								zonepass = false
 				#terminal tiles
 				if(zonepass):
 					movementRevamp(movement-4, vectorHold)
 			#	nextTiles2(movement-4, vectorHold)
-			set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.ZOC1MOVETARGET, Vector2i.ZERO, 0)
+			unitMoveLayer.set_cell( vectorHold, Constants.Asset.ZOC1MOVETARGET, Vector2i.ZERO, 0)
 
 func roadRec(vectorHold,vectorHoldPassed,movement,stupid):
 	if(tiles[vectorHold.x][vectorHold.y].spacer == -1 && tiles[vectorHoldPassed.x][vectorHoldPassed.y].spacer == -1):
@@ -422,7 +440,7 @@ func nextTiles2(movement: int, vectorHoldPassed: Vector2i, stupid: bool = true):
 	#var roadHold = roadPassed
 	#if(tiles[vectorHoldPassed.x][vectorHoldPassed.y].)
 	movement = movement - 1 + tiles[vectorHoldPassed.x][vectorHoldPassed.y].spacer
-	set_cell(Layer.UNIT_MOVE, vectorHoldPassed, Constants.Asset.MOVETARGET, Vector2i.ZERO, 0)
+	unitMoveLayer.set_cell( vectorHoldPassed, Constants.Asset.MOVETARGET, Vector2i.ZERO, 0)
 
 	if(movement >= 0):
 		for x in range(3):
@@ -440,7 +458,7 @@ func nextTiles2(movement: int, vectorHoldPassed: Vector2i, stupid: bool = true):
 							else:
 								nextTiles2(movement, vectorHold)
 						else:	
-							if(get_cell_source_id(Layer.UNIT_MOVE,vectorHold)!=11):
+							if(unitMoveLayer.get_cell_source_id(vectorHold)!=11):
 								if(movement > 5):
 									var zonepass = true
 									for i in range(3):
@@ -448,12 +466,12 @@ func nextTiles2(movement: int, vectorHoldPassed: Vector2i, stupid: bool = true):
 											var vectorHold2 = vectorHold + Vector2i(i,j) - Vector2i(1,1) 
 											if(inBounds(vectorHold2)):
 												if(tiles[vectorHold2.x][vectorHold2.y].zoneControl == 2):
-													set_cell(Layer.UNIT_MOVE, vectorHold2, Constants.Asset.ZOC2MOVETARGET, Vector2i.ZERO, 0)
+													unitMoveLayer.set_cell( vectorHold2, Constants.Asset.ZOC2MOVETARGET, Vector2i.ZERO, 0)
 													zonepass = false
 									if(zonepass):
 										nextTiles2(movement-4, vectorHold)
 								#	nextTiles2(movement-4, vectorHold)
-								set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.ZOC1MOVETARGET, Vector2i.ZERO, 0)
+								unitMoveLayer.set_cell( vectorHold, Constants.Asset.ZOC1MOVETARGET, Vector2i.ZERO, 0)
 					elif(tiles[vectorHold.x][vectorHold.y].zoneControl == 2):
 						pass
 					else:
@@ -462,10 +480,10 @@ func nextTiles2(movement: int, vectorHoldPassed: Vector2i, stupid: bool = true):
 								var vectorHold2 = vectorHold + Vector2i(i,j) - Vector2i(1,1) 
 								if(inBounds(vectorHold2)):
 									if(tiles[vectorHold2.x][vectorHold2.y].zoneControl == 2):
-										set_cell(Layer.UNIT_MOVE, vectorHold, Constants.Asset.ZOC1MOVETARGET, Vector2i.ZERO, 0)
-										set_cell(Layer.UNIT_MOVE, vectorHold2, Constants.Asset.ZOC2MOVETARGET, Vector2i.ZERO, 0)
+										unitMoveLayer.set_cell( vectorHold, Constants.Asset.ZOC1MOVETARGET, Vector2i.ZERO, 0)
+										unitMoveLayer.set_cell( vectorHold2, Constants.Asset.ZOC2MOVETARGET, Vector2i.ZERO, 0)
 										
-						if(get_cell_source_id(Layer.UNIT_MOVE,vectorHold)!=12 && get_cell_source_id(Layer.UNIT_MOVE,vectorHold)!=13):
+						if(unitMoveLayer.get_cell_source_id(vectorHold)!=12 && unitMoveLayer.get_cell_source_id(vectorHold)!=13):
 							if(movement>tiles[vectorHold.x][vectorHold.y].movementDist):
 								#looper = looper + 1
 								tiles[vectorHold.x][vectorHold.y].movementDist = movement

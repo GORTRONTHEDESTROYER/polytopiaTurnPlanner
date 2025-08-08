@@ -6,7 +6,7 @@ extends Node2D
 @export var tilesCymanti: Control
 @export var tilesNatGen: Control
 
-@export var TileMapMain: TileMap
+@export var TileMapMain: Node2D
 
 #@export var tribeSelectData: NinePatchRect
 
@@ -48,7 +48,7 @@ func hidFlip():
 		tilesCymanti.visible = false
 		tilesNatGen.visible = false
 
-func _process(delta):
+func _process(_delta):
 	#var positionC3 = get_viewport().position
 	#var mousePosition2 = get_viewport().get_mouse_position()
 	#var tile_pos: Vector2i = local_to_map(mousePosition + positionC2)

@@ -24,6 +24,6 @@ func finder():
 	if location == 0:
 		return true
 	else:
-		false
+		return false
 func finderInt():
 	return location

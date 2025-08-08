@@ -35,7 +35,7 @@ func _set_initial_positions()->void:
 
 var i = 0
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	i = i + 1
 	for _index in range(card_x_positions.size()):
 		var _card_pos_x: float = card_x_positions[_index]
@@ -76,7 +76,7 @@ func _process(delta: float) -> void:
 			
 			
 		
-var _delta_swipe_current_length
+#var _delta_swipe_current_length
 
 func scroll() -> void:	
 	#pass

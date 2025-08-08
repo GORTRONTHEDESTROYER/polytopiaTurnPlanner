@@ -1,6 +1,6 @@
 extends TileMap
 
-@export var unitBoard: TileMap
+@export var unitBoard: Node2D
 @export var tileSelectPing: Node2D
 
 
