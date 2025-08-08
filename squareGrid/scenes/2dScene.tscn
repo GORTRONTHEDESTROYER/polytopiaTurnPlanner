@@ -1,4 +1,4 @@
-[gd_scene load_steps=215 format=4 uid="uid://v2jasy851nff"]
+[gd_scene load_steps=219 format=4 uid="uid://v2jasy851nff"]
 
 [ext_resource type="Texture2D" uid="uid://dxbhx4ys67t1g" path="res://imageHolder/tileHolder/selection.png" id="1_esfrv"]
 [ext_resource type="Texture2D" uid="uid://b0exvca3bkv2i" path="res://imageHolder/tileHolder/imp_field.png" id="2_qjcu4"]
@@ -33,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://bypvk08lfa30w" path="res://imageHolder/tileHolder/allFruit.png" id="19_gcori"]
 [ext_resource type="Texture2D" uid="uid://b5aqwff0qvncq" path="res://imageHolder/unitHolder/allRiders2.png" id="20_akots"]
 [ext_resource type="Texture2D" uid="uid://dy21xkg33arb2" path="res://imageHolder/unitHolder/swordsmanBody.png" id="20_tq0yr"]
+[ext_resource type="Texture2D" uid="uid://p6jcsqcfsb6g" path="res://imageHolder/teirTwoResources/cymantiResTileMap.png" id="24_i08e2"]
 [ext_resource type="Script" uid="uid://b16u7jsxboboq" path="res://scenes/dropDownPH.gd" id="26_yd5n3"]
 [ext_resource type="Script" uid="uid://bfuip03r8gdsv" path="res://scripts/SelectHead.gd" id="27_yd5n3"]
 [ext_resource type="Texture2D" uid="uid://cmyxvk25dqfx7" path="res://imageHolder/unitHolder/Tribecolors.png" id="28_30l83"]
@@ -45,6 +46,8 @@
 [ext_resource type="Texture2D" uid="uid://dw6t8ll60i4a0" path="res://imageHolder/buildings/RuinTiny.png" id="41_owwdc"]
 [ext_resource type="Script" uid="uid://cbqsihcysoq87" path="res://scenes/tiles_water.gd" id="42_d3ckp"]
 [ext_resource type="Script" uid="uid://cdnxs0gobfl71" path="res://scenes/tiles_cymanti.gd" id="44_ajqxv"]
+[ext_resource type="Texture2D" uid="uid://bmvfp36em8cjx" path="res://imageHolder/buildings/lighthouseSmall.png" id="47_d3ckp"]
+[ext_resource type="Texture2D" uid="uid://dms2t07hk8qo" path="res://imageHolder/buildings/starfishSmall.png" id="48_ajqxv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rykb3"]
 texture = ExtResource("1_esfrv")
@@ -322,6 +325,13 @@ texture = ExtResource("4_xooae")
 texture_region_size = Vector2i(42, 54)
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cfm7g"]
+texture = ExtResource("24_i08e2")
+separation = Vector2i(2, 0)
+texture_region_size = Vector2i(42, 38)
+0:0/0 = 0
+4:0/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wglj6"]
 texture = ExtResource("5_fjkr2")
 texture_region_size = Vector2i(42, 38)
@@ -386,6 +396,7 @@ sources/25 = SubResource("TileSetAtlasSource_qjia3")
 sources/27 = SubResource("TileSetAtlasSource_ped4l")
 sources/26 = SubResource("TileSetAtlasSource_0u2xt")
 sources/28 = SubResource("TileSetAtlasSource_i08e2")
+sources/30 = SubResource("TileSetAtlasSource_cfm7g")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uxe36"]
 
@@ -1833,7 +1844,7 @@ tile_set = SubResource("TileSet_i08e2")
 [node name="selection" type="TileMapLayer" parent="CanvasLayer/Node"]
 position = Vector2(10, -9)
 scale = Vector2(5, 5)
-tile_map_data = PackedByteArray("AAAAAAIAAAABAAEAAAAAAAEAAAABAAEAAAABAAIAAAABAAEAAAACAAIAAAABAAEAAAADAAIAAAABAAEAAAABAAMAAAABAAEAAAADAAMAAAABAAEAAAAAAAQAAAABAAEAAAABAAQAAAABAAEAAAACAAQAAAABAAEAAAADAAQAAAABAAEAAAAEAAQAAAABAAEAAAACAAMAAAABAAEAAAAAAAMAAAABAAEAAAAAAAUAAAABAAEAAAABAAUAAAABAAEAAAACAAUAAAABAAEAAAADAAUAAAABAAEAAAAEAAUAAAABAAEAAAABAAEAAAABAAEAAAACAAEAAAABAAEAAAAAAAYAAAABAAEAAAABAAYAAAABAAEAAAACAAYAAAABAAEAAAADAAYAAAABAAEAAAAEAAYAAAABAAEAAAA=")
+tile_map_data = PackedByteArray("AAAEAAUAAAABAAEAAAAEAAQAAAABAAEAAAADAAQAAAABAAEAAAADAAMAAAABAAEAAAADAAIAAAABAAEAAAACAAIAAAABAAEAAAACAAEAAAABAAEAAAABAAEAAAABAAEAAAAAAAEAAAABAAEAAAAAAAIAAAABAAEAAAAAAAMAAAABAAEAAAAAAAQAAAABAAEAAAAAAAUAAAABAAEAAAAAAAYAAAABAAEAAAABAAYAAAABAAEAAAABAAUAAAABAAEAAAABAAQAAAABAAEAAAABAAMAAAABAAEAAAABAAIAAAABAAEAAAACAAMAAAABAAEAAAACAAQAAAABAAEAAAACAAUAAAABAAEAAAACAAYAAAABAAEAAAADAAYAAAABAAEAAAADAAUAAAABAAEAAAAEAAYAAAABAAEAAAA=")
 tile_set = SubResource("TileSet_e8drd")
 
 [node name="selectionTiles" type="Node" parent="CanvasLayer/Node"]
@@ -2019,25 +2030,25 @@ position = Vector2(47, 451)
 scale = Vector2(1.54762, 1.55)
 texture = ExtResource("10_1m6pd")
 
-[node name="cloudglidder2" type="Sprite2D" parent="CanvasLayer/Node/selectionTiles/tilesNatGen"]
+[node name="village" type="Sprite2D" parent="CanvasLayer/Node/selectionTiles/tilesNatGen"]
 position = Vector2(130, 462)
 scale = Vector2(1.54762, 1.55)
 texture = ExtResource("14_pr331")
 
-[node name="cloudglidder3" type="Sprite2D" parent="CanvasLayer/Node/selectionTiles/tilesNatGen"]
+[node name="ruin" type="Sprite2D" parent="CanvasLayer/Node/selectionTiles/tilesNatGen"]
 position = Vector2(208, 459)
 scale = Vector2(1.54762, 1.55)
 texture = ExtResource("41_owwdc")
 
-[node name="cloudglidder4" type="Sprite2D" parent="CanvasLayer/Node/selectionTiles/tilesNatGen"]
-position = Vector2(287, 451)
+[node name="lighthouse" type="Sprite2D" parent="CanvasLayer/Node/selectionTiles/tilesNatGen"]
+position = Vector2(287, 469)
 scale = Vector2(1.54762, 1.55)
-texture = ExtResource("10_1m6pd")
+texture = ExtResource("47_d3ckp")
 
-[node name="cloudglidder5" type="Sprite2D" parent="CanvasLayer/Node/selectionTiles/tilesNatGen"]
-position = Vector2(368, 451)
+[node name="starfish" type="Sprite2D" parent="CanvasLayer/Node/selectionTiles/tilesNatGen"]
+position = Vector2(366, 461)
 scale = Vector2(1.54762, 1.55)
-texture = ExtResource("10_1m6pd")
+texture = ExtResource("48_ajqxv")
 
 [node name="buildingsSelect" type="Node" parent="CanvasLayer/Node"]
 

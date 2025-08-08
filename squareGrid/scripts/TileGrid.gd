@@ -100,11 +100,23 @@ func updateLook(tile: Tile):
 			tile.zoneControl = 0
 			set_cell(Layer.TILE, tile.position, 21, playerSelected.head[tile.player].tribe, 0)
 			set_cell(Layer.RESOURCE, tile.position, Constants.Asset.CROP, Vector2i.ZERO, 0)
+		[Constants.TileType.FIELD, 3]:
+			tile.typeHeld = tile.type
+			tile.zoneControl = 0
+			set_cell(Layer.TILE, tile.position, 21, playerSelected.head[tile.player].tribe, 0)
+			set_cell(Layer.RESOURCE, tile.position, 30, Vector2i(4,0), 0)
 		[Constants.TileType.FOREST, 1]:
 			tile.typeHeld = tile.type
 			tile.zoneControl = 1
+			erase_cell(Layer.RESOURCE, tile.position)
+
 			set_cell(Layer.TILE, tile.position, 23, playerSelected.head[tile.player].tribe, 0)
 			#set_cell(Layer.RESOURCE, tile.position, Constants.Asset.ANIMAL, Vector2i.ZERO, 0)
+		[Constants.TileType.FOREST, 3]:
+			tile.typeHeld = tile.type
+			tile.zoneControl = 1
+			set_cell(Layer.TILE, tile.position, 22, playerSelected.head[tile.player].tribe, 0)
+			set_cell(Layer.RESOURCE, tile.position, 30, Vector2i(4,0), 0)
 		[Constants.TileType.FOREST, _]:
 			tile.typeHeld = tile.type
 			tile.zoneControl = 1
@@ -117,6 +129,12 @@ func updateLook(tile: Tile):
 			set_cell(Layer.TILE, tile.position, 24, playerSelected.head[tile.player].tribe, 0)
 			set_cell(Layer.RESOURCE, tile.position, Constants.Asset.METAL, Vector2i.ZERO, 0)
 			erase_cell(Layer.ROAD, tile.position)
+		[Constants.TileType.MOUNTAIN, 3]:
+			tile.typeHeld = tile.type
+			tile.road = false
+			tile.zoneControl = 1
+			set_cell(Layer.TILE, tile.position, 24, playerSelected.head[tile.player].tribe, 0)
+			set_cell(Layer.RESOURCE, tile.position, 30, Vector2i(4,0), 0)
 		[Constants.TileType.MOUNTAIN, _]:
 			tile.typeHeld = tile.type
 			tile.road = false
@@ -131,6 +149,12 @@ func updateLook(tile: Tile):
 			set_cell(Layer.TILE, tile.position, 28, Vector2i(1,0), 0)
 			erase_cell(Layer.RESOURCE, tile.position)
 			erase_cell(Layer.ROAD, tile.position)
+		[Constants.TileType.SHORES, 3]:
+			tile.typeHeld = tile.type
+			tile.road = false
+			tile.zoneControl = 3
+			set_cell(Layer.TILE, tile.position, 28, Vector2i(3,0), 0)
+			set_cell(Layer.RESOURCE, tile.position, 30, Vector2i(0,0), 0)
 		[Constants.TileType.SHORES, _]:
 			tile.typeHeld = tile.type
 			tile.road = false
@@ -145,6 +169,13 @@ func updateLook(tile: Tile):
 			set_cell(Layer.TILE, tile.position, 28, Vector2i(0,0), 0)
 			erase_cell(Layer.RESOURCE, tile.position)
 			erase_cell(Layer.ROAD, tile.position)
+		[Constants.TileType.OCEAN, 3]:
+			tile.typeHeld = tile.type
+			tile.road = false
+
+			tile.zoneControl = 3
+			set_cell(Layer.TILE, tile.position, 28, Vector2i(2,0), 0)
+			set_cell(Layer.RESOURCE, tile.position, 30, Vector2i(0,0), 0)
 		[Constants.TileType.OCEAN, _]:
 			tile.typeHeld = tile.type
 			tile.road = false

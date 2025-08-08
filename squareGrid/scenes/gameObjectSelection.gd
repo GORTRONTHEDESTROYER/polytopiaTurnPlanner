@@ -89,7 +89,7 @@ func _process(delta):
 			
 		if switch != 0:
 			background.clear()
-		
+		TileMapMain.building_type_bt = 0
 		match[tile_pos2]:
 			[Vector2i(0,0)]:
 				hidFlip()
@@ -100,6 +100,8 @@ func _process(delta):
 					return
 				background.set_cell(Vector2i(tile_pos2.x,tile_pos2.y + 1), 0, Constants.Tribe.KIC,0)
 				switch = 1
+				TileMapMain.resource_level_bt = 0
+
 				TileMapMain.tile_type_bt = Constants.TileType.FIELD
 			[Vector2i(1,1)]:
 				if switch == 2:
@@ -206,22 +208,89 @@ func _process(delta):
 				TileMapMain.tile_type_bt = Constants.TileType.OCEAN
 			[Vector2i(4,3)]:
 				pass
-			[Vector2i(5,4)]:
-				pass
+				#CymantiRes
 			[Vector2i(0,4)]:
-				pass
+				if switch == 12:
+					TileMapMain.tile_type_bt = Constants.TileType.NONE
+					TileMapMain.resource_level_bt = 0
+					switch = 0
+					return
+				background.set_cell(Vector2i(tile_pos2.x,tile_pos2.y + 1), 0, Constants.Tribe.KIC,0)
+				switch = 12
+				TileMapMain.resource_level_bt = 3
+				TileMapMain.tile_type_bt = Constants.TileType.FIELD
 			[Vector2i(1,4)]:
-				pass
+				if switch == 13:
+					TileMapMain.tile_type_bt = Constants.TileType.NONE
+					TileMapMain.resource_level_bt = 0
+					switch = 0
+					return
+				background.set_cell(Vector2i(tile_pos2.x,tile_pos2.y + 1), 0, Constants.Tribe.KIC,0)
+				switch = 13
+				TileMapMain.resource_level_bt = 3
+				TileMapMain.tile_type_bt = Constants.TileType.FOREST
 			[Vector2i(2,4)]:
-				pass
+				if switch == 14:
+					TileMapMain.tile_type_bt = Constants.TileType.NONE
+					TileMapMain.resource_level_bt = 0
+					switch = 0
+					return
+				background.set_cell(Vector2i(tile_pos2.x,tile_pos2.y + 1), 0, Constants.Tribe.KIC,0)
+				switch = 14
+				TileMapMain.resource_level_bt = 3
+				TileMapMain.tile_type_bt = Constants.TileType.MOUNTAIN
 			[Vector2i(3,4)]:
-				pass
+				if switch == 15:
+					TileMapMain.tile_type_bt = Constants.TileType.NONE
+					TileMapMain.resource_level_bt = 0
+					switch = 0
+					return
+				background.set_cell(Vector2i(tile_pos2.x,tile_pos2.y + 1), 0, Constants.Tribe.KIC,0)
+				switch = 15
+				TileMapMain.resource_level_bt = 3
+				TileMapMain.tile_type_bt = Constants.TileType.SHORES
+			[Vector2i(4,4)]:
+				if switch == 16:
+					TileMapMain.tile_type_bt = Constants.TileType.NONE
+					TileMapMain.resource_level_bt = 0
+					switch = 0
+					return
+				background.set_cell(Vector2i(tile_pos2.x,tile_pos2.y + 1), 0, Constants.Tribe.KIC,0)
+				switch = 16
+				TileMapMain.resource_level_bt = 3
+				TileMapMain.tile_type_bt = Constants.TileType.OCEAN
 			[Vector2i(0,5)]:
-				pass
+				if switch == 17:
+					TileMapMain.tile_type_bt = Constants.TileType.NONE
+					TileMapMain.resource_level_bt = 0
+					switch = 0
+					return
+				background.set_cell(Vector2i(tile_pos2.x,tile_pos2.y + 1), 0, Constants.Tribe.KIC,0)
+				switch = 17
+				TileMapMain.resource_level_bt = 0
+				TileMapMain.tile_type_bt = Constants.TileType.CLOUD
 			[Vector2i(1,5)]:
-				pass
+				if switch == 18:
+					TileMapMain.tile_type_bt = Constants.TileType.NONE
+					TileMapMain.resource_level_bt = 0
+					switch = 0
+					return
+				background.set_cell(Vector2i(tile_pos2.x,tile_pos2.y + 1), 0, Constants.Tribe.KIC,0)
+				switch = 18
+				TileMapMain.resource_level_bt = 0
+				TileMapMain.building_type_bt = Constants.BuildingType.VILLAGE
+				TileMapMain.tile_type_bt = Constants.TileType.NONE
 			[Vector2i(2,5)]:
-				pass
+				if switch == 19:
+					TileMapMain.tile_type_bt = Constants.TileType.NONE
+					TileMapMain.resource_level_bt = 0
+					switch = 0
+					return
+				background.set_cell(Vector2i(tile_pos2.x,tile_pos2.y + 1), 0, Constants.Tribe.KIC,0)
+				switch = 19
+				TileMapMain.resource_level_bt = 0
+				TileMapMain.tile_type_bt = Constants.TileType.NONE
+				TileMapMain.building_type_bt = Constants.BuildingType.RUIN
 			[Vector2i(3,5)]:
 				pass
 			[Vector2i(4,5)]:
@@ -301,6 +370,12 @@ func ping(head):
 	tilesRoughTerrain.forestAnimal.frame = tribeS
 	tilesRoughTerrain.mountainNull.frame = tribeS
 	tilesRoughTerrain.mountainMetal.frame = tribeS
+	
+	tilesCymanti.plainsFungi.frame = tribeS
+	tilesCymanti.forestFungi.frame = tribeS
+	tilesCymanti.mountainFungi.frame = tribeS
+	#tilesCymanti.shoreAlgae.frame = tribeS
+	#tilesCymanti.oceanAlgae.frame = tribeS
 	
 	#tilesWater.shoreNull.frame = 3
 	#tilesWater.shoreFish.frame = 1
