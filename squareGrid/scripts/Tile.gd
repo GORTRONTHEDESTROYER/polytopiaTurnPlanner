@@ -7,6 +7,7 @@ var tribe: Vector2i
 var building: Constants.BuildingType
 var position: Vector2i
 var typeHeld: Constants.TileType
+var water: bool
 
 #movement
 var movementDist: int = -1

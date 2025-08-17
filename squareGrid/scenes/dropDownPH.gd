@@ -37,7 +37,7 @@ func _ready():
 	
 	#TileMapHS.start()
 	#pass # Replace with function body.
-
+var tile_pos2: Vector2i 
 #var prev_tile_pos: Vector2i = Vector2i(0, 0)
 var hid = true
 var diplo = false
@@ -46,7 +46,7 @@ func _process(_delta):
 	#var positionC3 = get_viewport().position
 	#var mousePosition2 = get_viewport().get_mouse_position()
 	#var tile_pos: Vector2i = local_to_map(mousePosition + positionC2)
-	var tile_pos2: Vector2i = Vector2i((TileMapHS.local_to_map(get_global_mouse_position()).x + 3) / 5,(TileMapHS.local_to_map(get_global_mouse_position()).y / 5) )
+	tile_pos2 = Vector2i((TileMapHS.local_to_map(get_global_mouse_position()).x + 3) / 5,(TileMapHS.local_to_map(get_global_mouse_position()).y / 5) )
 	tile_pos2 = tile_pos2 - Vector2i(14, 0)
 	#print(tile_pos2)
 	TileMapHS.clear_layer(3)
@@ -88,7 +88,7 @@ func _process(_delta):
 				for i in players:
 					if head[i].location == 0:
 						showDiplo(head[i])
-					TileMapHS.update(head[i])
+					TileMapHS.update2(head[i]) ####
 					generateAltHeads()
 					generateAltColors()
 			hid = !hid

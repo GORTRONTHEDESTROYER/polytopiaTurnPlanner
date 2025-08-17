@@ -26,8 +26,17 @@ func update(head):
 		
 	tileSelectPing.ping(head)
 	
+func update2(head):
+	
+	
 
-
+	#head
+	set_cell(1,Vector2i(0,1 + head.location),1,head.tribe,0)
+	#color
+	set_cell(0,Vector2i(0,1 + head.location),0,head.color,0)
+	
+	unitBoard.updateAllUnitLook()
+	unitBoard.updateAllTileLook()
 		
 func hideUnselected(ip)->void:
 	for i in ip:
