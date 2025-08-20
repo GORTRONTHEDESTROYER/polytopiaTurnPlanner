@@ -46,7 +46,7 @@ func _ready():
 			)
 			
 			baseLayer.set_cell(Vector2i(x, y), 0, Vector2i.ZERO, 0)
-
+	
 	#tiles[0][0].unit = Unit.new(Constants.UnitType.WARRIOR, Constants.Player.ONE)
 	#tiles[0][1].unit = Unit.new(Constants.UnitType.WARRIOR, Constants.Player.ONE)
 	#print(tiles[0][0].unit.type)
@@ -239,11 +239,9 @@ func updateLook(tile: Tile):
 			tile.road = true
 			buildingRoad.set_cell( tile.position, 0, Vector2i.ZERO, 0)
 		[Constants.BuildingType.RUIN, _]:
-			print("tester")
 			tile.road = false
 			buildingLayer.set_cell( tile.position, 0, Vector2i.ZERO, 0)
 		[Constants.BuildingType.VILLAGE, _]:
-			print("tester")
 			tile.road = true
 			buildingLayer.set_cell( tile.position, 1, Vector2i.ZERO, 0)
 			
@@ -256,9 +254,19 @@ func updateAllTileLook():
 					
 					
 func updateUnit(tile: Tile):
+	if unit_type_bt == Constants.UnitType.DELETE:
+		tile.unit = null
+		updateUnitLook(tile)
+
+		return
+	
+	if tile.unit != null:
+		updateUnitLook(tile)
+
+		return
+	
+	
 	match unit_type_bt:
-		Constants.UnitType.DELETE:
-			tile.unit = null
 		Constants.UnitType.WARRIOR: 
 			var player = playerSelected.selected()
 			#tile.unit.player = player.player
@@ -270,7 +278,7 @@ func updateUnit(tile: Tile):
 		Constants.UnitType.RIDER: 
 			var player = playerSelected.selected()
 			tile.unit = Unit.new(player.player)
-			tile.unit.typeWarrior(Constants.UnitType.RIDER)
+			tile.unit.typeRider(Constants.UnitType.RIDER)
 
 		_:
 			pass
@@ -292,7 +300,7 @@ func updateUnitLook(tileW: Tile):
 				
 			Constants.UnitType.RIDER:
 				unitHead.set_cell( tileW.position, 1, playerSelected.head[tileW.unit.player].tribe, 0)
-				unitLayer.set_cell( tileW.position, playerSelected.TileMapHS.tileSelectPing.tribeS + 1, playerSelected.head[tileW.unit.player].color, 0)
+				unitLayer.set_cell( tileW.position, playerSelected.TileMapHS.tileSelectPing.ping(playerSelected.head[tileW.unit.player]) + 1, playerSelected.head[tileW.unit.player].color, 0)
 			_: 
 				pass
 	else:
@@ -342,7 +350,8 @@ func turnMode(tile: Tile):
 var looper = 0		
 func drawPosibleUnitMoves(tile: Tile):
 	var movement = tile.unit.movement
-	tiles[1][6].zoneControl = 2
+	print(tile.unit.movement)
+	#tiles[1][6].zoneControl = 2
 	var flying = false
 	var creep = false
 	
@@ -354,7 +363,7 @@ func drawPosibleUnitMoves(tile: Tile):
 	tile.spacer = 0
 	
 	movementRevamp(movement*2, tile.position)
-	print(looper)
+	#print(looper)
 	
 	movement = movement * 2
 	for x in range(((movement) * 3)): 
@@ -366,6 +375,8 @@ func drawPosibleUnitMoves(tile: Tile):
 				tiles[tileMoveDistClear.x][tileMoveDistClear.y].spacer = -1
 				
 func movementRevamp(movement: int, vectorHoldPassed: Vector2i, stupid: bool = true):	
+	
+	
 	var sneak = false
 	var creep = false
 	var amphibious  = false
@@ -389,8 +400,14 @@ func movementRevamp(movement: int, vectorHoldPassed: Vector2i, stupid: bool = tr
 				
 				if(!inBounds(vectorHold)):
 					continue  
-				if(tiles[vectorHold.x][vectorHold.y].zoneControl == 2):
-					continue  
+				if(tiles[vectorHold.x][vectorHold.y].unit != null):
+					var zoneHold = tiles[vectorHold.x][vectorHold.y].zoneControl
+					if (!friendlyCheck(tiles[vectorHold.x][vectorHold.y].unit, vectorHold)):
+						tiles[vectorHold.x][vectorHold.y].zoneControl = zoneHold
+						continue
+					tiles[vectorHold.x][vectorHold.y].zoneControl = zoneHold
+						
+					  
 				#water movement
 				if((tiles[vectorHold.x][vectorHold.y].water == true) && (!amphibious && !water && !flying) && tiles[vectorHold.x][vectorHold.y].zoneControl !=1):
 					continue
@@ -407,6 +424,7 @@ func movementRevamp(movement: int, vectorHoldPassed: Vector2i, stupid: bool = tr
 				if(sneak == false):
 					zoneOfControl(vectorHold)
 					
+					
 				if(unitMoveLayer.get_cell_source_id(vectorHold)!=1):
 					if(movement>tiles[vectorHold.x][vectorHold.y].movementDist):
 						tiles[vectorHold.x][vectorHold.y].movementDist = movement
@@ -415,19 +433,33 @@ func movementRevamp(movement: int, vectorHoldPassed: Vector2i, stupid: bool = tr
 						print(flying)
 						roadRec(vectorHold,vectorHoldPassed,movement,stupid)
 					
-					
-				
-				
+
 func zoneOfControl(vectorHold):
 	for i in range(3):
 		for j in range(3): 
 			var vectorHold2 = vectorHold + Vector2i(i,j) - Vector2i(1,1) 
-			if(inBounds(vectorHold2)):
+			if(inBounds(vectorHold2) ):
+				var zoneHold = tiles[vectorHold2.x][vectorHold2.y].zoneControl
+				if tiles[vectorHold2.x][vectorHold2.y].unit != null:
+					friendlyCheck(tiles[vectorHold2.x][vectorHold2.y].unit, vectorHold2)
 				if(tiles[vectorHold2.x][vectorHold2.y].zoneControl == 2):
 					unitMoveLayer.set_cell( vectorHold, 1, Vector2i.ZERO, 0)
 					unitMoveLayer.set_cell( vectorHold2, 2, Vector2i.ZERO, 0)
+					tiles[vectorHold2.x][vectorHold2.y].zoneControl = zoneHold
 
-				
+
+func friendlyCheck(unitObject, vectorHold2):
+	if state.active_tile.unit.player == unitObject.player:
+		print(vectorHold2)
+		return true
+	for x in playerSelected.head[state.active_tile.unit.player].diplo:
+		if playerSelected.head[state.active_tile.unit.player].diplo[x-1] == unitObject.player:
+			print(vectorHold2)
+			return true
+	tiles[vectorHold2.x][vectorHold2.y].zoneControl = 2 
+	return false	
+		
+					
 					
 func roughTerrain(vectorHold,vectorHoldPassed,movement,stupid):
 	if(tiles[vectorHold.x][vectorHold.y].road && tiles[vectorHoldPassed.x][vectorHoldPassed.y].road):
@@ -510,92 +542,10 @@ func inBounds(vectorPassed):
 			return true
 	return false
 
-func _on_mountain_button_toggled(toggled_on: bool):
-	if toggled_on:
-		tile_type_bt = Constants.TileType.MOUNTAIN
-	else:
-		tile_type_bt = Constants.TileType.NONE	
-
-func _on_field_button_toggled(toggled_on: bool):
-	if toggled_on:
-		tile_type_bt = Constants.TileType.FIELD
-	else:
-		tile_type_bt = Constants.TileType.NONE	 
-	
-func _on_forest_button_toggled(toggled_on: bool):
-	if toggled_on:
-		tile_type_bt = Constants.TileType.FOREST
-	else:
-		tile_type_bt = Constants.TileType.NONE	
-		
-func _on_cloudglidder_toggled(toggled_on: bool):
-	if toggled_on:
-		tile_type_bt = Constants.TileType.CLOUD
-	else:
-		tile_type_bt = Constants.TileType.NONE
 
 var resource_level_bt = 0
 
-func _on_tier_one_toggled(toggled_on: bool):
-		
-	if toggled_on:
-		resource_level_bt = 1 
-	else:
-		resource_level_bt = 0
-
-func _on_tier_two_toggled(toggled_on: bool):
-		
-	if toggled_on:
-		resource_level_bt = 2 
-	else:
-		resource_level_bt = 0 
-		
-func _on_toggle_play_toggled(toggled_on: bool):
-	if toggled_on:
-		mode = 1
-	else:
-		mode = 0 
-			
-
 var unit_type_bt = Constants.UnitType.NONE
-
-func _on_warrior_spawn_toggled(toggled_on: bool):
-	if toggled_on:
-		unit_type_bt = Constants.UnitType.WARRIOR
-	else:
-		unit_type_bt = Constants.UnitType.NONE
-	#print(unit)
-	
-
-func _on_road_button_toggled(toggled_on: bool):
-	if toggled_on:
-		building_type_bt = Constants.BuildingType.ROAD
-	else:
-		building_type_bt = Constants.BuildingType.NONE
-	#print(building_type_bt)
-
-func _on_shores_button_toggled(toggled_on: bool) -> void:
-	if toggled_on:
-		tile_type_bt = Constants.TileType.SHORES
-	else:
-		tile_type_bt = Constants.TileType.NONE	
-			
-func _on_ocean_button_toggled(toggled_on: bool) -> void:
-	if toggled_on:
-		tile_type_bt = Constants.TileType.OCEAN
-	else:
-		tile_type_bt = Constants.TileType.NONE	
-func _on_ruin_button_toggled(toggled_on: bool) -> void:
-	if toggled_on:
-		building_type_bt = Constants.BuildingType.RUIN
-	else:
-		building_type_bt = Constants.BuildingType.NONE
-
-func _on_village_button_toggled(toggled_on: bool) -> void:
-	if toggled_on:
-		building_type_bt = Constants.BuildingType.VILLAGE
-	else:
-		building_type_bt = Constants.BuildingType.NONE
 
 func checkPlayerSelectOverlap():
 	if !playerSelected.hid && (playerSelected.tile_pos2.x > -7 && playerSelected.tile_pos2.y < 7 && playerSelected.tile_pos2.x < 0 && playerSelected.tile_pos2.y > 0):

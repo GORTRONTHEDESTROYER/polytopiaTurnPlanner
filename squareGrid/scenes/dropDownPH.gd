@@ -3,6 +3,7 @@ var players : int = Global.players
 @onready var TileMapHS = $TileMapSelect
 var head: Array = []
 
+@export var save : Sprite2D
 #var PH = PlayerHead.new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,6 +11,8 @@ func _ready():
 	
 	#PlayerHead.start()
 	print("i")
+
+
 
 	for i in players:
 		print(i)
@@ -55,6 +58,21 @@ func _process(_delta):
 	
 	if Input.is_action_just_released("LEFT_MOUSE_BUTTON"):
 		#tribe and color switcher
+		
+		if(tile_pos2.x == -3 && tile_pos2.y == 0):
+			if(TileMapHS.unitBoard.mode == 1):
+				TileMapHS.unitBoard.mode = 0
+				TileMapHS.erase_cell(0,Vector2i(-3,1))
+				return
+			TileMapHS.unitBoard.mode = 1
+			TileMapHS.set_cell(0, Vector2i(-3,1), 0, Constants.Tribe.KIC,0)
+			return
+		if(tile_pos2.x == -2 && tile_pos2.y == 0):
+			save.save_game()
+			return
+		if(tile_pos2.x == -1 && tile_pos2.y == 0):
+			save.load_game()
+			return
 		
 		var breaker = false
 		if (tile_pos2.x > -7 && tile_pos2.y < 7 && tile_pos2.x < 0 && tile_pos2.y > 0):
@@ -131,6 +149,10 @@ func _process(_delta):
 			#TileMapHS.set_cell(2, Vector2i(0,0), 2, head[pos.y].color,0)
 
 func get_tile(pos: Vector2i) -> void:
+	
+	if pos.x < 0 && pos.y == 0 && pos.x > -4:
+		TileMapHS.set_cell(3, Vector2i(pos.x,pos.y + 1), 2, Constants.Tribe.VEN,0)
+	
 	if pos.x < 0 or pos.y < 0 or pos.x >= 1 or pos.y >= players:
 		pass
 	else:

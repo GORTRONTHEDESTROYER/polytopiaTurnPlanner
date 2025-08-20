@@ -1,4 +1,4 @@
-[gd_scene load_steps=342 format=4 uid="uid://v2jasy851nff"]
+[gd_scene load_steps=336 format=4 uid="uid://v2jasy851nff"]
 
 [ext_resource type="Texture2D" uid="uid://dxbhx4ys67t1g" path="res://imageHolder/tileHolder/selection.png" id="1_esfrv"]
 [ext_resource type="Texture2D" uid="uid://coio8lm6ctkta" path="res://imageHolder/unitHolder/moveTarget42x38.png" id="4_pjfmc"]
@@ -11,8 +11,6 @@
 [ext_resource type="Script" uid="uid://hvkcvw62x7bs" path="res://scripts/TileGrid.gd" id="9_010ei"]
 [ext_resource type="Texture2D" uid="uid://3fqgaex45veo" path="res://imageHolder/unitHolder/warriors heads done.png" id="9_wfqim"]
 [ext_resource type="Texture2D" uid="uid://c74vvdkejlcov" path="res://imageHolder/tileHolder/Clouds.png" id="10_1m6pd"]
-[ext_resource type="ButtonGroup" uid="uid://dve2dulv0eikw" path="res://button_groups_debug/TileTypeButtonGroup.tres" id="10_tj1lt"]
-[ext_resource type="ButtonGroup" uid="uid://cxdd1kvv2n0jc" path="res://button_groups_debug/Resources_Tier.tres" id="11_p5bpv"]
 [ext_resource type="Texture2D" uid="uid://dcsdn1c67c6mq" path="res://imageHolder/buildings/RuinTiny2.png" id="13_tuk40"]
 [ext_resource type="Texture2D" uid="uid://p62slu8eq1tf" path="res://imageHolder/buildings/VillageTiny.png" id="14_pr331"]
 [ext_resource type="Texture2D" uid="uid://7epo2r04dcg0" path="res://imageHolder/tileHolder/allTiles.png" id="15_l46qg"]
@@ -31,9 +29,13 @@
 [ext_resource type="Script" uid="uid://b16u7jsxboboq" path="res://scenes/dropDownPH.gd" id="26_yd5n3"]
 [ext_resource type="Script" uid="uid://bfuip03r8gdsv" path="res://scripts/SelectHead.gd" id="27_yd5n3"]
 [ext_resource type="Texture2D" uid="uid://cmyxvk25dqfx7" path="res://imageHolder/unitHolder/Tribecolors.png" id="28_30l83"]
+[ext_resource type="Script" uid="uid://cwpgaa7b0f0lc" path="res://scripts/SaveGame.gd" id="28_cfm7g"]
 [ext_resource type="Texture2D" uid="uid://bqq48fn1avxwy" path="res://imageHolder/unitHolder/ColorSelected.png" id="29_hony2"]
+[ext_resource type="Texture2D" uid="uid://co5u8jkrskpn3" path="res://imageHolder/misc/playbtn.png" id="36_i08e2"]
+[ext_resource type="Texture2D" uid="uid://cjouobe00sevo" path="res://imageHolder/misc/SaveGame.png" id="38_ajqxv"]
 [ext_resource type="Script" uid="uid://usdfuab3hoxj" path="res://scenes/gameObjectSelection.gd" id="38_qjia3"]
 [ext_resource type="Script" uid="uid://bwipf0q1wuq0l" path="res://scenes/units_select.gd" id="39_0u2xt"]
+[ext_resource type="Texture2D" uid="uid://dsy2rhebxh1li" path="res://imageHolder/misc/loader.png" id="39_2onh8"]
 [ext_resource type="Texture2D" uid="uid://icm31ubvy2k0" path="res://imageHolder/tileHolder/waterTiles.png" id="40_0u2xt"]
 [ext_resource type="Script" uid="uid://bkxj775l4n02b" path="res://scenes/tiles_plains.gd" id="40_g4yfi"]
 [ext_resource type="Script" uid="uid://bkpumcqw62hie" path="res://scenes/units_tier_one.gd" id="40_owwdc"]
@@ -42,7 +44,7 @@
 [ext_resource type="Texture2D" uid="uid://dw6t8ll60i4a0" path="res://imageHolder/buildings/RuinTiny.png" id="41_owwdc"]
 [ext_resource type="Script" uid="uid://cbqsihcysoq87" path="res://scenes/tiles_water.gd" id="42_d3ckp"]
 [ext_resource type="Script" uid="uid://cdnxs0gobfl71" path="res://scenes/tiles_cymanti.gd" id="44_ajqxv"]
-[ext_resource type="Texture2D" uid="uid://etdhta288yg7" path="res://imageHolder/unitHolder/cancel.png" id="45_x24fn"]
+[ext_resource type="Texture2D" uid="uid://etdhta288yg7" path="res://imageHolder/misc/cancel.png" id="45_x24fn"]
 [ext_resource type="Texture2D" uid="uid://bmvfp36em8cjx" path="res://imageHolder/buildings/lighthouseSmall.png" id="47_d3ckp"]
 [ext_resource type="Texture2D" uid="uid://dms2t07hk8qo" path="res://imageHolder/buildings/starfishSmall.png" id="48_ajqxv"]
 
@@ -458,72 +460,6 @@ tile_layout = 5
 tile_size = Vector2i(42, 25)
 uv_clipping = true
 sources/0 = SubResource("TileSetAtlasSource_ped4l")
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uxe36"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aymtx"]
-bg_color = Color(1, 1, 1, 1)
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jl1b3"]
-bg_color = Color(0.309804, 0.556863, 0.898039, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5yqe8"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mgiss"]
-bg_color = Color(1, 1, 1, 1)
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vg18n"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-corner_detail = 1
-expand_margin_left = 15.0
-expand_margin_top = 3.0
-expand_margin_right = 15.0
-expand_margin_bottom = 3.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dwdvq"]
-bg_color = Color(0.309804, 0.556863, 0.898039, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vx317"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-corner_detail = 1
-expand_margin_left = 15.0
-expand_margin_top = 3.0
-expand_margin_right = 15.0
-expand_margin_bottom = 3.0
 
 [sub_resource type="GDScript" id="GDScript_o7v4p"]
 script/source = "extends Camera2D
@@ -2473,7 +2409,8 @@ animations = [{
 
 [node name="Node2D" type="Node2D"]
 
-[node name="TileMap" type="Node2D" parent="." node_paths=PackedStringArray("playerSelected", "baseLayer", "resourceLayer", "buildingRoad", "buildingLayer", "unitMoveLayer", "unitHead", "unitLayer", "cloudsLayer", "selectionLayer")]
+[node name="TileMapHolder" type="Node2D" parent="." node_paths=PackedStringArray("playerSelected", "baseLayer", "resourceLayer", "buildingRoad", "buildingLayer", "unitMoveLayer", "unitHead", "unitLayer", "cloudsLayer", "selectionLayer")]
+unique_name_in_owner = true
 script = ExtResource("9_010ei")
 playerSelected = NodePath("../CanvasLayer/tribeSelectHeader")
 baseLayer = NodePath("base_layer")
@@ -2486,243 +2423,54 @@ unitLayer = NodePath("unit_layer")
 cloudsLayer = NodePath("clouds")
 selectionLayer = NodePath("selection_layer")
 
-[node name="base_layer" type="TileMapLayer" parent="TileMap"]
+[node name="base_layer" type="TileMapLayer" parent="TileMapHolder"]
+texture_filter = 1
 use_parent_material = true
 tile_set = SubResource("TileSet_biybm")
 
-[node name="resource_layerNew" type="TileMapLayer" parent="TileMap"]
+[node name="resource_layerNew" type="TileMapLayer" parent="TileMapHolder"]
+texture_filter = 1
 tile_set = SubResource("TileSet_l46qg")
 
-[node name="building_road" type="TileMapLayer" parent="TileMap"]
+[node name="building_road" type="TileMapLayer" parent="TileMapHolder"]
+texture_filter = 1
 use_parent_material = true
 tile_set = SubResource("TileSet_s5bx3")
 
-[node name="buildings_layer" type="TileMapLayer" parent="TileMap"]
+[node name="buildings_layer" type="TileMapLayer" parent="TileMapHolder"]
+texture_filter = 1
 use_parent_material = true
 tile_set = SubResource("TileSet_wduc1")
 
-[node name="unit_move_layer" type="TileMapLayer" parent="TileMap"]
+[node name="unit_move_layer" type="TileMapLayer" parent="TileMapHolder"]
+texture_filter = 1
 use_parent_material = true
 tile_set = SubResource("TileSet_libe4")
 
-[node name="unit_head" type="TileMapLayer" parent="TileMap"]
+[node name="unit_head" type="TileMapLayer" parent="TileMapHolder"]
+texture_filter = 1
+texture_repeat = 1
 use_parent_material = true
 position = Vector2(-5, -5)
 tile_set = SubResource("TileSet_4n484")
 
-[node name="unit_layer" type="TileMapLayer" parent="TileMap"]
+[node name="unit_layer" type="TileMapLayer" parent="TileMapHolder"]
+texture_filter = 1
+texture_repeat = 1
 position = Vector2(-5, -5)
 tile_set = SubResource("TileSet_armdj")
 
-[node name="clouds" type="TileMapLayer" parent="TileMap"]
+[node name="clouds" type="TileMapLayer" parent="TileMapHolder"]
+texture_filter = 1
 use_parent_material = true
 tile_set = SubResource("TileSet_yao4t")
 
-[node name="selection_layer" type="TileMapLayer" parent="TileMap"]
+[node name="selection_layer" type="TileMapLayer" parent="TileMapHolder"]
+texture_filter = 1
 use_parent_material = true
 tile_set = SubResource("TileSet_0u2xt")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
-visible = false
-anchors_preset = -1
-anchor_left = 0.01
-anchor_top = 0.01
-anchor_right = 0.01
-anchor_bottom = 0.01
-offset_left = -2.52
-offset_top = 111.52
-offset_right = 97.48
-offset_bottom = 458.52
-alignment = 1
-
-[node name="Tier_One" type="Button" parent="CanvasLayer/VBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.839216, 0.901961, 0, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_uxe36")
-theme_override_styles/hover = SubResource("StyleBoxFlat_aymtx")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_jl1b3")
-theme_override_styles/normal = SubResource("StyleBoxFlat_jl1b3")
-toggle_mode = true
-button_group = ExtResource("11_p5bpv")
-text = "Tier 1"
-
-[node name="Tier_Two" type="Button" parent="CanvasLayer/VBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.839216, 0.901961, 0, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_uxe36")
-theme_override_styles/hover = SubResource("StyleBoxFlat_aymtx")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_jl1b3")
-theme_override_styles/normal = SubResource("StyleBoxFlat_jl1b3")
-toggle_mode = true
-button_group = ExtResource("11_p5bpv")
-text = "Tier 2"
-
-[node name="Forest_Button" type="Button" parent="CanvasLayer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_5yqe8")
-theme_override_styles/hover = SubResource("StyleBoxFlat_mgiss")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_vg18n")
-theme_override_styles/normal = SubResource("StyleBoxFlat_dwdvq")
-toggle_mode = true
-button_group = ExtResource("10_tj1lt")
-text = "Forests
-"
-
-[node name="Mountain_Button" type="Button" parent="CanvasLayer/VBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_uxe36")
-theme_override_styles/hover = SubResource("StyleBoxFlat_aymtx")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_vx317")
-theme_override_styles/normal = SubResource("StyleBoxFlat_jl1b3")
-toggle_mode = true
-button_group = ExtResource("10_tj1lt")
-text = "Mountain"
-
-[node name="Field_Button" type="Button" parent="CanvasLayer/VBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_uxe36")
-theme_override_styles/hover = SubResource("StyleBoxFlat_aymtx")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_vx317")
-theme_override_styles/normal = SubResource("StyleBoxFlat_jl1b3")
-toggle_mode = true
-button_group = ExtResource("10_tj1lt")
-text = "Field
-"
-
-[node name="Cloudglidder" type="Button" parent="CanvasLayer/VBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_uxe36")
-theme_override_styles/hover = SubResource("StyleBoxFlat_aymtx")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_vx317")
-theme_override_styles/normal = SubResource("StyleBoxFlat_jl1b3")
-toggle_mode = true
-button_group = ExtResource("10_tj1lt")
-text = "Cloudglidder
-"
-
-[node name="TogglePlay" type="Button" parent="CanvasLayer/VBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.839216, 0.901961, 0, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_uxe36")
-theme_override_styles/hover = SubResource("StyleBoxFlat_aymtx")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_jl1b3")
-theme_override_styles/normal = SubResource("StyleBoxFlat_jl1b3")
-toggle_mode = true
-text = "Play
-"
-
-[node name="WarriorSpawn" type="Button" parent="CanvasLayer/VBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_uxe36")
-theme_override_styles/hover = SubResource("StyleBoxFlat_aymtx")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_vx317")
-theme_override_styles/normal = SubResource("StyleBoxFlat_jl1b3")
-toggle_mode = true
-keep_pressed_outside = true
-button_group = ExtResource("10_tj1lt")
-text = "unit
-"
-
-[node name="Road_Button" type="Button" parent="CanvasLayer/VBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_uxe36")
-theme_override_styles/hover = SubResource("StyleBoxFlat_aymtx")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_vx317")
-theme_override_styles/normal = SubResource("StyleBoxFlat_jl1b3")
-toggle_mode = true
-button_group = ExtResource("10_tj1lt")
-text = "road
-"
-
-[node name="Shores_Button" type="Button" parent="CanvasLayer/VBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_uxe36")
-theme_override_styles/hover = SubResource("StyleBoxFlat_aymtx")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_vx317")
-theme_override_styles/normal = SubResource("StyleBoxFlat_jl1b3")
-toggle_mode = true
-button_group = ExtResource("10_tj1lt")
-text = "Shore
-"
-
-[node name="Ocean_Button" type="Button" parent="CanvasLayer/VBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_uxe36")
-theme_override_styles/hover = SubResource("StyleBoxFlat_aymtx")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_vx317")
-theme_override_styles/normal = SubResource("StyleBoxFlat_jl1b3")
-toggle_mode = true
-button_group = ExtResource("10_tj1lt")
-text = "Ocean
-"
-
-[node name="Ruin_Button" type="Button" parent="CanvasLayer/VBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_uxe36")
-theme_override_styles/hover = SubResource("StyleBoxFlat_aymtx")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_vx317")
-theme_override_styles/normal = SubResource("StyleBoxFlat_jl1b3")
-toggle_mode = true
-button_group = ExtResource("10_tj1lt")
-text = "Ruin"
-
-[node name="Village_Button" type="Button" parent="CanvasLayer/VBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_uxe36")
-theme_override_styles/hover = SubResource("StyleBoxFlat_aymtx")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_vx317")
-theme_override_styles/normal = SubResource("StyleBoxFlat_jl1b3")
-toggle_mode = true
-button_group = ExtResource("10_tj1lt")
-text = "Village
-"
 
 [node name="Camera2D" type="Camera2D" parent="CanvasLayer"]
 position = Vector2(-570, -110)
@@ -2731,7 +2479,7 @@ ignore_rotation = false
 process_callback = 0
 script = SubResource("GDScript_o7v4p")
 
-[node name="tribeSelectHeader" type="NinePatchRect" parent="CanvasLayer"]
+[node name="tribeSelectHeader" type="NinePatchRect" parent="CanvasLayer" node_paths=PackedStringArray("save")]
 top_level = true
 offset_left = 1070.0
 offset_top = 6.0
@@ -2743,6 +2491,7 @@ patch_margin_top = 38
 patch_margin_right = 38
 patch_margin_bottom = 38
 script = ExtResource("26_yd5n3")
+save = NodePath("saveButton")
 
 [node name="tribeSelectExpand" type="NinePatchRect" parent="CanvasLayer/tribeSelectHeader"]
 visible = false
@@ -2766,8 +2515,24 @@ layer_1/name = "Diplo"
 layer_2/name = "Head"
 layer_3/name = "Selected"
 script = ExtResource("27_yd5n3")
-unitBoard = NodePath("../../../TileMap")
+unitBoard = NodePath("../../../TileMapHolder")
 tileSelectPing = NodePath("../../Node")
+
+[node name="startButton" type="Sprite2D" parent="CanvasLayer/tribeSelectHeader"]
+position = Vector2(-201, 43)
+scale = Vector2(1.5119, 1.52381)
+texture = ExtResource("36_i08e2")
+
+[node name="saveButton" type="Sprite2D" parent="CanvasLayer/tribeSelectHeader"]
+position = Vector2(-122, 43)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("38_ajqxv")
+script = ExtResource("28_cfm7g")
+
+[node name="loadButton" type="Sprite2D" parent="CanvasLayer/tribeSelectHeader"]
+position = Vector2(-42, 42)
+scale = Vector2(1.55, 1.55)
+texture = ExtResource("39_2onh8")
 
 [node name="Node" type="Node2D" parent="CanvasLayer" node_paths=PackedStringArray("mainSelect", "tilesPlains", "tilesRoughTerrain", "tilesWater", "tilesCymanti", "tilesNatGen", "unitsSelect", "unitsTierOne", "TileMapMain", "background", "selection")]
 script = ExtResource("38_qjia3")
@@ -2779,7 +2544,7 @@ tilesCymanti = NodePath("selectionTiles/tilesCymanti")
 tilesNatGen = NodePath("selectionTiles/tilesNatGen")
 unitsSelect = NodePath("unitsSelect")
 unitsTierOne = NodePath("unitsSelect/unitsTierOne")
-TileMapMain = NodePath("../../TileMap")
+TileMapMain = NodePath("../../TileMapHolder")
 background = NodePath("background")
 selection = NodePath("selection")
 
@@ -3019,8 +2784,6 @@ sprite_frames = SubResource("SpriteFrames_ciyid")
 position = Vector2(2.38419e-06, 1.90735e-06)
 scale = Vector2(1.012, 0.998)
 sprite_frames = SubResource("SpriteFrames_6eesh")
-frame = 5
-frame_progress = 0.723469
 
 [node name="unitsTierOne" type="Node2D" parent="CanvasLayer/Node/unitsSelect" node_paths=PackedStringArray("warriorBody", "warriorHead", "riderBody", "riderHead", "cancel")]
 script = ExtResource("40_owwdc")
@@ -3054,17 +2817,3 @@ sprite_frames = SubResource("SpriteFrames_bjbfp")
 position = Vector2(367, 128)
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("45_x24fn")
-
-[connection signal="toggled" from="CanvasLayer/VBoxContainer/Tier_One" to="TileMap" method="_on_tier_one_toggled"]
-[connection signal="toggled" from="CanvasLayer/VBoxContainer/Tier_Two" to="TileMap" method="_on_tier_two_toggled"]
-[connection signal="toggled" from="CanvasLayer/VBoxContainer/Forest_Button" to="TileMap" method="_on_forest_button_toggled"]
-[connection signal="toggled" from="CanvasLayer/VBoxContainer/Mountain_Button" to="TileMap" method="_on_mountain_button_toggled"]
-[connection signal="toggled" from="CanvasLayer/VBoxContainer/Field_Button" to="TileMap" method="_on_field_button_toggled"]
-[connection signal="toggled" from="CanvasLayer/VBoxContainer/Cloudglidder" to="TileMap" method="_on_cloudglidder_toggled"]
-[connection signal="toggled" from="CanvasLayer/VBoxContainer/TogglePlay" to="TileMap" method="_on_toggle_play_toggled"]
-[connection signal="toggled" from="CanvasLayer/VBoxContainer/WarriorSpawn" to="TileMap" method="_on_warrior_spawn_toggled"]
-[connection signal="toggled" from="CanvasLayer/VBoxContainer/Road_Button" to="TileMap" method="_on_road_button_toggled"]
-[connection signal="toggled" from="CanvasLayer/VBoxContainer/Shores_Button" to="TileMap" method="_on_shores_button_toggled"]
-[connection signal="toggled" from="CanvasLayer/VBoxContainer/Ocean_Button" to="TileMap" method="_on_ocean_button_toggled"]
-[connection signal="toggled" from="CanvasLayer/VBoxContainer/Ruin_Button" to="TileMap" method="_on_ruin_button_toggled"]
-[connection signal="toggled" from="CanvasLayer/VBoxContainer/Village_Button" to="TileMap" method="_on_village_button_toggled"]
