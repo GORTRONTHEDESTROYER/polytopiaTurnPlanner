@@ -14,7 +14,7 @@ extends Resource
 
 @export var unit: unitSaver
 
-func addUnit(type, player, active):
-	unit = unitSaver.new(type, player, active)
-	unit.setter(type, player, active)
+func addUnit(typeP, playerP, activeP):
+	unit = unitSaver.new(typeP, playerP, activeP)
+	unit.setter(typeP, playerP, activeP)
 #	pass

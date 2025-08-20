@@ -8,7 +8,7 @@ extends Resource
 @export var active: bool = false
 
 
-func _init(tyepP:Constants.UnitType = 0,playerP:int = 0,activeP:bool = false):
+func _init(tyepP:Constants.UnitType = Constants.UnitType.NONE,playerP:int = 0,activeP:bool = false):
 	type = tyepP 
 	player = playerP
 	active = activeP
