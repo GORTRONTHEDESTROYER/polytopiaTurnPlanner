@@ -12,6 +12,8 @@ extends Node2D
 
 @export var TileMapMain: Node2D
 
+@export var playerBuildings: Control
+
 #@export var tribeSelectData: NinePatchRect
 
 @export var background: TileMapLayer
@@ -38,6 +40,14 @@ func setup():
 	
 	
 func hidFlip():
+	#remove later
+	TileMapMain.building_type_bt = Constants.BuildingType.NONE
+	TileMapMain.tile_type_bt = Constants.TileType.NONE
+	TileMapMain.unit_type_bt = Constants.UnitType.NONE
+	
+	background.clear()
+	switch = 0
+	playerBuildings.visible = false
 	
 	tilesPlains.visible = false
 	tilesRoughTerrain.visible = false
@@ -48,8 +58,10 @@ func hidFlip():
 	unitsTierOne.visible = false
 	
 	if page == 1:
-		
-		TileMapMain.unit_type_bt = Constants.UnitType.NONE
+		#TileMapMain.building_type_bt = Constants.BuildingType.NONE
+	#	TileMapMain.tile_type_bt = Constants.TileType.NONE
+	#	TileMapMain.unit_type_bt = Constants.UnitType.NONE
+#		TileMapMain
 
 		tilesPlains.visible = true
 		#tilesPlains.visible = true
@@ -57,14 +69,21 @@ func hidFlip():
 		tilesWater.visible = true
 		tilesCymanti.visible = true
 		tilesNatGen.visible = true
+		
 	elif page == 2:
-		TileMapMain.unit_type_bt = Constants.UnitType.NONE
-		TileMapMain.tile_type_bt = Constants.TileType.NONE
+		playerBuildings.visible = true
+		#TileMapMain.unit_type_bt = Constants.UnitType.NONE
+		#TileMapMain.tile_type_bt = Constants.TileType.NONE
+		#TileMapMain.building_type_bt = Constants.BuildingType.NONE
+
 
 	
 	elif page == 3: 
+		
+		#TileMapMain.tile_type_bt = Constants.TileType.NONE
+		#TileMapMain.building_type_bt = Constants.BuildingType.NONE
+		#TileMapMain.unit_type_bt = Constants.UnitType.NONE
 		unitsTierOne.visible = true
-		TileMapMain.tile_type_bt = Constants.TileType.NONE
 		
 	
 
@@ -89,7 +108,7 @@ func _process(_delta):
 		if page == 1:
 			tilePage(tile_pos2)
 		if page == 2: 
-			pass
+			buildingPage(tile_pos2)
 		if page == 3:
 			unitPage(tile_pos2)
 
@@ -199,22 +218,73 @@ func unitPage(tile_pos2):
 				return
 			TileMapMain.unit_type_bt = Constants.UnitType.DELETE			
 			switch = 5
+			
+func buildingPage(tile_pos2):
+	
+	if(!(!hid && (tile_pos2.x > -1 && tile_pos2.y < 6 && tile_pos2.x < 5 && tile_pos2.y > -1))):
+		return
+	match [tile_pos2]:
+		[Vector2i(0,1)]:
+			print(true)
+			if switch == 1:
+				TileMapMain.tile_type_bt = Constants.TileType.NONE
+				TileMapMain.building_type_bt = Constants.TileType.NONE
+				switch = 0
+				#background.erase()
+				return
+			background.clear()
+			background.set_cell(Vector2i(tile_pos2.x,tile_pos2.y + 1), 0, Constants.Tribe.KIC,0)
+			switch = 1
+			TileMapMain.resource_level_bt = 0
+			TileMapMain.building_type_bt = Constants.BuildingType.CITY
+			TileMapMain.tile_type_bt = Constants.TileType.FIELD
+		[Vector2i(1,1)]:
+			if switch == 2:
+				TileMapMain.tile_type_bt = Constants.TileType.NONE
+				TileMapMain.building_type_bt = Constants.TileType.NONE
+
+				#TileMapMain.resource_level_bt = 0
+				switch = 0
+				return
+			TileMapMain.tile_type_bt = Constants.TileType.NONE
+			background.clear()
+			background.set_cell(Vector2i(tile_pos2.x,tile_pos2.y + 1), 0, Constants.Tribe.KIC,0)
+			switch = 2
+			TileMapMain.building_type_bt = Constants.BuildingType.ROAD
+			#TileMapMain.resource_level_bt = 1
+			#TileMapMain.tile_type_bt = Constants.TileType.FIELD
+			#return
+		[Vector2i(3,1)]:
+			if switch == 4:
+			#	TileMapMain.tile_type_bt = Constants.TileType.NONE
+				TileMapMain.resource_level_bt = 0
+				TileMapMain.building_type_bt = Constants.BuildingType.NONE			#return
+
+				switch = 0
+				
+				return
+			TileMapMain.tile_type_bt = Constants.TileType.NONE
+			background.clear()
+			background.set_cell(Vector2i(tile_pos2.x,tile_pos2.y + 1), 0, Constants.Tribe.KIC,0)
+			switch = 4
+			TileMapMain.building_type_bt = Constants.BuildingType.DELETE			#return
+			
 	
 
 
 func tilePage(tile_pos2):
 	match [tile_pos2]:
 			[Vector2i(3,0)]:
-				print(1)
+			#	print(1)
 				return
 			[Vector2i(4,0)]:
-				print(2)
+			#	print(2)
 				return
 			[Vector2i(4,1)]:
-				print(3)
+			#	print(3)
 				return
 			[Vector2i(4,2)]:
-				print(4)
+		#		print(4)
 				return
 	
 	if(!(!hid && (tile_pos2.x > -1 && tile_pos2.y < 6 && tile_pos2.x < 5 && tile_pos2.y > -1))):

@@ -23,7 +23,7 @@ var state = State.new()
 
 @export var selectionLayer: TileMapLayer
 
-
+@export var unitHealth: TileMapLayer
 
 
 
@@ -232,6 +232,11 @@ func updateLook(tile: Tile):
 	#print(tile.type)
 	#print(Constants.BuildingType.ROAD)
 	match [tile.building, tile.typeHeld]: 
+		[Constants.BuildingType.DELETE, _]:
+			tile.road = false
+			buildingRoad.erase_cell( tile.position)
+
+			buildingLayer.erase_cell( tile.position)
 		[Constants.BuildingType.ROAD, Constants.TileType.MOUNTAIN]:
 			tile.road = false
 			buildingRoad.erase_cell( tile.position)
@@ -244,6 +249,10 @@ func updateLook(tile: Tile):
 		[Constants.BuildingType.VILLAGE, _]:
 			tile.road = true
 			buildingLayer.set_cell( tile.position, 1, Vector2i.ZERO, 0)
+		[Constants.BuildingType.CITY, _]:
+			tile.road = true
+			buildingLayer.set_cell( tile.position, 4, Vector2i.ZERO, 0)
+			
 			
 			#erase_cell(Layer., tile.position)
 			#set_cell(Layer.BUILDING, tile.position, Constants.Asset.ROAD, Vector2i.ZERO, 0)
@@ -271,13 +280,12 @@ func updateUnit(tile: Tile):
 			var player = playerSelected.selected()
 			#tile.unit.player = player.player
 			
-			tile.unit = Unit.new(player.player)
-			
+			tile.unit = Unit.new(player.player, 10)
 			tile.unit.typeWarrior(Constants.UnitType.WARRIOR)
 			
 		Constants.UnitType.RIDER: 
 			var player = playerSelected.selected()
-			tile.unit = Unit.new(player.player)
+			tile.unit = Unit.new(player.player, 10)
 			tile.unit.typeRider(Constants.UnitType.RIDER)
 
 		_:
@@ -292,21 +300,31 @@ func updateAllUnitLook():
 func updateUnitLook(tileW: Tile):
 	
 	if tileW.unit != null:
+		var healthY = (tileW.unit.health -1) / 10
+		var healthX = (tileW.unit.health - healthY * 10) - 1
+		#print(Vector2i(healthY,healthX))
+		
 		match tileW.unit.type:
 			Constants.UnitType.WARRIOR:
 				
+				#tileW.unit.health
 				unitHead.set_cell( tileW.position, 0, playerSelected.head[tileW.unit.player].tribe, 0)
 				unitLayer.set_cell( tileW.position, 0, playerSelected.head[tileW.unit.player].color, 0)
+				unitHealth.set_cell(tileW.position, 0, Vector2i(healthX,healthY), 0)
+				
 				
 			Constants.UnitType.RIDER:
 				unitHead.set_cell( tileW.position, 1, playerSelected.head[tileW.unit.player].tribe, 0)
 				unitLayer.set_cell( tileW.position, playerSelected.TileMapHS.tileSelectPing.ping(playerSelected.head[tileW.unit.player]) + 1, playerSelected.head[tileW.unit.player].color, 0)
+				unitHealth.set_cell(tileW.position, 0, Vector2i(healthX,healthY), 0)
+
 			_: 
 				pass
 	else:
 	#	print("erase")
 		unitLayer.erase_cell(tileW.position)
 		unitHead.erase_cell(tileW.position)
+		unitHealth.erase_cell(tileW.position)
 
 		
 			

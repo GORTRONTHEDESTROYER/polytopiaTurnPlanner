@@ -27,7 +27,11 @@ func save_game():
 				#saved_unit.type = tileData.tiles[x][y].unit.type
 				#saved_unit.player = tileData.tiles[x][y].unit.player
 				#saved_unit.active = tileData.tiles[x][y].unit.active
-				saved_tile.addUnit(tileData.tiles[x][y].unit.type, tileData.tiles[x][y].unit.player, tileData.tiles[x][y].unit.active)
+				saved_tile.addUnit(tileData.tiles[x][y].unit.type, 
+					tileData.tiles[x][y].unit.player, 
+					tileData.tiles[x][y].unit.active
+					
+					)
 				#saved_tile.unit = saved_unit
 				
 				#saved_game.allUnits.append(saved_unit)
