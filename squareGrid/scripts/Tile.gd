@@ -47,7 +47,7 @@ func _init(
 
 func loadData(saved_game:SavedGameSubTile):
 	player = saved_game.player
-	type = saved_game.type
+	type = saved_game.typeHeld
 	tribe = saved_game.tribe
 	position = saved_game.position
 	typeHeld = saved_game.typeHeld

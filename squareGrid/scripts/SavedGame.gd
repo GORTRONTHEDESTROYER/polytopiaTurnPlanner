@@ -5,6 +5,8 @@ extends Resource
 @export var allTiles:Array[Array] = []
 
 @export var player: Array = []
+
+@export var mapSize: int = 11
 #@export var allUnits:Array[Resource] = []
 #Resource.duplicate(true)
 

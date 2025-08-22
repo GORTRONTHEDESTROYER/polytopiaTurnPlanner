@@ -34,6 +34,7 @@ func unitLoad(saved_unit:unitSaver):
 	#type = saved_unit.type
 	player = saved_unit.player
 	active = saved_unit.active
+	health = saved_unit.health
 	
 	match saved_unit.type:
 		Constants.UnitType.WARRIOR:

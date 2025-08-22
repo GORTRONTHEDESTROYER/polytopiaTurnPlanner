@@ -75,7 +75,7 @@ func _process(_delta):
 		prev_tile_pos = tile_pos
 
 		if Input.is_action_pressed("LEFT_MOUSE_BUTTON")&&(mode == 0):
-			print(playerSelected.tile_pos2)
+			#print(playerSelected.tile_pos2)
 			#checkPlayerSelectOverlap()
 			if checkPlayerSelectOverlap():
 				pass
@@ -379,7 +379,7 @@ func turnMode(tile: Tile):
 var looper = 0		
 func drawPosibleUnitMoves(tile: Tile):
 	var movement = tile.unit.movement
-	print(tile.unit.movement)
+#	print(tile.unit.movement)
 	#tiles[1][6].zoneControl = 2
 	var flying = false
 	var creep = false
@@ -479,11 +479,11 @@ func zoneOfControl(vectorHold):
 
 func friendlyCheck(unitObject, vectorHold2):
 	if state.active_tile.unit.player == unitObject.player:
-		print(vectorHold2)
+	#	print(vectorHold2)
 		return true
 	for x in playerSelected.head[state.active_tile.unit.player].diplo:
 		if playerSelected.head[state.active_tile.unit.player].diplo[x-1] == unitObject.player:
-			print(vectorHold2)
+			#print(vectorHold2)
 			return true
 	tiles[vectorHold2.x][vectorHold2.y].zoneControl = 2 
 	return false	

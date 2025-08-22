@@ -11,12 +11,12 @@ func _ready():
 	#TileMapHS.start()
 	
 	#PlayerHead.start()
-	print("i")
+	#print("i")
 
 
 
 	for i in players:
-		print(i)
+		#print(i)
 		head.append(PlayerHead.new(i,Constants.Tribe.XIN,Constants.Tribe.XIN, i))
 		#TileMapHS.updateTribe(head[i])
 		#head[i].printer()
@@ -37,8 +37,12 @@ func _ready():
 	#generateAltHeads()
 	#generateAltColors()
 
-	
-	
+func loadReady():
+	players = Global.players
+	#print("readyCleared")
+	for i in players:
+	#	print(i)
+		head.append(PlayerHead.new(i,Constants.Tribe.XIN,Constants.Tribe.XIN, i))
 	#TileMapHS.start()
 	#pass # Replace with function body.
 var tile_pos2: Vector2i 

@@ -225,7 +225,6 @@ func buildingPage(tile_pos2):
 		return
 	match [tile_pos2]:
 		[Vector2i(0,1)]:
-			print(true)
 			if switch == 1:
 				TileMapMain.tile_type_bt = Constants.TileType.NONE
 				TileMapMain.building_type_bt = Constants.TileType.NONE

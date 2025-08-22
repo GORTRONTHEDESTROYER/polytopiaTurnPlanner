@@ -6,11 +6,13 @@ extends Sprite2D
 func save_game():
 	var saved_game:SavedGame = SavedGame.new()
 	
+	saved_game.mapSize = Global.gridSize
+	
 	for x in tileData.playerSelected.head.size():
 		#var intChange = x
 		#intChange = int(intChange)
-		print("player")
-		print(player.head[1].player)
+		#print("player")
+#		print(player.head[1].player)
 		var saved_player:playerSaver = playerSaver.new()
 		saved_player.player = player.head[x].player
 		saved_player.tribe = player.head[x].tribe
@@ -52,11 +54,19 @@ func save_game():
 				#saved_unit.type = tileData.tiles[x][y].unit.type
 				#saved_unit.player = tileData.tiles[x][y].unit.player
 				#saved_unit.active = tileData.tiles[x][y].unit.active
-				saved_tile.addUnit(tileData.tiles[x][y].unit.type, 
-					tileData.tiles[x][y].unit.player, 
-					tileData.tiles[x][y].unit.active
-					
-					)
+				saved_tile.unit = unitSaver.new()
+				saved_tile.unit.type = tileData.tiles[x][y].unit.type
+				saved_tile.unit.player = tileData.tiles[x][y].unit.player
+				saved_tile.unit.active = tileData.tiles[x][y].unit.active
+				saved_tile.unit.health = tileData.tiles[x][y].unit.health
+				
+				
+				#.type =  tileData.tiles[x][y].unit.type
+			#	tileData.tiles[x][y].unit.type, 
+			#		tileData.tiles[x][y].unit.player, 
+				#	tileData.tiles[x][y].unit.active,
+				#	tileData.tiles[x][y].unit.health
+				
 				#saved_tile.unit = saved_unit
 				
 				#saved_game.allUnits.append(saved_unit)
@@ -97,7 +107,13 @@ func save_game():
 
 func load_game():
 	#var saved_game:SavedGameSubTile = load("res://savegame.tres") as SavedGameSubTile
+	
+	
+	
 	var saved_game:SavedGame = load("res://savegame.tres") as SavedGame
+	
+	
+	
 
 	for x in range(tileData.gridSize):
 		for y in range(tileData.gridSize):
@@ -108,6 +124,12 @@ func load_game():
 
 			
 	tileData.tiles.clear()
+	
+	tileData.gridSize = saved_game.mapSize
+	tileData.baseLayer.clear()
+
+	
+	
 	for x in range(tileData.gridSize):
 		tileData.tiles.append([])
 
@@ -122,12 +144,21 @@ func load_game():
 				tileData.tiles[x][y].unit = Unit.new()
 				tileData.tiles[x][y].unit.unitLoad(saved_game.allTiles[x][y].unit)
 				
-			
+	##################################################################################
 	tileData.updateAllTileLook(true)
 	tileData.updateAllUnitLook()
-	
+#	print(Global.players)
 	for x in Global.players:
 		player.head[x].diplo.clear()
+
+#	print("length")
+#	print(len(saved_game.player))
+	Global.players = len(saved_game.player)
+	
+	#print(Global.players)
+	player.head.clear()
+	player.loadReady()
+	for x in Global.players:
 
 		var yHold: int = 0
 		for y in Global.players:
@@ -136,12 +167,16 @@ func load_game():
 				yHold = y
 				break
 	#	player.head[x].player = player.h
+	#	print("index")
+	#	print(len(player.head))
 		player.head[x].tribe = saved_game.player[yHold].tribe
 		player.head[x].color = saved_game.player[yHold].color
 		player.head[x].diplo = saved_game.player[yHold].diplo
 		player.TileMapHS.update(player.head[x])
 	player.TileMapHS.hideUnselected(Global.players)
 	player.hid = true
+	
+	
 	#	player.head[x].tribe = saved_game.player[y].tribe
 
 		#	pass
