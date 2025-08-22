@@ -1,9 +1,34 @@
 class_name SaveGame
 extends Sprite2D
 @onready var tileData = %TileMapHolder
-
+@onready var player = %tribeSelectHeader
+#var tileData.playerSelected.head
 func save_game():
 	var saved_game:SavedGame = SavedGame.new()
+	
+	for x in tileData.playerSelected.head.size():
+		#var intChange = x
+		#intChange = int(intChange)
+		print("player")
+		print(player.head[1].player)
+		var saved_player:playerSaver = playerSaver.new()
+		saved_player.player = player.head[x].player
+		saved_player.tribe = player.head[x].tribe
+		saved_player.color = player.head[x].color
+		saved_player.diplo = player.head[x].diplo.duplicate()
+		saved_game.player.append(saved_player)
+
+	#	@export var player: int
+#@export var tribe: Vector2i
+#@export var color: Vector2i
+#@export var diplo: Array
+		
+		
+		
+		pass
+	
+	
+	
 	for x in range(tileData.gridSize):
 		saved_game.allTiles.append([])
 		for y in range(tileData.gridSize):
@@ -11,11 +36,11 @@ func save_game():
 			saved_tile.player = tileData.tiles[x][y].player
 			saved_tile.type = tileData.tiles[x][y].type
 			saved_tile.tribe = tileData.tiles[x][y].tribe
-			saved_tile.building = tileData.tiles[x][y].building
+			saved_tile.building = tileData.tiles[x][y].buildingHeld
 			saved_tile.position = tileData.tiles[x][y].position
 			saved_tile.typeHeld = tileData.tiles[x][y].typeHeld
 			saved_tile.water = tileData.tiles[x][y].water
-			saved_tile.road = tileData.tiles[x][y].road	
+			saved_tile.road = tileData.tiles[x][y].roadHeld
 			saved_tile.resourceLevel = tileData.tiles[x][y].resourceLevel
 			
 			if tileData.tiles[x][y].unit != null:
@@ -77,6 +102,11 @@ func load_game():
 	for x in range(tileData.gridSize):
 		for y in range(tileData.gridSize):
 			tileData.tiles[x][y] = null
+			#tileData.tiles[x][y].buildings = Constants.TileType.NONE
+			tileData.buildingLayer.clear()
+			tileData.buildingRoad.clear()
+
+			
 	tileData.tiles.clear()
 	for x in range(tileData.gridSize):
 		tileData.tiles.append([])
@@ -93,8 +123,34 @@ func load_game():
 				tileData.tiles[x][y].unit.unitLoad(saved_game.allTiles[x][y].unit)
 				
 			
-	tileData.updateAllTileLook()
+	tileData.updateAllTileLook(true)
 	tileData.updateAllUnitLook()
+	
+	for x in Global.players:
+		player.head[x].diplo.clear()
+
+		var yHold: int = 0
+		for y in Global.players:
+			
+			if saved_game.player[y].player == x:
+				yHold = y
+				break
+	#	player.head[x].player = player.h
+		player.head[x].tribe = saved_game.player[yHold].tribe
+		player.head[x].color = saved_game.player[yHold].color
+		player.head[x].diplo = saved_game.player[yHold].diplo
+		player.TileMapHS.update(player.head[x])
+	player.TileMapHS.hideUnselected(Global.players)
+	player.hid = true
+	#	player.head[x].tribe = saved_game.player[y].tribe
+
+		#	pass
+			
+	#	saved_player.player = player.head[x].player
+	#	saved_player.tribe = player.head[x].tribe
+	#	saved_player.color = player.head[x].color
+	#	saved_player.diplo = player.head[x].diplo.duplicate()
+		#pass
 
 			
 			

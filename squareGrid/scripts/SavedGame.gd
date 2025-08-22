@@ -4,7 +4,8 @@ extends Resource
 #@export var tile: Tile = null
 @export var allTiles:Array[Array] = []
 
-@export var allUnits:Array[Resource] = []
+@export var player: Array = []
+#@export var allUnits:Array[Resource] = []
 #Resource.duplicate(true)
 
 #func loadTile(tileP:Tile):

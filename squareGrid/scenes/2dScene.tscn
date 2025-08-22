@@ -31,7 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://ew055nrbqao4" path="res://imageHolder/unitHolder/allNumbers.png" id="27_d3ckp"]
 [ext_resource type="Script" uid="uid://bfuip03r8gdsv" path="res://scripts/SelectHead.gd" id="27_yd5n3"]
 [ext_resource type="Texture2D" uid="uid://cmyxvk25dqfx7" path="res://imageHolder/unitHolder/Tribecolors.png" id="28_30l83"]
-[ext_resource type="Script" uid="uid://cwpgaa7b0f0lc" path="res://scripts/SaveGame.gd" id="28_cfm7g"]
+[ext_resource type="Script" uid="uid://cwpgaa7b0f0lc" path="res://scripts/SaverLoader.gd" id="28_cfm7g"]
 [ext_resource type="Texture2D" uid="uid://bqq48fn1avxwy" path="res://imageHolder/unitHolder/ColorSelected.png" id="29_hony2"]
 [ext_resource type="Texture2D" uid="uid://co5u8jkrskpn3" path="res://imageHolder/misc/playbtn.png" id="36_i08e2"]
 [ext_resource type="Texture2D" uid="uid://cjouobe00sevo" path="res://imageHolder/misc/SaveGame.png" id="38_ajqxv"]
@@ -225,7 +225,7 @@ sources/2 = SubResource("TileSetAtlasSource_5frx6")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_armdj"]
 texture = ExtResource("7_b3b23")
-texture_region_size = Vector2i(42, 41)
+texture_region_size = Vector2i(42, 55)
 0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_s5bx3"]
@@ -2556,6 +2556,7 @@ process_callback = 0
 script = SubResource("GDScript_o7v4p")
 
 [node name="tribeSelectHeader" type="NinePatchRect" parent="CanvasLayer" node_paths=PackedStringArray("save")]
+unique_name_in_owner = true
 top_level = true
 offset_left = 1070.0
 offset_top = 6.0
@@ -2847,6 +2848,11 @@ texture = ExtResource("48_ajqxv")
 
 [node name="buildingsSelect" type="Node" parent="CanvasLayer/Node"]
 
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Node/buildingsSelect"]
+position = Vector2(128, 94.5)
+scale = Vector2(1.5, 1.49038)
+texture = ExtResource("17_ajqxv")
+
 [node name="playerBuildings" type="Control" parent="CanvasLayer/Node/buildingsSelect" node_paths=PackedStringArray("cityTemp", "roadTemp")]
 layout_mode = 3
 anchors_preset = 0
@@ -2862,7 +2868,7 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("17_ajqxv")
 
 [node name="roadTemp" type="Sprite2D" parent="CanvasLayer/Node/buildingsSelect/playerBuildings"]
-position = Vector2(128, 127)
+position = Vector2(129, 159)
 scale = Vector2(1.83333, 1.95238)
 texture = ExtResource("7_b3b23")
 

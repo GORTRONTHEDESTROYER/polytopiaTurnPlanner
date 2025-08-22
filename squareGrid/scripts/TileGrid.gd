@@ -136,7 +136,6 @@ func updateLook(tile: Tile):
 			tile.zoneControl = 1
 			tile.water = false
 			resourceLayer.erase_cell(tile.position)
-
 			baseLayer.set_cell(tile.position, 3, playerSelected.head[tile.player].tribe, 0)
 			#resourceLayer.set_cell( tile.position, Constants.Asset.ANIMAL, Vector2i.ZERO, 0)
 		[Constants.TileType.FOREST, 3]:
@@ -233,33 +232,45 @@ func updateLook(tile: Tile):
 	#print(Constants.BuildingType.ROAD)
 	match [tile.building, tile.typeHeld]: 
 		[Constants.BuildingType.DELETE, _]:
+			tile.buildingHeld = Constants.BuildingType.NONE
 			tile.road = false
 			buildingRoad.erase_cell( tile.position)
 
 			buildingLayer.erase_cell( tile.position)
 		[Constants.BuildingType.ROAD, Constants.TileType.MOUNTAIN]:
+			tile.roadHeld = Constants.BuildingType.NONE
 			tile.road = false
 			buildingRoad.erase_cell( tile.position)
 		[Constants.BuildingType.ROAD, _]:
+			tile.roadHeld = Constants.BuildingType.ROAD
+
 			tile.road = true
 			buildingRoad.set_cell( tile.position, 0, Vector2i.ZERO, 0)
 		[Constants.BuildingType.RUIN, _]:
+			tile.buildingHeld = Constants.BuildingType.RUIN
+
 			tile.road = false
 			buildingLayer.set_cell( tile.position, 0, Vector2i.ZERO, 0)
 		[Constants.BuildingType.VILLAGE, _]:
+			tile.buildingHeld = Constants.BuildingType.VILLAGE
+
 			tile.road = true
 			buildingLayer.set_cell( tile.position, 1, Vector2i.ZERO, 0)
 		[Constants.BuildingType.CITY, _]:
+			tile.buildingHeld = Constants.BuildingType.CITY
 			tile.road = true
 			buildingLayer.set_cell( tile.position, 4, Vector2i.ZERO, 0)
 			
 			
 			#erase_cell(Layer., tile.position)
 			#set_cell(Layer.BUILDING, tile.position, Constants.Asset.ROAD, Vector2i.ZERO, 0)
-func updateAllTileLook():
+func updateAllTileLook(fromSaverLoader: bool = false):
 	for x in range(gridSize):
-				for y in range(gridSize):
-					updateLook(tiles[x][y])
+		for y in range(gridSize):
+			if fromSaverLoader:
+				updateLook(tiles[x][y])
+				tiles[x][y].building = tiles[x][y].roadHeld
+			updateLook(tiles[x][y])
 					
 					
 func updateUnit(tile: Tile):

@@ -9,6 +9,9 @@ var position: Vector2i
 var typeHeld: Constants.TileType
 var water: bool
 
+var roadHeld: Constants.BuildingType
+var buildingHeld: Constants.BuildingType
+
 #movement
 var movementDist: int = -1
 var movementDistSource: int = -1
@@ -46,13 +49,18 @@ func loadData(saved_game:SavedGameSubTile):
 	player = saved_game.player
 	type = saved_game.type
 	tribe = saved_game.tribe
-	building = saved_game.building
 	position = saved_game.position
 	typeHeld = saved_game.typeHeld
 	resourceLevel = saved_game.resourceLevel
 
 	water = saved_game.water
-	road = saved_game.road
+	
+	#if saved_game.road:
+		#building = 
+	building = saved_game.building
+
+	
+	roadHeld = saved_game.road
 	
 	#if saved_game.unit != null:
 		

@@ -78,9 +78,9 @@ func _process(_delta: float) -> void:
 				2:
 					Global.gridSize = 16
 				3:
-					Global.gridSize = 16
-				4:
 					Global.gridSize = 18
+				4:
+					Global.gridSize = 20
 				5:
 					Global.gridSize = 30
 				_:

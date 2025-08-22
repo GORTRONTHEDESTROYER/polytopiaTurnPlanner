@@ -2,6 +2,7 @@ extends NinePatchRect
 var players : int = Global.players
 @onready var TileMapHS = $TileMapSelect
 var head: Array = []
+var hid = true
 
 @export var save : Sprite2D
 #var PH = PlayerHead.new()
@@ -42,7 +43,6 @@ func _ready():
 	#pass # Replace with function body.
 var tile_pos2: Vector2i 
 #var prev_tile_pos: Vector2i = Vector2i(0, 0)
-var hid = true
 var diplo = false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -239,6 +239,9 @@ func selected():
 		if head[i].location == 0:
 			return head[i]
 	return head[0]
+	
+#func hider():
+#	hid = true
 		
 
 	
