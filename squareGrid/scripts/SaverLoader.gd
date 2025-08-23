@@ -19,15 +19,6 @@ func save_game():
 		saved_player.color = player.head[x].color
 		saved_player.diplo = player.head[x].diplo.duplicate()
 		saved_game.player.append(saved_player)
-
-	#	@export var player: int
-#@export var tribe: Vector2i
-#@export var color: Vector2i
-#@export var diplo: Array
-		
-		
-		
-		pass
 	
 	
 	
@@ -112,7 +103,33 @@ func load_game():
 	
 	var saved_game:SavedGame = load("res://savegame.tres") as SavedGame
 	
+	for x in Global.players:
+		player.head[x].diplo.clear()
+
+#	print("length")
+#	print(len(saved_game.player))
+	Global.players = len(saved_game.player)
 	
+	#print(Global.players)
+	player.head.clear()
+	player.loadReady()
+	for x in Global.players:
+
+		var yHold: int = 0
+		for y in Global.players:
+			
+			if saved_game.player[y].player == x:
+				yHold = y
+				break
+	#	player.head[x].player = player.h
+	#	print("index")
+	#	print(len(player.head))
+		player.head[x].tribe = saved_game.player[yHold].tribe
+		player.head[x].color = saved_game.player[yHold].color
+		player.head[x].diplo = saved_game.player[yHold].diplo
+		player.TileMapHS.update(player.head[x])
+	player.TileMapHS.hideUnselected(Global.players)
+	player.hid = true
 	
 
 	for x in range(tileData.gridSize):
@@ -148,33 +165,7 @@ func load_game():
 	tileData.updateAllTileLook(true)
 	tileData.updateAllUnitLook()
 #	print(Global.players)
-	for x in Global.players:
-		player.head[x].diplo.clear()
-
-#	print("length")
-#	print(len(saved_game.player))
-	Global.players = len(saved_game.player)
 	
-	#print(Global.players)
-	player.head.clear()
-	player.loadReady()
-	for x in Global.players:
-
-		var yHold: int = 0
-		for y in Global.players:
-			
-			if saved_game.player[y].player == x:
-				yHold = y
-				break
-	#	player.head[x].player = player.h
-	#	print("index")
-	#	print(len(player.head))
-		player.head[x].tribe = saved_game.player[yHold].tribe
-		player.head[x].color = saved_game.player[yHold].color
-		player.head[x].diplo = saved_game.player[yHold].diplo
-		player.TileMapHS.update(player.head[x])
-	player.TileMapHS.hideUnselected(Global.players)
-	player.hid = true
 	
 	
 	#	player.head[x].tribe = saved_game.player[y].tribe

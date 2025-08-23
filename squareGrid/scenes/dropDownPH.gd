@@ -39,12 +39,9 @@ func _ready():
 
 func loadReady():
 	players = Global.players
-	#print("readyCleared")
 	for i in players:
-	#	print(i)
 		head.append(PlayerHead.new(i,Constants.Tribe.XIN,Constants.Tribe.XIN, i))
-	#TileMapHS.start()
-	#pass # Replace with function body.
+
 var tile_pos2: Vector2i 
 #var prev_tile_pos: Vector2i = Vector2i(0, 0)
 var diplo = false
