@@ -298,6 +298,30 @@ func updateUnit(tile: Tile):
 			var player = playerSelected.selected()
 			tile.unit = Unit.new(player.player, 10)
 			tile.unit.typeRider(Constants.UnitType.RIDER)
+		Constants.UnitType.ARCHER:
+			var player = playerSelected.selected()
+			tile.unit = Unit.new(player.player, 10)
+			tile.unit.typeArcher(Constants.UnitType.ARCHER)
+		Constants.UnitType.DEFENDER:
+			var player = playerSelected.selected()
+			tile.unit = Unit.new(player.player, 15)
+			tile.unit.typeDefender(Constants.UnitType.DEFENDER)
+		Constants.UnitType.SWORDSMAN:
+			var player = playerSelected.selected()
+			tile.unit = Unit.new(player.player, 15)
+			tile.unit.typeSwordsman(Constants.UnitType.SWORDSMAN)
+		Constants.UnitType.KNIGHT:
+			var player = playerSelected.selected()
+			tile.unit = Unit.new(player.player, 10)
+			tile.unit.typeKnight(Constants.UnitType.KNIGHT)
+		Constants.UnitType.CATAPULT:
+			var player = playerSelected.selected()
+			tile.unit = Unit.new(player.player, 10)
+			tile.unit.typeCatapult(Constants.UnitType.CATAPULT)
+		Constants.UnitType.GIANT:
+			var player = playerSelected.selected()
+			tile.unit = Unit.new(player.player, 40)
+			tile.unit.typeGiant(Constants.UnitType.GIANT)
 
 		_:
 			pass
@@ -327,6 +351,36 @@ func updateUnitLook(tileW: Tile):
 			Constants.UnitType.RIDER:
 				unitHead.set_cell( tileW.position, 1, playerSelected.head[tileW.unit.player].tribe, 0)
 				unitLayer.set_cell( tileW.position, playerSelected.TileMapHS.tileSelectPing.ping(playerSelected.head[tileW.unit.player]) + 1, playerSelected.head[tileW.unit.player].color, 0)
+				unitHealth.set_cell(tileW.position, 0, Vector2i(healthX,healthY), 0)
+				
+			Constants.UnitType.ARCHER:
+				unitHead.set_cell( tileW.position, 0, playerSelected.head[tileW.unit.player].tribe, 0)
+				unitLayer.set_cell( tileW.position, 17, playerSelected.head[tileW.unit.player].color, 0)
+				unitHealth.set_cell(tileW.position, 0, Vector2i(healthX,healthY), 0)
+			Constants.UnitType.DEFENDER:
+				
+				#tileW.unit.health
+				unitHead.set_cell( tileW.position, 0, playerSelected.head[tileW.unit.player].tribe, 0)
+				unitLayer.set_cell( tileW.position, 18, playerSelected.head[tileW.unit.player].color, 0)
+				unitHealth.set_cell(tileW.position, 0, Vector2i(healthX,healthY), 0)
+				
+				
+			Constants.UnitType.SWORDSMAN:
+				unitHead.set_cell( tileW.position, 0, playerSelected.head[tileW.unit.player].tribe, 0)
+				unitLayer.set_cell( tileW.position, 19, playerSelected.head[tileW.unit.player].color, 0)
+				unitHealth.set_cell(tileW.position, 0, Vector2i(healthX,healthY), 0)
+				
+			Constants.UnitType.KNIGHT:
+				unitHead.set_cell( tileW.position, 0, playerSelected.head[tileW.unit.player].tribe, 0)
+				unitLayer.set_cell( tileW.position, 17, playerSelected.head[tileW.unit.player].color, 0)
+				unitHealth.set_cell(tileW.position, 0, Vector2i(healthX,healthY), 0)
+			Constants.UnitType.CATAPULT:
+				unitHead.set_cell( tileW.position, 0, playerSelected.head[tileW.unit.player].tribe, 0)
+				unitLayer.set_cell( tileW.position, 21, playerSelected.head[tileW.unit.player].color, 0)
+				unitHealth.set_cell(tileW.position, 0, Vector2i(healthX,healthY), 0)
+			Constants.UnitType.GIANT:
+				unitHead.set_cell( tileW.position, 0, playerSelected.head[tileW.unit.player].tribe, 0)
+				unitLayer.set_cell( tileW.position, 22, playerSelected.head[tileW.unit.player].color, 0)
 				unitHealth.set_cell(tileW.position, 0, Vector2i(healthX,healthY), 0)
 
 			_: 

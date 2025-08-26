@@ -9,6 +9,7 @@ extends Node2D
 @export var unitsSelect: Node
 
 @export var unitsTierOne: Node2D
+@export var unitsTierTwo: Node2D
 
 @export var TileMapMain: Node2D
 
@@ -56,6 +57,8 @@ func hidFlip():
 	tilesNatGen.visible = false
 	
 	unitsTierOne.visible = false
+	unitsTierTwo.visible = false
+	
 	
 	if page == 1:
 		#TileMapMain.building_type_bt = Constants.BuildingType.NONE
@@ -84,6 +87,7 @@ func hidFlip():
 		#TileMapMain.building_type_bt = Constants.BuildingType.NONE
 		#TileMapMain.unit_type_bt = Constants.UnitType.NONE
 		unitsTierOne.visible = true
+		unitsTierTwo.visible = true
 		
 	
 
@@ -200,7 +204,7 @@ func unitPage(tile_pos2):
 				TileMapMain.unit_type_bt = Constants.UnitType.NONE
 				switch = 0
 				return
-			TileMapMain.unit_type_bt = Constants.UnitType.RIDER			
+			TileMapMain.unit_type_bt = Constants.UnitType.ARCHER			
 			switch = 3
 		[Vector2i(3,1)]:
 			if switch == 4:
@@ -208,7 +212,7 @@ func unitPage(tile_pos2):
 				TileMapMain.unit_type_bt = Constants.UnitType.NONE
 				switch = 0
 				return
-			TileMapMain.unit_type_bt = Constants.UnitType.RIDER			
+			TileMapMain.unit_type_bt = Constants.UnitType.DEFENDER			
 			switch = 4
 		[Vector2i(4,1)]:
 			if switch == 5:
@@ -218,6 +222,47 @@ func unitPage(tile_pos2):
 				return
 			TileMapMain.unit_type_bt = Constants.UnitType.DELETE			
 			switch = 5
+		[Vector2i(0,2)]:
+			if switch == 6:
+				#TileMapMain.tile_type_bt = Constants.TileType.NONE
+				TileMapMain.unit_type_bt = Constants.UnitType.NONE
+				switch = 0
+				return
+			TileMapMain.unit_type_bt = Constants.UnitType.SWORDSMAN			
+			switch = 6
+			#TileMapMain.resource_level_bt = 0
+		[Vector2i(1,2)]:
+			if switch == 7:
+				#TileMapMain.tile_type_bt = Constants.TileType.NONE
+				TileMapMain.unit_type_bt = Constants.UnitType.NONE
+				switch = 0
+				return
+		#	TileMapMain.unit_type_bt = Constants.UnitType.KNIGHT			
+			switch = 7
+		[Vector2i(2,2)]:
+			if switch == 8:
+				#TileMapMain.tile_type_bt = Constants.TileType.NONE
+				TileMapMain.unit_type_bt = Constants.UnitType.NONE
+				switch = 0
+				return
+			TileMapMain.unit_type_bt = Constants.UnitType.CATAPULT			
+			switch = 8
+		[Vector2i(3,1)]:
+			if switch == 9:
+				#TileMapMain.tile_type_bt = Constants.TileType.NONE
+				TileMapMain.unit_type_bt = Constants.UnitType.NONE
+				switch = 0
+				return
+			#TileMapMain.unit_type_bt = Constants.UnitType.DEFENDER			
+			switch = 9
+		[Vector2i(4,2)]:
+			if switch == 10:
+				#TileMapMain.tile_type_bt = Constants.TileType.NONE
+				TileMapMain.unit_type_bt = Constants.UnitType.NONE
+				switch = 0
+				return
+			TileMapMain.unit_type_bt = Constants.UnitType.GIANT			
+			switch = 10
 			
 func buildingPage(tile_pos2):
 	
@@ -599,6 +644,34 @@ func ping(head):
 	
 	unitsTierOne.warriorHead.frame = tribeS
 	unitsTierOne.warriorBody.frame = colorS
+	
+	unitsTierOne.riderHead.frame = tribeS
+	print(colorS * (tribeS + 1))
+	unitsTierOne.riderBody.frame = (colorS + (tribeS * 15 + tribeS))
+	
+	unitsTierOne.archerHead.frame = tribeS
+	unitsTierOne.archerBody.frame = colorS
+	
+	unitsTierOne.defenderHead.frame = tribeS
+	unitsTierOne.defenderBody.frame = colorS
+	#############################
+	unitsTierTwo.swordHead.frame = tribeS
+	unitsTierTwo.swordBody.frame = colorS
+	
+	#unitsTierOne.riderHead.frame = tribeS
+	#print(colorS * (tribeS + 1))
+	#unitsTierOne.riderBody.frame = (colorS + (tribeS * 15 + tribeS))
+	
+	unitsTierTwo.catapultHead.frame = tribeS
+	unitsTierTwo.catapultBody.frame = colorS
+	
+	#catapult
+	
+	unitsTierTwo.giantHead.frame = tribeS
+	unitsTierTwo.giantBody.frame = colorS
+	
+	
+	
 	#tilesWater.shoreNull.frame = 3.,k b
 	
 	return tribeS
