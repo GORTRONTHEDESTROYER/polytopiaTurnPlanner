@@ -237,7 +237,7 @@ func unitPage(tile_pos2):
 				TileMapMain.unit_type_bt = Constants.UnitType.NONE
 				switch = 0
 				return
-		#	TileMapMain.unit_type_bt = Constants.UnitType.KNIGHT			
+			TileMapMain.unit_type_bt = Constants.UnitType.KNIGHT			
 			switch = 7
 		[Vector2i(2,2)]:
 			if switch == 8:
@@ -247,13 +247,13 @@ func unitPage(tile_pos2):
 				return
 			TileMapMain.unit_type_bt = Constants.UnitType.CATAPULT			
 			switch = 8
-		[Vector2i(3,1)]:
+		[Vector2i(3,2)]:
 			if switch == 9:
 				#TileMapMain.tile_type_bt = Constants.TileType.NONE
 				TileMapMain.unit_type_bt = Constants.UnitType.NONE
 				switch = 0
 				return
-			#TileMapMain.unit_type_bt = Constants.UnitType.DEFENDER			
+			TileMapMain.unit_type_bt = Constants.UnitType.MINDBENDER			
 			switch = 9
 		[Vector2i(4,2)]:
 			if switch == 10:
@@ -658,6 +658,8 @@ func ping(head):
 	unitsTierTwo.swordHead.frame = tribeS
 	unitsTierTwo.swordBody.frame = colorS
 	
+
+
 	#unitsTierOne.riderHead.frame = tribeS
 	#print(colorS * (tribeS + 1))
 	#unitsTierOne.riderBody.frame = (colorS + (tribeS * 15 + tribeS))
@@ -665,10 +667,18 @@ func ping(head):
 	unitsTierTwo.catapultHead.frame = tribeS
 	unitsTierTwo.catapultBody.frame = colorS
 	
+	unitsTierTwo.knightHead.frame = tribeS
+	unitsTierTwo.knightBody.frame = (colorS + (tribeS * 15 + tribeS))
+	
 	#catapult
+	unitsTierTwo.mindbenderHead.frame = tribeS
+	unitsTierTwo.mindbenderBody.frame = colorS
 	
 	unitsTierTwo.giantHead.frame = tribeS
 	unitsTierTwo.giantBody.frame = colorS
+	
+
+
 	
 	
 	

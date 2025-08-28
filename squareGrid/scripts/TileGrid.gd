@@ -29,6 +29,7 @@ var state = State.new()
 
 
 
+
 func get_tile(pos: Vector2i) -> Tile:
 	if pos.x < 0 or pos.y < 0 or pos.x >= gridSize or pos.y >= gridSize:
 		return null
@@ -318,6 +319,10 @@ func updateUnit(tile: Tile):
 			var player = playerSelected.selected()
 			tile.unit = Unit.new(player.player, 10)
 			tile.unit.typeCatapult(Constants.UnitType.CATAPULT)
+		Constants.UnitType.MINDBENDER:
+			var player = playerSelected.selected()
+			tile.unit = Unit.new(player.player, 10)
+			tile.unit.typeMindbender(Constants.UnitType.MINDBENDER)
 		Constants.UnitType.GIANT:
 			var player = playerSelected.selected()
 			tile.unit = Unit.new(player.player, 40)
@@ -349,38 +354,68 @@ func updateUnitLook(tileW: Tile):
 				
 				
 			Constants.UnitType.RIDER:
+				
+				pass
+				
+				var tempHead = tribeVecToInt(playerSelected.head[tileW.unit.player]) + 1
+				print("temphead")
+				print(tempHead)
 				unitHead.set_cell( tileW.position, 1, playerSelected.head[tileW.unit.player].tribe, 0)
-				unitLayer.set_cell( tileW.position, playerSelected.TileMapHS.tileSelectPing.ping(playerSelected.head[tileW.unit.player]) + 1, playerSelected.head[tileW.unit.player].color, 0)
+			#	unitLayer.set_cell( tileW.position, playerSelected.TileMapHS.tileSelectPing.ping(playerSelected.head[tileW.unit.player]) + 1, playerSelected.head[tileW.unit.player].color, 0)
+				if(tempHead > 15):
+					unitLayer.set_cell(tileW.position, 1, 
+						Vector2i(((playerSelected.head[tileW.unit.player].color.x + (7 * (tempHead-1)) )-105),
+							playerSelected.head[tileW.unit.player].color.y + 3) , 0)
+				else:
+					unitLayer.set_cell(tileW.position, 1, 
+						Vector2i(playerSelected.head[tileW.unit.player].color.x + (7 * (tempHead-1)),
+							playerSelected.head[tileW.unit.player].color.y) , 0)
+
+				unitHealth.set_cell(tileW.position, 0, Vector2i(healthX,healthY), 0)
 				unitHealth.set_cell(tileW.position, 0, Vector2i(healthX,healthY), 0)
 				
 			Constants.UnitType.ARCHER:
 				unitHead.set_cell( tileW.position, 0, playerSelected.head[tileW.unit.player].tribe, 0)
-				unitLayer.set_cell( tileW.position, 17, playerSelected.head[tileW.unit.player].color, 0)
+				unitLayer.set_cell( tileW.position, 2, playerSelected.head[tileW.unit.player].color, 0)
 				unitHealth.set_cell(tileW.position, 0, Vector2i(healthX,healthY), 0)
 			Constants.UnitType.DEFENDER:
 				
 				#tileW.unit.health
 				unitHead.set_cell( tileW.position, 0, playerSelected.head[tileW.unit.player].tribe, 0)
-				unitLayer.set_cell( tileW.position, 18, playerSelected.head[tileW.unit.player].color, 0)
+				unitLayer.set_cell( tileW.position, 3, playerSelected.head[tileW.unit.player].color, 0)
 				unitHealth.set_cell(tileW.position, 0, Vector2i(healthX,healthY), 0)
 				
 				
 			Constants.UnitType.SWORDSMAN:
 				unitHead.set_cell( tileW.position, 0, playerSelected.head[tileW.unit.player].tribe, 0)
-				unitLayer.set_cell( tileW.position, 19, playerSelected.head[tileW.unit.player].color, 0)
+				unitLayer.set_cell( tileW.position, 4, playerSelected.head[tileW.unit.player].color, 0)
 				unitHealth.set_cell(tileW.position, 0, Vector2i(healthX,healthY), 0)
 				
 			Constants.UnitType.KNIGHT:
-				unitHead.set_cell( tileW.position, 0, playerSelected.head[tileW.unit.player].tribe, 0)
-				unitLayer.set_cell( tileW.position, 17, playerSelected.head[tileW.unit.player].color, 0)
+				var tempHead = tribeVecToInt(playerSelected.head[tileW.unit.player]) + 1
+				unitHead.set_cell( tileW.position, 1, playerSelected.head[tileW.unit.player].tribe, 0)
+			#	unitLayer.set_cell( tileW.position, playerSelected.TileMapHS.tileSelectPing.ping(playerSelected.head[tileW.unit.player]) + 1, playerSelected.head[tileW.unit.player].color, 0)
+				if(tempHead > 15):
+					unitLayer.set_cell(tileW.position, 5, 
+						Vector2i(((playerSelected.head[tileW.unit.player].color.x + (7 * (tempHead-1)) )-105),
+							playerSelected.head[tileW.unit.player].color.y + 3) , 0)
+				else:
+					unitLayer.set_cell(tileW.position, 5, 
+						Vector2i(playerSelected.head[tileW.unit.player].color.x + (7 * (tempHead-1)),
+							playerSelected.head[tileW.unit.player].color.y) , 0)
+
 				unitHealth.set_cell(tileW.position, 0, Vector2i(healthX,healthY), 0)
 			Constants.UnitType.CATAPULT:
 				unitHead.set_cell( tileW.position, 0, playerSelected.head[tileW.unit.player].tribe, 0)
-				unitLayer.set_cell( tileW.position, 21, playerSelected.head[tileW.unit.player].color, 0)
+				unitLayer.set_cell( tileW.position, 6, playerSelected.head[tileW.unit.player].color, 0)
+				unitHealth.set_cell(tileW.position, 0, Vector2i(healthX,healthY), 0)
+			Constants.UnitType.MINDBENDER:
+				unitHead.set_cell( tileW.position, 0, playerSelected.head[tileW.unit.player].tribe, 0)
+				unitLayer.set_cell( tileW.position, 7, playerSelected.head[tileW.unit.player].color, 0)
 				unitHealth.set_cell(tileW.position, 0, Vector2i(healthX,healthY), 0)
 			Constants.UnitType.GIANT:
 				unitHead.set_cell( tileW.position, 0, playerSelected.head[tileW.unit.player].tribe, 0)
-				unitLayer.set_cell( tileW.position, 22, playerSelected.head[tileW.unit.player].color, 0)
+				unitLayer.set_cell( tileW.position, 8, playerSelected.head[tileW.unit.player].color, 0)
 				unitHealth.set_cell(tileW.position, 0, Vector2i(healthX,healthY), 0)
 
 			_: 
@@ -634,3 +669,76 @@ func checkPlayerSelectOverlap():
 	if !playerSelected.hid && (playerSelected.tile_pos2.x > -7 && playerSelected.tile_pos2.y < 7 && playerSelected.tile_pos2.x < 0 && playerSelected.tile_pos2.y > 0):
 		return true
 	return false
+	
+func tribeVecToInt(head):
+	var tribeS:int = 0
+	var colorS:int
+	
+	match[head.tribe]:
+		[Vector2i(0,0)]:
+			tribeS = 0
+		[Vector2i(1,0)]:
+			tribeS = 1
+		[Vector2i(2,0)]:
+			tribeS = 2
+		[Vector2i(3,0)]:
+			tribeS = 3
+		[Vector2i(4,0)]:
+			tribeS = 4
+		[Vector2i(5,0)]:
+			tribeS = 5
+		[Vector2i(6,0)]:
+			tribeS = 6
+		[Vector2i(1,1)]:
+			tribeS = 7
+		[Vector2i(2,1)]:
+			tribeS = 8
+		[Vector2i(3,1)]:
+			tribeS = 9
+		[Vector2i(4,1)]:
+			tribeS = 10
+		[Vector2i(5,1)]:
+			tribeS = 11
+		[Vector2i(6,1)]:
+			tribeS = 12
+		[Vector2i(0,2)]:
+			tribeS = 13
+		[Vector2i(1,2)]:
+			tribeS = 14
+		[Vector2i(2,2)]:
+			tribeS = 15
+	return tribeS
+	match[head.color]:
+		[Vector2i(0,0)]:
+			colorS = 0
+		[Vector2i(1,0)]:
+			colorS = 1
+		[Vector2i(2,0)]:
+			colorS = 2
+		[Vector2i(3,0)]:
+			colorS = 3
+		[Vector2i(4,0)]:
+			colorS = 4
+		[Vector2i(5,0)]:
+			colorS = 5
+		[Vector2i(6,0)]:
+			colorS = 6
+		[Vector2i(1,1)]:
+			colorS = 7
+		[Vector2i(2,1)]:
+			colorS = 8
+		[Vector2i(3,1)]:
+			colorS = 9
+		[Vector2i(4,1)]:
+			colorS = 10
+		[Vector2i(5,1)]:
+			colorS = 11
+		[Vector2i(6,1)]:
+			colorS = 12
+		[Vector2i(0,2)]:
+			colorS = 13
+		[Vector2i(1,2)]:
+			colorS = 14
+		[Vector2i(2,2)]:
+			colorS = 15
+			

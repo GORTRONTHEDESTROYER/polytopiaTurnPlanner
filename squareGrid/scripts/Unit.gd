@@ -107,7 +107,13 @@ func typeCatapult(typeP: Constants.UnitType):
 	attack = 4
 	defence = 0
 	unitRange = 3
-
+func typeMindbender(typeP: Constants.UnitType):
+	max_health = 10
+	type = typeP
+	movement = 1
+	attack = 0
+	defence = 1
+	unitRange = 1
 func typeGiant(typeP: Constants.UnitType):
 	
 	max_health = 40
