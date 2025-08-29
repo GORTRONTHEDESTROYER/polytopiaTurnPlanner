@@ -55,6 +55,10 @@ func _ready():
 	#updateUnitLook(tiles[0][0])
 var prev_tile_pos: Vector2i = Vector2i(0, 0)
 
+
+
+
+
 func _process(_delta):
 	var positionC2 = get_viewport().get_camera_2d().position
 	var mousePosition = get_viewport().get_mouse_position() + Vector2(0,10)
@@ -80,15 +84,26 @@ func _process(_delta):
 			#checkPlayerSelectOverlap()
 			if checkPlayerSelectOverlap():
 				pass
+			elif(unit_type_bt != Constants.UnitType.NONE):
+				pass
+			elif(tile_type_bt == Constants.TileType.NONE):
+				pass
 			else: updateTile(tile)
+			
+			tile.building = building_type_bt
+			
 			updateLook(tile)
 			updateUnit(tile)
 	if mode == 1:
 		turnMode(tile)
 		
+		
+	
 
 var tile_type_bt = Constants.TileType.NONE
+var resource_level_bt = 0
 var building_type_bt = Constants.BuildingType.NONE
+var unit_type_bt = Constants.UnitType.NONE	
 
 var mode = 0
 
@@ -96,16 +111,20 @@ var mode = 0
 		
 func updateTile(tile: Tile):
 	var player = playerSelected.selected()
+
+	#if building_type_bt == Constants.BuildingType 
 	tile.player = player.player
 	tile.resourceLevel = resource_level_bt
 	tile.type = tile_type_bt
-	tile.building = building_type_bt
 	
 	
 func updateLook(tile: Tile):
-
+	
+	
+	
 	match [tile.type, tile.resourceLevel]:
 		[Constants.TileType.FIELD, 0]:
+			
 			tile.typeHeld = tile.type
 			tile.zoneControl = 0
 			tile.water = false
@@ -340,8 +359,8 @@ func updateAllUnitLook():
 func updateUnitLook(tileW: Tile):
 	
 	if tileW.unit != null:
-		var healthY = (tileW.unit.health -1) / 10
-		var healthX = (tileW.unit.health - healthY * 10) - 1
+		var healthY = (int(tileW.unit.health) -1) / 10
+		var healthX = (int(tileW.unit.health) - healthY * 10) - 1
 		#print(Vector2i(healthY,healthX))
 		
 		match tileW.unit.type:
@@ -432,7 +451,17 @@ func updateUnitLook(tileW: Tile):
 
 func turnMode(tile: Tile):
 	if Input.is_action_just_pressed("LEFT_MOUSE_BUTTON"):
+		
+		
+		
 		if tile != null && tile.unit != null:
+			
+			if unitMoveLayer.get_cell_source_id(tile.position) == 2:
+				
+				combat(state.active_tile, tile)
+				unitMoveLayer.clear()
+				return
+			
 			
 			if state.active_tile != null:
 				state.active_tile.unit.active = false 
@@ -464,10 +493,71 @@ func turnMode(tile: Tile):
 			state.active_tile = null
 			unitMoveLayer.clear()
 			
+func combat(attackerTile, defenderTile):
+	var defenseBonus:float = 1
+	
+	var attackForce = attackerTile.unit.attack * (attackerTile.unit.health / attackerTile.unit.maxHealth)
+	var defenseForce = defenderTile.unit.defense * (defenderTile.unit.health  / defenderTile.unit.maxHealth) * defenseBonus 
+	var totalDamage = attackForce + defenseForce 
+	var attackResult = round((attackForce / totalDamage) * attackerTile.unit.attack * 4.5) 
+	var defenseResult = round((defenseForce / totalDamage) * defenderTile.unit.defense * 4.5)
+	
+	defenderTile.unit.health = defenderTile.unit.health - attackResult
+	
+	if(defenderTile.unit.health > 0):
+		attackerTile.unit.health = attackerTile.unit.health - defenseResult
+
+	var unit_type_hold:Constants.UnitType = unit_type_bt
+	
+	print("attack health")
+	print(attackerTile.unit.health)
+	print(defenderTile.unit.health)
+	if attackerTile.unit.health < 1:
+		
+		unit_type_bt = Constants.UnitType.DELETE
+		updateUnit(attackerTile)
+		state.active_tile = null
+	
+	if defenderTile.unit.health < 1:
+		unit_type_bt = Constants.UnitType.DELETE
+		updateUnit(defenderTile)
+		if attackerTile.unit.unitRange == 1:
+			unit_type_bt = unit_type_hold
 			
+			defenderTile.unit = attackerTile.unit 
+			attackerTile.unit = null
+			updateUnitLook(attackerTile)
+			state.active_tile = null
+			defenderTile.unit.active = not defenderTile.unit.active
+			updateUnit(defenderTile)
+			unitMoveLayer.clear()
+			pass
+		
+		
+	unit_type_bt = unit_type_hold
+	
+	updateUnitLook(attackerTile)
+	updateUnitLook(defenderTile)
+	
+	
+
+
+
+	
+	
+	
+	
+	#
+	#
+	#unit_type_bt = unit_type_hold
+	
+	#print("combat")
+	#defender = null
+	
 var looper = 0		
 func drawPosibleUnitMoves(tile: Tile):
 	var movement = tile.unit.movement
+	var unitRange = tile.unit.unitRange
 #	print(tile.unit.movement)
 	#tiles[1][6].zoneControl = 2
 	var flying = false
@@ -492,6 +582,16 @@ func drawPosibleUnitMoves(tile: Tile):
 				tiles[tileMoveDistClear.x][tileMoveDistClear.y].movementDist = -1
 				tiles[tileMoveDistClear.x][tileMoveDistClear.y].spacer = -1
 				
+	drawRange(unitRange,tile.position)
+func drawRange(unitRange,vectorPassed):
+	for x in range(unitRange * 2 + 1): 
+		for y in range(unitRange * 2 + 1):
+			var vectorHold = vectorPassed + Vector2i(x,y) - Vector2i(unitRange,unitRange)
+			if inBounds(vectorHold):
+				if tiles[vectorHold.x][vectorHold.y].unit != null:
+					if !friendlyCheckNoChange(tiles[vectorHold.x][vectorHold.y].unit):
+						unitMoveLayer.set_cell(vectorHold, 2, Vector2i.ZERO, 0)
+							
 func movementRevamp(movement: int, vectorHoldPassed: Vector2i, stupid: bool = true):	
 	
 	
@@ -500,6 +600,7 @@ func movementRevamp(movement: int, vectorHoldPassed: Vector2i, stupid: bool = tr
 	var amphibious  = false
 	var water = false
 	var flying = false
+	var cloak = false
 	
 	
 	
@@ -520,7 +621,7 @@ func movementRevamp(movement: int, vectorHoldPassed: Vector2i, stupid: bool = tr
 					continue  
 				if(tiles[vectorHold.x][vectorHold.y].unit != null):
 					var zoneHold = tiles[vectorHold.x][vectorHold.y].zoneControl
-					if (!friendlyCheck(tiles[vectorHold.x][vectorHold.y].unit, vectorHold)):
+					if (!friendlyCheck(tiles[vectorHold.x][vectorHold.y].unit, vectorHold) && cloak == false):
 						tiles[vectorHold.x][vectorHold.y].zoneControl = zoneHold
 						continue
 					tiles[vectorHold.x][vectorHold.y].zoneControl = zoneHold
@@ -562,7 +663,7 @@ func zoneOfControl(vectorHold):
 					friendlyCheck(tiles[vectorHold2.x][vectorHold2.y].unit, vectorHold2)
 				if(tiles[vectorHold2.x][vectorHold2.y].zoneControl == 2):
 					unitMoveLayer.set_cell( vectorHold, 1, Vector2i.ZERO, 0)
-					unitMoveLayer.set_cell( vectorHold2, 2, Vector2i.ZERO, 0)
+				#	unitMoveLayer.set_cell( vectorHold2, 2, Vector2i.ZERO, 0)
 					tiles[vectorHold2.x][vectorHold2.y].zoneControl = zoneHold
 
 
@@ -577,6 +678,16 @@ func friendlyCheck(unitObject, vectorHold2):
 	tiles[vectorHold2.x][vectorHold2.y].zoneControl = 2 
 	return false	
 		
+func friendlyCheckNoChange(unitObject):
+	if state.active_tile.unit.player == unitObject.player:
+	#	print(vectorHold2)
+		return true
+	for x in playerSelected.head[state.active_tile.unit.player].diplo:
+		if playerSelected.head[state.active_tile.unit.player].diplo[x-1] == unitObject.player:
+			#print(vectorHold2)
+			return true
+	#tiles[vectorHold2.x][vectorHold2.y].zoneControl = 2 
+	return false	
 					
 					
 func roughTerrain(vectorHold,vectorHoldPassed,movement,stupid):
@@ -661,9 +772,7 @@ func inBounds(vectorPassed):
 	return false
 
 
-var resource_level_bt = 0
 
-var unit_type_bt = Constants.UnitType.NONE
 
 func checkPlayerSelectOverlap():
 	if !playerSelected.hid && (playerSelected.tile_pos2.x > -7 && playerSelected.tile_pos2.y < 7 && playerSelected.tile_pos2.x < 0 && playerSelected.tile_pos2.y > 0):
