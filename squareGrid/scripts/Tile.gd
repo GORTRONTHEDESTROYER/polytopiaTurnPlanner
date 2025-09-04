@@ -9,17 +9,23 @@ var position: Vector2i
 var typeHeld: Constants.TileType
 var water: bool
 
+#Non-Tile Attributes
 var roadHeld: Constants.BuildingType
 var buildingHeld: Constants.BuildingType
+var road: bool = false
+var city : City = null
+var cityTile: Vector2i #load with city position
+var unit: Unit = null
 
-#movement
+
+
+#Movement
 var movementDist: int = -1
 var movementDistSource: int = -1
-var road: bool = false
 var spacer: int = -1
-var unit: Unit = null
 var moveableTile: bool = false
 var zoneControl: int = 0 # 0 equals free, 1 equals adjacent tile, # 2 equals zone of control tile
+
 
 
 var x: int:

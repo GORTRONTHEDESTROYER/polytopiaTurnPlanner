@@ -8,6 +8,8 @@ var player: int
 var ready: bool = true
 var active: bool = false
 
+var defBonus:float = 1.0
+
 var movement: int = 0 
 var health: float = 0
 var attack: float = 0
@@ -17,8 +19,9 @@ var unitRange: float = 0
 var maxHealth: float = 0
 var vet: bool = false
 
-
+var fortify = false
 var flying = false
+var poisned: bool = false
 
 func _init(
 	#typeP: Constants.UnitType,
@@ -44,6 +47,49 @@ func unitLoad(saved_unit:unitSaver):
 		Constants.UnitType.ARCHER:
 			typeArcher(saved_unit.type)
 		
+
+func defBonusLogic(tileP: Tile, playerHead):
+	if poisned:
+		defBonus = 0.7
+		return
+
+	match [tileP.typeHeld]:
+		[Constants.TileType.MOUNTAIN]:
+			defBonus = 1.5
+			return
+		[Constants.TileType.FOREST]:
+			for x in playerHead[player].tech.size():
+				if playerHead[player].tech[x] == Constants.PlayerTech.ARCHERY:
+					defBonus = 1.5
+					return
+			defBonus = 1.0
+			return
+		[Constants.TileType.SHORES]:
+			for x in playerHead[player].tech.size():
+				if playerHead[player].tech[x] == Constants.PlayerTech.AQUATICISM:
+					defBonus = 1.5
+					return
+			defBonus = 1.0
+			return
+		[Constants.TileType.OCEAN]:
+			for x in playerHead[player].tech.size():
+				if playerHead[player].tech[x] == Constants.PlayerTech.AQUATICISM:
+					defBonus = 1.5
+					return
+			defBonus = 1.0
+			return
+			
+	if fortify:
+		if tileP.city != null:
+			if tileP.city.wall == true:
+				defBonus = 3.0
+				return
+			defBonus = 1.5
+			return
+	defBonus = 1.0
+	return
+	
+	
 	
 func typeWarrior(typeP: Constants.UnitType):
 	

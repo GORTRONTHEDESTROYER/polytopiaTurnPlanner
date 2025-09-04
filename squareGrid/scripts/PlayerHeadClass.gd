@@ -4,6 +4,9 @@ var tribe: Vector2i
 var color: Vector2i
 var location: int
 var diplo: Array
+var tech: Array
+
+
 
 func _init(
 	playerP,

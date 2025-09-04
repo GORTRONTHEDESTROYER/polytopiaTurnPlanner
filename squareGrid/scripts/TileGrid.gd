@@ -9,7 +9,6 @@ enum Layer {TILE, RESOURCE, ROAD, BUILDING, UNIT_MOVE, UNITBODY, UNITHEAD, SELEC
 var gridSize: int = Global.gridSize
 var tiles: Array[Array] = []
 var state = State.new()
-
 @export var playerSelected: NinePatchRect
 
 @export var baseLayer: TileMapLayer
@@ -20,7 +19,7 @@ var state = State.new()
 @export var unitHead: TileMapLayer
 @export var unitLayer: TileMapLayer
 @export var cloudsLayer: TileMapLayer
-
+@export var spawnLayer: TileMapLayer
 @export var selectionLayer: TileMapLayer
 
 @export var unitHealth: TileMapLayer
@@ -246,6 +245,7 @@ func updateLook(tile: Tile):
 			baseLayer.set_cell( tile.position, 6, Vector2i.ZERO, 0)
 			resourceLayer.erase_cell(tile.position)
 			buildingRoad.erase_cell( tile.position)
+		
 		_:
 			pass
 	#print(tile.type)
@@ -257,6 +257,8 @@ func updateLook(tile: Tile):
 			buildingRoad.erase_cell( tile.position)
 
 			buildingLayer.erase_cell( tile.position)
+			spawnLayer.erase_cell( tile.position)
+			
 		[Constants.BuildingType.ROAD, Constants.TileType.MOUNTAIN]:
 			tile.roadHeld = Constants.BuildingType.NONE
 			tile.road = false
@@ -280,6 +282,10 @@ func updateLook(tile: Tile):
 			tile.buildingHeld = Constants.BuildingType.CITY
 			tile.road = true
 			buildingLayer.set_cell( tile.position, 4, Vector2i.ZERO, 0)
+		[Constants.BuildingType.RED_SQUARE, _]:
+			#tile.buildingHeld = Constants.BuildingType.CITY
+			#tile.road = true
+			spawnLayer.set_cell( tile.position, 0, Vector2i.ZERO, 0)
 			
 			
 			#erase_cell(Layer., tile.position)
@@ -361,6 +367,11 @@ func updateUnitLook(tileW: Tile):
 	if tileW.unit != null:
 		var healthY = (int(tileW.unit.health) -1) / 10
 		var healthX = (int(tileW.unit.health) - healthY * 10) - 1
+		var defBoost = 0
+		tileW.unit.defBonusLogic(tileW,playerSelected.head)
+		if tileW.unit.defBonus > 1:
+			defBoost = 1
+		#var defBoost = tileW.unit.defBoost
 		#print(Vector2i(healthY,healthX))
 		
 		match tileW.unit.type:
@@ -369,7 +380,7 @@ func updateUnitLook(tileW: Tile):
 				#tileW.unit.health
 				unitHead.set_cell( tileW.position, 0, playerSelected.head[tileW.unit.player].tribe, 0)
 				unitLayer.set_cell( tileW.position, 0, playerSelected.head[tileW.unit.player].color, 0)
-				unitHealth.set_cell(tileW.position, 0, Vector2i(healthX,healthY), 0)
+				unitHealth.set_cell(tileW.position, defBoost, Vector2i(healthX,healthY), 0)
 				
 				
 			Constants.UnitType.RIDER:
@@ -390,25 +401,25 @@ func updateUnitLook(tileW: Tile):
 						Vector2i(playerSelected.head[tileW.unit.player].color.x + (7 * (tempHead-1)),
 							playerSelected.head[tileW.unit.player].color.y) , 0)
 
-				unitHealth.set_cell(tileW.position, 0, Vector2i(healthX,healthY), 0)
-				unitHealth.set_cell(tileW.position, 0, Vector2i(healthX,healthY), 0)
+			#	unitHealth.set_cell(tileW.position, 0, Vector2i(healthX,healthY), 0)
+				unitHealth.set_cell(tileW.position, defBoost, Vector2i(healthX,healthY), 0)
 				
 			Constants.UnitType.ARCHER:
 				unitHead.set_cell( tileW.position, 0, playerSelected.head[tileW.unit.player].tribe, 0)
 				unitLayer.set_cell( tileW.position, 2, playerSelected.head[tileW.unit.player].color, 0)
-				unitHealth.set_cell(tileW.position, 0, Vector2i(healthX,healthY), 0)
+				unitHealth.set_cell(tileW.position, defBoost, Vector2i(healthX,healthY), 0)
 			Constants.UnitType.DEFENDER:
 				
 				#tileW.unit.health
 				unitHead.set_cell( tileW.position, 0, playerSelected.head[tileW.unit.player].tribe, 0)
 				unitLayer.set_cell( tileW.position, 3, playerSelected.head[tileW.unit.player].color, 0)
-				unitHealth.set_cell(tileW.position, 0, Vector2i(healthX,healthY), 0)
+				unitHealth.set_cell(tileW.position, defBoost, Vector2i(healthX,healthY), 0)
 				
 				
 			Constants.UnitType.SWORDSMAN:
 				unitHead.set_cell( tileW.position, 0, playerSelected.head[tileW.unit.player].tribe, 0)
 				unitLayer.set_cell( tileW.position, 4, playerSelected.head[tileW.unit.player].color, 0)
-				unitHealth.set_cell(tileW.position, 0, Vector2i(healthX,healthY), 0)
+				unitHealth.set_cell(tileW.position, defBoost, Vector2i(healthX,healthY), 0)
 				
 			Constants.UnitType.KNIGHT:
 				var tempHead = tribeVecToInt(playerSelected.head[tileW.unit.player]) + 1
@@ -423,19 +434,19 @@ func updateUnitLook(tileW: Tile):
 						Vector2i(playerSelected.head[tileW.unit.player].color.x + (7 * (tempHead-1)),
 							playerSelected.head[tileW.unit.player].color.y) , 0)
 
-				unitHealth.set_cell(tileW.position, 0, Vector2i(healthX,healthY), 0)
+				unitHealth.set_cell(tileW.position, defBoost, Vector2i(healthX,healthY), 0)
 			Constants.UnitType.CATAPULT:
 				unitHead.set_cell( tileW.position, 0, playerSelected.head[tileW.unit.player].tribe, 0)
 				unitLayer.set_cell( tileW.position, 6, playerSelected.head[tileW.unit.player].color, 0)
-				unitHealth.set_cell(tileW.position, 0, Vector2i(healthX,healthY), 0)
+				unitHealth.set_cell(tileW.position, defBoost, Vector2i(healthX,healthY), 0)
 			Constants.UnitType.MINDBENDER:
 				unitHead.set_cell( tileW.position, 0, playerSelected.head[tileW.unit.player].tribe, 0)
 				unitLayer.set_cell( tileW.position, 7, playerSelected.head[tileW.unit.player].color, 0)
-				unitHealth.set_cell(tileW.position, 0, Vector2i(healthX,healthY), 0)
+				unitHealth.set_cell(tileW.position, defBoost, Vector2i(healthX,healthY), 0)
 			Constants.UnitType.GIANT:
 				unitHead.set_cell( tileW.position, 0, playerSelected.head[tileW.unit.player].tribe, 0)
 				unitLayer.set_cell( tileW.position, 8, playerSelected.head[tileW.unit.player].color, 0)
-				unitHealth.set_cell(tileW.position, 0, Vector2i(healthX,healthY), 0)
+				unitHealth.set_cell(tileW.position, defBoost, Vector2i(healthX,healthY), 0)
 
 			_: 
 				pass
@@ -494,10 +505,10 @@ func turnMode(tile: Tile):
 			unitMoveLayer.clear()
 			
 func combat(attackerTile, defenderTile):
-	var defenseBonus:float = 1
+	#var defenseBonus:float = defenderTile.unit.defBonus
 	
 	var attackForce = attackerTile.unit.attack * (attackerTile.unit.health / attackerTile.unit.maxHealth)
-	var defenseForce = defenderTile.unit.defense * (defenderTile.unit.health  / defenderTile.unit.maxHealth) * defenseBonus 
+	var defenseForce = defenderTile.unit.defense * (defenderTile.unit.health  / defenderTile.unit.maxHealth) * defenderTile.unit.defBonus 
 	var totalDamage = attackForce + defenseForce 
 	var attackResult = round((attackForce / totalDamage) * attackerTile.unit.attack * 4.5) 
 	var defenseResult = round((defenseForce / totalDamage) * defenderTile.unit.defense * 4.5)
@@ -817,6 +828,7 @@ func tribeVecToInt(head):
 		[Vector2i(2,2)]:
 			tribeS = 15
 	return tribeS
+	'''
 	match[head.color]:
 		[Vector2i(0,0)]:
 			colorS = 0
@@ -850,4 +862,4 @@ func tribeVecToInt(head):
 			colorS = 14
 		[Vector2i(2,2)]:
 			colorS = 15
-			
+	'''

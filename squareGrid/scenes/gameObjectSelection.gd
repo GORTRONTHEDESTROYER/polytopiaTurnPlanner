@@ -6,6 +6,9 @@ extends Node2D
 @export var tilesCymanti: Control
 @export var tilesNatGen: Control
 
+@export var techs: Node2D
+
+
 @export var unitsSelect: Node
 
 @export var unitsTierOne: Node2D
@@ -19,6 +22,8 @@ extends Node2D
 
 @export var background: TileMapLayer
 @export var selection: TileMapLayer
+
+
 var hid = false
 var switch = 0
 var page = 0
@@ -59,6 +64,8 @@ func hidFlip():
 	unitsTierOne.visible = false
 	unitsTierTwo.visible = false
 	
+	techs.visible = false
+	
 	
 	if page == 1:
 		#TileMapMain.building_type_bt = Constants.BuildingType.NONE
@@ -89,6 +96,10 @@ func hidFlip():
 		unitsTierOne.visible = true
 		unitsTierTwo.visible = true
 		
+	elif page == 4:
+		techs.visible = true
+
+		
 	
 
 func _process(_delta):
@@ -115,6 +126,8 @@ func _process(_delta):
 			buildingPage(tile_pos2)
 		if page == 3:
 			unitPage(tile_pos2)
+		if page == 4:
+			techPage(tile_pos2)
 
 			
 			
@@ -134,6 +147,10 @@ func pageSelect(tile_pos2):
 			page = 0
 			hidFlip()
 			return
+		[Vector2i(3,0), 4]:
+			page = 0
+			hidFlip()
+			return
 			
 	match[tile_pos2]:
 		[Vector2i(0,0)]:
@@ -145,7 +162,9 @@ func pageSelect(tile_pos2):
 		[Vector2i(2,0)]:
 			page = 3
 			hidFlip()
-	
+		[Vector2i(3,0)]:
+			page = 4
+			hidFlip()
 	
 		
 
@@ -156,6 +175,8 @@ func get_tile(pos: Vector2i) -> void:
 		[Vector2i(1,0)]:
 			selection.set_cell(Vector2i(pos.x,pos.y + 1), 0, Constants.Tribe.VEN,0)
 		[Vector2i(2,0)]:
+			selection.set_cell(Vector2i(pos.x,pos.y + 1), 0, Constants.Tribe.VEN,0)
+		[Vector2i(3,0)]:
 			selection.set_cell(Vector2i(pos.x,pos.y + 1), 0, Constants.Tribe.VEN,0)
 	#skips blank cells
 	if page == 1:
@@ -297,6 +318,19 @@ func buildingPage(tile_pos2):
 			TileMapMain.building_type_bt = Constants.BuildingType.ROAD
 			#TileMapMain.resource_level_bt = 1
 			#TileMapMain.tile_type_bt = Constants.TileType.FIELD
+		[Vector2i(2,1)]:
+			if switch == 3:
+			#	TileMapMain.tile_type_bt = Constants.TileType.NONE
+				#TileMapMain.building_type_bt = Constants.TileType.NONE
+
+				#TileMapMain.resource_level_bt = 0
+				switch = 0
+				return
+			TileMapMain.tile_type_bt = Constants.TileType.NONE
+			background.clear()
+			background.set_cell(Vector2i(tile_pos2.x,tile_pos2.y + 1), 0, Constants.Tribe.KIC,0)
+			switch = 3
+			TileMapMain.building_type_bt = Constants.BuildingType.RED_SQUARE
 			#return
 		[Vector2i(3,1)]:
 			if switch == 4:
@@ -312,6 +346,68 @@ func buildingPage(tile_pos2):
 			background.set_cell(Vector2i(tile_pos2.x,tile_pos2.y + 1), 0, Constants.Tribe.KIC,0)
 			switch = 4
 			TileMapMain.building_type_bt = Constants.BuildingType.DELETE			#return
+			
+func techPage(tile_pos2):
+	
+	if(!(!hid && (tile_pos2.x > -1 && tile_pos2.y < 6 && tile_pos2.x < 5 && tile_pos2.y > -1))):
+		return
+	var player = TileMapMain.playerSelected.head
+	match [tile_pos2]:
+		[Vector2i(0,1)]:
+			for x in Global.players:
+				if player[x].location == 0:
+					if player[x].tech.find(Constants.PlayerTech.CLIMBING) != -1:
+						player[x].tech.erase(Constants.PlayerTech.CLIMBING)
+					else:
+						player[x].tech.append(Constants.PlayerTech.CLIMBING)
+			
+				#TileMapMain.playerSelected.head
+				print(player[x].tech)
+				print(player[0].tech)
+		[Vector2i(1,1)]:
+			for x in Global.players:
+				if player[x].location == 0:
+					if player[x].tech.find(Constants.PlayerTech.ARCHERY) != -1:
+						player[x].tech.erase(Constants.PlayerTech.ARCHERY)
+						TileMapMain.updateAllUnitLook()
+
+					else:
+						player[x].tech.append(Constants.PlayerTech.ARCHERY)
+						TileMapMain.updateAllUnitLook()
+
+			
+				#TileMapMain.playerSelected.head
+				print(player[x].tech)
+				print(player[0].tech)
+		[Vector2i(2,1)]:
+			for x in Global.players:
+				if player[x].location == 0:
+					if player[x].tech.find(Constants.PlayerTech.AQUATICISM) != -1:
+						player[x].tech.erase(Constants.PlayerTech.AQUATICISM)
+						TileMapMain.updateAllUnitLook()
+
+					else:
+						player[x].tech.append(Constants.PlayerTech.AQUATICISM)
+						TileMapMain.updateAllUnitLook()
+
+			
+				#TileMapMain.playerSelected.head
+				print(player[x].tech)
+				print(player[0].tech)
+		[Vector2i(3,1)]:
+			for x in Global.players:
+				if player[x].location == 0:
+					if player[x].tech.find(Constants.PlayerTech.FISHING) != -1:
+						player[x].tech.erase(Constants.PlayerTech.FISHING)
+					else:
+						player[x].tech.append(Constants.PlayerTech.FISHING)
+		[Vector2i(4,1)]:
+			for x in Global.players:
+				if player[x].location == 0:
+					if player[x].tech.find(Constants.PlayerTech.SAILING) != -1:
+						player[x].tech.erase(Constants.PlayerTech.SAILING)
+					else:
+						player[x].tech.append(Constants.PlayerTech.SAILING)
 			
 	
 
