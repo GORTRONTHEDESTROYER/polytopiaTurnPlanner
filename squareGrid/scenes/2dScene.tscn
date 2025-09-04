@@ -9380,7 +9380,6 @@ texture = ExtResource("95_7o6fv")
 
 [node name="shoresSheilds" type="AnimatedSprite2D" parent="CanvasLayer/Node/techSelect/techs/shoresDef/oceansDef"]
 position = Vector2(-45.7143, 0)
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_xb5re")
 
 [node name="oceanSheilds" type="AnimatedSprite2D" parent="CanvasLayer/Node/techSelect/techs/shoresDef/oceansDef"]

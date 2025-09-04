@@ -66,7 +66,8 @@ func _process(_delta):
 	#print(playerSelected.selected().player)
 	selectionLayer.erase_cell(prev_tile_pos)
 	var tile = get_tile(tile_pos)
-	
+	#if mode == 0: #delete for performace l8r if better solutions is found
+
 	#print(tile_type_bt)
 	#tile_type_bt = 1
 	if tile != null:
@@ -77,7 +78,7 @@ func _process(_delta):
 	#	print(tiles[tile_pos.x][tile_pos.y].spacer)
 		#print(tiles[tile_pos.x][tile_pos.y].road)
 		prev_tile_pos = tile_pos
-
+	
 		if Input.is_action_pressed("LEFT_MOUSE_BUTTON")&&(mode == 0):
 			#print(playerSelected.tile_pos2)
 			#checkPlayerSelectOverlap()
@@ -130,6 +131,8 @@ func updateLook(tile: Tile):
 			
 			baseLayer.set_cell(tile.position, 0, playerSelected.head[tile.player].tribe, 0)
 			resourceLayer.erase_cell(tile.position)
+			
+		
 			
 		[Constants.TileType.FIELD, 1]:
 			tile.typeHeld = tile.type
@@ -259,6 +262,9 @@ func updateLook(tile: Tile):
 			buildingLayer.erase_cell( tile.position)
 			spawnLayer.erase_cell( tile.position)
 			
+			if tile.city != null:
+				tile.city = null
+			
 		[Constants.BuildingType.ROAD, Constants.TileType.MOUNTAIN]:
 			tile.roadHeld = Constants.BuildingType.NONE
 			tile.road = false
@@ -279,13 +285,16 @@ func updateLook(tile: Tile):
 			tile.road = true
 			buildingLayer.set_cell( tile.position, 1, Vector2i.ZERO, 0)
 		[Constants.BuildingType.CITY, _]:
-			tile.buildingHeld = Constants.BuildingType.CITY
-			tile.road = true
-			buildingLayer.set_cell( tile.position, 4, Vector2i.ZERO, 0)
+			tile.city = City.new()
 		[Constants.BuildingType.RED_SQUARE, _]:
 			#tile.buildingHeld = Constants.BuildingType.CITY
 			#tile.road = true
 			spawnLayer.set_cell( tile.position, 0, Vector2i.ZERO, 0)
+			
+	if tile.city != null:
+		tile.road = true
+		buildingLayer.set_cell( tile.position, 4, Vector2i.ZERO, 0)
+
 			
 			
 			#erase_cell(Layer., tile.position)

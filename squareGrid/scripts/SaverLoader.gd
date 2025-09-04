@@ -109,7 +109,7 @@ func load_game():
 #	print("length")
 #	print(len(saved_game.player))
 	Global.players = len(saved_game.player)
-	
+	Global.gridSize = saved_game.mapSize
 	#print(Global.players)
 	player.head.clear()
 	player.loadReady()

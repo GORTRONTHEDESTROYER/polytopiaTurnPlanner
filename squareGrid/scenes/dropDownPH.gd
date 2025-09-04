@@ -62,6 +62,8 @@ func _process(_delta):
 		
 		if(tile_pos2.x == -3 && tile_pos2.y == 0):
 			if(TileMapHS.unitBoard.mode == 1):
+				TileMapHS.unitBoard.unitMoveLayer.clear()
+
 				TileMapHS.unitBoard.mode = 0
 				TileMapHS.erase_cell(0,Vector2i(-3,1))
 				return

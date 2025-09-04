@@ -46,6 +46,18 @@ func unitLoad(saved_unit:unitSaver):
 			typeRider(saved_unit.type)
 		Constants.UnitType.ARCHER:
 			typeArcher(saved_unit.type)
+		Constants.UnitType.DEFENDER:
+			typeDefender(saved_unit.type)
+		Constants.UnitType.SWORDSMAN:
+			typeSwordsman(saved_unit.type)
+		Constants.UnitType.KNIGHT:
+			typeKnight(saved_unit.type)
+		Constants.UnitType.CATAPULT:
+			typeCatapult(saved_unit.type)
+		Constants.UnitType.MINDBENDER:
+			typeMindbender(saved_unit.type)
+		Constants.UnitType.GIANT:
+			typeGiant(saved_unit.type)
 		
 
 func defBonusLogic(tileP: Tile, playerHead):
@@ -99,6 +111,8 @@ func typeWarrior(typeP: Constants.UnitType):
 	attack = 2
 	defense= 2
 	unitRange = 1
+	
+	fortify = true
 	#print(movement)
 func typeRider(typeP: Constants.UnitType):
 	
@@ -109,6 +123,9 @@ func typeRider(typeP: Constants.UnitType):
 	defense= 1
 	unitRange = 1
 	
+	fortify = true
+
+	
 func typeArcher(typeP: Constants.UnitType):
 	
 	maxHealth = 10
@@ -117,6 +134,7 @@ func typeArcher(typeP: Constants.UnitType):
 	attack = 2
 	defense= 1
 	unitRange = 2
+	fortify = true
 
 func typeDefender(typeP: Constants.UnitType):
 	
@@ -126,7 +144,8 @@ func typeDefender(typeP: Constants.UnitType):
 	attack = 1
 	defense= 3
 	unitRange = 1
-	
+	fortify = true
+
 func typeSwordsman(typeP: Constants.UnitType):
 	
 	maxHealth = 15
@@ -144,7 +163,8 @@ func typeKnight(typeP: Constants.UnitType):
 	attack = 3.5
 	defense= 1
 	unitRange = 1
-	
+	fortify = true
+
 func typeCatapult(typeP: Constants.UnitType):
 	
 	maxHealth = 10
