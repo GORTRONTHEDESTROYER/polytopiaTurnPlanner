@@ -15,6 +15,8 @@ extends Resource
 
 @export var unit: unitSaver
 
+@export var city: City
+
 #func addUnit(typeP, playerP, activeP):
 #	unit = unitSaver.new(typeP, playerP, activeP)
 #	unit.setter(typeP, playerP, activeP)

@@ -5,6 +5,8 @@ var head: Array = []
 var hid = true
 
 @export var save : Sprite2D
+
+
 #var PH = PlayerHead.new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -60,15 +62,20 @@ func _process(_delta):
 	if Input.is_action_just_released("LEFT_MOUSE_BUTTON"):
 		#tribe and color switcher
 		
+		
+		
 		if(tile_pos2.x == -3 && tile_pos2.y == 0):
 			if(TileMapHS.unitBoard.mode == 1):
 				TileMapHS.unitBoard.unitMoveLayer.clear()
-
+				TileMapHS.unitBoard.state.active_tile = null 
 				TileMapHS.unitBoard.mode = 0
 				TileMapHS.erase_cell(0,Vector2i(-3,1))
 				return
 			TileMapHS.unitBoard.mode = 1
 			TileMapHS.set_cell(0, Vector2i(-3,1), 0, Constants.Tribe.KIC,0)
+			TileMapHS.tileSelectPing.page = 0
+			TileMapHS.tileSelectPing.hidFlip()
+
 			return
 		if(tile_pos2.x == -2 && tile_pos2.y == 0):
 			save.save_game()
@@ -76,6 +83,10 @@ func _process(_delta):
 		if(tile_pos2.x == -1 && tile_pos2.y == 0):
 			save.load_game()
 			return
+		
+		
+		
+		
 		
 		var breaker = false
 		if (tile_pos2.x > -7 && tile_pos2.y < 7 && tile_pos2.x < 0 && tile_pos2.y > 0):
@@ -175,15 +186,7 @@ func showDiplo(headP):
 	for i in players:
 		TileMapHS.erase_cell(2,Vector2i(0,1+i))
 
-#	print("diplo")
-#	print( headP.diplo)
 	for i in headP.diplo.size():
-	#	print("i2")
-	#	print(i)
-	#	print(headP.diplo[i - 1])
-	#	print(head[1].location)
-		#print(head[2].location)
-		#print( head[(head.diplo[i-1])-1].location)
 		TileMapHS.set_cell(2,Vector2i(0,1 + head[headP.diplo[i-1]].location),1,Vector2i(4,2),0)
 
 

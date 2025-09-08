@@ -1,11 +1,12 @@
-[gd_resource type="Resource" script_class="SavedGame" load_steps=422 format=3]
+[gd_resource type="Resource" script_class="SavedGame" load_steps=430 format=3]
 
 [ext_resource type="Script" path="res://scripts/SavedGameSubTile.gd" id="1_ylfeg"]
 [ext_resource type="Script" path="res://scripts/unit_saver.gd" id="2_yx36p"]
 [ext_resource type="Script" path="res://scripts/playerSaver.gd" id="3_wvo7i"]
+[ext_resource type="Script" path="res://scripts/City.gd" id="3_yx36p"]
 [ext_resource type="Script" path="res://scripts/SavedGame.gd" id="4_ovts1"]
 
-[sub_resource type="Resource" id="Resource_ylfeg"]
+[sub_resource type="Resource" id="Resource_wvo7i"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -17,7 +18,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_yx36p"]
+[sub_resource type="Resource" id="Resource_ovts1"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -29,7 +30,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_wvo7i"]
+[sub_resource type="Resource" id="Resource_s0uye"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -41,7 +42,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_ovts1"]
+[sub_resource type="Resource" id="Resource_y5jvc"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -53,7 +54,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_s0uye"]
+[sub_resource type="Resource" id="Resource_wg0a7"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -65,7 +66,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_y5jvc"]
+[sub_resource type="Resource" id="Resource_kth4n"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -77,7 +78,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_wg0a7"]
+[sub_resource type="Resource" id="Resource_62fp6"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -89,7 +90,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_kth4n"]
+[sub_resource type="Resource" id="Resource_p724h"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -101,7 +102,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_62fp6"]
+[sub_resource type="Resource" id="Resource_yxken"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -113,7 +114,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_p724h"]
+[sub_resource type="Resource" id="Resource_bmlv7"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -125,7 +126,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_yxken"]
+[sub_resource type="Resource" id="Resource_l4488"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -137,7 +138,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_bmlv7"]
+[sub_resource type="Resource" id="Resource_kcjkb"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -149,7 +150,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_l4488"]
+[sub_resource type="Resource" id="Resource_le0g5"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -161,7 +162,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_kcjkb"]
+[sub_resource type="Resource" id="Resource_70mnr"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -173,7 +174,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_le0g5"]
+[sub_resource type="Resource" id="Resource_ri03i"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -185,7 +186,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_70mnr"]
+[sub_resource type="Resource" id="Resource_7n2nk"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -197,7 +198,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_ri03i"]
+[sub_resource type="Resource" id="Resource_oa0kt"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -209,7 +210,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_7n2nk"]
+[sub_resource type="Resource" id="Resource_56h6r"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -221,7 +222,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_oa0kt"]
+[sub_resource type="Resource" id="Resource_1m5yl"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -233,7 +234,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_56h6r"]
+[sub_resource type="Resource" id="Resource_uk4s6"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -245,7 +246,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_1m5yl"]
+[sub_resource type="Resource" id="Resource_vnpuv"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -257,7 +258,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_uk4s6"]
+[sub_resource type="Resource" id="Resource_x21a1"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -269,7 +270,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_vnpuv"]
+[sub_resource type="Resource" id="Resource_b72gn"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -281,7 +282,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_x21a1"]
+[sub_resource type="Resource" id="Resource_xtq0e"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -293,7 +294,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_b72gn"]
+[sub_resource type="Resource" id="Resource_x47m2"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -305,7 +306,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_xtq0e"]
+[sub_resource type="Resource" id="Resource_b11eu"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -317,7 +318,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_x47m2"]
+[sub_resource type="Resource" id="Resource_0dhtm"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -329,7 +330,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_b11eu"]
+[sub_resource type="Resource" id="Resource_bwbp8"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -341,7 +342,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_0dhtm"]
+[sub_resource type="Resource" id="Resource_4yles"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -353,7 +354,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_bwbp8"]
+[sub_resource type="Resource" id="Resource_luk6w"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -365,7 +366,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_4yles"]
+[sub_resource type="Resource" id="Resource_g6di6"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -377,7 +378,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_luk6w"]
+[sub_resource type="Resource" id="Resource_gxir8"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -389,7 +390,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_g6di6"]
+[sub_resource type="Resource" id="Resource_xh4q2"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -401,7 +402,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_gxir8"]
+[sub_resource type="Resource" id="Resource_g4dra"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -413,7 +414,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_xh4q2"]
+[sub_resource type="Resource" id="Resource_8l3q3"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -425,7 +426,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_g4dra"]
+[sub_resource type="Resource" id="Resource_b2m5b"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -437,7 +438,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_8l3q3"]
+[sub_resource type="Resource" id="Resource_nxwjf"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -449,7 +450,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_b2m5b"]
+[sub_resource type="Resource" id="Resource_ofljg"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -461,7 +462,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_nxwjf"]
+[sub_resource type="Resource" id="Resource_qhjm5"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -473,7 +474,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_ofljg"]
+[sub_resource type="Resource" id="Resource_i1ge8"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -485,7 +486,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_qhjm5"]
+[sub_resource type="Resource" id="Resource_e0215"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -497,7 +498,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_i1ge8"]
+[sub_resource type="Resource" id="Resource_jo48r"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -509,7 +510,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_e0215"]
+[sub_resource type="Resource" id="Resource_p8yff"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -521,7 +522,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_jo48r"]
+[sub_resource type="Resource" id="Resource_2mjxg"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -533,7 +534,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_p8yff"]
+[sub_resource type="Resource" id="Resource_p8n6d"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -545,7 +546,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_2mjxg"]
+[sub_resource type="Resource" id="Resource_gjgl2"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -557,7 +558,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_p8n6d"]
+[sub_resource type="Resource" id="Resource_ajldq"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -569,7 +570,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_gjgl2"]
+[sub_resource type="Resource" id="Resource_ocus5"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -581,7 +582,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_ajldq"]
+[sub_resource type="Resource" id="Resource_72tji"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -593,7 +594,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_ocus5"]
+[sub_resource type="Resource" id="Resource_j1txa"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -605,7 +606,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_72tji"]
+[sub_resource type="Resource" id="Resource_63whr"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -617,7 +618,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_j1txa"]
+[sub_resource type="Resource" id="Resource_jvusq"]
 script = ExtResource("1_ylfeg")
 player = 5
 type = 3
@@ -629,7 +630,7 @@ typeHeld = 3
 resourceLevel = 2
 water = false
 
-[sub_resource type="Resource" id="Resource_63whr"]
+[sub_resource type="Resource" id="Resource_r4wny"]
 script = ExtResource("1_ylfeg")
 player = 5
 type = 1
@@ -641,7 +642,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_jvusq"]
+[sub_resource type="Resource" id="Resource_0y6i0"]
 script = ExtResource("1_ylfeg")
 player = 5
 type = 3
@@ -653,7 +654,7 @@ typeHeld = 3
 resourceLevel = 2
 water = false
 
-[sub_resource type="Resource" id="Resource_r4wny"]
+[sub_resource type="Resource" id="Resource_dqy6q"]
 script = ExtResource("1_ylfeg")
 player = 5
 type = 1
@@ -665,7 +666,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_0y6i0"]
+[sub_resource type="Resource" id="Resource_cltoa"]
 script = ExtResource("1_ylfeg")
 player = 5
 type = 1
@@ -677,7 +678,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_dqy6q"]
+[sub_resource type="Resource" id="Resource_yi0ga"]
 script = ExtResource("1_ylfeg")
 player = 5
 type = 2
@@ -689,7 +690,7 @@ typeHeld = 2
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_cltoa"]
+[sub_resource type="Resource" id="Resource_bl7ou"]
 script = ExtResource("1_ylfeg")
 player = 5
 type = 2
@@ -701,7 +702,7 @@ typeHeld = 2
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_yi0ga"]
+[sub_resource type="Resource" id="Resource_o5ta6"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -713,7 +714,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_bl7ou"]
+[sub_resource type="Resource" id="Resource_b1vjx"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -725,7 +726,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_o5ta6"]
+[sub_resource type="Resource" id="Resource_gbjtg"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -737,7 +738,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_b1vjx"]
+[sub_resource type="Resource" id="Resource_l4f6b"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -749,7 +750,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_gbjtg"]
+[sub_resource type="Resource" id="Resource_87brk"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -761,7 +762,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_l4f6b"]
+[sub_resource type="Resource" id="Resource_dcgy8"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -773,7 +774,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_87brk"]
+[sub_resource type="Resource" id="Resource_c51pb"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -785,7 +786,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_dcgy8"]
+[sub_resource type="Resource" id="Resource_ox1kh"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -797,7 +798,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_c51pb"]
+[sub_resource type="Resource" id="Resource_7dmdo"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -809,7 +810,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_ox1kh"]
+[sub_resource type="Resource" id="Resource_6vycp"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -821,7 +822,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_7dmdo"]
+[sub_resource type="Resource" id="Resource_4y8tn"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -833,7 +834,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_6vycp"]
+[sub_resource type="Resource" id="Resource_n4g5a"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -845,7 +846,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_4y8tn"]
+[sub_resource type="Resource" id="Resource_hoqxu"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -857,7 +858,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_n4g5a"]
+[sub_resource type="Resource" id="Resource_ykvl1"]
 script = ExtResource("1_ylfeg")
 player = 5
 type = 1
@@ -869,7 +870,7 @@ typeHeld = 1
 resourceLevel = 1
 water = false
 
-[sub_resource type="Resource" id="Resource_hoqxu"]
+[sub_resource type="Resource" id="Resource_3tova"]
 script = ExtResource("1_ylfeg")
 player = 5
 type = 1
@@ -881,7 +882,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_ykvl1"]
+[sub_resource type="Resource" id="Resource_yh1km"]
 script = ExtResource("1_ylfeg")
 player = 5
 type = 2
@@ -893,7 +894,7 @@ typeHeld = 2
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_3tova"]
+[sub_resource type="Resource" id="Resource_2a6gn"]
 script = ExtResource("1_ylfeg")
 player = 5
 type = 2
@@ -905,7 +906,7 @@ typeHeld = 2
 resourceLevel = 1
 water = false
 
-[sub_resource type="Resource" id="Resource_yh1km"]
+[sub_resource type="Resource" id="Resource_un7dl"]
 script = ExtResource("1_ylfeg")
 player = 5
 type = 3
@@ -917,7 +918,7 @@ typeHeld = 3
 resourceLevel = 2
 water = false
 
-[sub_resource type="Resource" id="Resource_2a6gn"]
+[sub_resource type="Resource" id="Resource_psiu4"]
 script = ExtResource("1_ylfeg")
 player = 5
 type = 2
@@ -929,7 +930,7 @@ typeHeld = 2
 resourceLevel = 1
 water = false
 
-[sub_resource type="Resource" id="Resource_un7dl"]
+[sub_resource type="Resource" id="Resource_66tt2"]
 script = ExtResource("1_ylfeg")
 player = 5
 type = 1
@@ -941,7 +942,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_psiu4"]
+[sub_resource type="Resource" id="Resource_jm5od"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -953,7 +954,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_66tt2"]
+[sub_resource type="Resource" id="Resource_amqcg"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -965,7 +966,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_jm5od"]
+[sub_resource type="Resource" id="Resource_epfi6"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -977,7 +978,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_amqcg"]
+[sub_resource type="Resource" id="Resource_82fub"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -989,7 +990,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_epfi6"]
+[sub_resource type="Resource" id="Resource_tpq7v"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -1001,7 +1002,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_82fub"]
+[sub_resource type="Resource" id="Resource_7odul"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -1013,7 +1014,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_tpq7v"]
+[sub_resource type="Resource" id="Resource_u7mm7"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -1025,7 +1026,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_7odul"]
+[sub_resource type="Resource" id="Resource_diil7"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -1037,7 +1038,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_u7mm7"]
+[sub_resource type="Resource" id="Resource_v3q8f"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -1049,7 +1050,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_diil7"]
+[sub_resource type="Resource" id="Resource_kcgso"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -1061,7 +1062,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_v3q8f"]
+[sub_resource type="Resource" id="Resource_7ihjs"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -1073,7 +1074,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_kcgso"]
+[sub_resource type="Resource" id="Resource_1ckpd"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -1085,7 +1086,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_7ihjs"]
+[sub_resource type="Resource" id="Resource_dsvbr"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -1097,7 +1098,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_1ckpd"]
+[sub_resource type="Resource" id="Resource_k55w2"]
 script = ExtResource("1_ylfeg")
 player = 5
 type = 1
@@ -1109,7 +1110,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_dsvbr"]
+[sub_resource type="Resource" id="Resource_mc6a8"]
 script = ExtResource("1_ylfeg")
 player = 5
 type = 3
@@ -1121,14 +1122,14 @@ typeHeld = 3
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_k55w2"]
+[sub_resource type="Resource" id="Resource_gyqbc"]
 script = ExtResource("2_yx36p")
 type = 2
 player = 5
 active = false
 health = 10
 
-[sub_resource type="Resource" id="Resource_mc6a8"]
+[sub_resource type="Resource" id="Resource_qywmv"]
 script = ExtResource("1_ylfeg")
 player = 5
 type = 3
@@ -1139,9 +1140,9 @@ position = Vector2i(4, 13)
 typeHeld = 3
 resourceLevel = 0
 water = false
-unit = SubResource("Resource_k55w2")
+unit = SubResource("Resource_gyqbc")
 
-[sub_resource type="Resource" id="Resource_gyqbc"]
+[sub_resource type="Resource" id="Resource_6sonr"]
 script = ExtResource("1_ylfeg")
 player = 5
 type = 2
@@ -1153,9 +1154,12 @@ typeHeld = 2
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_qywmv"]
+[sub_resource type="Resource" id="Resource_vbt8i"]
+script = ExtResource("3_yx36p")
+
+[sub_resource type="Resource" id="Resource_857xp"]
 script = ExtResource("1_ylfeg")
-player = 5
+player = 0
 type = 1
 tribe = Vector2i(0, 0)
 building = 0
@@ -1164,8 +1168,9 @@ position = Vector2i(4, 15)
 typeHeld = 1
 resourceLevel = 0
 water = false
+city = SubResource("Resource_vbt8i")
 
-[sub_resource type="Resource" id="Resource_6sonr"]
+[sub_resource type="Resource" id="Resource_1tjth"]
 script = ExtResource("1_ylfeg")
 player = 5
 type = 1
@@ -1177,7 +1182,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_vbt8i"]
+[sub_resource type="Resource" id="Resource_cg0bq"]
 script = ExtResource("1_ylfeg")
 player = 5
 type = 1
@@ -1189,7 +1194,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_857xp"]
+[sub_resource type="Resource" id="Resource_etf65"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -1201,7 +1206,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_1tjth"]
+[sub_resource type="Resource" id="Resource_gjndf"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -1213,7 +1218,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_cg0bq"]
+[sub_resource type="Resource" id="Resource_squos"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -1225,7 +1230,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_etf65"]
+[sub_resource type="Resource" id="Resource_0dd78"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -1237,7 +1242,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_gjndf"]
+[sub_resource type="Resource" id="Resource_nxe0g"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -1249,7 +1254,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_squos"]
+[sub_resource type="Resource" id="Resource_35hx5"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -1261,7 +1266,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_0dd78"]
+[sub_resource type="Resource" id="Resource_i71t4"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -1273,7 +1278,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_nxe0g"]
+[sub_resource type="Resource" id="Resource_1vh0v"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -1285,7 +1290,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_35hx5"]
+[sub_resource type="Resource" id="Resource_1o7cx"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -1297,7 +1302,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_i71t4"]
+[sub_resource type="Resource" id="Resource_pvis2"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -1309,7 +1314,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_1vh0v"]
+[sub_resource type="Resource" id="Resource_2vji6"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -1321,7 +1326,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_1o7cx"]
+[sub_resource type="Resource" id="Resource_rnuka"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -1333,7 +1338,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_pvis2"]
+[sub_resource type="Resource" id="Resource_xxsuv"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -1345,7 +1350,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_2vji6"]
+[sub_resource type="Resource" id="Resource_p6lmv"]
 script = ExtResource("1_ylfeg")
 player = 5
 type = 2
@@ -1357,7 +1362,7 @@ typeHeld = 2
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_rnuka"]
+[sub_resource type="Resource" id="Resource_ei7wr"]
 script = ExtResource("1_ylfeg")
 player = 5
 type = 2
@@ -1369,7 +1374,7 @@ typeHeld = 2
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_xxsuv"]
+[sub_resource type="Resource" id="Resource_r1u14"]
 script = ExtResource("1_ylfeg")
 player = 5
 type = 2
@@ -1381,7 +1386,7 @@ typeHeld = 2
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_p6lmv"]
+[sub_resource type="Resource" id="Resource_4r3c4"]
 script = ExtResource("1_ylfeg")
 player = 5
 type = 3
@@ -1393,7 +1398,7 @@ typeHeld = 3
 resourceLevel = 2
 water = false
 
-[sub_resource type="Resource" id="Resource_ei7wr"]
+[sub_resource type="Resource" id="Resource_l3qu4"]
 script = ExtResource("1_ylfeg")
 player = 5
 type = 1
@@ -1405,14 +1410,14 @@ typeHeld = 1
 resourceLevel = 1
 water = false
 
-[sub_resource type="Resource" id="Resource_r1u14"]
+[sub_resource type="Resource" id="Resource_s3s7m"]
 script = ExtResource("2_yx36p")
 type = 2
 player = 5
 active = false
 health = 10
 
-[sub_resource type="Resource" id="Resource_4r3c4"]
+[sub_resource type="Resource" id="Resource_uan6i"]
 script = ExtResource("1_ylfeg")
 player = 5
 type = 2
@@ -1423,9 +1428,9 @@ position = Vector2i(5, 16)
 typeHeld = 2
 resourceLevel = 1
 water = false
-unit = SubResource("Resource_r1u14")
+unit = SubResource("Resource_s3s7m")
 
-[sub_resource type="Resource" id="Resource_l3qu4"]
+[sub_resource type="Resource" id="Resource_lcs7l"]
 script = ExtResource("1_ylfeg")
 player = 5
 type = 1
@@ -1437,7 +1442,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_s3s7m"]
+[sub_resource type="Resource" id="Resource_dlod5"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -1449,7 +1454,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_uan6i"]
+[sub_resource type="Resource" id="Resource_nuhwa"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -1461,7 +1466,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_lcs7l"]
+[sub_resource type="Resource" id="Resource_55aef"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -1473,7 +1478,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_dlod5"]
+[sub_resource type="Resource" id="Resource_gchna"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -1485,7 +1490,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_nuhwa"]
+[sub_resource type="Resource" id="Resource_ghfhy"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -1497,7 +1502,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_55aef"]
+[sub_resource type="Resource" id="Resource_j4atb"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -1509,7 +1514,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_gchna"]
+[sub_resource type="Resource" id="Resource_odxmx"]
 script = ExtResource("1_ylfeg")
 player = 3
 type = 3
@@ -1521,7 +1526,7 @@ typeHeld = 3
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_ghfhy"]
+[sub_resource type="Resource" id="Resource_hi0xa"]
 script = ExtResource("1_ylfeg")
 player = 3
 type = 1
@@ -1533,7 +1538,7 @@ typeHeld = 1
 resourceLevel = 1
 water = false
 
-[sub_resource type="Resource" id="Resource_j4atb"]
+[sub_resource type="Resource" id="Resource_c0xsx"]
 script = ExtResource("1_ylfeg")
 player = 3
 type = 1
@@ -1545,7 +1550,7 @@ typeHeld = 1
 resourceLevel = 1
 water = false
 
-[sub_resource type="Resource" id="Resource_odxmx"]
+[sub_resource type="Resource" id="Resource_ry8ef"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -1557,16 +1562,19 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_hi0xa"]
+[sub_resource type="Resource" id="Resource_345jd"]
+script = ExtResource("3_yx36p")
+
+[sub_resource type="Resource" id="Resource_cgh3b"]
 script = ExtResource("2_yx36p")
 type = 3
 player = 1
 active = false
 health = 10
 
-[sub_resource type="Resource" id="Resource_c0xsx"]
+[sub_resource type="Resource" id="Resource_etk6b"]
 script = ExtResource("1_ylfeg")
-player = 6
+player = 0
 type = 1
 tribe = Vector2i(0, 0)
 building = 4
@@ -1575,9 +1583,10 @@ position = Vector2i(6, 8)
 typeHeld = 1
 resourceLevel = 0
 water = false
-unit = SubResource("Resource_hi0xa")
+unit = SubResource("Resource_cgh3b")
+city = SubResource("Resource_345jd")
 
-[sub_resource type="Resource" id="Resource_ry8ef"]
+[sub_resource type="Resource" id="Resource_47whb"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -1589,7 +1598,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_345jd"]
+[sub_resource type="Resource" id="Resource_rqv67"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -1601,7 +1610,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_cgh3b"]
+[sub_resource type="Resource" id="Resource_2hyt8"]
 script = ExtResource("1_ylfeg")
 player = 1
 type = 2
@@ -1613,7 +1622,7 @@ typeHeld = 2
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_etk6b"]
+[sub_resource type="Resource" id="Resource_poru8"]
 script = ExtResource("1_ylfeg")
 player = 1
 type = 1
@@ -1625,7 +1634,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_47whb"]
+[sub_resource type="Resource" id="Resource_24707"]
 script = ExtResource("1_ylfeg")
 player = 1
 type = 3
@@ -1637,7 +1646,7 @@ typeHeld = 3
 resourceLevel = 2
 water = false
 
-[sub_resource type="Resource" id="Resource_rqv67"]
+[sub_resource type="Resource" id="Resource_l58oy"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 2
@@ -1649,7 +1658,7 @@ typeHeld = 2
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_2hyt8"]
+[sub_resource type="Resource" id="Resource_i8sik"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 2
@@ -1661,7 +1670,7 @@ typeHeld = 2
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_poru8"]
+[sub_resource type="Resource" id="Resource_hguxj"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 2
@@ -1673,7 +1682,7 @@ typeHeld = 2
 resourceLevel = 1
 water = false
 
-[sub_resource type="Resource" id="Resource_24707"]
+[sub_resource type="Resource" id="Resource_7vi5x"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 3
@@ -1685,7 +1694,7 @@ typeHeld = 3
 resourceLevel = 2
 water = false
 
-[sub_resource type="Resource" id="Resource_l58oy"]
+[sub_resource type="Resource" id="Resource_qxus1"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -1697,7 +1706,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_i8sik"]
+[sub_resource type="Resource" id="Resource_yey6d"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -1709,7 +1718,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_hguxj"]
+[sub_resource type="Resource" id="Resource_a7wr0"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -1721,7 +1730,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_7vi5x"]
+[sub_resource type="Resource" id="Resource_3rsep"]
 script = ExtResource("1_ylfeg")
 player = 3
 type = 3
@@ -1733,7 +1742,7 @@ typeHeld = 3
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_qxus1"]
+[sub_resource type="Resource" id="Resource_3lhi5"]
 script = ExtResource("1_ylfeg")
 player = 3
 type = 2
@@ -1745,7 +1754,7 @@ typeHeld = 2
 resourceLevel = 1
 water = false
 
-[sub_resource type="Resource" id="Resource_yey6d"]
+[sub_resource type="Resource" id="Resource_nq4xs"]
 script = ExtResource("1_ylfeg")
 player = 3
 type = 2
@@ -1757,7 +1766,7 @@ typeHeld = 2
 resourceLevel = 1
 water = false
 
-[sub_resource type="Resource" id="Resource_a7wr0"]
+[sub_resource type="Resource" id="Resource_hcdvb"]
 script = ExtResource("1_ylfeg")
 player = 3
 type = 2
@@ -1769,14 +1778,14 @@ typeHeld = 2
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_3rsep"]
+[sub_resource type="Resource" id="Resource_q3w8w"]
 script = ExtResource("2_yx36p")
 type = 5
 player = 3
 active = false
 health = 15
 
-[sub_resource type="Resource" id="Resource_3lhi5"]
+[sub_resource type="Resource" id="Resource_pq66a"]
 script = ExtResource("1_ylfeg")
 player = 3
 type = 2
@@ -1787,9 +1796,9 @@ position = Vector2i(7, 5)
 typeHeld = 2
 resourceLevel = 1
 water = false
-unit = SubResource("Resource_3rsep")
+unit = SubResource("Resource_q3w8w")
 
-[sub_resource type="Resource" id="Resource_nq4xs"]
+[sub_resource type="Resource" id="Resource_euplj"]
 script = ExtResource("1_ylfeg")
 player = 3
 type = 2
@@ -1801,7 +1810,7 @@ typeHeld = 2
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_hcdvb"]
+[sub_resource type="Resource" id="Resource_ov1dd"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -1813,7 +1822,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_q3w8w"]
+[sub_resource type="Resource" id="Resource_dpk1f"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -1825,7 +1834,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_pq66a"]
+[sub_resource type="Resource" id="Resource_xmbke"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -1837,7 +1846,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_euplj"]
+[sub_resource type="Resource" id="Resource_v5axb"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -1849,7 +1858,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_ov1dd"]
+[sub_resource type="Resource" id="Resource_3d4o0"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -1861,7 +1870,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_dpk1f"]
+[sub_resource type="Resource" id="Resource_nr0n0"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 2
@@ -1873,7 +1882,7 @@ typeHeld = 2
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_xmbke"]
+[sub_resource type="Resource" id="Resource_2hpt7"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 1
@@ -1885,7 +1894,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_v5axb"]
+[sub_resource type="Resource" id="Resource_a18ia"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 1
@@ -1897,7 +1906,7 @@ typeHeld = 1
 resourceLevel = 1
 water = false
 
-[sub_resource type="Resource" id="Resource_3d4o0"]
+[sub_resource type="Resource" id="Resource_oew1m"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 3
@@ -1909,7 +1918,7 @@ typeHeld = 3
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_nr0n0"]
+[sub_resource type="Resource" id="Resource_12mmn"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 2
@@ -1921,7 +1930,7 @@ typeHeld = 2
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_2hpt7"]
+[sub_resource type="Resource" id="Resource_143yh"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -1933,7 +1942,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_a18ia"]
+[sub_resource type="Resource" id="Resource_b5nsa"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -1945,7 +1954,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_oew1m"]
+[sub_resource type="Resource" id="Resource_8r1y0"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -1957,7 +1966,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_12mmn"]
+[sub_resource type="Resource" id="Resource_ufxa2"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -1969,7 +1978,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_143yh"]
+[sub_resource type="Resource" id="Resource_kskpx"]
 script = ExtResource("1_ylfeg")
 player = 3
 type = 1
@@ -1981,7 +1990,7 @@ typeHeld = 1
 resourceLevel = 1
 water = false
 
-[sub_resource type="Resource" id="Resource_b5nsa"]
+[sub_resource type="Resource" id="Resource_q3n3d"]
 script = ExtResource("1_ylfeg")
 player = 3
 type = 3
@@ -1993,7 +2002,7 @@ typeHeld = 3
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_8r1y0"]
+[sub_resource type="Resource" id="Resource_sbf2w"]
 script = ExtResource("1_ylfeg")
 player = 3
 type = 2
@@ -2005,14 +2014,14 @@ typeHeld = 2
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_ufxa2"]
+[sub_resource type="Resource" id="Resource_m7yvx"]
 script = ExtResource("2_yx36p")
 type = 2
 player = 3
 active = false
 health = 10
 
-[sub_resource type="Resource" id="Resource_kskpx"]
+[sub_resource type="Resource" id="Resource_64h4c"]
 script = ExtResource("1_ylfeg")
 player = 3
 type = 1
@@ -2023,9 +2032,9 @@ position = Vector2i(8, 4)
 typeHeld = 1
 resourceLevel = 1
 water = false
-unit = SubResource("Resource_ufxa2")
+unit = SubResource("Resource_m7yvx")
 
-[sub_resource type="Resource" id="Resource_q3n3d"]
+[sub_resource type="Resource" id="Resource_5nbyt"]
 script = ExtResource("1_ylfeg")
 player = 3
 type = 3
@@ -2037,7 +2046,7 @@ typeHeld = 3
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_sbf2w"]
+[sub_resource type="Resource" id="Resource_ue7q0"]
 script = ExtResource("1_ylfeg")
 player = 3
 type = 2
@@ -2049,7 +2058,7 @@ typeHeld = 2
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_m7yvx"]
+[sub_resource type="Resource" id="Resource_13b6n"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -2061,7 +2070,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_64h4c"]
+[sub_resource type="Resource" id="Resource_g213q"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -2073,7 +2082,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_5nbyt"]
+[sub_resource type="Resource" id="Resource_munoq"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -2085,7 +2094,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_ue7q0"]
+[sub_resource type="Resource" id="Resource_4n78h"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -2097,7 +2106,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_13b6n"]
+[sub_resource type="Resource" id="Resource_0x6vv"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -2109,7 +2118,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_g213q"]
+[sub_resource type="Resource" id="Resource_had7k"]
 script = ExtResource("1_ylfeg")
 player = 1
 type = 1
@@ -2121,14 +2130,14 @@ typeHeld = 1
 resourceLevel = 2
 water = false
 
-[sub_resource type="Resource" id="Resource_munoq"]
+[sub_resource type="Resource" id="Resource_ywqpt"]
 script = ExtResource("2_yx36p")
 type = 2
 player = 0
 active = false
 health = 5
 
-[sub_resource type="Resource" id="Resource_4n78h"]
+[sub_resource type="Resource" id="Resource_v60yw"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 2
@@ -2139,9 +2148,9 @@ position = Vector2i(8, 13)
 typeHeld = 2
 resourceLevel = 0
 water = false
-unit = SubResource("Resource_munoq")
+unit = SubResource("Resource_ywqpt")
 
-[sub_resource type="Resource" id="Resource_0x6vv"]
+[sub_resource type="Resource" id="Resource_bc7nl"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 2
@@ -2153,7 +2162,7 @@ typeHeld = 2
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_had7k"]
+[sub_resource type="Resource" id="Resource_levl4"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 3
@@ -2165,7 +2174,7 @@ typeHeld = 3
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_ywqpt"]
+[sub_resource type="Resource" id="Resource_2jar2"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 1
@@ -2177,7 +2186,7 @@ typeHeld = 1
 resourceLevel = 1
 water = false
 
-[sub_resource type="Resource" id="Resource_v60yw"]
+[sub_resource type="Resource" id="Resource_81tah"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 1
@@ -2189,7 +2198,7 @@ typeHeld = 1
 resourceLevel = 1
 water = false
 
-[sub_resource type="Resource" id="Resource_bc7nl"]
+[sub_resource type="Resource" id="Resource_typ68"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -2201,7 +2210,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_levl4"]
+[sub_resource type="Resource" id="Resource_7g0hu"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -2213,7 +2222,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_2jar2"]
+[sub_resource type="Resource" id="Resource_7fht6"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -2225,7 +2234,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_81tah"]
+[sub_resource type="Resource" id="Resource_wmk54"]
 script = ExtResource("1_ylfeg")
 player = 3
 type = 2
@@ -2237,7 +2246,7 @@ typeHeld = 2
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_typ68"]
+[sub_resource type="Resource" id="Resource_eeqpd"]
 script = ExtResource("1_ylfeg")
 player = 3
 type = 1
@@ -2249,9 +2258,12 @@ typeHeld = 1
 resourceLevel = 1
 water = false
 
-[sub_resource type="Resource" id="Resource_7g0hu"]
+[sub_resource type="Resource" id="Resource_b6kr0"]
+script = ExtResource("3_yx36p")
+
+[sub_resource type="Resource" id="Resource_rwsbv"]
 script = ExtResource("1_ylfeg")
-player = 3
+player = 0
 type = 1
 tribe = Vector2i(0, 0)
 building = 0
@@ -2260,8 +2272,9 @@ position = Vector2i(9, 3)
 typeHeld = 1
 resourceLevel = 0
 water = false
+city = SubResource("Resource_b6kr0")
 
-[sub_resource type="Resource" id="Resource_7fht6"]
+[sub_resource type="Resource" id="Resource_yvvb6"]
 script = ExtResource("1_ylfeg")
 player = 3
 type = 1
@@ -2273,7 +2286,7 @@ typeHeld = 1
 resourceLevel = 1
 water = false
 
-[sub_resource type="Resource" id="Resource_wmk54"]
+[sub_resource type="Resource" id="Resource_c6808"]
 script = ExtResource("1_ylfeg")
 player = 3
 type = 2
@@ -2285,7 +2298,7 @@ typeHeld = 2
 resourceLevel = 1
 water = false
 
-[sub_resource type="Resource" id="Resource_eeqpd"]
+[sub_resource type="Resource" id="Resource_f13sq"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -2297,7 +2310,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_b6kr0"]
+[sub_resource type="Resource" id="Resource_yg7en"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -2309,7 +2322,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_rwsbv"]
+[sub_resource type="Resource" id="Resource_57ql8"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -2321,9 +2334,12 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_yvvb6"]
+[sub_resource type="Resource" id="Resource_0r0r8"]
+script = ExtResource("3_yx36p")
+
+[sub_resource type="Resource" id="Resource_174qb"]
 script = ExtResource("1_ylfeg")
-player = 1
+player = 0
 type = 1
 tribe = Vector2i(0, 0)
 building = 0
@@ -2332,8 +2348,9 @@ position = Vector2i(9, 9)
 typeHeld = 1
 resourceLevel = 0
 water = false
+city = SubResource("Resource_0r0r8")
 
-[sub_resource type="Resource" id="Resource_c6808"]
+[sub_resource type="Resource" id="Resource_2cmqa"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -2345,7 +2362,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_f13sq"]
+[sub_resource type="Resource" id="Resource_bqhp2"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -2357,7 +2374,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_yg7en"]
+[sub_resource type="Resource" id="Resource_jbpkm"]
 script = ExtResource("1_ylfeg")
 player = 1
 type = 1
@@ -2369,7 +2386,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_57ql8"]
+[sub_resource type="Resource" id="Resource_c7if6"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 2
@@ -2381,7 +2398,7 @@ typeHeld = 2
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_0r0r8"]
+[sub_resource type="Resource" id="Resource_u06ii"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 1
@@ -2393,7 +2410,7 @@ typeHeld = 1
 resourceLevel = 2
 water = false
 
-[sub_resource type="Resource" id="Resource_174qb"]
+[sub_resource type="Resource" id="Resource_v3o8a"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 1
@@ -2405,7 +2422,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_2cmqa"]
+[sub_resource type="Resource" id="Resource_wwx7f"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 2
@@ -2417,7 +2434,7 @@ typeHeld = 2
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_bqhp2"]
+[sub_resource type="Resource" id="Resource_c8kao"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 2
@@ -2429,7 +2446,7 @@ typeHeld = 2
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_jbpkm"]
+[sub_resource type="Resource" id="Resource_cdrc1"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -2441,7 +2458,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_c7if6"]
+[sub_resource type="Resource" id="Resource_kkixc"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -2453,7 +2470,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_u06ii"]
+[sub_resource type="Resource" id="Resource_cq5mj"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -2465,7 +2482,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_v3o8a"]
+[sub_resource type="Resource" id="Resource_smwes"]
 script = ExtResource("1_ylfeg")
 player = 3
 type = 2
@@ -2477,7 +2494,7 @@ typeHeld = 2
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_wwx7f"]
+[sub_resource type="Resource" id="Resource_2iq23"]
 script = ExtResource("1_ylfeg")
 player = 3
 type = 1
@@ -2489,7 +2506,7 @@ typeHeld = 1
 resourceLevel = 1
 water = false
 
-[sub_resource type="Resource" id="Resource_c8kao"]
+[sub_resource type="Resource" id="Resource_y5f7d"]
 script = ExtResource("1_ylfeg")
 player = 3
 type = 1
@@ -2501,7 +2518,7 @@ typeHeld = 1
 resourceLevel = 1
 water = false
 
-[sub_resource type="Resource" id="Resource_cdrc1"]
+[sub_resource type="Resource" id="Resource_xqjb4"]
 script = ExtResource("1_ylfeg")
 player = 3
 type = 2
@@ -2513,7 +2530,7 @@ typeHeld = 2
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_kkixc"]
+[sub_resource type="Resource" id="Resource_qsv5i"]
 script = ExtResource("1_ylfeg")
 player = 1
 type = 1
@@ -2525,7 +2542,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_cq5mj"]
+[sub_resource type="Resource" id="Resource_yc2wa"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -2537,7 +2554,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_smwes"]
+[sub_resource type="Resource" id="Resource_1c8s1"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -2549,7 +2566,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_2iq23"]
+[sub_resource type="Resource" id="Resource_ndumk"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -2561,7 +2578,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_y5f7d"]
+[sub_resource type="Resource" id="Resource_pb3j1"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -2573,7 +2590,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_xqjb4"]
+[sub_resource type="Resource" id="Resource_2veun"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -2585,7 +2602,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_qsv5i"]
+[sub_resource type="Resource" id="Resource_m084w"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -2597,7 +2614,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_yc2wa"]
+[sub_resource type="Resource" id="Resource_rkgye"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -2609,7 +2626,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_1c8s1"]
+[sub_resource type="Resource" id="Resource_qrb7b"]
 script = ExtResource("1_ylfeg")
 player = 1
 type = 1
@@ -2621,7 +2638,7 @@ typeHeld = 1
 resourceLevel = 2
 water = false
 
-[sub_resource type="Resource" id="Resource_ndumk"]
+[sub_resource type="Resource" id="Resource_08ng2"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 1
@@ -2633,14 +2650,17 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_pb3j1"]
+[sub_resource type="Resource" id="Resource_tagfs"]
+script = ExtResource("3_yx36p")
+
+[sub_resource type="Resource" id="Resource_etssk"]
 script = ExtResource("2_yx36p")
 type = 2
 player = 0
 active = false
 health = 10
 
-[sub_resource type="Resource" id="Resource_2veun"]
+[sub_resource type="Resource" id="Resource_g3ufe"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 1
@@ -2651,9 +2671,10 @@ position = Vector2i(10, 15)
 typeHeld = 1
 resourceLevel = 0
 water = false
-unit = SubResource("Resource_pb3j1")
+unit = SubResource("Resource_etssk")
+city = SubResource("Resource_tagfs")
 
-[sub_resource type="Resource" id="Resource_m084w"]
+[sub_resource type="Resource" id="Resource_bkdiq"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 1
@@ -2665,7 +2686,7 @@ typeHeld = 1
 resourceLevel = 1
 water = false
 
-[sub_resource type="Resource" id="Resource_rkgye"]
+[sub_resource type="Resource" id="Resource_xhfau"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 2
@@ -2677,7 +2698,7 @@ typeHeld = 2
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_qrb7b"]
+[sub_resource type="Resource" id="Resource_neex5"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -2689,7 +2710,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_08ng2"]
+[sub_resource type="Resource" id="Resource_qihi3"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -2701,7 +2722,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_tagfs"]
+[sub_resource type="Resource" id="Resource_vf57j"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -2713,7 +2734,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_etssk"]
+[sub_resource type="Resource" id="Resource_g8lhb"]
 script = ExtResource("1_ylfeg")
 player = 3
 type = 2
@@ -2725,7 +2746,7 @@ typeHeld = 2
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_g3ufe"]
+[sub_resource type="Resource" id="Resource_nog7d"]
 script = ExtResource("1_ylfeg")
 player = 3
 type = 3
@@ -2737,7 +2758,7 @@ typeHeld = 3
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_bkdiq"]
+[sub_resource type="Resource" id="Resource_ih2qa"]
 script = ExtResource("1_ylfeg")
 player = 2
 type = 2
@@ -2749,7 +2770,7 @@ typeHeld = 2
 resourceLevel = 1
 water = false
 
-[sub_resource type="Resource" id="Resource_xhfau"]
+[sub_resource type="Resource" id="Resource_t8k7e"]
 script = ExtResource("1_ylfeg")
 player = 2
 type = 2
@@ -2761,7 +2782,7 @@ typeHeld = 2
 resourceLevel = 1
 water = false
 
-[sub_resource type="Resource" id="Resource_neex5"]
+[sub_resource type="Resource" id="Resource_3s2xh"]
 script = ExtResource("1_ylfeg")
 player = 1
 type = 3
@@ -2773,7 +2794,7 @@ typeHeld = 3
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_qihi3"]
+[sub_resource type="Resource" id="Resource_lc7wq"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -2785,7 +2806,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_vf57j"]
+[sub_resource type="Resource" id="Resource_v8nf0"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -2797,7 +2818,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_g8lhb"]
+[sub_resource type="Resource" id="Resource_4xoor"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -2809,7 +2830,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_nog7d"]
+[sub_resource type="Resource" id="Resource_r43mh"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -2821,7 +2842,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_ih2qa"]
+[sub_resource type="Resource" id="Resource_am6y1"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -2833,14 +2854,14 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_t8k7e"]
+[sub_resource type="Resource" id="Resource_k4pdy"]
 script = ExtResource("2_yx36p")
 type = 3
 player = 1
 active = false
 health = 5
 
-[sub_resource type="Resource" id="Resource_3s2xh"]
+[sub_resource type="Resource" id="Resource_nhncw"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -2851,9 +2872,9 @@ position = Vector2i(11, 11)
 typeHeld = 1
 resourceLevel = 0
 water = false
-unit = SubResource("Resource_t8k7e")
+unit = SubResource("Resource_k4pdy")
 
-[sub_resource type="Resource" id="Resource_lc7wq"]
+[sub_resource type="Resource" id="Resource_qqjd5"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -2865,7 +2886,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_v8nf0"]
+[sub_resource type="Resource" id="Resource_lh4hi"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 2
@@ -2877,7 +2898,7 @@ typeHeld = 2
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_4xoor"]
+[sub_resource type="Resource" id="Resource_fmghe"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 2
@@ -2889,7 +2910,7 @@ typeHeld = 2
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_r43mh"]
+[sub_resource type="Resource" id="Resource_54qqo"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 3
@@ -2901,7 +2922,7 @@ typeHeld = 3
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_am6y1"]
+[sub_resource type="Resource" id="Resource_c4v6o"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 1
@@ -2913,7 +2934,7 @@ typeHeld = 1
 resourceLevel = 1
 water = false
 
-[sub_resource type="Resource" id="Resource_k4pdy"]
+[sub_resource type="Resource" id="Resource_wr6wt"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 1
@@ -2925,7 +2946,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_nhncw"]
+[sub_resource type="Resource" id="Resource_r55dt"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -2937,7 +2958,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_qqjd5"]
+[sub_resource type="Resource" id="Resource_0el2j"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -2949,7 +2970,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_lh4hi"]
+[sub_resource type="Resource" id="Resource_ouadj"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -2961,7 +2982,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_fmghe"]
+[sub_resource type="Resource" id="Resource_qufhh"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -2973,7 +2994,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_54qqo"]
+[sub_resource type="Resource" id="Resource_1ktam"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -2985,7 +3006,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_c4v6o"]
+[sub_resource type="Resource" id="Resource_gnqbe"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -2997,16 +3018,19 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_wr6wt"]
+[sub_resource type="Resource" id="Resource_h02wr"]
+script = ExtResource("3_yx36p")
+
+[sub_resource type="Resource" id="Resource_vjaa3"]
 script = ExtResource("2_yx36p")
 type = 4
 player = 2
 active = false
 health = 10
 
-[sub_resource type="Resource" id="Resource_r55dt"]
+[sub_resource type="Resource" id="Resource_mcp7t"]
 script = ExtResource("1_ylfeg")
-player = 6
+player = 0
 type = 1
 tribe = Vector2i(0, 0)
 building = 4
@@ -3015,9 +3039,10 @@ position = Vector2i(12, 4)
 typeHeld = 1
 resourceLevel = 0
 water = false
-unit = SubResource("Resource_wr6wt")
+unit = SubResource("Resource_vjaa3")
+city = SubResource("Resource_h02wr")
 
-[sub_resource type="Resource" id="Resource_0el2j"]
+[sub_resource type="Resource" id="Resource_xdmrk"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -3029,7 +3054,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_ouadj"]
+[sub_resource type="Resource" id="Resource_wcu2s"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3041,7 +3066,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_qufhh"]
+[sub_resource type="Resource" id="Resource_tu16g"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3053,7 +3078,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_1ktam"]
+[sub_resource type="Resource" id="Resource_jyqre"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3065,7 +3090,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_gnqbe"]
+[sub_resource type="Resource" id="Resource_srtj8"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3077,7 +3102,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_h02wr"]
+[sub_resource type="Resource" id="Resource_1elqo"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -3089,7 +3114,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_vjaa3"]
+[sub_resource type="Resource" id="Resource_58ogu"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -3101,7 +3126,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_mcp7t"]
+[sub_resource type="Resource" id="Resource_08ohl"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -3113,7 +3138,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_xdmrk"]
+[sub_resource type="Resource" id="Resource_u0ajm"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 2
@@ -3125,7 +3150,7 @@ typeHeld = 2
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_wcu2s"]
+[sub_resource type="Resource" id="Resource_p6wvl"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 1
@@ -3137,7 +3162,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_tu16g"]
+[sub_resource type="Resource" id="Resource_uhe3g"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 1
@@ -3149,7 +3174,7 @@ typeHeld = 1
 resourceLevel = 1
 water = false
 
-[sub_resource type="Resource" id="Resource_jyqre"]
+[sub_resource type="Resource" id="Resource_7gsr2"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 3
@@ -3161,7 +3186,7 @@ typeHeld = 3
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_srtj8"]
+[sub_resource type="Resource" id="Resource_0rg80"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 3
@@ -3173,7 +3198,7 @@ typeHeld = 3
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_1elqo"]
+[sub_resource type="Resource" id="Resource_0jarp"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3185,7 +3210,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_58ogu"]
+[sub_resource type="Resource" id="Resource_olwsn"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3197,7 +3222,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_08ohl"]
+[sub_resource type="Resource" id="Resource_46raq"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3209,7 +3234,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_u0ajm"]
+[sub_resource type="Resource" id="Resource_rmf84"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3221,7 +3246,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_p6wvl"]
+[sub_resource type="Resource" id="Resource_qp35f"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -3233,7 +3258,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_uhe3g"]
+[sub_resource type="Resource" id="Resource_icc7y"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -3245,7 +3270,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_7gsr2"]
+[sub_resource type="Resource" id="Resource_ney64"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -3257,7 +3282,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_0rg80"]
+[sub_resource type="Resource" id="Resource_wwmdv"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -3269,7 +3294,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_0jarp"]
+[sub_resource type="Resource" id="Resource_vuleh"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -3281,7 +3306,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_olwsn"]
+[sub_resource type="Resource" id="Resource_or1un"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3293,7 +3318,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_46raq"]
+[sub_resource type="Resource" id="Resource_xltfb"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3305,7 +3330,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_rmf84"]
+[sub_resource type="Resource" id="Resource_nldcx"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3317,7 +3342,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_qp35f"]
+[sub_resource type="Resource" id="Resource_nvi1t"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3329,7 +3354,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_icc7y"]
+[sub_resource type="Resource" id="Resource_eumiu"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3341,7 +3366,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_ney64"]
+[sub_resource type="Resource" id="Resource_8efii"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3353,7 +3378,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_wwmdv"]
+[sub_resource type="Resource" id="Resource_wyddv"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3365,7 +3390,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_vuleh"]
+[sub_resource type="Resource" id="Resource_qateh"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3377,7 +3402,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_or1un"]
+[sub_resource type="Resource" id="Resource_p6lud"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3389,7 +3414,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_xltfb"]
+[sub_resource type="Resource" id="Resource_rhjdl"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3401,7 +3426,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_nldcx"]
+[sub_resource type="Resource" id="Resource_64tsj"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3413,7 +3438,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_nvi1t"]
+[sub_resource type="Resource" id="Resource_h8gba"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3425,7 +3450,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_eumiu"]
+[sub_resource type="Resource" id="Resource_07tn4"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3437,7 +3462,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_8efii"]
+[sub_resource type="Resource" id="Resource_c6hvu"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3449,7 +3474,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_wyddv"]
+[sub_resource type="Resource" id="Resource_ev4b7"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3461,7 +3486,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_qateh"]
+[sub_resource type="Resource" id="Resource_i5h03"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -3473,7 +3498,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_p6lud"]
+[sub_resource type="Resource" id="Resource_70am2"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -3485,7 +3510,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_rhjdl"]
+[sub_resource type="Resource" id="Resource_x0prd"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -3497,16 +3522,19 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_64tsj"]
+[sub_resource type="Resource" id="Resource_pk34i"]
+script = ExtResource("3_yx36p")
+
+[sub_resource type="Resource" id="Resource_uql6r"]
 script = ExtResource("2_yx36p")
 type = 2
 player = 2
 active = false
 health = 10
 
-[sub_resource type="Resource" id="Resource_h8gba"]
+[sub_resource type="Resource" id="Resource_2igw5"]
 script = ExtResource("1_ylfeg")
-player = 6
+player = 0
 type = 1
 tribe = Vector2i(0, 0)
 building = 0
@@ -3515,9 +3543,10 @@ position = Vector2i(14, 5)
 typeHeld = 1
 resourceLevel = 0
 water = false
-unit = SubResource("Resource_64tsj")
+unit = SubResource("Resource_uql6r")
+city = SubResource("Resource_pk34i")
 
-[sub_resource type="Resource" id="Resource_07tn4"]
+[sub_resource type="Resource" id="Resource_8ob4j"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -3529,7 +3558,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_c6hvu"]
+[sub_resource type="Resource" id="Resource_rw1ut"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3541,7 +3570,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_ev4b7"]
+[sub_resource type="Resource" id="Resource_7feqc"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3553,7 +3582,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_i5h03"]
+[sub_resource type="Resource" id="Resource_35awp"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3565,7 +3594,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_70am2"]
+[sub_resource type="Resource" id="Resource_5b8yb"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3577,7 +3606,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_x0prd"]
+[sub_resource type="Resource" id="Resource_3q1r1"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3589,7 +3618,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_pk34i"]
+[sub_resource type="Resource" id="Resource_c7gle"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3601,7 +3630,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_uql6r"]
+[sub_resource type="Resource" id="Resource_uehcf"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3613,7 +3642,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_2igw5"]
+[sub_resource type="Resource" id="Resource_ffafo"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3625,7 +3654,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_8ob4j"]
+[sub_resource type="Resource" id="Resource_xf86i"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3637,7 +3666,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_rw1ut"]
+[sub_resource type="Resource" id="Resource_gjfsg"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3649,7 +3678,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_7feqc"]
+[sub_resource type="Resource" id="Resource_x14tw"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3661,7 +3690,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_35awp"]
+[sub_resource type="Resource" id="Resource_cmrfl"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3673,7 +3702,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_5b8yb"]
+[sub_resource type="Resource" id="Resource_acnfr"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3685,7 +3714,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_3q1r1"]
+[sub_resource type="Resource" id="Resource_aqy4s"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3697,7 +3726,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_c7gle"]
+[sub_resource type="Resource" id="Resource_q4qfc"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3709,7 +3738,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_uehcf"]
+[sub_resource type="Resource" id="Resource_70h5s"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -3721,7 +3750,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_ffafo"]
+[sub_resource type="Resource" id="Resource_dfex4"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -3733,7 +3762,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_xf86i"]
+[sub_resource type="Resource" id="Resource_xmxdq"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -3745,7 +3774,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_gjfsg"]
+[sub_resource type="Resource" id="Resource_3pl0n"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -3757,7 +3786,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_x14tw"]
+[sub_resource type="Resource" id="Resource_yojyu"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -3769,7 +3798,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_cmrfl"]
+[sub_resource type="Resource" id="Resource_3onx1"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3781,7 +3810,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_acnfr"]
+[sub_resource type="Resource" id="Resource_ijt8e"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3793,7 +3822,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_aqy4s"]
+[sub_resource type="Resource" id="Resource_yl7gt"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3805,7 +3834,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_q4qfc"]
+[sub_resource type="Resource" id="Resource_2fqh6"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3817,7 +3846,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_70h5s"]
+[sub_resource type="Resource" id="Resource_in4h6"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3829,7 +3858,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_dfex4"]
+[sub_resource type="Resource" id="Resource_l6td2"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3841,7 +3870,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_xmxdq"]
+[sub_resource type="Resource" id="Resource_qvnjw"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3853,7 +3882,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_3pl0n"]
+[sub_resource type="Resource" id="Resource_p0wfm"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3865,7 +3894,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_yojyu"]
+[sub_resource type="Resource" id="Resource_fytat"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3877,7 +3906,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_3onx1"]
+[sub_resource type="Resource" id="Resource_ixgvm"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3889,7 +3918,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_ijt8e"]
+[sub_resource type="Resource" id="Resource_owpvh"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3901,7 +3930,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_yl7gt"]
+[sub_resource type="Resource" id="Resource_ulsnk"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3913,7 +3942,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_2fqh6"]
+[sub_resource type="Resource" id="Resource_af3x4"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3925,7 +3954,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_in4h6"]
+[sub_resource type="Resource" id="Resource_kju8m"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3937,7 +3966,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_l6td2"]
+[sub_resource type="Resource" id="Resource_4iung"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -3949,7 +3978,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_qvnjw"]
+[sub_resource type="Resource" id="Resource_k5eol"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -3961,7 +3990,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_p0wfm"]
+[sub_resource type="Resource" id="Resource_7nidk"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -3973,7 +4002,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_fytat"]
+[sub_resource type="Resource" id="Resource_18f0w"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -3985,7 +4014,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_ixgvm"]
+[sub_resource type="Resource" id="Resource_n6ngr"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -3997,7 +4026,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_owpvh"]
+[sub_resource type="Resource" id="Resource_o6qbl"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -4009,7 +4038,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_ulsnk"]
+[sub_resource type="Resource" id="Resource_v5t64"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4021,7 +4050,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_af3x4"]
+[sub_resource type="Resource" id="Resource_dcpeq"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4033,7 +4062,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_kju8m"]
+[sub_resource type="Resource" id="Resource_i3h5w"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4045,7 +4074,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_4iung"]
+[sub_resource type="Resource" id="Resource_vxwdu"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4057,7 +4086,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_k5eol"]
+[sub_resource type="Resource" id="Resource_gj4bo"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4069,7 +4098,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_7nidk"]
+[sub_resource type="Resource" id="Resource_qtwqq"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4081,7 +4110,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_18f0w"]
+[sub_resource type="Resource" id="Resource_6vb21"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4093,7 +4122,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_n6ngr"]
+[sub_resource type="Resource" id="Resource_eekot"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4105,7 +4134,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_o6qbl"]
+[sub_resource type="Resource" id="Resource_jno6h"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4117,7 +4146,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_v5t64"]
+[sub_resource type="Resource" id="Resource_ttly1"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4129,7 +4158,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_dcpeq"]
+[sub_resource type="Resource" id="Resource_q63vk"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4141,7 +4170,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_i3h5w"]
+[sub_resource type="Resource" id="Resource_6pwfd"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4153,7 +4182,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_vxwdu"]
+[sub_resource type="Resource" id="Resource_vjm1o"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4165,7 +4194,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_gj4bo"]
+[sub_resource type="Resource" id="Resource_xmsqb"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4177,7 +4206,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_qtwqq"]
+[sub_resource type="Resource" id="Resource_sto7d"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4189,7 +4218,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_6vb21"]
+[sub_resource type="Resource" id="Resource_3evxn"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -4201,7 +4230,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_eekot"]
+[sub_resource type="Resource" id="Resource_40r67"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -4213,7 +4242,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_jno6h"]
+[sub_resource type="Resource" id="Resource_yd0qe"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -4225,7 +4254,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_ttly1"]
+[sub_resource type="Resource" id="Resource_dieel"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -4237,7 +4266,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_q63vk"]
+[sub_resource type="Resource" id="Resource_tyimy"]
 script = ExtResource("1_ylfeg")
 player = 6
 type = 1
@@ -4249,7 +4278,7 @@ typeHeld = 1
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_6pwfd"]
+[sub_resource type="Resource" id="Resource_fr2wx"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4261,7 +4290,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_vjm1o"]
+[sub_resource type="Resource" id="Resource_cb0j1"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4273,7 +4302,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_xmsqb"]
+[sub_resource type="Resource" id="Resource_aigi7"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4285,7 +4314,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_sto7d"]
+[sub_resource type="Resource" id="Resource_m71g4"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4297,7 +4326,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_3evxn"]
+[sub_resource type="Resource" id="Resource_86fwu"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4309,7 +4338,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_40r67"]
+[sub_resource type="Resource" id="Resource_eqphr"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4321,7 +4350,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_yd0qe"]
+[sub_resource type="Resource" id="Resource_sa4nt"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4333,7 +4362,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_dieel"]
+[sub_resource type="Resource" id="Resource_nqek4"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4345,7 +4374,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_tyimy"]
+[sub_resource type="Resource" id="Resource_h6tcu"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4357,7 +4386,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_fr2wx"]
+[sub_resource type="Resource" id="Resource_uyhsr"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4369,7 +4398,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_cb0j1"]
+[sub_resource type="Resource" id="Resource_gv75n"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4381,7 +4410,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_aigi7"]
+[sub_resource type="Resource" id="Resource_0cld7"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4393,7 +4422,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_m71g4"]
+[sub_resource type="Resource" id="Resource_1v44s"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4405,7 +4434,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_86fwu"]
+[sub_resource type="Resource" id="Resource_n0ny5"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4417,7 +4446,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_eqphr"]
+[sub_resource type="Resource" id="Resource_k62m0"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4429,7 +4458,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_sa4nt"]
+[sub_resource type="Resource" id="Resource_s8wfl"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4441,7 +4470,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_nqek4"]
+[sub_resource type="Resource" id="Resource_f336s"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4453,7 +4482,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_h6tcu"]
+[sub_resource type="Resource" id="Resource_obhdm"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4465,7 +4494,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_uyhsr"]
+[sub_resource type="Resource" id="Resource_m8hpi"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4477,7 +4506,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_gv75n"]
+[sub_resource type="Resource" id="Resource_b14bs"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4489,7 +4518,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_0cld7"]
+[sub_resource type="Resource" id="Resource_x6thj"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4501,7 +4530,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_1v44s"]
+[sub_resource type="Resource" id="Resource_g7dvs"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4513,7 +4542,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_n0ny5"]
+[sub_resource type="Resource" id="Resource_ayus4"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4525,7 +4554,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_k62m0"]
+[sub_resource type="Resource" id="Resource_mi6iw"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4537,7 +4566,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_s8wfl"]
+[sub_resource type="Resource" id="Resource_y2hcf"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4549,7 +4578,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_f336s"]
+[sub_resource type="Resource" id="Resource_6g6oy"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4561,7 +4590,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_obhdm"]
+[sub_resource type="Resource" id="Resource_05f8p"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4573,7 +4602,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_m8hpi"]
+[sub_resource type="Resource" id="Resource_eb748"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4585,7 +4614,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_b14bs"]
+[sub_resource type="Resource" id="Resource_b2ayu"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4597,7 +4626,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_x6thj"]
+[sub_resource type="Resource" id="Resource_h6qvk"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4609,7 +4638,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_g7dvs"]
+[sub_resource type="Resource" id="Resource_x0gku"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4621,7 +4650,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_ayus4"]
+[sub_resource type="Resource" id="Resource_lc6wm"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4633,7 +4662,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_mi6iw"]
+[sub_resource type="Resource" id="Resource_qfa4k"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4645,7 +4674,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_y2hcf"]
+[sub_resource type="Resource" id="Resource_mc554"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4657,7 +4686,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_6g6oy"]
+[sub_resource type="Resource" id="Resource_l7ma2"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4669,7 +4698,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_05f8p"]
+[sub_resource type="Resource" id="Resource_fjd2d"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4681,7 +4710,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_eb748"]
+[sub_resource type="Resource" id="Resource_bcrl8"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4693,7 +4722,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_b2ayu"]
+[sub_resource type="Resource" id="Resource_ye37r"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4705,7 +4734,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_h6qvk"]
+[sub_resource type="Resource" id="Resource_50kmg"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4717,7 +4746,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_x0gku"]
+[sub_resource type="Resource" id="Resource_v4oub"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4729,7 +4758,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_lc6wm"]
+[sub_resource type="Resource" id="Resource_62eox"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4741,7 +4770,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_qfa4k"]
+[sub_resource type="Resource" id="Resource_lvmv0"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4753,7 +4782,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_mc554"]
+[sub_resource type="Resource" id="Resource_4mfdf"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4765,7 +4794,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_l7ma2"]
+[sub_resource type="Resource" id="Resource_x1w2f"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4777,7 +4806,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_fjd2d"]
+[sub_resource type="Resource" id="Resource_msuxe"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4789,7 +4818,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_bcrl8"]
+[sub_resource type="Resource" id="Resource_m17oa"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4801,7 +4830,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_ye37r"]
+[sub_resource type="Resource" id="Resource_ijsuu"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4813,7 +4842,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_50kmg"]
+[sub_resource type="Resource" id="Resource_qmhmg"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4825,7 +4854,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_v4oub"]
+[sub_resource type="Resource" id="Resource_06u4n"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4837,7 +4866,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_62eox"]
+[sub_resource type="Resource" id="Resource_fqeit"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4849,7 +4878,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_lvmv0"]
+[sub_resource type="Resource" id="Resource_406b0"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4861,7 +4890,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_4mfdf"]
+[sub_resource type="Resource" id="Resource_gqc2q"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4873,7 +4902,7 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_x1w2f"]
+[sub_resource type="Resource" id="Resource_c3muo"]
 script = ExtResource("1_ylfeg")
 player = 0
 type = 4
@@ -4885,49 +4914,49 @@ typeHeld = 4
 resourceLevel = 0
 water = false
 
-[sub_resource type="Resource" id="Resource_msuxe"]
+[sub_resource type="Resource" id="Resource_kbq01"]
 script = ExtResource("3_wvo7i")
 player = 0
 tribe = Vector2i(1, 0)
 color = Vector2i(1, 0)
 diplo = []
 
-[sub_resource type="Resource" id="Resource_m17oa"]
+[sub_resource type="Resource" id="Resource_u1y4n"]
 script = ExtResource("3_wvo7i")
 player = 1
 tribe = Vector2i(3, 0)
 color = Vector2i(3, 0)
 diplo = []
 
-[sub_resource type="Resource" id="Resource_ijsuu"]
+[sub_resource type="Resource" id="Resource_l6yfd"]
 script = ExtResource("3_wvo7i")
 player = 2
 tribe = Vector2i(5, 0)
 color = Vector2i(5, 0)
 diplo = []
 
-[sub_resource type="Resource" id="Resource_qmhmg"]
+[sub_resource type="Resource" id="Resource_rlwtv"]
 script = ExtResource("3_wvo7i")
 player = 3
 tribe = Vector2i(4, 1)
 color = Vector2i(4, 1)
 diplo = []
 
-[sub_resource type="Resource" id="Resource_06u4n"]
+[sub_resource type="Resource" id="Resource_ahtig"]
 script = ExtResource("3_wvo7i")
 player = 4
 tribe = Vector2i(0, 0)
 color = Vector2i(4, 1)
 diplo = []
 
-[sub_resource type="Resource" id="Resource_fqeit"]
+[sub_resource type="Resource" id="Resource_4uxst"]
 script = ExtResource("3_wvo7i")
 player = 5
 tribe = Vector2i(0, 0)
 color = Vector2i(0, 0)
 diplo = []
 
-[sub_resource type="Resource" id="Resource_406b0"]
+[sub_resource type="Resource" id="Resource_lfkf3"]
 script = ExtResource("3_wvo7i")
 player = 6
 tribe = Vector2i(1, 1)
@@ -4936,6 +4965,6 @@ diplo = []
 
 [resource]
 script = ExtResource("4_ovts1")
-allTiles = Array[Array]([[SubResource("Resource_ylfeg"), SubResource("Resource_yx36p"), SubResource("Resource_wvo7i"), SubResource("Resource_ovts1"), SubResource("Resource_s0uye"), SubResource("Resource_y5jvc"), SubResource("Resource_wg0a7"), SubResource("Resource_kth4n"), SubResource("Resource_62fp6"), SubResource("Resource_p724h"), SubResource("Resource_yxken"), SubResource("Resource_bmlv7"), SubResource("Resource_l4488"), SubResource("Resource_kcjkb"), SubResource("Resource_le0g5"), SubResource("Resource_70mnr"), SubResource("Resource_ri03i"), SubResource("Resource_7n2nk"), SubResource("Resource_oa0kt"), SubResource("Resource_56h6r")], [SubResource("Resource_1m5yl"), SubResource("Resource_uk4s6"), SubResource("Resource_vnpuv"), SubResource("Resource_x21a1"), SubResource("Resource_b72gn"), SubResource("Resource_xtq0e"), SubResource("Resource_x47m2"), SubResource("Resource_b11eu"), SubResource("Resource_0dhtm"), SubResource("Resource_bwbp8"), SubResource("Resource_4yles"), SubResource("Resource_luk6w"), SubResource("Resource_g6di6"), SubResource("Resource_gxir8"), SubResource("Resource_xh4q2"), SubResource("Resource_g4dra"), SubResource("Resource_8l3q3"), SubResource("Resource_b2m5b"), SubResource("Resource_nxwjf"), SubResource("Resource_ofljg")], [SubResource("Resource_qhjm5"), SubResource("Resource_i1ge8"), SubResource("Resource_e0215"), SubResource("Resource_jo48r"), SubResource("Resource_p8yff"), SubResource("Resource_2mjxg"), SubResource("Resource_p8n6d"), SubResource("Resource_gjgl2"), SubResource("Resource_ajldq"), SubResource("Resource_ocus5"), SubResource("Resource_72tji"), SubResource("Resource_j1txa"), SubResource("Resource_63whr"), SubResource("Resource_jvusq"), SubResource("Resource_r4wny"), SubResource("Resource_0y6i0"), SubResource("Resource_dqy6q"), SubResource("Resource_cltoa"), SubResource("Resource_yi0ga"), SubResource("Resource_bl7ou")], [SubResource("Resource_o5ta6"), SubResource("Resource_b1vjx"), SubResource("Resource_gbjtg"), SubResource("Resource_l4f6b"), SubResource("Resource_87brk"), SubResource("Resource_dcgy8"), SubResource("Resource_c51pb"), SubResource("Resource_ox1kh"), SubResource("Resource_7dmdo"), SubResource("Resource_6vycp"), SubResource("Resource_4y8tn"), SubResource("Resource_n4g5a"), SubResource("Resource_hoqxu"), SubResource("Resource_ykvl1"), SubResource("Resource_3tova"), SubResource("Resource_yh1km"), SubResource("Resource_2a6gn"), SubResource("Resource_un7dl"), SubResource("Resource_psiu4"), SubResource("Resource_66tt2")], [SubResource("Resource_jm5od"), SubResource("Resource_amqcg"), SubResource("Resource_epfi6"), SubResource("Resource_82fub"), SubResource("Resource_tpq7v"), SubResource("Resource_7odul"), SubResource("Resource_u7mm7"), SubResource("Resource_diil7"), SubResource("Resource_v3q8f"), SubResource("Resource_kcgso"), SubResource("Resource_7ihjs"), SubResource("Resource_1ckpd"), SubResource("Resource_dsvbr"), SubResource("Resource_mc6a8"), SubResource("Resource_gyqbc"), SubResource("Resource_qywmv"), SubResource("Resource_6sonr"), SubResource("Resource_vbt8i"), SubResource("Resource_857xp"), SubResource("Resource_1tjth")], [SubResource("Resource_cg0bq"), SubResource("Resource_etf65"), SubResource("Resource_gjndf"), SubResource("Resource_squos"), SubResource("Resource_0dd78"), SubResource("Resource_nxe0g"), SubResource("Resource_35hx5"), SubResource("Resource_i71t4"), SubResource("Resource_1vh0v"), SubResource("Resource_1o7cx"), SubResource("Resource_pvis2"), SubResource("Resource_2vji6"), SubResource("Resource_rnuka"), SubResource("Resource_xxsuv"), SubResource("Resource_p6lmv"), SubResource("Resource_ei7wr"), SubResource("Resource_4r3c4"), SubResource("Resource_l3qu4"), SubResource("Resource_s3s7m"), SubResource("Resource_uan6i")], [SubResource("Resource_lcs7l"), SubResource("Resource_dlod5"), SubResource("Resource_nuhwa"), SubResource("Resource_55aef"), SubResource("Resource_gchna"), SubResource("Resource_ghfhy"), SubResource("Resource_j4atb"), SubResource("Resource_odxmx"), SubResource("Resource_c0xsx"), SubResource("Resource_ry8ef"), SubResource("Resource_345jd"), SubResource("Resource_cgh3b"), SubResource("Resource_etk6b"), SubResource("Resource_47whb"), SubResource("Resource_rqv67"), SubResource("Resource_2hyt8"), SubResource("Resource_poru8"), SubResource("Resource_24707"), SubResource("Resource_l58oy"), SubResource("Resource_i8sik")], [SubResource("Resource_hguxj"), SubResource("Resource_7vi5x"), SubResource("Resource_qxus1"), SubResource("Resource_yey6d"), SubResource("Resource_a7wr0"), SubResource("Resource_3lhi5"), SubResource("Resource_nq4xs"), SubResource("Resource_hcdvb"), SubResource("Resource_q3w8w"), SubResource("Resource_pq66a"), SubResource("Resource_euplj"), SubResource("Resource_ov1dd"), SubResource("Resource_dpk1f"), SubResource("Resource_xmbke"), SubResource("Resource_v5axb"), SubResource("Resource_3d4o0"), SubResource("Resource_nr0n0"), SubResource("Resource_2hpt7"), SubResource("Resource_a18ia"), SubResource("Resource_oew1m")], [SubResource("Resource_12mmn"), SubResource("Resource_143yh"), SubResource("Resource_b5nsa"), SubResource("Resource_8r1y0"), SubResource("Resource_kskpx"), SubResource("Resource_q3n3d"), SubResource("Resource_sbf2w"), SubResource("Resource_m7yvx"), SubResource("Resource_64h4c"), SubResource("Resource_5nbyt"), SubResource("Resource_ue7q0"), SubResource("Resource_13b6n"), SubResource("Resource_g213q"), SubResource("Resource_4n78h"), SubResource("Resource_0x6vv"), SubResource("Resource_had7k"), SubResource("Resource_ywqpt"), SubResource("Resource_v60yw"), SubResource("Resource_bc7nl"), SubResource("Resource_levl4")], [SubResource("Resource_2jar2"), SubResource("Resource_81tah"), SubResource("Resource_typ68"), SubResource("Resource_7g0hu"), SubResource("Resource_7fht6"), SubResource("Resource_wmk54"), SubResource("Resource_eeqpd"), SubResource("Resource_b6kr0"), SubResource("Resource_rwsbv"), SubResource("Resource_yvvb6"), SubResource("Resource_c6808"), SubResource("Resource_f13sq"), SubResource("Resource_yg7en"), SubResource("Resource_57ql8"), SubResource("Resource_0r0r8"), SubResource("Resource_174qb"), SubResource("Resource_2cmqa"), SubResource("Resource_bqhp2"), SubResource("Resource_jbpkm"), SubResource("Resource_c7if6")], [SubResource("Resource_u06ii"), SubResource("Resource_v3o8a"), SubResource("Resource_wwx7f"), SubResource("Resource_c8kao"), SubResource("Resource_cdrc1"), SubResource("Resource_kkixc"), SubResource("Resource_cq5mj"), SubResource("Resource_smwes"), SubResource("Resource_2iq23"), SubResource("Resource_y5f7d"), SubResource("Resource_xqjb4"), SubResource("Resource_qsv5i"), SubResource("Resource_yc2wa"), SubResource("Resource_1c8s1"), SubResource("Resource_ndumk"), SubResource("Resource_2veun"), SubResource("Resource_m084w"), SubResource("Resource_rkgye"), SubResource("Resource_qrb7b"), SubResource("Resource_08ng2")], [SubResource("Resource_tagfs"), SubResource("Resource_etssk"), SubResource("Resource_g3ufe"), SubResource("Resource_bkdiq"), SubResource("Resource_xhfau"), SubResource("Resource_neex5"), SubResource("Resource_qihi3"), SubResource("Resource_vf57j"), SubResource("Resource_g8lhb"), SubResource("Resource_nog7d"), SubResource("Resource_ih2qa"), SubResource("Resource_3s2xh"), SubResource("Resource_lc7wq"), SubResource("Resource_v8nf0"), SubResource("Resource_4xoor"), SubResource("Resource_r43mh"), SubResource("Resource_am6y1"), SubResource("Resource_k4pdy"), SubResource("Resource_nhncw"), SubResource("Resource_qqjd5")], [SubResource("Resource_lh4hi"), SubResource("Resource_fmghe"), SubResource("Resource_54qqo"), SubResource("Resource_c4v6o"), SubResource("Resource_r55dt"), SubResource("Resource_0el2j"), SubResource("Resource_ouadj"), SubResource("Resource_qufhh"), SubResource("Resource_1ktam"), SubResource("Resource_gnqbe"), SubResource("Resource_h02wr"), SubResource("Resource_vjaa3"), SubResource("Resource_mcp7t"), SubResource("Resource_xdmrk"), SubResource("Resource_wcu2s"), SubResource("Resource_tu16g"), SubResource("Resource_jyqre"), SubResource("Resource_srtj8"), SubResource("Resource_1elqo"), SubResource("Resource_58ogu")], [SubResource("Resource_08ohl"), SubResource("Resource_u0ajm"), SubResource("Resource_p6wvl"), SubResource("Resource_uhe3g"), SubResource("Resource_7gsr2"), SubResource("Resource_0rg80"), SubResource("Resource_0jarp"), SubResource("Resource_olwsn"), SubResource("Resource_46raq"), SubResource("Resource_rmf84"), SubResource("Resource_qp35f"), SubResource("Resource_icc7y"), SubResource("Resource_ney64"), SubResource("Resource_wwmdv"), SubResource("Resource_vuleh"), SubResource("Resource_or1un"), SubResource("Resource_xltfb"), SubResource("Resource_nldcx"), SubResource("Resource_nvi1t"), SubResource("Resource_eumiu")], [SubResource("Resource_8efii"), SubResource("Resource_wyddv"), SubResource("Resource_qateh"), SubResource("Resource_p6lud"), SubResource("Resource_rhjdl"), SubResource("Resource_h8gba"), SubResource("Resource_07tn4"), SubResource("Resource_c6hvu"), SubResource("Resource_ev4b7"), SubResource("Resource_i5h03"), SubResource("Resource_70am2"), SubResource("Resource_x0prd"), SubResource("Resource_pk34i"), SubResource("Resource_uql6r"), SubResource("Resource_2igw5"), SubResource("Resource_8ob4j"), SubResource("Resource_rw1ut"), SubResource("Resource_7feqc"), SubResource("Resource_35awp"), SubResource("Resource_5b8yb")], [SubResource("Resource_3q1r1"), SubResource("Resource_c7gle"), SubResource("Resource_uehcf"), SubResource("Resource_ffafo"), SubResource("Resource_xf86i"), SubResource("Resource_gjfsg"), SubResource("Resource_x14tw"), SubResource("Resource_cmrfl"), SubResource("Resource_acnfr"), SubResource("Resource_aqy4s"), SubResource("Resource_q4qfc"), SubResource("Resource_70h5s"), SubResource("Resource_dfex4"), SubResource("Resource_xmxdq"), SubResource("Resource_3pl0n"), SubResource("Resource_yojyu"), SubResource("Resource_3onx1"), SubResource("Resource_ijt8e"), SubResource("Resource_yl7gt"), SubResource("Resource_2fqh6")], [SubResource("Resource_in4h6"), SubResource("Resource_l6td2"), SubResource("Resource_qvnjw"), SubResource("Resource_p0wfm"), SubResource("Resource_fytat"), SubResource("Resource_ixgvm"), SubResource("Resource_owpvh"), SubResource("Resource_ulsnk"), SubResource("Resource_af3x4"), SubResource("Resource_kju8m"), SubResource("Resource_4iung"), SubResource("Resource_k5eol"), SubResource("Resource_7nidk"), SubResource("Resource_18f0w"), SubResource("Resource_n6ngr"), SubResource("Resource_o6qbl"), SubResource("Resource_v5t64"), SubResource("Resource_dcpeq"), SubResource("Resource_i3h5w"), SubResource("Resource_vxwdu")], [SubResource("Resource_gj4bo"), SubResource("Resource_qtwqq"), SubResource("Resource_6vb21"), SubResource("Resource_eekot"), SubResource("Resource_jno6h"), SubResource("Resource_ttly1"), SubResource("Resource_q63vk"), SubResource("Resource_6pwfd"), SubResource("Resource_vjm1o"), SubResource("Resource_xmsqb"), SubResource("Resource_sto7d"), SubResource("Resource_3evxn"), SubResource("Resource_40r67"), SubResource("Resource_yd0qe"), SubResource("Resource_dieel"), SubResource("Resource_tyimy"), SubResource("Resource_fr2wx"), SubResource("Resource_cb0j1"), SubResource("Resource_aigi7"), SubResource("Resource_m71g4")], [SubResource("Resource_86fwu"), SubResource("Resource_eqphr"), SubResource("Resource_sa4nt"), SubResource("Resource_nqek4"), SubResource("Resource_h6tcu"), SubResource("Resource_uyhsr"), SubResource("Resource_gv75n"), SubResource("Resource_0cld7"), SubResource("Resource_1v44s"), SubResource("Resource_n0ny5"), SubResource("Resource_k62m0"), SubResource("Resource_s8wfl"), SubResource("Resource_f336s"), SubResource("Resource_obhdm"), SubResource("Resource_m8hpi"), SubResource("Resource_b14bs"), SubResource("Resource_x6thj"), SubResource("Resource_g7dvs"), SubResource("Resource_ayus4"), SubResource("Resource_mi6iw")], [SubResource("Resource_y2hcf"), SubResource("Resource_6g6oy"), SubResource("Resource_05f8p"), SubResource("Resource_eb748"), SubResource("Resource_b2ayu"), SubResource("Resource_h6qvk"), SubResource("Resource_x0gku"), SubResource("Resource_lc6wm"), SubResource("Resource_qfa4k"), SubResource("Resource_mc554"), SubResource("Resource_l7ma2"), SubResource("Resource_fjd2d"), SubResource("Resource_bcrl8"), SubResource("Resource_ye37r"), SubResource("Resource_50kmg"), SubResource("Resource_v4oub"), SubResource("Resource_62eox"), SubResource("Resource_lvmv0"), SubResource("Resource_4mfdf"), SubResource("Resource_x1w2f")]])
-player = [SubResource("Resource_msuxe"), SubResource("Resource_m17oa"), SubResource("Resource_ijsuu"), SubResource("Resource_qmhmg"), SubResource("Resource_06u4n"), SubResource("Resource_fqeit"), SubResource("Resource_406b0")]
-mapSize = 11
+allTiles = Array[Array]([[SubResource("Resource_wvo7i"), SubResource("Resource_ovts1"), SubResource("Resource_s0uye"), SubResource("Resource_y5jvc"), SubResource("Resource_wg0a7"), SubResource("Resource_kth4n"), SubResource("Resource_62fp6"), SubResource("Resource_p724h"), SubResource("Resource_yxken"), SubResource("Resource_bmlv7"), SubResource("Resource_l4488"), SubResource("Resource_kcjkb"), SubResource("Resource_le0g5"), SubResource("Resource_70mnr"), SubResource("Resource_ri03i"), SubResource("Resource_7n2nk"), SubResource("Resource_oa0kt"), SubResource("Resource_56h6r"), SubResource("Resource_1m5yl"), SubResource("Resource_uk4s6")], [SubResource("Resource_vnpuv"), SubResource("Resource_x21a1"), SubResource("Resource_b72gn"), SubResource("Resource_xtq0e"), SubResource("Resource_x47m2"), SubResource("Resource_b11eu"), SubResource("Resource_0dhtm"), SubResource("Resource_bwbp8"), SubResource("Resource_4yles"), SubResource("Resource_luk6w"), SubResource("Resource_g6di6"), SubResource("Resource_gxir8"), SubResource("Resource_xh4q2"), SubResource("Resource_g4dra"), SubResource("Resource_8l3q3"), SubResource("Resource_b2m5b"), SubResource("Resource_nxwjf"), SubResource("Resource_ofljg"), SubResource("Resource_qhjm5"), SubResource("Resource_i1ge8")], [SubResource("Resource_e0215"), SubResource("Resource_jo48r"), SubResource("Resource_p8yff"), SubResource("Resource_2mjxg"), SubResource("Resource_p8n6d"), SubResource("Resource_gjgl2"), SubResource("Resource_ajldq"), SubResource("Resource_ocus5"), SubResource("Resource_72tji"), SubResource("Resource_j1txa"), SubResource("Resource_63whr"), SubResource("Resource_jvusq"), SubResource("Resource_r4wny"), SubResource("Resource_0y6i0"), SubResource("Resource_dqy6q"), SubResource("Resource_cltoa"), SubResource("Resource_yi0ga"), SubResource("Resource_bl7ou"), SubResource("Resource_o5ta6"), SubResource("Resource_b1vjx")], [SubResource("Resource_gbjtg"), SubResource("Resource_l4f6b"), SubResource("Resource_87brk"), SubResource("Resource_dcgy8"), SubResource("Resource_c51pb"), SubResource("Resource_ox1kh"), SubResource("Resource_7dmdo"), SubResource("Resource_6vycp"), SubResource("Resource_4y8tn"), SubResource("Resource_n4g5a"), SubResource("Resource_hoqxu"), SubResource("Resource_ykvl1"), SubResource("Resource_3tova"), SubResource("Resource_yh1km"), SubResource("Resource_2a6gn"), SubResource("Resource_un7dl"), SubResource("Resource_psiu4"), SubResource("Resource_66tt2"), SubResource("Resource_jm5od"), SubResource("Resource_amqcg")], [SubResource("Resource_epfi6"), SubResource("Resource_82fub"), SubResource("Resource_tpq7v"), SubResource("Resource_7odul"), SubResource("Resource_u7mm7"), SubResource("Resource_diil7"), SubResource("Resource_v3q8f"), SubResource("Resource_kcgso"), SubResource("Resource_7ihjs"), SubResource("Resource_1ckpd"), SubResource("Resource_dsvbr"), SubResource("Resource_k55w2"), SubResource("Resource_mc6a8"), SubResource("Resource_qywmv"), SubResource("Resource_6sonr"), SubResource("Resource_857xp"), SubResource("Resource_1tjth"), SubResource("Resource_cg0bq"), SubResource("Resource_etf65"), SubResource("Resource_gjndf")], [SubResource("Resource_squos"), SubResource("Resource_0dd78"), SubResource("Resource_nxe0g"), SubResource("Resource_35hx5"), SubResource("Resource_i71t4"), SubResource("Resource_1vh0v"), SubResource("Resource_1o7cx"), SubResource("Resource_pvis2"), SubResource("Resource_2vji6"), SubResource("Resource_rnuka"), SubResource("Resource_xxsuv"), SubResource("Resource_p6lmv"), SubResource("Resource_ei7wr"), SubResource("Resource_r1u14"), SubResource("Resource_4r3c4"), SubResource("Resource_l3qu4"), SubResource("Resource_uan6i"), SubResource("Resource_lcs7l"), SubResource("Resource_dlod5"), SubResource("Resource_nuhwa")], [SubResource("Resource_55aef"), SubResource("Resource_gchna"), SubResource("Resource_ghfhy"), SubResource("Resource_j4atb"), SubResource("Resource_odxmx"), SubResource("Resource_hi0xa"), SubResource("Resource_c0xsx"), SubResource("Resource_ry8ef"), SubResource("Resource_etk6b"), SubResource("Resource_47whb"), SubResource("Resource_rqv67"), SubResource("Resource_2hyt8"), SubResource("Resource_poru8"), SubResource("Resource_24707"), SubResource("Resource_l58oy"), SubResource("Resource_i8sik"), SubResource("Resource_hguxj"), SubResource("Resource_7vi5x"), SubResource("Resource_qxus1"), SubResource("Resource_yey6d")], [SubResource("Resource_a7wr0"), SubResource("Resource_3rsep"), SubResource("Resource_3lhi5"), SubResource("Resource_nq4xs"), SubResource("Resource_hcdvb"), SubResource("Resource_pq66a"), SubResource("Resource_euplj"), SubResource("Resource_ov1dd"), SubResource("Resource_dpk1f"), SubResource("Resource_xmbke"), SubResource("Resource_v5axb"), SubResource("Resource_3d4o0"), SubResource("Resource_nr0n0"), SubResource("Resource_2hpt7"), SubResource("Resource_a18ia"), SubResource("Resource_oew1m"), SubResource("Resource_12mmn"), SubResource("Resource_143yh"), SubResource("Resource_b5nsa"), SubResource("Resource_8r1y0")], [SubResource("Resource_ufxa2"), SubResource("Resource_kskpx"), SubResource("Resource_q3n3d"), SubResource("Resource_sbf2w"), SubResource("Resource_64h4c"), SubResource("Resource_5nbyt"), SubResource("Resource_ue7q0"), SubResource("Resource_13b6n"), SubResource("Resource_g213q"), SubResource("Resource_munoq"), SubResource("Resource_4n78h"), SubResource("Resource_0x6vv"), SubResource("Resource_had7k"), SubResource("Resource_v60yw"), SubResource("Resource_bc7nl"), SubResource("Resource_levl4"), SubResource("Resource_2jar2"), SubResource("Resource_81tah"), SubResource("Resource_typ68"), SubResource("Resource_7g0hu")], [SubResource("Resource_7fht6"), SubResource("Resource_wmk54"), SubResource("Resource_eeqpd"), SubResource("Resource_rwsbv"), SubResource("Resource_yvvb6"), SubResource("Resource_c6808"), SubResource("Resource_f13sq"), SubResource("Resource_yg7en"), SubResource("Resource_57ql8"), SubResource("Resource_174qb"), SubResource("Resource_2cmqa"), SubResource("Resource_bqhp2"), SubResource("Resource_jbpkm"), SubResource("Resource_c7if6"), SubResource("Resource_u06ii"), SubResource("Resource_v3o8a"), SubResource("Resource_wwx7f"), SubResource("Resource_c8kao"), SubResource("Resource_cdrc1"), SubResource("Resource_kkixc")], [SubResource("Resource_cq5mj"), SubResource("Resource_smwes"), SubResource("Resource_2iq23"), SubResource("Resource_y5f7d"), SubResource("Resource_xqjb4"), SubResource("Resource_qsv5i"), SubResource("Resource_yc2wa"), SubResource("Resource_1c8s1"), SubResource("Resource_ndumk"), SubResource("Resource_pb3j1"), SubResource("Resource_2veun"), SubResource("Resource_m084w"), SubResource("Resource_rkgye"), SubResource("Resource_qrb7b"), SubResource("Resource_08ng2"), SubResource("Resource_g3ufe"), SubResource("Resource_bkdiq"), SubResource("Resource_xhfau"), SubResource("Resource_neex5"), SubResource("Resource_qihi3")], [SubResource("Resource_vf57j"), SubResource("Resource_g8lhb"), SubResource("Resource_nog7d"), SubResource("Resource_ih2qa"), SubResource("Resource_t8k7e"), SubResource("Resource_3s2xh"), SubResource("Resource_lc7wq"), SubResource("Resource_v8nf0"), SubResource("Resource_4xoor"), SubResource("Resource_r43mh"), SubResource("Resource_am6y1"), SubResource("Resource_nhncw"), SubResource("Resource_qqjd5"), SubResource("Resource_lh4hi"), SubResource("Resource_fmghe"), SubResource("Resource_54qqo"), SubResource("Resource_c4v6o"), SubResource("Resource_wr6wt"), SubResource("Resource_r55dt"), SubResource("Resource_0el2j")], [SubResource("Resource_ouadj"), SubResource("Resource_qufhh"), SubResource("Resource_1ktam"), SubResource("Resource_gnqbe"), SubResource("Resource_mcp7t"), SubResource("Resource_xdmrk"), SubResource("Resource_wcu2s"), SubResource("Resource_tu16g"), SubResource("Resource_jyqre"), SubResource("Resource_srtj8"), SubResource("Resource_1elqo"), SubResource("Resource_58ogu"), SubResource("Resource_08ohl"), SubResource("Resource_u0ajm"), SubResource("Resource_p6wvl"), SubResource("Resource_uhe3g"), SubResource("Resource_7gsr2"), SubResource("Resource_0rg80"), SubResource("Resource_0jarp"), SubResource("Resource_olwsn")], [SubResource("Resource_46raq"), SubResource("Resource_rmf84"), SubResource("Resource_qp35f"), SubResource("Resource_icc7y"), SubResource("Resource_ney64"), SubResource("Resource_wwmdv"), SubResource("Resource_vuleh"), SubResource("Resource_or1un"), SubResource("Resource_xltfb"), SubResource("Resource_nldcx"), SubResource("Resource_nvi1t"), SubResource("Resource_eumiu"), SubResource("Resource_8efii"), SubResource("Resource_wyddv"), SubResource("Resource_qateh"), SubResource("Resource_p6lud"), SubResource("Resource_rhjdl"), SubResource("Resource_64tsj"), SubResource("Resource_h8gba"), SubResource("Resource_07tn4")], [SubResource("Resource_c6hvu"), SubResource("Resource_ev4b7"), SubResource("Resource_i5h03"), SubResource("Resource_70am2"), SubResource("Resource_x0prd"), SubResource("Resource_2igw5"), SubResource("Resource_8ob4j"), SubResource("Resource_rw1ut"), SubResource("Resource_7feqc"), SubResource("Resource_35awp"), SubResource("Resource_5b8yb"), SubResource("Resource_3q1r1"), SubResource("Resource_c7gle"), SubResource("Resource_uehcf"), SubResource("Resource_ffafo"), SubResource("Resource_xf86i"), SubResource("Resource_gjfsg"), SubResource("Resource_x14tw"), SubResource("Resource_cmrfl"), SubResource("Resource_acnfr")], [SubResource("Resource_aqy4s"), SubResource("Resource_q4qfc"), SubResource("Resource_70h5s"), SubResource("Resource_dfex4"), SubResource("Resource_xmxdq"), SubResource("Resource_3pl0n"), SubResource("Resource_yojyu"), SubResource("Resource_3onx1"), SubResource("Resource_ijt8e"), SubResource("Resource_yl7gt"), SubResource("Resource_2fqh6"), SubResource("Resource_in4h6"), SubResource("Resource_l6td2"), SubResource("Resource_qvnjw"), SubResource("Resource_p0wfm"), SubResource("Resource_fytat"), SubResource("Resource_ixgvm"), SubResource("Resource_owpvh"), SubResource("Resource_ulsnk"), SubResource("Resource_af3x4")], [SubResource("Resource_kju8m"), SubResource("Resource_4iung"), SubResource("Resource_k5eol"), SubResource("Resource_7nidk"), SubResource("Resource_18f0w"), SubResource("Resource_n6ngr"), SubResource("Resource_o6qbl"), SubResource("Resource_v5t64"), SubResource("Resource_dcpeq"), SubResource("Resource_i3h5w"), SubResource("Resource_vxwdu"), SubResource("Resource_gj4bo"), SubResource("Resource_qtwqq"), SubResource("Resource_6vb21"), SubResource("Resource_eekot"), SubResource("Resource_jno6h"), SubResource("Resource_ttly1"), SubResource("Resource_q63vk"), SubResource("Resource_6pwfd"), SubResource("Resource_vjm1o")], [SubResource("Resource_xmsqb"), SubResource("Resource_sto7d"), SubResource("Resource_3evxn"), SubResource("Resource_40r67"), SubResource("Resource_yd0qe"), SubResource("Resource_dieel"), SubResource("Resource_tyimy"), SubResource("Resource_fr2wx"), SubResource("Resource_cb0j1"), SubResource("Resource_aigi7"), SubResource("Resource_m71g4"), SubResource("Resource_86fwu"), SubResource("Resource_eqphr"), SubResource("Resource_sa4nt"), SubResource("Resource_nqek4"), SubResource("Resource_h6tcu"), SubResource("Resource_uyhsr"), SubResource("Resource_gv75n"), SubResource("Resource_0cld7"), SubResource("Resource_1v44s")], [SubResource("Resource_n0ny5"), SubResource("Resource_k62m0"), SubResource("Resource_s8wfl"), SubResource("Resource_f336s"), SubResource("Resource_obhdm"), SubResource("Resource_m8hpi"), SubResource("Resource_b14bs"), SubResource("Resource_x6thj"), SubResource("Resource_g7dvs"), SubResource("Resource_ayus4"), SubResource("Resource_mi6iw"), SubResource("Resource_y2hcf"), SubResource("Resource_6g6oy"), SubResource("Resource_05f8p"), SubResource("Resource_eb748"), SubResource("Resource_b2ayu"), SubResource("Resource_h6qvk"), SubResource("Resource_x0gku"), SubResource("Resource_lc6wm"), SubResource("Resource_qfa4k")], [SubResource("Resource_mc554"), SubResource("Resource_l7ma2"), SubResource("Resource_fjd2d"), SubResource("Resource_bcrl8"), SubResource("Resource_ye37r"), SubResource("Resource_50kmg"), SubResource("Resource_v4oub"), SubResource("Resource_62eox"), SubResource("Resource_lvmv0"), SubResource("Resource_4mfdf"), SubResource("Resource_x1w2f"), SubResource("Resource_msuxe"), SubResource("Resource_m17oa"), SubResource("Resource_ijsuu"), SubResource("Resource_qmhmg"), SubResource("Resource_06u4n"), SubResource("Resource_fqeit"), SubResource("Resource_406b0"), SubResource("Resource_gqc2q"), SubResource("Resource_c3muo")]])
+player = [SubResource("Resource_kbq01"), SubResource("Resource_u1y4n"), SubResource("Resource_l6yfd"), SubResource("Resource_rlwtv"), SubResource("Resource_ahtig"), SubResource("Resource_4uxst"), SubResource("Resource_lfkf3")]
+mapSize = 20

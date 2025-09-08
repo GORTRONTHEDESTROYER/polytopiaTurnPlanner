@@ -21,8 +21,9 @@ var state = State.new()
 @export var cloudsLayer: TileMapLayer
 @export var spawnLayer: TileMapLayer
 @export var selectionLayer: TileMapLayer
-
 @export var unitHealth: TileMapLayer
+
+#@export var TileUnitBuildingTechSelecter: Node2D
 
 
 
@@ -295,7 +296,9 @@ func updateLook(tile: Tile):
 		tile.road = true
 		buildingLayer.set_cell( tile.position, 4, Vector2i.ZERO, 0)
 
-			
+###############################################
+############################################### Units Tile Map
+###############################################
 			
 			#erase_cell(Layer., tile.position)
 			#set_cell(Layer.BUILDING, tile.position, Constants.Asset.ROAD, Vector2i.ZERO, 0)
@@ -312,12 +315,10 @@ func updateUnit(tile: Tile):
 	if unit_type_bt == Constants.UnitType.DELETE:
 		tile.unit = null
 		updateUnitLook(tile)
-
 		return
 	
 	if tile.unit != null:
 		updateUnitLook(tile)
-
 		return
 	
 	
@@ -465,9 +466,14 @@ func updateUnitLook(tileW: Tile):
 		unitHead.erase_cell(tileW.position)
 		unitHealth.erase_cell(tileW.position)
 
-		
-			
-			
+
+
+
+##################################
+##################################          Turn Logic
+##################################
+
+
 
 func turnMode(tile: Tile):
 	if Input.is_action_just_pressed("LEFT_MOUSE_BUTTON"):
@@ -532,26 +538,31 @@ func combat(attackerTile, defenderTile):
 	print("attack health")
 	print(attackerTile.unit.health)
 	print(defenderTile.unit.health)
+	######## Escape / Persist code go here 
+
+	
 	if attackerTile.unit.health < 1:
-		
+
 		unit_type_bt = Constants.UnitType.DELETE
+		#attackerTile.unit = null
+
 		updateUnit(attackerTile)
-		state.active_tile = null
 	
 	if defenderTile.unit.health < 1:
 		unit_type_bt = Constants.UnitType.DELETE
 		updateUnit(defenderTile)
+		
 		if attackerTile.unit.unitRange == 1:
 			unit_type_bt = unit_type_hold
 			
 			defenderTile.unit = attackerTile.unit 
 			attackerTile.unit = null
 			updateUnitLook(attackerTile)
-			state.active_tile = null
-			defenderTile.unit.active = not defenderTile.unit.active
+			#state.active_tile = null
+			defenderTile.unit.active = false
 			updateUnit(defenderTile)
-			unitMoveLayer.clear()
-			pass
+			
+		
 		
 		
 	unit_type_bt = unit_type_hold
@@ -691,7 +702,7 @@ func friendlyCheck(unitObject, vectorHold2):
 	if state.active_tile.unit.player == unitObject.player:
 	#	print(vectorHold2)
 		return true
-	for x in playerSelected.head[state.active_tile.unit.player].diplo:
+	for x in playerSelected.head[state.active_tile.unit.player].diplo.size():
 		if playerSelected.head[state.active_tile.unit.player].diplo[x-1] == unitObject.player:
 			#print(vectorHold2)
 			return true
@@ -702,7 +713,7 @@ func friendlyCheckNoChange(unitObject):
 	if state.active_tile.unit.player == unitObject.player:
 	#	print(vectorHold2)
 		return true
-	for x in playerSelected.head[state.active_tile.unit.player].diplo:
+	for x in playerSelected.head[state.active_tile.unit.player].diplo.size():
 		if playerSelected.head[state.active_tile.unit.player].diplo[x-1] == unitObject.player:
 			#print(vectorHold2)
 			return true

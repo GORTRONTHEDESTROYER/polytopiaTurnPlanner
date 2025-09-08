@@ -54,7 +54,6 @@ func hidFlip():
 	background.clear()
 	switch = 0
 	playerBuildings.visible = false
-	
 	tilesPlains.visible = false
 	tilesRoughTerrain.visible = false
 	tilesWater.visible = false
@@ -90,17 +89,27 @@ func hidFlip():
 	
 	elif page == 3: 
 		
-		#TileMapMain.tile_type_bt = Constants.TileType.NONE
-		#TileMapMain.building_type_bt = Constants.BuildingType.NONE
-		#TileMapMain.unit_type_bt = Constants.UnitType.NONE
 		unitsTierOne.visible = true
 		unitsTierTwo.visible = true
 		
 	elif page == 4:
+		for i in int(Global.players):
+				if TileMapMain.playerSelected.head[i].location == 0:
+					for j in TileMapMain.playerSelected.head[i].tech.size():
+						match [TileMapMain.playerSelected.head[i].tech[j]]:
+							[Constants.PlayerTech.CLIMBING]:
+								background.set_cell(Vector2i(0,2), 0, Constants.Tribe.KIC,0)
+							[Constants.PlayerTech.ARCHERY]:
+								background.set_cell(Vector2i(1,2), 0, Constants.Tribe.KIC,0)
+							[Constants.PlayerTech.AQUATICISM]:
+								background.set_cell(Vector2i(2,2), 0, Constants.Tribe.KIC,0)
+							[Constants.PlayerTech.FISHING]:
+								background.set_cell(Vector2i(3,2), 0, Constants.Tribe.KIC,0)
+							[Constants.PlayerTech.SAILING]:
+								background.set_cell(Vector2i(4,2), 0, Constants.Tribe.KIC,0)
 		techs.visible = true
-
 		
-	
+
 
 func _process(_delta):
 	#var positionC3 = get_viewport().position
@@ -127,6 +136,7 @@ func _process(_delta):
 		if page == 3:
 			unitPage(tile_pos2)
 		if page == 4:
+			
 			techPage(tile_pos2)
 
 			
@@ -164,6 +174,8 @@ func pageSelect(tile_pos2):
 			hidFlip()
 		[Vector2i(3,0)]:
 			page = 4
+			
+			
 			hidFlip()
 	
 		
@@ -204,47 +216,69 @@ func unitPage(tile_pos2):
 			hidFlip()
 		[Vector2i(0,1)]:
 			if switch == 1:
+				background.clear()
+
 				#TileMapMain.tile_type_bt = Constants.TileType.NONE
 				TileMapMain.unit_type_bt = Constants.UnitType.NONE
 				switch = 0
 				return
 			TileMapMain.unit_type_bt = Constants.UnitType.WARRIOR			
 			switch = 1
+			background.clear()
+			background.set_cell(Vector2i(tile_pos2.x,tile_pos2.y + 1), 0, Constants.Tribe.KIC,0)
 			#TileMapMain.resource_level_bt = 0
 		[Vector2i(1,1)]:
 			if switch == 2:
+				background.clear()
+
 				#TileMapMain.tile_type_bt = Constants.TileType.NONE
 				TileMapMain.unit_type_bt = Constants.UnitType.NONE
 				switch = 0
 				return
 			TileMapMain.unit_type_bt = Constants.UnitType.RIDER			
 			switch = 2
+			background.clear()
+			background.set_cell(Vector2i(tile_pos2.x,tile_pos2.y + 1), 0, Constants.Tribe.KIC,0)
 		[Vector2i(2,1)]:
 			if switch == 3:
+				background.clear()
+
 				#TileMapMain.tile_type_bt = Constants.TileType.NONE
 				TileMapMain.unit_type_bt = Constants.UnitType.NONE
 				switch = 0
 				return
 			TileMapMain.unit_type_bt = Constants.UnitType.ARCHER			
 			switch = 3
+			background.clear()
+			background.set_cell(Vector2i(tile_pos2.x,tile_pos2.y + 1), 0, Constants.Tribe.KIC,0)
 		[Vector2i(3,1)]:
 			if switch == 4:
+				background.clear()
+
 				#TileMapMain.tile_type_bt = Constants.TileType.NONE
 				TileMapMain.unit_type_bt = Constants.UnitType.NONE
 				switch = 0
 				return
 			TileMapMain.unit_type_bt = Constants.UnitType.DEFENDER			
 			switch = 4
+			background.clear()
+			background.set_cell(Vector2i(tile_pos2.x,tile_pos2.y + 1), 0, Constants.Tribe.KIC,0)
 		[Vector2i(4,1)]:
 			if switch == 5:
+				background.clear()
+
 				#TileMapMain.tile_type_bt = Constants.TileType.NONE
 				TileMapMain.unit_type_bt = Constants.UnitType.NONE
 				switch = 0
 				return
 			TileMapMain.unit_type_bt = Constants.UnitType.DELETE			
 			switch = 5
+			background.clear()
+			background.set_cell(Vector2i(tile_pos2.x,tile_pos2.y + 1), 0, Constants.Tribe.KIC,0)
 		[Vector2i(0,2)]:
 			if switch == 6:
+				background.clear()
+
 				#TileMapMain.tile_type_bt = Constants.TileType.NONE
 				TileMapMain.unit_type_bt = Constants.UnitType.NONE
 				switch = 0
@@ -252,36 +286,53 @@ func unitPage(tile_pos2):
 			TileMapMain.unit_type_bt = Constants.UnitType.SWORDSMAN			
 			switch = 6
 			#TileMapMain.resource_level_bt = 0
+			background.clear()
+			background.set_cell(Vector2i(tile_pos2.x,tile_pos2.y + 1), 0, Constants.Tribe.KIC,0)
 		[Vector2i(1,2)]:
 			if switch == 7:
+				background.clear()
+
 				#TileMapMain.tile_type_bt = Constants.TileType.NONE
 				TileMapMain.unit_type_bt = Constants.UnitType.NONE
 				switch = 0
 				return
 			TileMapMain.unit_type_bt = Constants.UnitType.KNIGHT			
 			switch = 7
+			background.clear()
+			background.set_cell(Vector2i(tile_pos2.x,tile_pos2.y + 1), 0, Constants.Tribe.KIC,0)
 		[Vector2i(2,2)]:
 			if switch == 8:
+				background.clear()
+
 				#TileMapMain.tile_type_bt = Constants.TileType.NONE
 				TileMapMain.unit_type_bt = Constants.UnitType.NONE
 				switch = 0
 				return
 			TileMapMain.unit_type_bt = Constants.UnitType.CATAPULT			
 			switch = 8
+			background.clear()
+			background.set_cell(Vector2i(tile_pos2.x,tile_pos2.y + 1), 0, Constants.Tribe.KIC,0)
 		[Vector2i(3,2)]:
 			if switch == 9:
+				background.clear()
+
 				#TileMapMain.tile_type_bt = Constants.TileType.NONE
 				TileMapMain.unit_type_bt = Constants.UnitType.NONE
 				switch = 0
 				return
 			TileMapMain.unit_type_bt = Constants.UnitType.MINDBENDER			
 			switch = 9
+			background.clear()
+			background.set_cell(Vector2i(tile_pos2.x,tile_pos2.y + 1), 0, Constants.Tribe.KIC,0)
 		[Vector2i(4,2)]:
 			if switch == 10:
+				background.clear()
 				#TileMapMain.tile_type_bt = Constants.TileType.NONE
 				TileMapMain.unit_type_bt = Constants.UnitType.NONE
 				switch = 0
 				return
+			background.clear()
+			background.set_cell(Vector2i(tile_pos2.x,tile_pos2.y + 1), 0, Constants.Tribe.KIC,0)
 			TileMapMain.unit_type_bt = Constants.UnitType.GIANT			
 			switch = 10
 			
@@ -292,6 +343,7 @@ func buildingPage(tile_pos2):
 	match [tile_pos2]:
 		[Vector2i(0,1)]:
 			if switch == 1:
+				background.clear()
 				TileMapMain.tile_type_bt = Constants.TileType.NONE
 				TileMapMain.building_type_bt = Constants.TileType.NONE
 				switch = 0
@@ -305,6 +357,8 @@ func buildingPage(tile_pos2):
 			TileMapMain.tile_type_bt = Constants.TileType.FIELD
 		[Vector2i(1,1)]:
 			if switch == 2:
+				background.clear()
+				
 				TileMapMain.tile_type_bt = Constants.TileType.NONE
 				TileMapMain.building_type_bt = Constants.TileType.NONE
 
@@ -320,6 +374,8 @@ func buildingPage(tile_pos2):
 			#TileMapMain.tile_type_bt = Constants.TileType.FIELD
 		[Vector2i(2,1)]:
 			if switch == 3:
+				background.clear()
+
 			#	TileMapMain.tile_type_bt = Constants.TileType.NONE
 				#TileMapMain.building_type_bt = Constants.TileType.NONE
 
@@ -334,6 +390,8 @@ func buildingPage(tile_pos2):
 			#return
 		[Vector2i(3,1)]:
 			if switch == 4:
+				background.clear()
+
 			#	TileMapMain.tile_type_bt = Constants.TileType.NONE
 				TileMapMain.resource_level_bt = 0
 				TileMapMain.building_type_bt = Constants.BuildingType.NONE			#return
@@ -347,6 +405,10 @@ func buildingPage(tile_pos2):
 			switch = 4
 			TileMapMain.building_type_bt = Constants.BuildingType.DELETE			#return
 			
+			
+			
+			
+			
 func techPage(tile_pos2):
 	
 	if(!(!hid && (tile_pos2.x > -1 && tile_pos2.y < 6 && tile_pos2.x < 5 && tile_pos2.y > -1))):
@@ -358,8 +420,12 @@ func techPage(tile_pos2):
 				if player[x].location == 0:
 					if player[x].tech.find(Constants.PlayerTech.CLIMBING) != -1:
 						player[x].tech.erase(Constants.PlayerTech.CLIMBING)
+						background.erase_cell(Vector2i(tile_pos2.x,tile_pos2.y + 1))
+
 					else:
 						player[x].tech.append(Constants.PlayerTech.CLIMBING)
+						background.set_cell(Vector2i(tile_pos2.x,tile_pos2.y + 1), 0, Constants.Tribe.KIC,0)
+
 			
 				#TileMapMain.playerSelected.head
 				print(player[x].tech)
@@ -369,11 +435,16 @@ func techPage(tile_pos2):
 				if player[x].location == 0:
 					if player[x].tech.find(Constants.PlayerTech.ARCHERY) != -1:
 						player[x].tech.erase(Constants.PlayerTech.ARCHERY)
+						background.erase_cell(Vector2i(tile_pos2.x,tile_pos2.y + 1))
+
 						TileMapMain.updateAllUnitLook()
+						
 
 					else:
 						player[x].tech.append(Constants.PlayerTech.ARCHERY)
 						TileMapMain.updateAllUnitLook()
+						background.set_cell(Vector2i(tile_pos2.x,tile_pos2.y + 1), 0, Constants.Tribe.KIC,0)
+
 
 			
 				#TileMapMain.playerSelected.head
@@ -384,11 +455,15 @@ func techPage(tile_pos2):
 				if player[x].location == 0:
 					if player[x].tech.find(Constants.PlayerTech.AQUATICISM) != -1:
 						player[x].tech.erase(Constants.PlayerTech.AQUATICISM)
+						background.erase_cell(Vector2i(tile_pos2.x,tile_pos2.y + 1))
+
 						TileMapMain.updateAllUnitLook()
 
 					else:
 						player[x].tech.append(Constants.PlayerTech.AQUATICISM)
 						TileMapMain.updateAllUnitLook()
+						background.set_cell(Vector2i(tile_pos2.x,tile_pos2.y + 1), 0, Constants.Tribe.KIC,0)
+
 
 			
 				#TileMapMain.playerSelected.head
@@ -399,16 +474,23 @@ func techPage(tile_pos2):
 				if player[x].location == 0:
 					if player[x].tech.find(Constants.PlayerTech.FISHING) != -1:
 						player[x].tech.erase(Constants.PlayerTech.FISHING)
+						background.erase_cell(Vector2i(tile_pos2.x,tile_pos2.y + 1))
+
 					else:
 						player[x].tech.append(Constants.PlayerTech.FISHING)
+						background.set_cell(Vector2i(tile_pos2.x,tile_pos2.y + 1), 0, Constants.Tribe.KIC,0)
+
 		[Vector2i(4,1)]:
 			for x in Global.players:
 				if player[x].location == 0:
 					if player[x].tech.find(Constants.PlayerTech.SAILING) != -1:
 						player[x].tech.erase(Constants.PlayerTech.SAILING)
+						background.erase_cell(Vector2i(tile_pos2.x,tile_pos2.y + 1))
+
 					else:
 						player[x].tech.append(Constants.PlayerTech.SAILING)
-			
+						background.set_cell(Vector2i(tile_pos2.x,tile_pos2.y + 1), 0, Constants.Tribe.KIC,0)
+
 	
 
 
@@ -776,7 +858,22 @@ func ping(head):
 
 
 	
-	
+	if page == 4:
+		background.clear()
+		for i in int(Global.players):
+			if TileMapMain.playerSelected.head[i].location == 0:
+				for j in TileMapMain.playerSelected.head[i].tech.size():
+					match [TileMapMain.playerSelected.head[i].tech[j]]:
+						[Constants.PlayerTech.CLIMBING]:
+							background.set_cell(Vector2i(0,2), 0, Constants.Tribe.KIC,0)
+						[Constants.PlayerTech.ARCHERY]:
+							background.set_cell(Vector2i(1,2), 0, Constants.Tribe.KIC,0)
+						[Constants.PlayerTech.AQUATICISM]:
+							background.set_cell(Vector2i(2,2), 0, Constants.Tribe.KIC,0)
+						[Constants.PlayerTech.FISHING]:
+							background.set_cell(Vector2i(3,2), 0, Constants.Tribe.KIC,0)
+						[Constants.PlayerTech.SAILING]:
+							background.set_cell(Vector2i(4,2), 0, Constants.Tribe.KIC,0)
 	
 	#tilesWater.shoreNull.frame = 3.,k b
 	

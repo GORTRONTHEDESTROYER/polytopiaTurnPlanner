@@ -64,9 +64,8 @@ func loadData(saved_game:SavedGameSubTile):
 	#if saved_game.road:
 		#building = 
 	building = saved_game.building
-
-	
 	roadHeld = saved_game.road
+	city = saved_game.city
 	
 	#if saved_game.unit != null:
 		

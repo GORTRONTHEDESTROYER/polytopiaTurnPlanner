@@ -8818,7 +8818,6 @@ texture_repeat = 1
 tile_set = SubResource("TileSet_l46qg")
 
 [node name="building_road" type="TileMapLayer" parent="TileMapHolder"]
-visible = false
 texture_filter = 1
 texture_repeat = 1
 use_parent_material = true

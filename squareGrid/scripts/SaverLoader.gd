@@ -35,6 +35,7 @@ func save_game():
 			saved_tile.water = tileData.tiles[x][y].water
 			saved_tile.road = tileData.tiles[x][y].roadHeld
 			saved_tile.resourceLevel = tileData.tiles[x][y].resourceLevel
+			saved_tile.city = tileData.tiles[x][y].city
 			
 			if tileData.tiles[x][y].unit != null:
 			#	var saved_unit:unitSaver = unitSaver.new()
